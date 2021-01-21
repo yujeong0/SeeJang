@@ -1,4 +1,4 @@
-package com.pjt1.shopping.sample;
+package com.springboot.pjt1.sample;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
