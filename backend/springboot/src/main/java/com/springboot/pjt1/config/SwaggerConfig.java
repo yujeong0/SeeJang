@@ -1,4 +1,4 @@
-package com.pjt1.shopping.config;
+package com.springboot.pjt1.config;
 
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;

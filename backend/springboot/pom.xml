@@ -9,8 +9,8 @@
 		<version>2.4.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.pjt1</groupId>
-	<artifactId>shopping</artifactId>
+	<groupId>com.springboot</groupId>
+	<artifactId>pjt1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot</name>
 	<description>장보기 서비스 스프링부트</description>
