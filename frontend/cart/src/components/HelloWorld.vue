@@ -1,31 +1,29 @@
 <template>
-    <v-container @click="containerClick" id="container">
-      <div>
-        <img src="../assets/login_pic.png" style="width:30%" />
-      </div>
-      <div>
-        <v-btn text color="primary">나중에 이미지 움직움직!</v-btn>
-      </div>
-    </v-container>
+  <v-container @click="containerClick" id="container">
+    <div>
+      <img src="../assets/cart.gif" style="width: 30%" />
+    </div>
+    <div>
+      <v-btn text color="primary">화면을 눌러주세요~</v-btn>
+    </div>
+  </v-container>
 </template>
 
 <script>
 export default {
-    name: "HelloWorld",
+  name: 'HelloWorld',
 
-    data: () => ({
-      
-    }),
-    methods: {
-      containerClick(){
-        this.$router.push('/login');
-      }
+  data: () => ({}),
+  methods: {
+    containerClick() {
+      this.$router.push('/serachProduct');
     },
+  },
 };
 </script>
 
 <style scope>
-  #container {
-    margin: auto;
-  }
+#container {
+  margin: auto;
+}
 </style>
