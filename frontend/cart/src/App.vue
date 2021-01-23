@@ -1,12 +1,12 @@
 <template>
   <v-app>
-    <Header></Header>
+    <Header v-if="isHeader"></Header>
     <router-view />
   </v-app>
 </template>
 
 <script>
-import Header from './components/Header.vue'
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
@@ -16,17 +16,16 @@ export default {
   },
 
   data: () => ({
-    //
+    isHeader: false,
   }),
 };
 </script>
-
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
