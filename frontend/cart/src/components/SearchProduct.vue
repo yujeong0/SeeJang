@@ -30,13 +30,7 @@
     </button>
 
     <div v-if="isPhotoTaken && isCameraOpen" class="camera-download">
-      <a
-        id="downloadPhoto"
-        download="my-photo.jpg"
-        class="button"
-        role="button"
-        @click="downloadImage"
-      >
+      <a id="downloadPhoto" class="button" role="button" @click="downloadImage">
         최저가 확인하기
       </a>
     </div>
@@ -44,12 +38,13 @@
 </template>
 
 <script>
+import http from '@/util/http-common.js';
+
 export default {
   name: 'Post',
   components: {},
   watch: {},
   created() {
-    console.log('d');
     this.isCameraOpen = true;
     this.createCameraElement();
   },
@@ -72,39 +67,72 @@ export default {
       }
     },
     downloadImage() {
-      let frm = new FormData();
-      const download = document.getElementById('downloadPhoto');
+      // let frm = new FormData();
+      // const download = document.getElementById('downloadPhoto');
+      const download2 = document.getElementById('photoTaken');
+      const imgBase64 = download2.toDataURL('image/jpeg', 'image/octet-stream');
+      const decodImg = atob(imgBase64.split(',')[1]);
 
-      // frm2.append('photo', photoFile.files[0]);
-      frm.append('photo', download.files);
+      let array = [];
+      for (let i = 0; i < decodImg.length; i++) {
+        array.push(decodImg.charCodeAt(i));
+      }
+
+      const file = new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+      const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
+      let formData = new FormData();
+      formData.append('file', file, fileName);
+
+      //      console.log(download2);
 
       // const canvas = document
       //   .getElementById('photoTaken')
-      //   .toDataURL('image/jpeg')
-      //   .replace('image/jpeg', 'image/octet-stream');
+      //   .toDataURL('image/jpeg');
+      // // frm2.append('photo', photoFile.files[0]);
+      // //console.log(canvas);
+      // frm.append('photo', canvas);
 
       // download.setAttribute('href', canvas); //파일 만들어주는건데..
-      console.dir(frm);
 
-      // axios
-      //   .post('주소', frm, {
-      //     headers: {
-      //       'Content-Type': 'multipart/form-data',
-      //     },
-      //   })
-      //   .then((response) => {})
-      //   .catch((error) => {});
+      // http://localhost:8000/springboot/swagger-ui.html
+      for (var key of formData.keys()) {
+        console.log(key);
+      }
+      console.log('dasdf');
+
+      for (var value of formData.values()) {
+        console.log(value);
+      }
+      console.log('123');
+      console.dir(formData);
+      console.dir(file);
+      console.dir(fileName);
+
+      http
+        .post('/searchImage', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       // frm 로 canvas 넘겨주기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      this.$router.push('/detailProduct');
+      //this.$router.push('/detailProduct');
     },
     takePhoto() {
       this.isPhotoTaken = !this.isPhotoTaken;
 
       const context = this.$refs.canvas.getContext('2d');
-      context.drawImage(this.$refs.camera, 0, 0, 450, 337.5);
-      this.downloadImage();
+      context.drawImage(this.$refs.camera, 0, 0, 360, 370);
+      //console.log(this.$refs.camera);
+      //console.log(context);
+      // this.downloadImage();
     },
     createCameraElement() {
       const constraints = (window.constraints = {
