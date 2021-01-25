@@ -13,10 +13,11 @@ export default {
 
   components: {
     Header,
+    
   },
 
   data: () => ({
-    isHeader: false,
+    isHeader: true,
   }),
 };
 </script>
