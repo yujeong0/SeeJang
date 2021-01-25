@@ -7,6 +7,8 @@ import Login from "@/page/Login.vue"
 import HelloWorld from "@/page/HelloWorld.vue"
 import SearchProduct from "@/components/SearchProduct.vue"
 import DetailProduct from "@/components/DetailProduct.vue"
+import Header from "@/components/Header.vue"
+import Categorize from "@/components/Categorize.vue"
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -30,8 +32,18 @@ const routes = [
     path: "/detailProduct",
     name: "detailProduct",
     component: DetailProduct
-  }
-
+  },
+  {
+    path: "/header",
+    name: "header",
+    component: Header,
+  },
+  {
+    path: "/categorize",
+    name: "categorize",
+    component: Categorize,
+  },
+  
 ];
 
 const router = new VueRouter({
