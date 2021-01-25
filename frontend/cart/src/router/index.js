@@ -9,6 +9,7 @@ import SearchProduct from "@/components/SearchProduct.vue"
 import DetailProduct from "@/components/DetailProduct.vue"
 import Header from "@/components/Header.vue"
 import Categorize from "@/components/Categorize.vue"
+import ShoppingList from "@/page/ShoppingList.vue"
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -43,7 +44,11 @@ const routes = [
     name: "categorize",
     component: Categorize,
   },
-  
+  {
+    path: "/shoppingList",
+    name: "shoppingList",
+    component: ShoppingList
+  }
 ];
 
 const router = new VueRouter({
