@@ -1,45 +1,33 @@
 <template>
   <div>
-    <div class="camera-button">
-      <button
-        type="button"
-        class="button is-rounded"
-        :class="{ 'is-primary': !isCameraOpen, 'is-danger': isCameraOpen }"
-        @click="toggleCamera"
-      >
-        <span v-if="!isCameraOpen">Open Camera</span>
-        <span v-else>Close Camera</span>
-      </button>
-    </div>
-
+    <!-- 
     <div v-if="isCameraOpen" class="camera-box">
       <video ref="camera" :width="450" :height="337.5" autoplay></video>
-    </div>
+    </div> -->
+    <h3 class="mt-7 md-7">검색할 상품</h3>
 
     <div v-if="isCameraOpen" class="camera-box">
       <video
         v-show="!isPhotoTaken"
         ref="camera"
-        :width="450"
-        :height="337.5"
+        :width="360"
+        :height="370"
         autoplay
       ></video>
       <canvas
         v-show="isPhotoTaken"
         id="photoTaken"
         ref="canvas"
-        :width="450"
-        :height="337.5"
+        :width="360"
+        :height="370"
       ></canvas>
     </div>
 
-    <div v-if="isCameraOpen" class="camera-shoot">
-      <button type="button" class="button" @click="takePhoto">
-        <img
-          src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
-        />
-      </button>
-    </div>
+    <button type="button" class="button" @click="takePhoto">
+      <img
+        src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
+      />
+    </button>
 
     <div v-if="isPhotoTaken && isCameraOpen" class="camera-download">
       <a
@@ -49,7 +37,7 @@
         role="button"
         @click="downloadImage"
       >
-        Download
+        최저가 확인하기
       </a>
     </div>
   </div>
@@ -60,7 +48,11 @@ export default {
   name: 'Post',
   components: {},
   watch: {},
-  created() {},
+  created() {
+    console.log('d');
+    this.isCameraOpen = true;
+    this.createCameraElement();
+  },
   methods: {
     stopCameraStream() {
       let tracks = this.$refs.camera.srcObject.getTracks();
@@ -86,12 +78,12 @@ export default {
       // frm2.append('photo', photoFile.files[0]);
       frm.append('photo', download.files);
 
-      const canvas = document
-        .getElementById('photoTaken')
-        .toDataURL('image/jpeg')
-        .replace('image/jpeg', 'image/octet-stream');
+      // const canvas = document
+      //   .getElementById('photoTaken')
+      //   .toDataURL('image/jpeg')
+      //   .replace('image/jpeg', 'image/octet-stream');
 
-      download.setAttribute('href', canvas); //파일 만들어주는건데..
+      // download.setAttribute('href', canvas); //파일 만들어주는건데..
       console.dir(frm);
 
       // axios
@@ -104,12 +96,15 @@ export default {
       //   .catch((error) => {});
 
       // frm 로 canvas 넘겨주기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      this.$router.push('/detailProduct');
     },
     takePhoto() {
       this.isPhotoTaken = !this.isPhotoTaken;
 
       const context = this.$refs.canvas.getContext('2d');
       context.drawImage(this.$refs.camera, 0, 0, 450, 337.5);
+      this.downloadImage();
     },
     createCameraElement() {
       const constraints = (window.constraints = {
@@ -143,17 +138,16 @@ export default {
 </script>
 
 <style>
-button {
+/* button {
   height: 60px;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-}
-/* 
-img {
-  height: 35px;
-  object-fit: cover;
 } */
+
+.img {
+  text-align: center;
+}
 </style>
