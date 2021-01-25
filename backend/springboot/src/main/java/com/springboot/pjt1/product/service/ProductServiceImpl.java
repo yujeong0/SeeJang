@@ -1,7 +1,6 @@
 package com.springboot.pjt1.product.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +31,4 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.selectProductByNameAndCategory(product);
 	}
 	
-	
-
-
-
 }
