@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import http from "@util/http-common";
 export default {
     name: "login",
     data() {
@@ -49,6 +50,10 @@ export default {
     },
     methods: {
         naver() {
+            http.get("/login/naver")
+                .then((response) => {})
+                .catch((error) => {});
+
             console.log("click naver");
         },
         kakao() {
