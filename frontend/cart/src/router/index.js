@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import Login from "@/page/Login.vue"
-import HelloWorld from "@/components/HelloWorld.vue"
+import HelloWorld from "@/page/HelloWorld.vue"
 import SearchProduct from "@/components/SearchProduct.vue"
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);

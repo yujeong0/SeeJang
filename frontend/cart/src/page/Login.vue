@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import http from "@util/http-common";
+import http from "@/util/http-common";
 export default {
     name: "login",
     data() {
@@ -50,9 +50,10 @@ export default {
     },
     methods: {
         naver() {
-            http.get("/login/naver")
-                .then((response) => {})
-                .catch((error) => {});
+            http
+            // .GET("/LOGIN/NAVER")
+            //     .THEN((RESPONSE) => {})
+            //     .CATCH((ERROR) => {});
 
             console.log("click naver");
         },
