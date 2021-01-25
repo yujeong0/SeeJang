@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import Login from "@/page/Login.vue"
 import HelloWorld from "@/components/HelloWorld.vue"
 import SearchProduct from "@/components/SearchProduct.vue"
+import DetailProduct from "@/components/DetailProduct.vue"
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -24,7 +25,13 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login
+  },
+  {
+    path: "/detailProduct",
+    name: "detailProduct",
+    component: DetailProduct
   }
+
 ];
 
 const router = new VueRouter({
