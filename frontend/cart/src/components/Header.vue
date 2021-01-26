@@ -38,7 +38,7 @@
         /></v-col>
       </v-row>
     </div>
-    <div class="gridDiv">
+    <div class="gridDiv mb-2">
       <v-row no-gutters>
         <v-col
           ><span style="font-size: small" class="mr-3">쇼핑리스트</span></v-col
@@ -56,6 +56,7 @@
       </v-row>
     </div>
     <hr class="first" />
+    <br>
   </div>
 </template>
 
