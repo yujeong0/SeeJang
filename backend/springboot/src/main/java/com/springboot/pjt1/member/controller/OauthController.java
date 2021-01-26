@@ -35,23 +35,30 @@ public class OauthController {
     @Autowired
     private RedisUtil redisUtil;
 
-    @PostMapping("/signup/naver")
-    public Response signUpNaverUser(@RequestBody RequestSocialData socialData){
-        Response response;
-        try{
-            authService.signUpSocialUser(socialData);
-            response = new Response("success","성공적으로 회원가입을 완료했습닌다.",null);
-        }catch(Exception e){
-            response = new Response("error","회원가입 실패",e.getMessage());
-        }
-        return response;
-    }
+//    @PostMapping("/signup/naver")
+//    public Response signUpNaverUser(@RequestBody RequestSocialData socialData){
+//        Response response;
+//        try{
+//            authService.signUpSocialUser(socialData);
+//            response = new Response("success","성공적으로 회원가입을 완료했습닌다.",null);
+//        }catch(Exception e){
+//            response = new Response("error","회원가입 실패",e.getMessage());
+//        }
+//        return response;
+//    }
 
     @GetMapping("/login/naver")
     public Response loginNaverUser(@RequestBody RequestSocialData socialData, HttpServletRequest req, HttpServletResponse res){
         Response response;
         try{
             final Member member = authService.loginSocialUser(socialData.getId(),socialData.getType());
+            if(member == null) {
+                try{
+                    authService.signUpSocialUser(socialData);
+                }catch(Exception e){
+                    response = new Response("error","로그인에 실패했습니다.",e.getMessage());
+                }
+    		}
             final String token = jwtUtil.generateToken(member);
             final String refreshJwt = jwtUtil.generateRefreshToken(member);
             Cookie accessToken = cookieUtil.createCookie(JwtUtil.ACCESS_TOKEN_NAME, token);
