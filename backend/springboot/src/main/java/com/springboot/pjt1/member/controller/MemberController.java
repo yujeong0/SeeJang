@@ -72,6 +72,7 @@ public class MemberController {
             return new Response("error", "로그인에 실패했습니다.", e.getMessage());
         }
     }
+    
 
     @PostMapping("/verify")
     public Response verify(@RequestBody RequestVerifyEmail requestVerifyEmail, HttpServletRequest req, HttpServletResponse res) {
