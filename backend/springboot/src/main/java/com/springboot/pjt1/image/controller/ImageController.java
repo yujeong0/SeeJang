@@ -28,7 +28,7 @@ public class ImageController {
 			System.out.println("파일이 없습니다.");
 		else {
 			for (String key : map.keySet()) {
-				Path fileName = service.storeFile(map.get(key).get(0));
+				Path fileName = service.storeFile(map.get(key).get(0)); 
 		      // 파일을 지정된 경로로 저장
 		      // 사진이 저장된 경로를 파이썬 코드로 줌
 				String productName = service.getProductName(fileName.toString());
