@@ -5,7 +5,14 @@ public class Product {
 	private String productName;
 	private String productPrice;
 	private String category;
+	private String reviewLink;
 	
+	public String getReviewLink() {
+		return reviewLink;
+	}
+	public void setReviewLink(String reviewLink) {
+		this.reviewLink = reviewLink;
+	}
 	public int getProductNo() {
 		return productNo;
 	}

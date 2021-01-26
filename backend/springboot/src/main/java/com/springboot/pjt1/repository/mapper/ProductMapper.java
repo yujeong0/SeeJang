@@ -9,6 +9,8 @@ public interface ProductMapper {
 	List<Product> selectProduct();
 	
 	List<Product> selectProductByName(String name);
+
+	Product selectProductByExactName(String name);
 	
 	List<Product> selectProductByCategory(String category);
 	
