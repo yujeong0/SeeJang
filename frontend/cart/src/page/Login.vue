@@ -34,7 +34,7 @@ export default {
     return {};
   },
   mounted() {
-    var naverLogin = new naver.LoginWithNaverId({
+    const naverLogin = new naver.LoginWithNaverId({
       clientId: '9zJZugyWUILEG91zo8TK',
       callbackUrl: `${window.location.origin}/login_callback`,
       isPopup: false,

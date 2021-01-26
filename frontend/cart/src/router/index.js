@@ -11,7 +11,7 @@ import Header from '@/components/Header.vue';
 import Categorize from '@/components/Categorize.vue';
 import ShoppingList from '@/page/ShoppingList.vue';
 import LikeProduct from '@/page/LikeProduct.vue';
-import Naver from '@/page/NaverLogin.vue';
+import Login_callback from '@/page/Login_callback.vue';
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -32,9 +32,9 @@ const routes = [
     component: Login,
   },
   {
-    path: '/naver',
-    name: 'naver',
-    component: Naver,
+    path: '/login_callback',
+    name: 'login_callback',
+    component: Login_callback,
   },
   {
     path: '/detailProduct',
