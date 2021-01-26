@@ -12,6 +12,11 @@
 		from product
 		where product_name LIKE concat('%', #{name}, '%')
 	</select>
+	<select id="selectProductByExactName" resultType="product" parameterType="string">
+		select * 
+		from product
+		where product_name = #{name}
+	</select>
 	<select id="selectProductByCategory" resultType="product" parameterType="string">
 		select * 
 		from product
