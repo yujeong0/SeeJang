@@ -4,7 +4,7 @@
     <div v-if="isCameraOpen" class="camera-box">
       <video ref="camera" :width="450" :height="337.5" autoplay></video>
     </div> -->
-    <h3 class="mt-7 md-7">검색할 상품</h3>
+    <h3 class="md-7">검색할 상품</h3>
 
     <div v-if="isCameraOpen" class="camera-box">
       <video
@@ -67,10 +67,8 @@ export default {
       }
     },
     downloadImage() {
-      // let frm = new FormData();
-      // const download = document.getElementById('downloadPhoto');
-      const download2 = document.getElementById('photoTaken');
-      const imgBase64 = download2.toDataURL('image/jpeg', 'image/octet-stream');
+      const download = document.getElementById('photoTaken');
+      const imgBase64 = download.toDataURL('image/jpeg', 'image/octet-stream');
       const decodImg = atob(imgBase64.split(',')[1]);
 
       let array = [];
@@ -83,30 +81,13 @@ export default {
       let formData = new FormData();
       formData.append('file', file, fileName);
 
-      //      console.log(download2);
-
-      // const canvas = document
-      //   .getElementById('photoTaken')
-      //   .toDataURL('image/jpeg');
-      // // frm2.append('photo', photoFile.files[0]);
-      // //console.log(canvas);
-      // frm.append('photo', canvas);
-
-      // download.setAttribute('href', canvas); //파일 만들어주는건데..
-
-      // http://localhost:8000/springboot/swagger-ui.html
       for (var key of formData.keys()) {
         console.log(key);
       }
-      console.log('dasdf');
 
       for (var value of formData.values()) {
         console.log(value);
       }
-      console.log('123');
-      console.dir(formData);
-      console.dir(file);
-      console.dir(fileName);
 
       http
         .post('/searchImage', formData, {
@@ -121,18 +102,12 @@ export default {
           console.log(error);
         });
 
-      // frm 로 canvas 넘겨주기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-      //this.$router.push('/detailProduct');
+      this.$router.push('/detailProduct');
     },
     takePhoto() {
       this.isPhotoTaken = !this.isPhotoTaken;
-
       const context = this.$refs.canvas.getContext('2d');
       context.drawImage(this.$refs.camera, 0, 0, 360, 370);
-      //console.log(this.$refs.camera);
-      //console.log(context);
-      // this.downloadImage();
     },
     createCameraElement() {
       const constraints = (window.constraints = {
@@ -166,15 +141,6 @@ export default {
 </script>
 
 <style>
-/* button {
-  height: 60px;
-  width: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-} */
-
 .img {
   text-align: center;
 }
