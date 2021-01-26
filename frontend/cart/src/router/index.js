@@ -10,6 +10,7 @@ import DetailProduct from "@/components/DetailProduct.vue"
 import Header from "@/components/Header.vue"
 import Categorize from "@/components/Categorize.vue"
 import ShoppingList from "@/page/ShoppingList.vue"
+import LikeProduct from "@/page/LikeProduct.vue"
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -48,6 +49,11 @@ const routes = [
     path: "/shoppingList",
     name: "shoppingList",
     component: ShoppingList
+  },
+  {
+    path: "/likeproduct",
+    name: "likeproduct",
+    component: LikeProduct
   }
 ];
 

@@ -16,7 +16,7 @@ export default {
   data: () => ({}),
   methods: {
     containerClick() {
-      this.$router.push('/categorize');
+      this.$router.push('/likeproduct');
     },
   },
 };
