@@ -1,0 +1,46 @@
+<template>
+  <div id="app" class="columns mt-4">
+    <h3 class="mb-5">오늘의 인기상품</h3>
+    <div class="column">
+      <popular v-for="popular in populars" :popular="popular" :key="popular.id" />
+    </div>
+  </div>
+</template>
+
+<script>
+import Popular from "@/components/Popular.vue";
+
+export default {
+  components: {
+    Popular,
+  },
+  data() {
+    return {
+      populars:[
+        {
+    id: 1,
+    name: '바나나 정말 맛있는 바나나',
+    img: 'https://semantic-ui.com/images/avatar2/large/matthew.png',
+    info: "100g 3000원",
+  },
+  { 
+    id: 2,
+    name: '빵',
+    img: 'https://semantic-ui.com/images/avatar2/large/matthew.png',
+    info: '200g 2600원',
+  },
+  {
+    id: 3,
+    name: '우유',
+    img: 'https://semantic-ui.com/images/avatar2/large/matthew.png',
+    info: '1L 1800원',
+  }
+      ],
+    };
+  },
+}
+</script>
+
+<style>
+
+</style>
