@@ -21,4 +21,6 @@ public interface ProductService {
 
 	List<Review> reviewList(String name) throws IOException;
 
+	Map<String, Object> searchProductDetail(String name) throws IOException;
+
 }
