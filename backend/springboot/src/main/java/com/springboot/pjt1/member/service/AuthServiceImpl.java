@@ -9,11 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.pjt1.config.UserRole;
 import com.springboot.pjt1.repository.jpa.MemberRepository;
-import com.springboot.pjt1.repository.jpa.SocialDataRepository;
 import com.springboot.pjt1.repository.jpa.dto.Member;
 import com.springboot.pjt1.repository.jpa.dto.Salt;
-import com.springboot.pjt1.repository.jpa.dto.SocialData;
-import com.springboot.pjt1.repository.jpa.dto.request.RequestSocialData;
 
 import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -35,63 +32,44 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private RedisUtil redisUtil;
 
-    @Autowired
-    private SocialDataRepository socialDataRepository;
-
     @Override
     @Transactional
     public void signUpUser(Member member) {
-        String password = member.getPassword();
+        String password = member.getMemberPassword();
         String salt = saltUtil.genSalt();
         member.setSalt(new Salt(salt));
-        member.setPassword(saltUtil.encodePassword(salt,password));
+        member.setMemberPassword(saltUtil.encodePassword(salt,password));
         memberRepository.save(member);
     }
 
     @Override
-    @Transactional
-    public void signUpSocialUser(RequestSocialData member){
-        Member newMember = new Member();
-        newMember.setUsername(member.getId());
-        newMember.setPassword("");
-        newMember.setEmail(member.getEmail());
-        newMember.setName(member.getName());
-        newMember.setAddress("");
-        newMember.setSocial(new SocialData(member.getId(),member.getEmail(),member.getType()));
-        memberRepository.save(newMember);
-    }
-
-    @Override
-    public Member loginSocialUser(String id, String type) throws NotFoundException{
-        SocialData socialData = socialDataRepository.findByIdAndType(id,type);
-        if(socialData==null) throw new NotFoundException("멤버가 조회되지 않음");
-        return socialData.getMember();
-    }
-
-    @Override
     public Member loginUser(String id, String password) throws Exception{
-        Member member = memberRepository.findByUsername(id);
+        Member member = memberRepository.findByMemberId(id);
         if(member==null) throw new Exception ("멤버가 조회되지 않음");
         String salt = member.getSalt().getSalt();
         password = saltUtil.encodePassword(salt,password);
-        if(!member.getPassword().equals(password))
+        if(!member.getMemberPassword().equals(password))
             throw new Exception ("비밀번호가 틀립니다.");
-        if(member.getSocial()!=null)
-            throw new Exception ("소셜 계정으로 로그인 해주세요.");
         return member;
     }
 
     @Override
-    public Member findByUsername(String username) throws NotFoundException {
-        Member member = memberRepository.findByUsername(username);
+    public Member findByMemberId(String username) throws NotFoundException {
+        Member member = memberRepository.findByMemberId(username);
         if(member == null) throw new NotFoundException("멤버가 조회되지 않음");
         return member;
     }
 
     @Override
+    public Member socialFindByMemberId(String username) {
+        Member member = memberRepository.findByMemberId(username);
+        return member;
+    }
+    
+    @Override
     public void verifyEmail(String key) throws NotFoundException {
         String memberId = redisUtil.getData(key);
-        Member member = memberRepository.findByUsername(memberId);
+        Member member = memberRepository.findByMemberId(memberId);
         if(member==null) throw new NotFoundException("멤버가 조회되지않음");
         modifyUserRole(member,UserRole.ROLE_USER);
         redisUtil.deleteData(key);
@@ -102,8 +80,8 @@ public class AuthServiceImpl implements AuthService {
         String VERIFICATION_LINK = "http://localhost:8080/user/verify/";
         if(member==null) throw new NotFoundException("멤버가 조회되지 않음");
         UUID uuid = UUID.randomUUID();
-        redisUtil.setDataExpire(uuid.toString(),member.getUsername(), 60 * 30L);
-        emailService.sendMail(member.getEmail(),"[김동근 스프링] 회원가입 인증메일입니다.",VERIFICATION_LINK+uuid.toString());
+        redisUtil.setDataExpire(uuid.toString(),member.getMemberId(), 60 * 30L);
+        emailService.sendMail(member.getMemberId(),"[김동근 스프링] 회원가입 인증메일입니다.",VERIFICATION_LINK+uuid.toString());
     }
 
     @Override
@@ -123,7 +101,7 @@ public class AuthServiceImpl implements AuthService {
         if(member == null) throw new NotFoundException("changePassword(),멤버가 조회되지 않음");
         String salt = saltUtil.genSalt();
         member.setSalt(new Salt(salt));
-        member.setPassword(saltUtil.encodePassword(salt,password));
+        member.setMemberPassword(saltUtil.encodePassword(salt,password));
         memberRepository.save(member);
     }
 
@@ -133,8 +111,8 @@ public class AuthServiceImpl implements AuthService {
         String CHANGE_PASSWORD_LINK = "http://localhost:8080/user/password/";
         if(member == null) throw new NotFoundException("멤버가 조회되지 않음.");
         String key = REDIS_CHANGE_PASSWORD_PREFIX+UUID.randomUUID();
-        redisUtil.setDataExpire(key,member.getUsername(),60 * 30L);
-        emailService.sendMail(member.getEmail(),"[김동근 스프링] 사용자 비밀번호 안내 메일",CHANGE_PASSWORD_LINK+key);
+        redisUtil.setDataExpire(key,member.getMemberId(),60 * 30L);
+        emailService.sendMail(member.getMemberId(),"[김동근 스프링] 사용자 비밀번호 안내 메일",CHANGE_PASSWORD_LINK+key);
     }
 
 

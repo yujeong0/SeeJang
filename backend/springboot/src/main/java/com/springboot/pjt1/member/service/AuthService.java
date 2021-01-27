@@ -2,7 +2,6 @@ package com.springboot.pjt1.member.service;
 
 import com.springboot.pjt1.config.UserRole;
 import com.springboot.pjt1.repository.jpa.dto.Member;
-import com.springboot.pjt1.repository.jpa.dto.request.RequestSocialData;
 
 import javassist.NotFoundException;
 
@@ -12,13 +11,10 @@ public interface AuthService {
 
     void signUpUser(Member member);
 
-    void signUpSocialUser(RequestSocialData member);
-
-    Member loginSocialUser(String id, String type) throws NotFoundException;
-
     Member loginUser(String id, String password) throws Exception;
 
-    Member findByUsername(String username) throws NotFoundException;
+    Member findByMemberId(String memberId) throws NotFoundException;
+    Member socialFindByMemberId(String memberId);
 
     void verifyEmail(String key) throws NotFoundException;
 
