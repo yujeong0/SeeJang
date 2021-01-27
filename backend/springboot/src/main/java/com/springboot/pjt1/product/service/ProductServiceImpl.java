@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,17 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	ProductMapper mapper;
-
+	
+	@Override
+	public Map<String, Object> searchProductDetail(String name) throws IOException {
+		Map<String, Object> map = new HashMap<>();
+		map.put("product", searchProductByName(name));
+		map.put("review", reviewList(name));
+		map.put("bestPrice", bestPriceList(name));
+		
+		return map;
+	}
+	
 	@Override
 	public List<Product> searchProduct() {
 		return mapper.selectProduct();
@@ -44,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.selectProductByNameAndCategory(product);
 	}
 	
-	public Map<String, Object> bestPriceList() {
+	public Map<String, Object> bestPriceList(String name) {
 		Map<String, Object> map = new HashMap<>();
 		
 		// 여기서 쿠팡, 뭐시기, 뭐시기 최저가 크롤링 결과 map 에 넣기
