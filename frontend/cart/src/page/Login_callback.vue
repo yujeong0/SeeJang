@@ -23,22 +23,15 @@ export default {
         console.dir(naverLogin.user);
         const email = naverLogin.user.getEmail();
         const nickname = naverLogin.user.getNickName();
-        const name = naverLogin.user.getName();
-        const profileImage = naverLogin.user.getProfileImage();
-        const birthday = naverLogin.user.getBirthday();
         const uniqId = naverLogin.user.getId();
-        const age = naverLogin.user.getAge();
         console.log(email);
         console.log(nickname);
-        console.log(name);
-        console.log(profileImage);
-        console.log(birthday);
         console.log(uniqId);
-        console.log(age);
       } else {
         console.log('AccessToken이 올바르지 않습니다.');
+        this.$router.push('/login')
       }
-      that.$router.push({ name: 'likeproduct' });
+      that.$router.push({ name: 'categorize' });
     });
   },
 };
