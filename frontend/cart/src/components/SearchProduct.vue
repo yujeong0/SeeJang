@@ -1,66 +1,53 @@
 <template>
   <div>
-    <div class="camera-button">
-      <button
-        type="button"
-        class="button is-rounded"
-        :class="{ 'is-primary': !isCameraOpen, 'is-danger': isCameraOpen }"
-        @click="toggleCamera"
-      >
-        <span v-if="!isCameraOpen">Open Camera</span>
-        <span v-else>Close Camera</span>
-      </button>
-    </div>
-
+    <!-- 
     <div v-if="isCameraOpen" class="camera-box">
       <video ref="camera" :width="450" :height="337.5" autoplay></video>
-    </div>
+    </div> -->
+    <h3 class="md-7">검색할 상품</h3>
 
     <div v-if="isCameraOpen" class="camera-box">
       <video
         v-show="!isPhotoTaken"
         ref="camera"
-        :width="450"
-        :height="337.5"
+        :width="360"
+        :height="370"
         autoplay
       ></video>
       <canvas
         v-show="isPhotoTaken"
         id="photoTaken"
         ref="canvas"
-        :width="450"
-        :height="337.5"
+        :width="360"
+        :height="370"
       ></canvas>
     </div>
 
-    <div v-if="isCameraOpen" class="camera-shoot">
-      <button type="button" class="button" @click="takePhoto">
-        <img
-          src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
-        />
-      </button>
-    </div>
+    <button type="button" class="button" @click="takePhoto">
+      <img
+        src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
+      />
+    </button>
 
     <div v-if="isPhotoTaken && isCameraOpen" class="camera-download">
-      <a
-        id="downloadPhoto"
-        download="my-photo.jpg"
-        class="button"
-        role="button"
-        @click="downloadImage"
-      >
-        Download
+      <a id="downloadPhoto" class="button" role="button" @click="downloadImage">
+        최저가 확인하기
       </a>
     </div>
   </div>
 </template>
 
 <script>
+import http from '@/util/http-common.js';
+
 export default {
   name: 'Post',
   components: {},
   watch: {},
-  created() {},
+  created() {
+    this.isCameraOpen = true;
+    this.createCameraElement();
+  },
   methods: {
     stopCameraStream() {
       let tracks = this.$refs.camera.srcObject.getTracks();
@@ -80,36 +67,47 @@ export default {
       }
     },
     downloadImage() {
-      let frm = new FormData();
-      const download = document.getElementById('downloadPhoto');
+      const download = document.getElementById('photoTaken');
+      const imgBase64 = download.toDataURL('image/jpeg', 'image/octet-stream');
+      const decodImg = atob(imgBase64.split(',')[1]);
 
-      // frm2.append('photo', photoFile.files[0]);
-      frm.append('photo', download.files);
+      let array = [];
+      for (let i = 0; i < decodImg.length; i++) {
+        array.push(decodImg.charCodeAt(i));
+      }
 
-      const canvas = document
-        .getElementById('photoTaken')
-        .toDataURL('image/jpeg')
-        .replace('image/jpeg', 'image/octet-stream');
+      const file = new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+      const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
+      let formData = new FormData();
+      formData.append('file', file, fileName);
 
-      download.setAttribute('href', canvas); //파일 만들어주는건데..
-      console.dir(frm);
+      for (var key of formData.keys()) {
+        console.log(key);
+      }
 
-      // axios
-      //   .post('주소', frm, {
-      //     headers: {
-      //       'Content-Type': 'multipart/form-data',
-      //     },
-      //   })
-      //   .then((response) => {})
-      //   .catch((error) => {});
+      for (var value of formData.values()) {
+        console.log(value);
+      }
 
-      // frm 로 canvas 넘겨주기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      http
+        .post('/searchImage', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      this.$router.push('/detailProduct');
     },
     takePhoto() {
       this.isPhotoTaken = !this.isPhotoTaken;
-
       const context = this.$refs.canvas.getContext('2d');
-      context.drawImage(this.$refs.camera, 0, 0, 450, 337.5);
+      context.drawImage(this.$refs.camera, 0, 0, 360, 370);
     },
     createCameraElement() {
       const constraints = (window.constraints = {
@@ -143,17 +141,7 @@ export default {
 </script>
 
 <style>
-button {
-  height: 60px;
-  width: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
+.img {
+  text-align: center;
 }
-/* 
-img {
-  height: 35px;
-  object-fit: cover;
-} */
 </style>

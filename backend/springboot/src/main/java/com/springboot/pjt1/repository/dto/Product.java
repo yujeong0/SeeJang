@@ -5,7 +5,21 @@ public class Product {
 	private String productName;
 	private String productPrice;
 	private String category;
+	private String reviewLink;
+	private String imageName;
 	
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	public String getReviewLink() {
+		return reviewLink;
+	}
+	public void setReviewLink(String reviewLink) {
+		this.reviewLink = reviewLink;
+	}
 	public int getProductNo() {
 		return productNo;
 	}

@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.google.common.base.Predicates;
 
-import io.swagger.models.Contact;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;

@@ -1,36 +1,72 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import Login from "@/page/Login.vue"
-import HelloWorld from "@/components/HelloWorld.vue"
-import SearchProduct from "@/components/SearchProduct.vue"
+import Login from '@/page/Login.vue';
+import HelloWorld from '@/page/HelloWorld.vue';
+import SearchProduct from '@/components/SearchProduct.vue';
+import DetailProduct from '@/components/DetailProduct.vue';
+import Header from '@/components/Header.vue';
+import Categorize from '@/components/Categorize.vue';
+import ShoppingList from '@/page/ShoppingList.vue';
+import LikeProduct from '@/page/LikeProduct.vue';
+import Login_callback from '@/page/Login_callback.vue';
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
 const routes = [
-  { 
+  {
     path: '/',
     name: 'hello',
     component: HelloWorld,
   },
-  { 
+  {
     path: '/serachProduct',
     name: 'serachProduct',
     component: SearchProduct,
   },
   {
-    path: "/login",
-    name: "Login",
-    component: Login
-  }
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/login_callback',
+    name: 'login_callback',
+    component: Login_callback,
+  },
+  {
+    path: '/detailProduct',
+    name: 'detailProduct',
+    component: DetailProduct,
+  },
+  {
+    path: '/header',
+    name: 'header',
+    component: Header,
+  },
+  {
+    path: '/categorize',
+    name: 'categorize',
+    component: Categorize,
+  },
+  {
+    path: '/shoppingList',
+    name: 'shoppingList',
+    component: ShoppingList,
+  },
+  {
+    path: '/likeproduct',
+    name: 'likeproduct',
+    component: LikeProduct,
+  },
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
