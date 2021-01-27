@@ -53,18 +53,41 @@ public class MemberController {
             return new Response("error", "회원가입을 하는 도중 오류가 발생했습니다.", null);
         }
     }
-
+    
+    @PostMapping("/login/naver")
+    public Response naverLogin(@RequestBody Member member,
+                          HttpServletRequest req,
+                          HttpServletResponse res) {
+        try {
+            Member isMember = authService.socialFindByMemberId(member.getMemberId());
+            if(isMember == null) {
+            	authService.signUpUser(member);
+            }
+            final String token = jwtUtil.generateToken(member);
+            final String refreshJwt = jwtUtil.generateRefreshToken(member);
+            Cookie accessToken = cookieUtil.createCookie(JwtUtil.ACCESS_TOKEN_NAME, token);
+            Cookie refreshToken = cookieUtil.createCookie(JwtUtil.REFRESH_TOKEN_NAME, refreshJwt);
+            redisUtil.setDataExpire(refreshJwt, member.getMemberId(), JwtUtil.REFRESH_TOKEN_VALIDATION_SECOND);
+            res.addCookie(accessToken);
+            res.addCookie(refreshToken);
+            return new Response("success", "로그인에 성공했습니다.", token);
+        } catch (Exception e) {
+            return new Response("error", "로그인에 실패했습니다.", e.getMessage());
+        }
+    }
+    
+    
     @PostMapping("/login")
     public Response login(@RequestBody RequestLoginUser user,
                           HttpServletRequest req,
                           HttpServletResponse res) {
         try {
-            final Member member = authService.loginUser(user.getUsername(), user.getPassword());
+            final Member member = authService.loginUser(user.getMemberId(), user.getMemberPassword());
             final String token = jwtUtil.generateToken(member);
             final String refreshJwt = jwtUtil.generateRefreshToken(member);
             Cookie accessToken = cookieUtil.createCookie(JwtUtil.ACCESS_TOKEN_NAME, token);
             Cookie refreshToken = cookieUtil.createCookie(JwtUtil.REFRESH_TOKEN_NAME, refreshJwt);
-            redisUtil.setDataExpire(refreshJwt, member.getUsername(), JwtUtil.REFRESH_TOKEN_VALIDATION_SECOND);
+            redisUtil.setDataExpire(refreshJwt, member.getMemberId(), JwtUtil.REFRESH_TOKEN_VALIDATION_SECOND);
             res.addCookie(accessToken);
             res.addCookie(refreshToken);
             return new Response("success", "로그인에 성공했습니다.", token);
@@ -78,7 +101,7 @@ public class MemberController {
     public Response verify(@RequestBody RequestVerifyEmail requestVerifyEmail, HttpServletRequest req, HttpServletResponse res) {
         Response response;
         try {
-            Member member = authService.findByUsername(requestVerifyEmail.getUsername());
+            Member member = authService.findByMemberId(requestVerifyEmail.getMemberId());
             authService.sendVerificationMail(member);
             response = new Response("success", "성공적으로 인증메일을 보냈습니다.", null);
         } catch (Exception exception) {
@@ -118,8 +141,8 @@ public class MemberController {
     public Response requestChangePassword(@RequestBody RequestChangePassword1 requestChangePassword1) {
         Response response;
         try {
-            Member member = authService.findByUsername(requestChangePassword1.getUsername());
-            if (!member.getEmail().equals(requestChangePassword1.getEmail())) throw new NoSuchFieldException("");
+            Member member = authService.findByMemberId(requestChangePassword1.getMemberId());
+            if (!member.getMemberId().equals(requestChangePassword1.getMemberId())) throw new NoSuchFieldException("");
             authService.requestChangePassword(member);
             response = new Response("success", "성공적으로 사용자의 비밀번호 변경요청을 수행했습니다.", null);
         } catch (NoSuchFieldException e) {
@@ -134,8 +157,8 @@ public class MemberController {
     public Response changePassword(@RequestBody RequestChangePassword2 requestChangePassword2) {
         Response response;
         try{
-            Member member = authService.findByUsername(requestChangePassword2.getUsername());
-            authService.changePassword(member,requestChangePassword2.getPassword());
+            Member member = authService.findByMemberId(requestChangePassword2.getMemberId());
+            authService.changePassword(member,requestChangePassword2.getMemberPassword());
             response = new Response("success","성공적으로 사용자의 비밀번호를 변경했습니다.",null);
         }catch(Exception e){
             response = new Response("error","사용자의 비밀번호를 변경할 수 없었습니다.",null);

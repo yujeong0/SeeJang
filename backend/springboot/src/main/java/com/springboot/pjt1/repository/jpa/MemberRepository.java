@@ -5,7 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.springboot.pjt1.repository.jpa.dto.Member;
 
 public interface MemberRepository extends CrudRepository<Member, Long> {
-
-    Member findByUsername(String username);
+	Member findByMemberId(String username);
 
 }

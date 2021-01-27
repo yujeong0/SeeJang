@@ -1,17 +1,29 @@
 package com.springboot.pjt1.repository.jpa.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
-
 import com.springboot.pjt1.config.UserRole;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Members")
@@ -25,20 +37,15 @@ public class Member {
 
     @Column(unique = true)
     @NotNull
-    private String username;
+    private String memberId;
     @NotNull
-    private String password;
+    private String memberPassword;
     @NotBlank
-    private String name;
+    private String memberName;
     @NotBlank
-    private String email;
-    @NotNull
-    private String address;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="social_id")
-    private SocialData social;
-
+    private String provider;
+    @Column(columnDefinition = "int default 0")
+    private int blind;
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.ROLE_NOT_PERMITTED;
@@ -57,23 +64,19 @@ public class Member {
     public Member() {
     }
 
-    public Member(@NotBlank String username, @NotBlank String password, @NotBlank String name, @NotBlank String email, @NotBlank String address) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.email = email;
-        this.address = address;
+    public Member(@NotBlank String memberId, @NotBlank String memberPassword, @NotBlank String memberName) {
+        this.memberId = memberId;
+        this.memberPassword = memberPassword;
+        this.memberName = memberName;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "seq=" + seq +
-                ", id='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
+                ", id='" + memberId + '\'' +
+                ", password='" + memberPassword + '\'' +
+                ", name='" + memberName + '\'' +
                 ", role=" + role +
                 ", createAt=" + createAt +
                 ", updateAt=" + updateAt +

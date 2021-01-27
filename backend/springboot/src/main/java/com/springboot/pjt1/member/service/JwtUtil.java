@@ -51,11 +51,11 @@ public class JwtUtil {
     }
 
     public String generateToken(Member member) {
-        return doGenerateToken(member.getUsername(), TOKEN_VALIDATION_SECOND);
+        return doGenerateToken(member.getMemberId(), TOKEN_VALIDATION_SECOND);
     }
 
     public String generateRefreshToken(Member member) {
-        return doGenerateToken(member.getUsername(), REFRESH_TOKEN_VALIDATION_SECOND);
+        return doGenerateToken(member.getMemberId(), REFRESH_TOKEN_VALIDATION_SECOND);
     }
 
     public String doGenerateToken(String username, long expireTime) {
