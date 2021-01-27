@@ -12,6 +12,7 @@ import Categorize from '@/components/Categorize.vue';
 import ShoppingList from '@/page/ShoppingList.vue';
 import LikeProduct from '@/page/LikeProduct.vue';
 import Login_callback from '@/page/Login_callback.vue';
+import Kakao_callback from '@/page/KakaoLoginCallback.vue';
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -35,6 +36,11 @@ const routes = [
     path: '/login_callback',
     name: 'login_callback',
     component: Login_callback,
+  },
+  {
+    path: '/kakaologin',
+    name: 'kakaologin',
+    component: Kakao_callback,
   },
   {
     path: '/detailProduct',
