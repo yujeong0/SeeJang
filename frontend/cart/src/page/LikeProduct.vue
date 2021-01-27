@@ -1,5 +1,6 @@
 <template>
-  <div id="app" class="columns">
+  <div id="app" class="columns mt-4">
+    <h3>나의 찜 목록</h3>
     <div class="column">
       <like v-for="like in likes" :like="like" :key="like.id" />
     </div>

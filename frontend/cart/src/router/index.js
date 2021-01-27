@@ -11,6 +11,7 @@ import Header from '@/components/Header.vue';
 import Categorize from '@/components/Categorize.vue';
 import ShoppingList from '@/page/ShoppingList.vue';
 import LikeProduct from '@/page/LikeProduct.vue';
+import PopularProduct from '@/page/PopularProduct.vue';
 import Login_callback from '@/page/Login_callback.vue';
 import Kakao_callback from '@/page/KakaoLoginCallback.vue';
 // import SearchProduct from "@/components/SearchProduct.vue"
@@ -66,6 +67,11 @@ const routes = [
     path: '/likeproduct',
     name: 'likeproduct',
     component: LikeProduct,
+  },
+  {
+    path: '/popularproduct',
+    name: 'popularproduct',
+    component: PopularProduct,
   },
 ];
 

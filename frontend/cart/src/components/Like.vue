@@ -1,6 +1,6 @@
 <template>
   <div class="like">
-    <h2>나의 찜 목록</h2>
+
     <div class="box">
       <article class="media">
         <div class="">
