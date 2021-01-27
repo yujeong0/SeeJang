@@ -67,14 +67,18 @@ public class ProductServiceImpl implements ProductService {
 		List<Review> reviews = new ArrayList<>();
 		
 		Document doc = Jsoup.connect(selectProductByExactName(name).getReviewLink()).get();
-		Elements stars = doc.select(".star em");
-		Elements comments = doc.select("div.cdtl_cmt_tx v2 span"); 
+		Elements stars = doc.select("tbody#cdtl_cmt_tbody tr td.star em");
+		System.out.println(stars.toString());
+		Elements comments = doc.select("tbody#cdtl_cmt_tbody td.star v2 span"); 
+		Elements date = doc.select("tbody#cdtl_cmt_tbody div.date div.in"); 
 		
 		for (int i = 0; i < stars.size(); i++) {
 			Review r = new Review();
 			r.setScore(stars.get(i).toString());
-			r.setScore(comments.get(i).toString());
+			r.setComment(comments.get(i).toString());
+			r.setDate(date.get(i).toString());
 			reviews.add(r);
+			System.out.println(r);
 		}
 		
 		return reviews;

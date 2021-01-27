@@ -30,5 +30,10 @@ public class Review {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	@Override
+	public String toString() {
+		return "Review [product_no=" + product_no + ", score=" + score + ", comment=" + comment + ", date=" + date
+				+ "]";
+	}
 	
 }
