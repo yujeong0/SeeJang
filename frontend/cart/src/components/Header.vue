@@ -1,20 +1,26 @@
 <template>
   <div>
-    <div>
-      <v-app-bar dense>
-        <v-tabs>
-          <v-tab>장보기</v-tab>
-          <v-tab><i class="fab fa-gratipay"></i></v-tab>
-        </v-tabs>
-      </v-app-bar>
-    </div>
+    <v-toolbar class="mb-4">
+      <v-toolbar-title class="grey--text">
+        <span class="font-weight-light">장보기</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn text>
+        00님
+        <i class="fas fa-user-circle fa-lg"></i>
+      </v-btn>
+      <v-btn text>
+        <span>Sign Out</span>
+        <v-icon right>exit_to_app</v-icon>
+      </v-btn>
+    </v-toolbar>
 
     <v-text-field
       label="통합검색"
       placeholder="상품을 검색해주세요."
       outlined
       dense
-      style="width: 80%; margin: 3% auto"
+      style="width: 80%; margin: 1% auto"
       class="text"
     ></v-text-field>
     <div class="gridDiv">
@@ -56,7 +62,7 @@
       </v-row>
     </div>
     <hr class="first" />
-    <br>
+
   </div>
 </template>
 
@@ -75,12 +81,87 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .first {
   background-color: grey;
   height: 0.5px;
   border: 0px;
   width: 85%;
   margin: auto;
+}
+.navbar{
+  width: 100%;
+  height: 60px;
+  background-color: #192a56;
+  bottom: 0;
+  position: fixed;
+  box-shadow: 0.1px 0.1px 15px 0.1px #273c75;
+  border-radius:10px;
+  display: flex;
+}
+#home{
+  margin-left: 0;
+  margin-top: 2px;
+  color: #ffff;
+  transition: width 0.5s, background-color 0.5s, border-radius 0.5s;
+}
+#check{
+  margin-left: 0;
+  margin-top: 2px;
+  color: #ffff;
+  transition: width 0.5s, background-color 0.5s, border-radius 0.5s;
+}
+#coin{
+  margin-left: 0;
+  margin-top: 2px;
+  color: #ffff;
+  transition: width 0.5s, background-color 0.5s, border-radius 0.5s;
+}
+#user{
+  margin-left: 0;
+  color: #ffff;
+  transition: width 0.5s, background-color 0.5s, border-radius 0.5s;
+}
+.colum{
+  display: flex;
+  width: 95%;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 10px;
+  
+}
+.home{
+  width: 80px;
+  height: 34px;
+  margin-left: 20px;
+  display: flex;
+}
+.check{
+  width: 80px;
+  height: 34px;
+  margin-left: 20px;
+  display: flex;
+}
+.coin{
+  width: 80px;
+  height: 34px;
+  margin-left: 20px;
+  display: flex;
+}
+.user{
+  width: 80px;
+  height: 34px;
+  margin-left: 20px;
+  display: flex;
+}
+.clicked{
+  width: 100px;
+  height: 34px;
+  background-color: #feca57;
+  border-radius: 10px;
+  transition: background-color 0.3s, border-radius 0.5s, width 0.5s;
+}
+.font-background{
+  primary--text': 'color: #FF00FF'
 }
 </style>
