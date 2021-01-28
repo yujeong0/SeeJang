@@ -62,7 +62,7 @@
       </v-row>
     </div>
     <hr class="first" />
-
+    <br>
   </div>
 </template>
 
@@ -161,7 +161,5 @@ export default {
   border-radius: 10px;
   transition: background-color 0.3s, border-radius 0.5s, width 0.5s;
 }
-.font-background{
-  primary--text': 'color: #FF00FF'
-}
+
 </style>
