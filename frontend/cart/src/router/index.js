@@ -12,6 +12,8 @@ import Categorize from '@/components/Categorize.vue';
 import ShoppingList from '@/page/ShoppingList.vue';
 import LikeProduct from '@/page/LikeProduct.vue';
 import PopularProduct from '@/page/PopularProduct.vue';
+import ModeSetting from '@/page/ModeSetting.vue';
+import BlindProduct from '@/page/BlindProduct.vue';
 import Login_callback from '@/page/Login_callback.vue';
 import Kakao_callback from '@/page/KakaoLoginCallback.vue';
 // import SearchProduct from "@/components/SearchProduct.vue"
@@ -72,6 +74,16 @@ const routes = [
     path: '/popularproduct',
     name: 'popularproduct',
     component: PopularProduct,
+  },
+  {
+    path: '/modesetting',
+    name: 'modesetting',
+    component: ModeSetting,
+  },
+  {
+    path: '/blindproduct',
+    name: 'blindproduct',
+    component: BlindProduct,
   },
 ];
 
