@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.pjt1.repository.dto.Product;
-import com.springboot.pjt1.repository.dto.Review;
+import com.springboot.pjt1.repository.dto.ProductReview;
 import com.springboot.pjt1.repository.mapper.ProductMapper;
 
 @Service
@@ -62,9 +62,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public List<Review> reviewList(String name) throws IOException {
+	public List<ProductReview> reviewList(String name) throws IOException {
 		// 여기서 이마트몰 리뷰 크롤링 결과 map 에 넣기
-		List<Review> reviews = new ArrayList<>();
+		List<ProductReview> reviews = new ArrayList<>();
 		
 		Document doc = Jsoup.connect(selectProductByExactName(name).getReviewLink()).get();
 		Elements stars = doc.select("tbody#cdtl_cmt_tbody tr td.star em");
@@ -73,7 +73,7 @@ public class ProductServiceImpl implements ProductService {
 		Elements date = doc.select("tbody#cdtl_cmt_tbody div.date div.in"); 
 		
 		for (int i = 0; i < stars.size(); i++) {
-			Review r = new Review();
+			ProductReview r = new ProductReview();
 			r.setScore(stars.get(i).toString());
 			r.setComment(comments.get(i).toString());
 			r.setDate(date.get(i).toString());
