@@ -32,6 +32,7 @@
     "vue-cli-plugin-axios": "0.0.4",
     "vue-cli-plugin-vuetify": "~2.0.9",
     "vue-template-compiler": "^2.6.12",
+    "vue-text-to-speech": "^1.0.6",
     "vuetify-loader": "^1.6.0"
   },
   "eslintConfig": {
