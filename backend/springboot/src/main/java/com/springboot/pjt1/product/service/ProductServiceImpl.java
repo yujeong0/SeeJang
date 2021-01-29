@@ -67,7 +67,6 @@ public class ProductServiceImpl implements ProductService {
 		System.out.println(name);
 		List<BestPrice> list = new ArrayList<>();
 		
-		// 여기서 쿠팡, 지마켓, 11번가, 티몬, 위메프 최저가 크롤링 결과 map 에 넣기
 //		{
 //		// 쿠팡 성공
 //			Document doc = Jsoup.connect("https://www.coupang.com/np/search?component=&q=" + name + "&filterType=rocket").get();
@@ -128,16 +127,27 @@ public class ProductServiceImpl implements ProductService {
 //			bp.setLink(product.select("div.price span.won a").attr("href"));
 //			list.add(bp);
 //		}
+//		{
+//			// 옥션 성공
+//			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
+//			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
+//			BestPrice bp = new BestPrice();
+//			bp.setName(product.select("div.info a.name").text());
+//			bp.setPrice(product.select("div.price span.won strong").text());
+//			bp.setLink(product.select("div.price span.won a").attr("href"));
+//			list.add(bp);
+//		}
 		{
-			// 옥션 성공
-			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
-			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
-			BestPrice bp = new BestPrice();
-			bp.setName(product.select("div.info a.name").text());
-			bp.setPrice(product.select("div.price span.won strong").text());
-			bp.setLink(product.select("div.price span.won a").attr("href"));
-			list.add(bp);
+			// 롯데ON 제발..
+//			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
+//			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
+//			BestPrice bp = new BestPrice();
+//			bp.setName(product.select("div.info a.name").text());
+//			bp.setPrice(product.select("div.price span.won strong").text());
+//			bp.setLink(product.select("div.price span.won a").attr("href"));
+//			list.add(bp);
 		}
+		
 		return list;
 	}
 
