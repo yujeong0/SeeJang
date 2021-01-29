@@ -67,20 +67,20 @@ public class ProductServiceImpl implements ProductService {
 		System.out.println(name);
 		List<BestPrice> list = new ArrayList<>();
 		
-//		{
-//		// 쿠팡 성공
-//			Document doc = Jsoup.connect("https://www.coupang.com/np/search?component=&q=" + name + "&filterType=rocket").get();
-//			Elements products = doc.select("ul#productList li");
-//			for(Element p : products) {
-//				if(p.className().contains("search-product__ad-badge")) continue;
-//				BestPrice bp = new BestPrice();
-//				bp.setName(p.select("dd.descriptions div.name").text());
-//				bp.setPrice(p.select("dd.descriptions div.price strong").text());
-//				bp.setLink("https://www.coupang.com" + p.select("a").attr("href"));
-//				list.add(bp);
-//				break;
-//			}
-//		}
+		{
+		// 쿠팡 성공
+			Document doc = Jsoup.connect("https://www.coupang.com/np/search?component=&q=" + name + "&filterType=rocket").get();
+			Elements products = doc.select("ul#productList li");
+			for(Element p : products) {
+				if(p.className().contains("search-product__ad-badge")) continue;
+				BestPrice bp = new BestPrice();
+				bp.setName(p.select("dd.descriptions div.name").text());
+				bp.setPrice(p.select("dd.descriptions div.price strong").text());
+				bp.setLink("https://www.coupang.com" + p.select("a").attr("href"));
+				list.add(bp);
+				break;
+			}
+		}
 //		{
 			// 티몬 아 티몬도 동적이다 망했네 ㅜㅜ
 //			Document doc = Jsoup.connect("https://search.tmon.co.kr/search/?keyword=" + name).get();
@@ -100,53 +100,61 @@ public class ProductServiceImpl implements ProductService {
 //			Document doc = Jsoup.connect("https://search.wemakeprice.com/search?search_cate=top&keyword=" + name).get();
 //			System.out.println(doc.toString());
 //		}
-//		{
-//			// 지마켓 성공
-//			Document doc = Jsoup.connect("https://browse.gmarket.co.kr/search?keyword=" + name).get();
-//			Element product = doc.select("div#section__inner-content-body-container div.section__module-wrap div.box__component").get(2);
-//			BestPrice bp = new BestPrice();
-//			Elements container = product.select("div.box__item-container div.box__information-major");
-//			bp.setName(container.select("span.text__brand").text() + " " + container.select("span.text__item").attr("title"));
-//			bp.setPrice(container.select("div.box__price-seller strong.text__value").text());
-//			bp.setLink(container.select("a").attr("href"));
-//			list.add(bp);
-//		}
+		{
+			// 지마켓 성공
+			Document doc = Jsoup.connect("https://browse.gmarket.co.kr/search?keyword=" + name).get();
+			Element product = doc.select("div#section__inner-content-body-container div.section__module-wrap div.box__component").get(2);
+			BestPrice bp = new BestPrice();
+			Elements container = product.select("div.box__item-container div.box__information-major");
+			bp.setName(container.select("span.text__brand").text() + " " + container.select("span.text__item").attr("title"));
+			bp.setPrice(container.select("div.box__price-seller strong.text__value").text());
+			bp.setLink(container.select("a").attr("href"));
+			list.add(bp);
+		}
 //		{
 			// 11번가 제발.... 동적이다...
 //			Document doc = Jsoup.connect("https://search.11st.co.kr/Search.tmall?kwd=" + name).get();
 //			Elements product = doc.select("section.search_section");
 //			System.out.println(product.toString());
 //		}
-//		{
-//			// 인터파크.. 성공!!
-//			Document doc = Jsoup.connect("http://isearch.interpark.com/isearch?q=" + name).get();
-//			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
-//			BestPrice bp = new BestPrice();
-//			bp.setName(product.select("div.info a.name").text());
-//			bp.setPrice(product.select("div.price span.won strong").text());
-//			bp.setLink(product.select("div.price span.won a").attr("href"));
-//			list.add(bp);
-//		}
-//		{
-//			// 옥션 성공
-//			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
-//			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
-//			BestPrice bp = new BestPrice();
-//			bp.setName(product.select("div.info a.name").text());
-//			bp.setPrice(product.select("div.price span.won strong").text());
-//			bp.setLink(product.select("div.price span.won a").attr("href"));
-//			list.add(bp);
-//		}
 		{
-			// 롯데ON 제발..
-//			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
-//			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
-//			BestPrice bp = new BestPrice();
-//			bp.setName(product.select("div.info a.name").text());
-//			bp.setPrice(product.select("div.price span.won strong").text());
-//			bp.setLink(product.select("div.price span.won a").attr("href"));
-//			list.add(bp);
+			// 인터파크.. 성공!!
+			Document doc = Jsoup.connect("http://isearch.interpark.com/isearch?q=" + name).get();
+			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
+			BestPrice bp = new BestPrice();
+			bp.setName(product.select("div.info a.name").text());
+			bp.setPrice(product.select("div.price span.won strong").text());
+			bp.setLink(product.select("div.price span.won a").attr("href"));
+			list.add(bp);
 		}
+		{
+			// 옥션 성공
+			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
+			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
+			BestPrice bp = new BestPrice();
+			bp.setName(product.select("div.info a.name").text());
+			bp.setPrice(product.select("div.price span.won strong").text());
+			bp.setLink(product.select("div.price span.won a").attr("href"));
+			list.add(bp);
+		}
+//		{
+//			// 롯데ON 불가능..
+//			Document doc = Jsoup.connect("https://www.lotteon.com/search/search/search.ecn?render=search&platform=pc&q=" + name).get();
+//			Elements product = doc.select("div.srchResultProductArea");
+//			System.out.println(product.toString());
+//		}
+//		{
+//			// sk 스토아 제발.. 하
+//			Document doc = Jsoup.connect("http://www.skstoa.com/goods-search/page/search?keywordSearch=" + name).get();
+//			Elements product = doc.select("div#goodsConts");
+//			System.out.println(product.toString());
+//		}
+//		{
+//			// gs 프레시몰도...
+//			Document doc = Jsoup.connect("https://www.gsfresh.com/ss/search_result?keyword=" + name).get();
+//			Elements product = doc.select("section.wrap-search-result");
+//			System.out.println(product.toString());
+//		}
 		
 		return list;
 	}
