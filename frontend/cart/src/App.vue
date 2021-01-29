@@ -1,23 +1,23 @@
 <template>
   <v-app>
-    <Header v-if="isHeader"></Header>
+    <Header v-if="constants.VALUE.isLogin"></Header>
     <router-view />
   </v-app>
 </template>
 
 <script>
 import Header from './components/Header.vue';
+import constants from '@/lib/constants';
 
 export default {
   name: 'App',
 
   components: {
     Header,
-    
   },
 
   data: () => ({
-    isHeader: true,
+    constants,
   }),
 };
 </script>

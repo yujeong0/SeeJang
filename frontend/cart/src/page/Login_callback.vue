@@ -10,6 +10,7 @@
 ></script>
 
 <script>
+import constants from '@/lib/constants';
 export default {
   mounted() {
     const that = this;
@@ -20,19 +21,20 @@ export default {
     naverLogin.init();
     naverLogin.getLoginStatus(function (status) {
       if (status) {
-        console.dir(naverLogin.user);
-        const email = naverLogin.user.getEmail();
-        const nickname = naverLogin.user.getNickName();
-        const uniqId = naverLogin.user.getId();
-        console.log(email);
-        console.log(nickname);
-        console.log(uniqId);
+        constants.VALUE.loginAPI = 'naver';
+        constants.LS_KEY.userToken = naverLogin.accessToken;
+        constants.VALUE.isLogin = !constants.VALUE.isLogin;
+        constants.VALUE.userId = naverLogin.user.getId();
+        constants.VALUE.userEmail = naverLogin.user.getEmail();
+        constants.VALUE.userNickName = naverLogin.user.getNickName();
+        console.dir(constants.VALUE);
       } else {
         console.log('AccessToken이 올바르지 않습니다.');
-        this.$router.push('/login')
+        alert('문제가 발생했습니다! 다시 로그인 해주세요!');
+        this.$router.push('/login');
       }
-      that.$router.push({ name: 'categorize' });
     });
+    this.$router.push('/popularproduct');
   },
 };
 </script>
