@@ -28,19 +28,4 @@
 		where product_name LIKE concat('%', #{name}, '%')
 		or category LIKE concat('%', #{category}, '%')
 	</select>
-	<select id="selectProductReviewByProductNo" resultType="ProductReview" parameterType="int">
-		select *
-		from product_review
-		where product_no = #{productNo}
-	</select>
-	<insert id="insertProductReviewByProductNo" parameterType="ProductReview">
-		INSERT INTO product_review (product_no, member_id, member_name, score, comment, regdate ) VALUES (#{productNo}, #{memberId}, #{memberName}, #{score}, #{comment}, #{date})
-	</insert>
-	<update id="updateProductReviewByProductNo" parameterType="ProductReview">
-		UPDATE product_review SET comment = #{comment} WHERE comment_id = #{commentId}
-	</update>
-	<delete id="deleteProductReviewByProductNo" parameterType="int">
-		delete from product_review where comment_no = #{commentNo}
-	</delete>
-
 </mapper>

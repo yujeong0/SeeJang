@@ -16,9 +16,4 @@ public interface ProductMapper {
 	List<Product> selectProductByCategory(String category);
 	
 	List<Product> selectProductByNameAndCategory(Product product);
-	
-	List<ProductReview> selectProductReviewByProductNo(int ProductNo);
-	int insertProductReview(ProductReview productReview);
-	int updateProductReviewByCommentNo(ProductReview productReview);
-	int deleteProductReviewByCommentNo(int commentNo);
 }
