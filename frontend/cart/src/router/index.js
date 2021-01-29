@@ -26,8 +26,8 @@ const routes = [
     component: HelloWorld,
   },
   {
-    path: '/serachProduct',
-    name: 'serachProduct',
+    path: '/searchProduct',
+    name: 'searchProduct',
     component: SearchProduct,
   },
   {
