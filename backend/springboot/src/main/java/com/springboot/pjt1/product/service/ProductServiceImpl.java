@@ -68,21 +68,21 @@ public class ProductServiceImpl implements ProductService {
 		List<BestPrice> list = new ArrayList<>();
 		
 		// 여기서 쿠팡, 지마켓, 11번가, 티몬, 위메프 최저가 크롤링 결과 map 에 넣기
-		{
-		// 쿠팡
-			Document doc = Jsoup.connect("https://www.coupang.com/np/search?component=&q=" + name + "&filterType=rocket").get();
-			Elements products = doc.select("ul#productList li");
-			for(Element p : products) {
-				if(p.className().contains("search-product__ad-badge")) continue;
-				BestPrice bp = new BestPrice();
-				bp.setName(p.select("dd.descriptions div.name").text());
-				bp.setPrice(p.select("dd.descriptions div.price strong").text());
-				bp.setLink("https://www.coupang.com" + p.select("a").attr("href"));
-				list.add(bp);
-				break;
-			}
-		}
-		{
+//		{
+//		// 쿠팡 성공
+//			Document doc = Jsoup.connect("https://www.coupang.com/np/search?component=&q=" + name + "&filterType=rocket").get();
+//			Elements products = doc.select("ul#productList li");
+//			for(Element p : products) {
+//				if(p.className().contains("search-product__ad-badge")) continue;
+//				BestPrice bp = new BestPrice();
+//				bp.setName(p.select("dd.descriptions div.name").text());
+//				bp.setPrice(p.select("dd.descriptions div.price strong").text());
+//				bp.setLink("https://www.coupang.com" + p.select("a").attr("href"));
+//				list.add(bp);
+//				break;
+//			}
+//		}
+//		{
 			// 티몬 아 티몬도 동적이다 망했네 ㅜㅜ
 //			Document doc = Jsoup.connect("https://search.tmon.co.kr/search/?keyword=" + name).get();
 //			System.out.println(doc.toString());
@@ -95,64 +95,55 @@ public class ProductServiceImpl implements ProductService {
 //				list.add(bp);
 //				break;
 //			}
-		}
-		{
+//		}
+//		{
 			// 위메프도 .. 동적....
 //			Document doc = Jsoup.connect("https://search.wemakeprice.com/search?search_cate=top&keyword=" + name).get();
 //			System.out.println(doc.toString());
-		}
+//		}
+//		{
+//			// 지마켓 성공
+//			Document doc = Jsoup.connect("https://browse.gmarket.co.kr/search?keyword=" + name).get();
+//			Element product = doc.select("div#section__inner-content-body-container div.section__module-wrap div.box__component").get(2);
+//			BestPrice bp = new BestPrice();
+//			Elements container = product.select("div.box__item-container div.box__information-major");
+//			bp.setName(container.select("span.text__brand").text() + " " + container.select("span.text__item").attr("title"));
+//			bp.setPrice(container.select("div.box__price-seller strong.text__value").text());
+//			bp.setLink(container.select("a").attr("href"));
+//			list.add(bp);
+//		}
+//		{
+			// 11번가 제발.... 동적이다...
+//			Document doc = Jsoup.connect("https://search.11st.co.kr/Search.tmall?kwd=" + name).get();
+//			Elements product = doc.select("section.search_section");
+//			System.out.println(product.toString());
+//		}
+//		{
+//			// 인터파크.. 성공!!
+//			Document doc = Jsoup.connect("http://isearch.interpark.com/isearch?q=" + name).get();
+//			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
+//			BestPrice bp = new BestPrice();
+//			bp.setName(product.select("div.info a.name").text());
+//			bp.setPrice(product.select("div.price span.won strong").text());
+//			bp.setLink(product.select("div.price span.won a").attr("href"));
+//			list.add(bp);
+//		}
 		{
-			// 지마켓.. 제발
-			Document doc = Jsoup.connect("https://browse.gmarket.co.kr/search?keyword=" + name).get();
-			Elements products = doc.select("div#section__inner-content-body-container div.box__component");
-			for(Element p : products) {
-				BestPrice bp = new BestPrice();
-				Elements container = p.select("div.box__item-container div.box__information-major");
-				System.out.println(container.toString());
-				bp.setName(container.select("span.text__brand").text() + " " + container.select("span.text__item").attr("title"));
-				bp.setPrice(container.select("div.box__price-seller strong.text__value").text());
-				bp.setLink(container.select("a").attr("href"));
-				list.add(bp);
-				break;
-			}
+			// 옥션 성공
+			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
+			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
+			BestPrice bp = new BestPrice();
+			bp.setName(product.select("div.info a.name").text());
+			bp.setPrice(product.select("div.price span.won strong").text());
+			bp.setLink(product.select("div.price span.won a").attr("href"));
+			list.add(bp);
 		}
 		return list;
 	}
-	
+
 	@Override
 	public List<Review> reviewList(String name) throws IOException {
-		
-//		System.setProperty("webdriver.chrome.driver", "chromedriver_win32/chromedriver.exe");
-//	    WebDriver driver = new ChromeDriver();
-//	    driver.get("http://emart.ssg.com/item/itemView.ssg?itemId=1000026680931&siteNo=6001&salestrNo=2034&tlidSrchWd=%EB%A7%A4%EC%9D%BC%EC%9A%B0%EC%9C%A0&srchPgNo=1&src_area=elist");
-////	    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-//		WebElement plz = driver.findElement(By.id("cdtl_cmt_tbody"));
-//		
-//		System.out.println(plz.toString());
-		
-		// 여기서 이마트몰 리뷰 크롤링 결과 map 에 넣기
-		List<Review> reviews = new ArrayList<>();
-//		Document doc = Jsoup.connect(selectProductByExactName(name).getReviewLink()).get();
-//		Document doc = Jsoup.connect("https://www.coupang.com/np/search?component=&q=%EB%A7%A4%EC%9D%BC%EC%9A%B0%EC%9C%A0&channel=user").get();
-//		System.out.println(doc.toString());
-//		Elements tmp = doc.select("div.detailLayout");
-//		System.out.println(tmp.get(0));
-//		
-//		Elements stars = doc.select("tbody#cdtl_cmt_tbody td.star em");
-//		System.out.println("stars");
-//		System.out.println(stars);
-//		Elements comments = doc.select("tbody#cdtl_cmt_tbody td.desc_txt span.desc"); 
-//		Elements date = doc.select("tbody#cdtl_cmt_tbody div.date div.in"); 
-//		
-//		for (int i = 0; i < stars.size(); i++) {
-//			Review r = new Review();
-//			r.setScore(stars.get(i).toString());
-//			r.setComment(comments.get(i).toString());
-//			r.setDate(date.get(i).toString());
-//			reviews.add(r);
-//			System.out.println(r);
-//		}
-		
-		return reviews;
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
