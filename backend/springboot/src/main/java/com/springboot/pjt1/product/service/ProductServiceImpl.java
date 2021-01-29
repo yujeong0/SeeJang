@@ -81,25 +81,6 @@ public class ProductServiceImpl implements ProductService {
 				break;
 			}
 		}
-//		{
-			// 티몬 아 티몬도 동적이다 망했네 ㅜㅜ
-//			Document doc = Jsoup.connect("https://search.tmon.co.kr/search/?keyword=" + name).get();
-//			System.out.println(doc.toString());
-//			Elements products = doc.select("div.deallist_wrap ul.list li.item");
-//			for(Element p : products) {
-//				BestPrice bp = new BestPrice();
-//				bp.setName(p.select("div.deal_info strong.tx").text());
-//				bp.setPrice(p.select("div.deal_info span.sale i.num").text());
-//				bp.setLink(p.select("a").attr("href"));
-//				list.add(bp);
-//				break;
-//			}
-//		}
-//		{
-			// 위메프도 .. 동적....
-//			Document doc = Jsoup.connect("https://search.wemakeprice.com/search?search_cate=top&keyword=" + name).get();
-//			System.out.println(doc.toString());
-//		}
 		{
 			// 지마켓 성공
 			Document doc = Jsoup.connect("https://browse.gmarket.co.kr/search?keyword=" + name).get();
@@ -111,12 +92,6 @@ public class ProductServiceImpl implements ProductService {
 			bp.setLink(container.select("a").attr("href"));
 			list.add(bp);
 		}
-//		{
-			// 11번가 제발.... 동적이다...
-//			Document doc = Jsoup.connect("https://search.11st.co.kr/Search.tmall?kwd=" + name).get();
-//			Elements product = doc.select("section.search_section");
-//			System.out.println(product.toString());
-//		}
 		{
 			// 인터파크.. 성공!!
 			Document doc = Jsoup.connect("http://isearch.interpark.com/isearch?q=" + name).get();
@@ -130,31 +105,60 @@ public class ProductServiceImpl implements ProductService {
 		{
 			// 옥션 성공
 			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
-			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
+			Element product = doc.select("div#section--inner_content_body_container div.section--module_wrap div.component div.itemcard div.section--itemcard_info_major").get(0);
 			BestPrice bp = new BestPrice();
-			bp.setName(product.select("div.info a.name").text());
-			bp.setPrice(product.select("div.price span.won strong").text());
-			bp.setLink(product.select("div.price span.won a").attr("href"));
+			bp.setName(product.select("div.area--itemcard_title a span.text--title").text());
+			bp.setPrice(product.select("div.area--itemcard_price span.price_seller strong.text--price_seller").text());
+			bp.setLink(product.select("div.area--itemcard_title a").attr("href"));
 			list.add(bp);
 		}
-//		{
-//			// 롯데ON 불가능..
-//			Document doc = Jsoup.connect("https://www.lotteon.com/search/search/search.ecn?render=search&platform=pc&q=" + name).get();
-//			Elements product = doc.select("div.srchResultProductArea");
-//			System.out.println(product.toString());
-//		}
-//		{
-//			// sk 스토아 제발.. 하
-//			Document doc = Jsoup.connect("http://www.skstoa.com/goods-search/page/search?keywordSearch=" + name).get();
-//			Elements product = doc.select("div#goodsConts");
-//			System.out.println(product.toString());
-//		}
-//		{
-//			// gs 프레시몰도...
-//			Document doc = Jsoup.connect("https://www.gsfresh.com/ss/search_result?keyword=" + name).get();
-//			Elements product = doc.select("section.wrap-search-result");
-//			System.out.println(product.toString());
-//		}
+		
+
+/*
+		{
+			 // 티몬 아 티몬도 동적이다 망했네 ㅜㅜ
+			Document doc = Jsoup.connect("https://search.tmon.co.kr/search/?keyword=" + name).get();
+			System.out.println(doc.toString());
+			Elements products = doc.select("div.deallist_wrap ul.list li.item");
+			for(Element p : products) {
+				BestPrice bp = new BestPrice();
+				bp.setName(p.select("div.deal_info strong.tx").text());
+				bp.setPrice(p.select("div.deal_info span.sale i.num").text());
+				bp.setLink(p.select("a").attr("href"));
+				list.add(bp);
+				break;
+			}
+		}
+		{
+			// 위메프도 .. 동적....
+			Document doc = Jsoup.connect("https://search.wemakeprice.com/search?search_cate=top&keyword=" + name).get();
+			System.out.println(doc.toString());
+		}
+		{
+			// 11번가 제발.... 동적이다...
+			Document doc = Jsoup.connect("https://search.11st.co.kr/Search.tmall?kwd=" + name).get();
+			Elements product = doc.select("section.search_section");
+			System.out.println(product.toString());
+		}
+		{
+			// 롯데ON 불가능..
+			Document doc = Jsoup.connect("https://www.lotteon.com/search/search/search.ecn?render=search&platform=pc&q=" + name).get();
+			Elements product = doc.select("div.srchResultProductArea");
+			System.out.println(product.toString());
+		}
+		{
+			// sk 스토아 제발.. 하
+			Document doc = Jsoup.connect("http://www.skstoa.com/goods-search/page/search?keywordSearch=" + name).get();
+			Elements product = doc.select("div#goodsConts");
+			System.out.println(product.toString());
+		}
+		{
+			// gs 프레시몰도...
+			Document doc = Jsoup.connect("https://www.gsfresh.com/ss/search_result?keyword=" + name).get();
+			Elements product = doc.select("section.wrap-search-result");
+			System.out.println(product.toString());
+		}
+*/		
 		
 		return list;
 	}
