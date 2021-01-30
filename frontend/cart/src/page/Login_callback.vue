@@ -23,10 +23,10 @@ export default {
       if (status) {
         constants.VALUE.loginAPI = 'naver';
         constants.LS_KEY.userToken = naverLogin.accessToken;
-        constants.VALUE.isLogin = !constants.VALUE.isLogin;
         constants.VALUE.userId = naverLogin.user.getId();
         constants.VALUE.userEmail = naverLogin.user.getEmail();
         constants.VALUE.userNickName = naverLogin.user.getNickName();
+        constants.VALUE.isLogin = !constants.VALUE.isLogin;
         console.dir(constants.VALUE);
       } else {
         console.log('AccessToken이 올바르지 않습니다.');
