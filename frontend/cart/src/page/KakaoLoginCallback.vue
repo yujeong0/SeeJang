@@ -22,7 +22,6 @@ export default {
       .then((res) => {
         constants.VALUE.loginAPI = 'kakao';
         constants.LS_KEY.USER_TOKEN = res.data.access_token;
-        constants.VALUE.isLogin = !constants.VALUE.isLogin;
         console.log(constants.LS_KEY.USER_TOKEN);
 
         window.Kakao.Auth.setAccessToken(constants.LS_KEY.USER_TOKEN);
@@ -36,6 +35,8 @@ export default {
             constants.VALUE.userId = response.id;
             constants.VALUE.userEmail = response.kakao_account.email;
             constants.VALUE.userNickName = response.properties.nickname;
+            constants.VALUE.isLogin = !constants.VALUE.isLogin;
+            console.log("kakaoCallback");
             console.dir(constants.VALUE);
           },
           fail: function (error) {
@@ -48,7 +49,7 @@ export default {
       .catch(() => {
         console.log('error_pre');
       });
-    this.$router.push('/popularproduct');
+      this.$router.push('/popularproduct');
   },
 };
 </script>
