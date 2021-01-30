@@ -15,22 +15,25 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.pjt1.repository.dto.BestPrice;
 import com.springboot.pjt1.repository.dto.Product;
-import com.springboot.pjt1.repository.dto.Review;
+import com.springboot.pjt1.repository.dto.ProductReview;
 import com.springboot.pjt1.repository.mapper.ProductMapper;
+import com.springboot.pjt1.repository.mapper.ProductReviewMapper;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	ProductMapper mapper;
+	ProductReviewMapper reviewMapper;
+	
 	
 	@Override
 	public Map<String, Object> searchProductDetail(String name) throws IOException {
 		Map<String, Object> map = new HashMap<>();
-		map.put("product", selectProductByExactName(name));
-		map.put("review", reviewList(name));
+		Product product = selectProductByExactName(name);
+		map.put("product", product);
+		map.put("review", reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
 		map.put("bestPrice", bestPriceList(name));
-		
 		return map;
 	}
 	
@@ -161,11 +164,5 @@ public class ProductServiceImpl implements ProductService {
 */		
 		
 		return list;
-	}
-
-	@Override
-	public List<Review> reviewList(String name) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

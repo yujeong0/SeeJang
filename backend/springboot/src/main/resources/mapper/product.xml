@@ -28,5 +28,4 @@
 		where product_name LIKE concat('%', #{name}, '%')
 		or category LIKE concat('%', #{category}, '%')
 	</select>
-
 </mapper>
