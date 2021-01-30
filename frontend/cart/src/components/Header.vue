@@ -55,10 +55,15 @@ export default {
   components: {},
   data: () => ({
     nickname: constants.VALUE.userNickName,
-  }),
+  }), 
+  updated(){
+    console.log("들어옴")
+    console.log(constants.VALUE.userNickName);
+    this.nickname =  constants.VALUE.userNickName;
+  },
   methods: {
     a() {
-      this.$router.push('/serachProduct');
+      this.$router.push('/searchProduct');
     },
     shopping_list() {
       this.$router.push('/shoppinglist');
