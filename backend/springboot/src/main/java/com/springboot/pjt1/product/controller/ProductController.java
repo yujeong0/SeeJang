@@ -34,11 +34,8 @@ public class ProductController {
 
 	@ApiOperation(value = "상품명에 맞는 상품 정보를 반환한다.", response = List.class)
 	@GetMapping("/{name}")
-	public Map<String, Object> searchProductByName(@PathVariable String name) throws IOException {
-		Map<String, Object> map = new HashMap<>();
-		map.put("product", service.searchProductByName(name));
-		map.put("reviews", service.reviewList(name));
-		return map;
+	public List<Product> searchProductByName(@PathVariable String name) throws IOException {
+		return service.searchProductByName(name);
 	}
 	@ApiOperation(value = "카테고리에 맞는 상품 정보를 반환한다.", response = List.class)
 	@GetMapping("/{category}")
