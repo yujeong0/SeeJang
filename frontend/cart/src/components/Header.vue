@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container">
     <v-toolbar class="mb-4">
       <v-toolbar-title class="grey--text">
         <span class="font-weight-light">장보기</span>
@@ -26,9 +26,19 @@
     <div class="gridDiv">
       <v-row no-gutters>
         <v-col @click="shopping_list"
-          ><img src="@/assets/shoppinglist.png/" alt="" width="60px" class="mr-4"
+          ><img
+            src="@/assets/shoppinglist.png/"
+            alt=""
+            width="60px"
+            class="mr-4"
         /></v-col>
-        <v-col><img src="@/assets/populer.png/" alt="" width="60px" class="ml-4 mr-4" /></v-col>
+        <v-col
+          ><img
+            src="@/assets/populer.png/"
+            alt=""
+            width="60px"
+            class="ml-4 mr-4"
+        /></v-col>
         <v-col @click="a"
           ><img src="@/assets/search.png/" alt="" width="60px" class="ml-4"
         /></v-col>
@@ -39,8 +49,16 @@
         <v-col @click="shopping_list"
           ><span style="font-size: small" class="mr-3">쇼핑리스트</span></v-col
         >
-        <v-col><span style="font-size: small" class="ml-3 mr-3">이번주 상품</span></v-col>
-        <v-col @click="a"><span style="font-size: small" class="ml-6 mr-3">상품찾기</span></v-col>
+        <v-col
+          ><span style="font-size: small" class="ml-3 mr-3"
+            >이번주 상품</span
+          ></v-col
+        >
+        <v-col @click="a"
+          ><span style="font-size: small" class="ml-6 mr-3"
+            >상품찾기</span
+          ></v-col
+        >
       </v-row>
     </div>
     <hr class="first" />
@@ -55,11 +73,11 @@ export default {
   components: {},
   data: () => ({
     nickname: constants.VALUE.userNickName,
-  }), 
-  updated(){
-    console.log("들어옴")
+  }),
+  updated() {
+    console.log('들어옴');
     console.log(constants.VALUE.userNickName);
-    this.nickname =  constants.VALUE.userNickName;
+    this.nickname = constants.VALUE.userNickName;
   },
   methods: {
     a() {

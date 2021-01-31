@@ -1,6 +1,5 @@
 <template>
-  <div class="like">
-
+  <div class="like" id="container">
     <div class="box">
       <article class="media">
         <div class="">

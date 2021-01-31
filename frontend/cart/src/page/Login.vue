@@ -1,5 +1,5 @@
 <template>
-  <v-container class="mx-auto my-auto">
+  <v-container id="container" class="mx-auto my-auto">
     <div class="upper">
       <h1>~ ★★장보기★★ ~</h1>
       <img src="../assets/list.png" style="width: 15%" />
