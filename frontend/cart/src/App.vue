@@ -23,6 +23,9 @@ export default {
 </script>
 
 <style>
+#container {
+  font-family: 'Do Hyeon', sans-serif;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
