@@ -1,22 +1,24 @@
 <template>
   <v-app>
-    <Header v-if="this.$store.getters.getIsLogin"></Header>
+    <Header v-if="constants.VALUE.isLogin"></Header>
     <router-view />
   </v-app>
 </template>
 
 <script>
 import Header from './components/Header.vue';
+import constants from '@/lib/constants';
+
 export default {
   name: 'App',
 
   components: {
     Header,
   },
-  data(){
-    return {
-    }
-  },
+
+  data: () => ({
+    constants,
+  }),
 };
 </script>
 

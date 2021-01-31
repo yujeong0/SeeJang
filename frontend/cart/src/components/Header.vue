@@ -6,7 +6,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text>
-        {{ getUserNickName }} 님
+        {{ nickname }} 님
         <i class="fas fa-user-circle fa-lg"></i>
       </v-btn>
       <v-btn text @click="logout">
@@ -67,17 +67,17 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'; 
+import constants from '@/lib/constants';
 export default {
   name: 'Header',
   components: {},
-  data(){
-    return {
-      platform: this.$store.getters.getPlatform
-    }
-  }, 
-  computed: {
-    ...mapGetters(['getUserNickName'])
+  data: () => ({
+    nickname: constants.VALUE.userNickName,
+  }),
+  updated() {
+    console.log('들어옴');
+    console.log(constants.VALUE.userNickName);
+    this.nickname = constants.VALUE.userNickName;
   },
   methods: {
     a() {
@@ -88,7 +88,7 @@ export default {
     },
     logout() {
       // kakao 로그아웃
-      if (this.platform == 'kakao') {
+      if (constants.VALUE.loginAPI == 'kakao') {
         // window.Kakao.Auth.logout(function () {
         //   console.log(window.Kakao.Auth.getAccessToken());
         // });
@@ -102,10 +102,15 @@ export default {
             console.log(error);
           },
         });
-      } else if (this.platform == 'naver') {
+      } else if (constants.VALUE.loginAPI == 'naver') {
         console.log('naver logout');
       }
-      this.$store.commit('INIT');
+      constants.LS_KEY.USER_TOKEN = '';
+      constants.VALUE.loginAPI = '';
+      constants.VALUE.isLogin = false;
+      constants.VALUE.userId = '';
+      constants.VALUE.userEmail = '';
+      constants.VALUE.userNickName = '';
       this.$router.push('/login');
     },
   },
