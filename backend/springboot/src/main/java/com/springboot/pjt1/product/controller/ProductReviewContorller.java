@@ -41,7 +41,7 @@ public class ProductReviewContorller {
 	
 	@ApiOperation(value = "리뷰를 삭제한다.", response = List.class)
 	@DeleteMapping
-	public void deleteProductReviewByCommentNo(@PathVariable int commentNo) {
+	public void deleteProductReviewByCommentNo(@RequestParam int commentNo) {
 		service.deleteProductReviewByCommentNo(commentNo);
 	}
 

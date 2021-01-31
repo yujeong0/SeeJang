@@ -41,7 +41,6 @@ public class Member {
     private String memberPassword;
     @NotBlank
     private String memberName;
-    @NotBlank
     private String provider;
     @Column(columnDefinition = "int default 0")
     private int blind;

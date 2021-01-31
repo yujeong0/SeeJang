@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.pjt1.repository.mapper.ProductReviewMapper">
+	<select id="selectShoppingListByMemberId" resultType="ShoppingList" parameterType="String">
+		select *
+		from shopping_list
+		where member_id = #{memberId}
+	</select>
+	<insert id="insertShoppingList" parameterType="ShoppingList">
+		INSERT INTO shopping_list (shopping_list_no, shopping_list_name, member_id ) VALUES (#{shoppingListNo}, #{shoppingListName}, #{memberId})
+	</insert>
+	<update id="updateShoppingListByShoppingListNo" parameterType="ShoppingList">
+		UPDATE shopping_list SET shopping_list_name = #{shoppingListName} WHERE shopping_list_no = #{shoppingListNo}
+	</update>
+	<delete id="deleteShoppingListByShoppingListNo" parameterType="int">
+		delete from shopping_list where Shopping_list_no = #{ShoppingListNo}
+	</delete>
+</mapper>
