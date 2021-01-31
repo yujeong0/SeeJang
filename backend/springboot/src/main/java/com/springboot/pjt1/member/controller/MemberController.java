@@ -1,5 +1,8 @@
 package com.springboot.pjt1.member.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,15 +65,19 @@ public class MemberController {
             Member isMember = authService.socialFindByMemberId(member.getMemberId());
             if(isMember == null) {
             	authService.signUpUser(member);
+            	member = authService.findByMemberId(member.getMemberId());
             }
             final String token = jwtUtil.generateToken(member);
             final String refreshJwt = jwtUtil.generateRefreshToken(member);
             Cookie accessToken = cookieUtil.createCookie(JwtUtil.ACCESS_TOKEN_NAME, token);
             Cookie refreshToken = cookieUtil.createCookie(JwtUtil.REFRESH_TOKEN_NAME, refreshJwt);
             redisUtil.setDataExpire(refreshJwt, member.getMemberId(), JwtUtil.REFRESH_TOKEN_VALIDATION_SECOND);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("token", token);
+            map.put("member", member);
             res.addCookie(accessToken);
             res.addCookie(refreshToken);
-            return new Response("success", "로그인에 성공했습니다.", token);
+            return new Response("success", "로그인에 성공했습니다.", map);
         } catch (Exception e) {
             return new Response("error", "로그인에 실패했습니다.", e.getMessage());
         }
