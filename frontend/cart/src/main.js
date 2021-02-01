@@ -4,12 +4,17 @@ import router from './router';
 import store from './store';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
+import VueStar from 'vue-star';
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
+Vue.component('VueStar', VueStar)
+<<<<<<< Updated upstream
 
 
 
 
+=======
+>>>>>>> Stashed changes
 
 window.Kakao.init('9408758ec57aaebe1b8dba4464919e72');
 window.Kakao.isInitialized();
