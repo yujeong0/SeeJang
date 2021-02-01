@@ -1,0 +1,1 @@
+21/2/1 : object detection test code 돌려봄. training dataset 만드는 중
