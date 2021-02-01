@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import com.springboot.pjt1.image.service.ImageService;
 
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
 @RestController
 public class ImageController {
 
