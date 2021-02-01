@@ -1,24 +1,22 @@
 <template>
   <div id="app" class="columns mt-4">
-    <div id="container">
-      <h3 class="mb-5">이번 주 인기상품</h3>
-      <div class="column">
-        <popular
-          v-for="popular in populars"
-          :popular="popular"
-          :key="popular.id"
-        />
-      </div>
+    <categorize/>
+    <br>
+    <h3 class="mb-5">이번 주 인기상품</h3>
+    <div class="column">
+      <popular v-for="popular in populars" :popular="popular" :key="popular.id" />
     </div>
   </div>
 </template>
 
 <script>
-import Popular from '@/components/Popular.vue';
+import Popular from "@/components/Popular.vue";
+import Categorize from "@/components/Categorize.vue";
 
 export default {
   components: {
     Popular,
+    Categorize
   },
   data() {
     return {
