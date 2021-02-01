@@ -38,14 +38,6 @@
             width="60px"
             class="mr-4"
         /></v-col>
-        <v-col
-          ><img
-            @click="thisWeek_items"
-            src="@/assets/populer.png/"
-            alt=""
-            width="60px"
-            class="ml-4 mr-4"
-        /></v-col>
         <v-col @click="popular_product"><img src="@/assets/populer.png/" alt="" width="60px" class="ml-4 mr-4" /></v-col>
         <v-col @click="a"
           ><img src="@/assets/search.png/" alt="" width="60px" class="ml-4"
@@ -107,6 +99,7 @@ export default {
       } else if (this.platform == 'naver') {
         console.log('naver logout');
       }
+      this.$store.commit('TOGGLE_LOGIN_STATE');
       this.$store.commit('INIT');
       this.$router.push('/login');
     },

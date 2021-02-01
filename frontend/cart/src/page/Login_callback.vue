@@ -10,6 +10,7 @@
 ></script>
 
 <script>
+import http from '@/util/http-common.js';
 export default {
     mounted() {
         const that = this;
@@ -18,16 +19,39 @@ export default {
             isPopup: false,
         });
         var userInfo = {};
+        var formData = {
+            memberId: '',
+            memberName: '',
+            memberPassword: ''
+        };
+        
         naverLogin.init();
         naverLogin.getLoginStatus( (status) => {
             if (status) {
                 userInfo.loginAPI = "naver";
                 userInfo.userToken = naverLogin.accessToken.accessToken;
-                userInfo.userId = naverLogin.user.getId();
-                userInfo.userEmail = naverLogin.user.getEmail();
-                userInfo.userNickName = naverLogin.user.getNickName();
+                formData.memberPassword = naverLogin.user.getId();
+                formData.memberId = naverLogin.user.getEmail();
+                formData.memberName = userInfo.userNickName = naverLogin.user.getNickName();
                 this.$store.commit("TOGGLE_LOGIN_STATE");
                 this.$store.commit("SET_USER_INFO", { userInfo });
+                http
+                    .post('/user/login/naver', formData)
+                    .then((response) => {
+                    console.log(response);
+                   
+                    http
+                    .get('/product')
+                        .then((response) => {
+                        console.log(response);
+                        })
+                        .catch((error) => {
+                        console.log(error);
+                        });
+                        })
+                    .catch((error) => {
+                    console.log(error);
+                    });
             } else {
                 console.log("AccessToken이 올바르지 않습니다.");
                 alert("문제가 발생했습니다! 다시 로그인 해주세요!");
