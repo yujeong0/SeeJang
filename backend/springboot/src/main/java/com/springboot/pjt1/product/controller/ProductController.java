@@ -18,7 +18,7 @@ import com.springboot.pjt1.repository.dto.Product;
 
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
