@@ -56,21 +56,9 @@ p{
   text-align: left;
   padding-left: 8px;
   padding-right: 8px;
-<<<<<<< Updated upstream
 }
 
 .icons {
   
 }
 </style>
-=======
-}
-
-.icons {
-  
-}
-
-
-
-</style>
->>>>>>> Stashed changes

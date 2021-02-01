@@ -1,28 +1,6 @@
 <template>
   <div>
-<<<<<<< Updated upstream
     <div class="gridDiv" id="container">
-      <v-row no-gutters>
-        <v-col
-          ><img src="@/assets/fruit.png/" alt="" width="40px" class="mr-4"
-        /></v-col>
-        <v-col
-          ><img src="@/assets/tea.png/" alt="" width="40px" class="ml-4 mr-4"
-        /></v-col>
-        <v-col
-          ><img
-            src="@/assets/instant.png/"
-            alt=""
-            width="40px"
-            class="ml-4 mr-4"
-        /></v-col>
-        <v-col
-          ><img src="@/assets/drink.png/" alt="" width="40px" class="ml-4"
-        /></v-col>
-      </v-row>
-    </div>
-=======
-    <div class="gridDiv">
     <v-row no-gutters>
       <v-col><img src="@/assets/fruit.png/" alt="" width="40px" class="mr-4"></v-col>
       <v-col><img src="@/assets/tea.png/" alt="" width="40px" class="ml-4 mr-4"></v-col>
@@ -30,7 +8,6 @@
       <v-col><img src="@/assets/drink.png/" alt="" width="40px" class="ml-4"></v-col>
     </v-row>
   </div>
->>>>>>> Stashed changes
     <div class="gridTextDiv">
       <v-row no-gutters>
         <v-col style="font-size: small" class="mr-2">과일</v-col>
