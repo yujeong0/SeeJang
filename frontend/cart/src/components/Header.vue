@@ -1,20 +1,12 @@
 <template>
   <div>
-<<<<<<< Updated upstream
     <v-toolbar id="container" class="nav">
-=======
-    <v-toolbar class="nav">
->>>>>>> Stashed changes
       <v-toolbar-title class="grey--text">
         <span class="font-weight-light">장보기</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text class="user">
-<<<<<<< Updated upstream
         {{ getUserNickName }} 님
-=======
-        {{ nickname }} 님
->>>>>>> Stashed changes
         <i class="fas fa-user-circle fa-lg"></i>
       </v-btn>
       <v-btn text @click="logout" class="mode" >
@@ -65,13 +57,8 @@
         <v-col @click="shopping_list" class="selected">
           ><span style="font-size: small" class="mr-3">쇼핑리스트</span></v-col
         >
-<<<<<<< Updated upstream
         <v-col class="selected" @click="popular_product"><span style="font-size: small" class="ml-3 mr-3">이번주 상품</span></v-col>
         <v-col class="selected" @click="a"><span style="font-size: small" class="ml-6 mr-3">상품찾기</span></v-col>
-=======
-        <v-col @click="popular_product"><span style="font-size: small" class="ml-3 mr-3">이번주 상품</span></v-col>
-        <v-col @click="a"><span style="font-size: small" class="ml-6 mr-3">상품찾기</span></v-col>
->>>>>>> Stashed changes
       </v-row>
     </div>
     <hr class="first" />
@@ -206,12 +193,9 @@ export default {
   border-radius: 10px;
   transition: background-color 0.3s, border-radius 0.5s, width 0.5s;
 }
-<<<<<<< Updated upstream
 .selected {
   background-color: black;
 }
-=======
->>>>>>> Stashed changes
 .mode {
   margin-right: -12px;
 }
