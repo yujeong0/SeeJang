@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,7 @@ import com.springboot.pjt1.repository.jpa.dto.request.RequestVerifyEmail;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
 @RestController
 @RequestMapping("/user")
 public class MemberController {
