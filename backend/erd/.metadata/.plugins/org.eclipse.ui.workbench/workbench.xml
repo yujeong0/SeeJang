@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="5" version="2.0">
+<workbench progressCount="15" version="2.0">
 <workbenchAdvisor/>
-<window height="1154" width="1959" x="2691" y="108">
+<window height="1154" maximized="true" width="1959" x="2691" y="108">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -30,8 +30,8 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="shopping.exerd" partName="shopping.exerd" title="shopping.exerd" tooltip="C:\SSAFY\공통프로젝트-장보기\PJT01-D109-shopping\backend\erd\shopping\shopping.exerd" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/SSAFY/공통프로젝트-장보기/PJT01-D109-shopping/backend/erd/shopping/shopping.exerd"/>
+<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="shopping.exerd" partName="shopping.exerd" title="shopping.exerd" tooltip="C:\SSAFY\공통프로젝트-장보기\SubPjt03-D109-shopping\backend\erd\shopping\shopping.exerd" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/SSAFY/공통프로젝트-장보기/SubPjt03-D109-shopping/backend/erd/shopping/shopping.exerd"/>
 </editor>
 </editors>
 <views>
@@ -159,8 +159,10 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/SSAFY/공통프로젝트-장보기/PJT01-D109-shopping/backend/erd/shopping/shopping.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/SSAFY/공통프로젝트-장보기/SubPjt03-D109-shopping/backend/erd/shopping/shopping.exerd"/>
 </editors>
-<item active="true" historyLabel="shopping.exerd" index="0"/>
+<item historyLabel="shopping.exerd" index="0"/>
+<item active="true" historyLabel="shopping.exerd" index="1"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -178,6 +180,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="shopping.exerd" tooltip="C:\SSAFY\공통프로젝트-장보기\SubPjt03-D109-shopping\backend\erd\shopping\shopping.exerd">
+<persistable uri="file:/C:/SSAFY/공통프로젝트-장보기/SubPjt03-D109-shopping/backend/erd/shopping/shopping.exerd"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="shopping.exerd" tooltip="C:\SSAFY\공통프로젝트-장보기\PJT01-D109-shopping\backend\erd\shopping\shopping.exerd">
 <persistable uri="file:/C:/SSAFY/공통프로젝트-장보기/PJT01-D109-shopping/backend/erd/shopping/shopping.exerd"/>
 </file>
