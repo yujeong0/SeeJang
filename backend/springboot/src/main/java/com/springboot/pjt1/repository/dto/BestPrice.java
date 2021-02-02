@@ -1,15 +1,22 @@
 package com.springboot.pjt1.repository.dto;
 
 public class BestPrice {
-	private String name;
+	private String siteName;
+	private String productName;
 	private String price;
 	private String link;
 	
-	public String getName() {
-		return name;
+	public String getSiteName() {
+		return siteName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setSiteName(String siteName) {
+		this.siteName = siteName;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public String getPrice() {
 		return price;

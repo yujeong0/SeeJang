@@ -8,8 +8,8 @@ public interface WishListService {
 
 	List<WishList> searchWishListByMemberId(String memberId);
 
-	int addWishListByMemberId(WishList wishList);
+	String addWishListByMemberId(WishList wishList);
 
-	int removeWishListByNo(int wishNo);
+	String removeWishListByNo(int wishNo);
 
 }
