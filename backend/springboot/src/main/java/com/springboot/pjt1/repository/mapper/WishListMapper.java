@@ -8,8 +8,8 @@ public interface WishListMapper {
 	
 	public List<WishList> selectWishListByMemberId(String memberId);
 
-	public int insertWishListByMemberId(WishList wishList);
+	public void insertWishList(WishList wishList);
 	
-	public int deleteWishListByNo(int wishNo);
+	public void deleteWishListByNo(int wishNo);
 	
 }

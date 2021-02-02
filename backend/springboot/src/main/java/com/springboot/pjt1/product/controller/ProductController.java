@@ -18,7 +18,7 @@ import com.springboot.pjt1.repository.dto.Product;
 
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
+@CrossOrigin(origins = { "*" }, allowCredentials = "true")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -26,30 +26,30 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	@ApiOperation(value = "모든 상품 정보를 반환한다.", response = List.class)
+	@ApiOperation(value = "모든 상품 리스트를 반환한다.", response = List.class)
 	@GetMapping
 	public List<Product> searchProduct() {
 		return service.searchProduct();
 	}
 
-	@ApiOperation(value = "상품명에 맞는 상품 정보를 반환한다.", response = List.class)
+	@ApiOperation(value = "상품명에 맞는 상품 리스트를 반환한다.", response = List.class)
 	@GetMapping("/{name}")
 	public List<Product> searchProductByName(@PathVariable String name) throws IOException {
 		return service.searchProductByName(name);
 	}
-	@ApiOperation(value = "카테고리에 맞는 상품 정보를 반환한다.", response = List.class)
+	@ApiOperation(value = "카테고리에 맞는 상품 리스트를 반환한다.", response = List.class)
 	@GetMapping("/{category}")
 	public List<Product> searchProductByCategory(@PathVariable String category) {
 		return service.searchProductByCategory(category);
 	}
 
-	@ApiOperation(value = "상품명과 카테고리에 맞는 상품 정보를 반환한다.", response = List.class)
+	@ApiOperation(value = "상품명과 카테고리에 맞는 상품 리스트를 반환한다.", response = List.class)
 	@GetMapping("/nameandcategory")
 	public List<Product> selectProductByNameAndCategory(@RequestParam("name") String name, @RequestParam("category") String category) {
 		return service.selectProductByNameAndCategory(new Product(name, category));
 	}
 	
-	@ApiOperation(value = "상품 상세 정보, 최저가, 리뷰를 반환한다.", response = Map.class)
+	@ApiOperation(value = "상품 하나에 대한 상세 정보, 최저가, 리뷰를 반환한다.", response = Map.class)
 	@GetMapping("/detail/{name}")
 	public Map<String, Object> searchProductDetail(@PathVariable String name) throws IOException {
 		return service.searchProductDetail(name);
