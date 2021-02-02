@@ -1,13 +1,12 @@
 <template>
   <v-container id="container" class="mx-auto my-auto">
     <div class="upper">
-      <h1>~ ★★장보기★★ ~</h1>
+      <h1> See 장 </h1>
       <img src="../assets/list.png" style="width: 15%" />
     </div>
     <div>
       <br />
       <h1 style="color: pink">~ 장보기 시작 ~</h1>
-      <h1 style="color: pink">~ GIF로 움직움직 할거임 ~</h1>
       <br />
     </div>
     <div class="LinkAreaDiv">

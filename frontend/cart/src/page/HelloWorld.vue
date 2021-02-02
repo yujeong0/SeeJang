@@ -17,6 +17,9 @@
 export default {
   name: 'HelloWorld',
 
+  created(){
+    sessionStorage.setItem('isLogin', false);
+  },
   data: () => ({
     mode: localStorage.getItem("isBlind"),
   }),

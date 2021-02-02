@@ -116,8 +116,8 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-
-            sessionStorage.setItem("isLogin", false);
+            
+            sessionStorage.setItem('isLogin', false);
             sessionStorage.setItem("nickName", "");
             sessionStorage.setItem("member_id", "");
             localStorage.setItem("isBlind", 0);
