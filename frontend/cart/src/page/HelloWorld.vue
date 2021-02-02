@@ -20,7 +20,7 @@ export default {
   data: () => ({}),
   methods: {
     containerClick() {
-      this.$router.push('/popularproduct');
+      this.$router.push('/login');
     },
   },
 };
