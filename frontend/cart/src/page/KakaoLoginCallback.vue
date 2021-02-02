@@ -4,8 +4,10 @@
 
 <script>
 import axios from "axios";
+import http from "@/util/http-common.js";
 export default {
     mounted() {
+        const that = this;
         const qs = require("qs");
         const parameter = {
             grant_type: "authorization_code",
@@ -20,6 +22,11 @@ export default {
             })
             .then((res) => {
                 var userInfo = {};
+                var formData = {
+                    memberId: "",
+                    memberName: "",
+                    memberPassword: "",
+                };
                 userInfo.loginAPI = "kakao";
                 userInfo.userToken = res.data.access_token;
 
@@ -30,13 +37,23 @@ export default {
                         property_keys: ["properties.nickname", "kakao_account.email"],
                     },
                     success: (response) => {
-                        userInfo.userId = response.id;
-                        userInfo.userEmail = response.kakao_account.email;
-                        userInfo.userNickName = response.properties.nickname;
+                        formData.memberPassword = response.id;
+                        formData.memberId = response.kakao_account.email;
+                        formData.memberName = response.properties.nickname;
+
                         console.log("kakaoCallback");
                         console.dir(userInfo);
-                        this.$store.commit("TOGGLE_LOGIN_STATE");
-                        this.$store.commit("SET_USER_INFO", { userInfo });
+                        sessionStorage.setItem("isLogin", true);
+                        sessionStorage.setItem("nickName", response.properties.nickname);
+                        that.$store.commit('TOGGLE_LOGIN_STATE');
+                
+                        http.post("/user/login/kakao", formData, { withCredentials: true })
+                            .then((response) => {
+                                console.log(response);
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            });
                     },
                     fail: function (error) {
                         console.log(error);
@@ -48,8 +65,7 @@ export default {
             .catch(() => {
                 console.log("error_pre");
             });
-            
-        sessionStorage.setItem('isLogin', true);
+
         this.$router.push("/popularproduct");
     },
 };
