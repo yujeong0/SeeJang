@@ -28,13 +28,14 @@ export default {
         naverLogin.init();
         naverLogin.getLoginStatus((status) => {
             if (status) {
-                sessionStorage.setItem("isLogin", true);
                 userInfo.loginAPI = "naver";
                 userInfo.userToken = naverLogin.accessToken.accessToken;
                 formData.memberPassword = naverLogin.user.getId();
                 formData.memberId = naverLogin.user.getEmail();
                 formData.memberName = naverLogin.user.getNickName();
-                sessionStorage.setItem("nickName", naverLogin.user.getNickName());
+                sessionStorage.setItem("isLogin", true);
+                sessionStorage.setItem("nickName", formData.memberName);
+                that.$store.commit('TOGGLE_LOGIN_STATE');
                 http.post("/user/login/naver", formData, { withCredentials: true })
                     .then((response) => {
                         console.log(response);
