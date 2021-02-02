@@ -17,10 +17,18 @@
 export default {
   name: 'HelloWorld',
 
-  data: () => ({}),
+  data: () => ({
+    mode: localStorage.getItem("isBlind"),
+  }),
   methods: {
     containerClick() {
-      this.$router.push('/login');
+      if(this.mode == null || this.mode == 0){ // 처음실행 또는 로그아웃
+        this.$router.push('/modesetting')
+      } else if(this.mode == 1){ // 시각장애인
+        this.$router.push('/searchProduct');
+      } else { // 비장애인
+        this.$router.push('/login')
+      }
     },
   },
 };

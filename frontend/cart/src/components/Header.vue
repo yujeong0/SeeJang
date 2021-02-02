@@ -1,20 +1,21 @@
 <template>
     <div>
         <v-toolbar id="container" class="nav">
-            <v-toolbar-title class="grey--text">
+            <v-toolbar-title class="grey--text lastObject">
                 <span class="font-weight-light">장보기</span>
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn text class="user">
-                {{ nickName }} 님
-                <i class="fas fa-user-circle fa-lg"></i>
-            </v-btn>
-            <v-btn text @click="logout" class="mode">
+            <v-btn text @click="changeMode" class="mode">
                 <span>모드변경</span>
                 <i class="fas fa-blind"></i>
             </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn text>
+                {{ nickName }} 님
+                <i class="fas fa-user-circle fa-lg"></i>
+            </v-btn>
             <div>
-                <v-btn text @click="logout" class="logout">
+                <v-btn text @click="logout" class="lastObject">
                     <span>로그아웃</span>
                     <v-icon right>exit_to_app</v-icon>
                 </v-btn>
@@ -110,9 +111,10 @@ export default {
 
             sessionStorage.setItem("isLogin", false);
             sessionStorage.setItem("nickName", "");
+            localStorage.setItem("isBlind", 0);
             this.$store.commit("TOGGLE_LOGIN_STATE");
             this.$store.commit("INIT");
-            this.$router.push("/login");
+            this.$router.push("/");
         },
     },
 };
@@ -184,11 +186,8 @@ export default {
     margin-left: 20px;
     display: flex;
 }
-.user {
-    width: 80px;
-    height: 34px;
-    margin-left: 20px;
-    display: flex;
+.leftObject{
+  margin-right: 10%;
 }
 .clicked {
     width: 100px;
@@ -202,13 +201,6 @@ export default {
 }
 .mode {
     margin-right: -12px;
-}
-.logout {
-    margin-left: -20px;
-    margin-right: -10px;
-}
-.user {
-    margin-right: -30px;
 }
 .nav {
     margin-bottom: 10px;
