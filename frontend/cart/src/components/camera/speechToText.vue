@@ -1,34 +1,10 @@
 <template>
   <div>
-    dd
-    <v-card>
-      <v-card-text>
-        <v-layout row wrap justify-space-around>
-          <v-flex xs8 sm9 text-xs-center>
-            <p v-if="error" class="grey--text">{{ error }}</p>
-            <p v-else class="mb-0">
-              <!-- <span v-if="sentences.length > 0" v-for="sentence in sentences"
-                >{{ sentence }}.
-              </span> -->
-              <span>{{ runtimeTranscription }}</span>
-            </p>
-          </v-flex>
-          <v-flex xs2 sm1 text-xs-center>
-            <v-btn
-              dark
-              @click.stop="
-                toggle ? endSpeechRecognition() : startSpeechRecognition()
-              "
-              icon
-              :color="!toggle ? 'grey' : speaking ? 'red' : 'red darken-3'"
-              :class="{ 'animated infinite pulse': toggle }"
-            >
-              <v-icon>{{ toggle ? 'mic_off' : 'mic' }}</v-icon>
-            </v-btn>
-          </v-flex>
-        </v-layout>
-      </v-card-text>
-    </v-card>
+    <v-btn @click="startSpeechRecognition()">ㅇㅇ </v-btn>
+
+    <template v-if="this.$store.getters.getCameraClicked">
+      <div>dddasfsadf</div>
+    </template>
   </div>
 </template>
 
@@ -37,6 +13,12 @@ let SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = SpeechRecognition ? new SpeechRecognition() : false;
 export default {
+  updated() {
+    this.isClicked = this.$store.getters.getCameraClicked;
+    setTimeout(() => {
+      this.startSpeechRecognition();
+    }, 1800);
+  },
   props: {
     lang: {
       type: String,
@@ -49,6 +31,7 @@ export default {
   },
   data() {
     return {
+      isClicked: this.$store.getters.getCameraClicked,
       error: false,
       speaking: false,
       toggle: false,
@@ -65,6 +48,7 @@ export default {
     },
     endSpeechRecognition() {
       recognition.stop();
+      this.sentences.pop();
       this.toggle = false;
       this.$emit('speechend', {
         sentences: this.sentences,
@@ -72,6 +56,8 @@ export default {
       });
     },
     startSpeechRecognition() {
+      console.log('음성인식시작');
+
       if (!recognition) {
         this.error =
           'Speech Recognition is not available on this browser. Please use Chrome or Firefox';
@@ -82,19 +68,26 @@ export default {
       recognition.interimResults = true;
 
       recognition.addEventListener('speechstart', () => {
+        // console.log('speechstart');
         this.speaking = true;
       });
 
       recognition.addEventListener('speechend', () => {
+        // console.log('speechend');
         this.speaking = false;
       });
 
       recognition.addEventListener('result', () => {
+        // console.log('array :' + Array.from(event.results).map(result[0]));
         const text = Array.from(event.results)
           .map((result) => result[0])
           .map((result) => result.transcript)
           .join('');
+
+        //console.log(text);
         this.runtimeTranscription = text;
+
+        this.endSpeechRecognition();
       });
 
       recognition.addEventListener('end', () => {
