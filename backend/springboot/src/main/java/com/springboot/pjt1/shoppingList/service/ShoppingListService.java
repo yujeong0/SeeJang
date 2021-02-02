@@ -6,7 +6,7 @@ import com.springboot.pjt1.repository.dto.ShoppingList;
 
 public interface ShoppingListService {
 
-	List<ShoppingList> selectProductReviewByProductNo(String MemeberId);
+	List<ShoppingList> selectShoppingListByMemberId(String MemeberId);
 
 	void insertShoppingList(ShoppingList shoppingList);
 
