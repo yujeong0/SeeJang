@@ -26,13 +26,16 @@ public class ProductServiceImpl implements ProductService {
 	ProductMapper mapper;
 	ProductReviewMapper reviewMapper;
 	
-	
 	@Override
 	public Map<String, Object> searchProductDetail(String name) throws IOException {
 		Map<String, Object> map = new HashMap<>();
 		Product product = selectProductByExactName(name);
+		System.out.println("이거다");
+		System.out.println(product.getProductName());
+		System.out.println(product.getProductNo());
+//		System.out.println(reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
 		map.put("product", product);
-		map.put("review", reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
+//		map.put("review", reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
 		map.put("bestPrice", bestPriceList(name));
 		return map;
 	}
@@ -77,7 +80,8 @@ public class ProductServiceImpl implements ProductService {
 			for(Element p : products) {
 				if(p.className().contains("search-product__ad-badge")) continue;
 				BestPrice bp = new BestPrice();
-				bp.setName(p.select("dd.descriptions div.name").text());
+				bp.setSiteName("쿠팡");
+				bp.setProductName(p.select("dd.descriptions div.name").text());
 				bp.setPrice(p.select("dd.descriptions div.price strong").text());
 				bp.setLink("https://www.coupang.com" + p.select("a").attr("href"));
 				list.add(bp);
@@ -89,8 +93,9 @@ public class ProductServiceImpl implements ProductService {
 			Document doc = Jsoup.connect("https://browse.gmarket.co.kr/search?keyword=" + name).get();
 			Element product = doc.select("div#section__inner-content-body-container div.section__module-wrap div.box__component").get(2);
 			BestPrice bp = new BestPrice();
+			bp.setSiteName("지마켓");
 			Elements container = product.select("div.box__item-container div.box__information-major");
-			bp.setName(container.select("span.text__brand").text() + " " + container.select("span.text__item").attr("title"));
+			bp.setProductName(container.select("span.text__brand").text() + " " + container.select("span.text__item").attr("title"));
 			bp.setPrice(container.select("div.box__price-seller strong.text__value").text());
 			bp.setLink(container.select("a").attr("href"));
 			list.add(bp);
@@ -100,7 +105,8 @@ public class ProductServiceImpl implements ProductService {
 			Document doc = Jsoup.connect("http://isearch.interpark.com/isearch?q=" + name).get();
 			Element product = doc.select("ul#_SHOPListLi li.goods div.productResultList").get(0);
 			BestPrice bp = new BestPrice();
-			bp.setName(product.select("div.info a.name").text());
+			bp.setSiteName("인터파크");
+			bp.setProductName(product.select("div.info a.name").text());
 			bp.setPrice(product.select("div.price span.won strong").text());
 			bp.setLink(product.select("div.price span.won a").attr("href"));
 			list.add(bp);
@@ -110,7 +116,8 @@ public class ProductServiceImpl implements ProductService {
 			Document doc = Jsoup.connect("http://browse.auction.co.kr/search?keyword=" + name).get();
 			Element product = doc.select("div#section--inner_content_body_container div.section--module_wrap div.component div.itemcard div.section--itemcard_info_major").get(0);
 			BestPrice bp = new BestPrice();
-			bp.setName(product.select("div.area--itemcard_title a span.text--title").text());
+			bp.setSiteName("옥션");
+			bp.setProductName(product.select("div.area--itemcard_title a span.text--title").text());
 			bp.setPrice(product.select("div.area--itemcard_price span.price_seller strong.text--price_seller").text());
 			bp.setLink(product.select("div.area--itemcard_title a").attr("href"));
 			list.add(bp);

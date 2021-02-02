@@ -20,13 +20,23 @@ public class WishListServiceImpl implements WishListService {
 	}
 
 	@Override
-	public int addWishListByMemberId(WishList wishList) {
-		return mapper.insertWishListByMemberId(wishList);
+	public String addWishListByMemberId(WishList wishList) {
+		try {
+			mapper.insertWishList(wishList);
+			return "OK";
+		} catch(Exception e) {
+			return "FAIL";
+		}
 	}
 	
 	@Override
-	public int removeWishListByNo(int wishNo) {
-		return mapper.deleteWishListByNo(wishNo);
+	public String removeWishListByNo(int wishNo) {
+		try {
+			mapper.deleteWishListByNo(wishNo);
+			return "OK";
+		} catch(Exception e) {
+			return "FAIL";
+		}
 	}
 	
 }
