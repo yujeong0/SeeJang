@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 import Login from '@/page/Login.vue';
 import HelloWorld from '@/page/HelloWorld.vue';
-import SearchProduct from '@/components/SearchProduct3.vue';
+import BlindSearchProduct from '@/page/BlindSearchProduct.vue';
 import DetailProduct from '@/components/DetailProduct.vue';
 import Header from '@/components/Header.vue';
 import Categorize from '@/components/Categorize.vue';
@@ -26,9 +26,9 @@ const routes = [
     component: HelloWorld,
   },
   {
-    path: '/SearchProduct3',
-    name: 'searchProduct3',
-    component: SearchProduct,
+    path: '/searchProduct',
+    name: 'BlindSearchProduct',
+    component: BlindSearchProduct,
   },
   {
     path: '/login',
