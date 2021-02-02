@@ -1,9 +1,12 @@
 package com.springboot.pjt1.image.service;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +14,17 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.pjt1.exception.FileUploadException;
+import com.springboot.pjt1.product.service.ProductService;
 import com.springboot.pjt1.repository.dto.ImageProperties;
+import com.springboot.pjt1.repository.dto.Product;
 
 @Service
 public class ImageService {
 	
     private final Path fileLocation;
+    
+    @Autowired
+    private ProductService productService;
     
     @Autowired
     public ImageService(ImageProperties prop) {
@@ -31,7 +39,7 @@ public class ImageService {
         }
     }
 
-    public Path storeFile(MultipartFile file) {
+    public String storeFile(MultipartFile file) {
     	// 파일 실제 이름에서 역슬래쉬를 슬래쉬로 바꿈
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         
@@ -41,13 +49,24 @@ public class ImageService {
             // 파일 받은 것을 경로에 넣는데 같은 이름이 있다면 덮어쓰기한다.
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             
-            return targetLocation;
+            return targetLocation.toString();
         }catch(Exception e) {
             throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
         }
     }
     
-    public String getProductName(String fileName) {
+	public Map<String, Object> searchProductDetail(String name) throws IOException {
+		return productService.searchProductDetail(name);
+	}
+    
+    // 일반인과 시각장애인을 위한 상품 확인!! 번호로는 1번 3번
+    public String getProductName(String fileName) {	
+    	// 여기서 파이썬 코드 돌아감 
+    	return "";
+    }
+    
+    // 시각 장애인을 위한 상품 위치 찾기!! 번호로는 2번
+    public String getDirection(String fileName) {	
     	// 여기서 파이썬 코드 돌아감 
     	return "";
     }
