@@ -48,6 +48,8 @@ export default {
             .catch(() => {
                 console.log("error_pre");
             });
+            
+        sessionStorage.setItem('isLogin', true);
         this.$router.push("/popularproduct");
     },
 };

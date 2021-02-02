@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header v-if="this.$store.getters.getIsLogin"></Header>
+    <Header v-if="isLogin"></Header>
     <router-view />
   </v-app>
 </template>
@@ -13,8 +13,12 @@ export default {
   components: {
     Header,
   },
+  mounted(){
+    this.isLogin = sessionStorage.getItem('isLogin')
+  },
   data(){
     return {
+      isLogin : sessionStorage.getItem('isLogin')
     }
   },
 };
