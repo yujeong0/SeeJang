@@ -45,11 +45,11 @@ export default {
                         console.dir(userInfo);
                         sessionStorage.setItem("isLogin", true);
                         sessionStorage.setItem("nickName", formData.memberName);
-                        sessionStorage.setItem("member_id", formData.memberId);
+                        sessionStorage.setItem("userId", formData.memberId);
                         that.$store.commit('TOGGLE_LOGIN_STATE');
                         that.$store.commit('SET_USER_INFO', {userInfo} );
                 
-                        http.post("/user/login/kakao", formData, { withCredentials: true })
+                        http.post("/user/login/naver", formData, { withCredentials: true })
                             .then((response) => {
                                 console.log(response);
                             })
