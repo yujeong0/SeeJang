@@ -8,13 +8,13 @@
 		from product_review
 		where product_no = #{productNo}
 	</select>
-	<insert id="insertProductReviewByProductNo" parameterType="ProductReview">
-		INSERT INTO product_review (product_no, member_id, member_name, score, comment, regdate ) VALUES (#{productNo}, #{memberId}, #{memberName}, #{score}, #{comment}, #{date})
+	<insert id="insertProductReview" parameterType="ProductReview">
+		INSERT INTO product_review (product_no, member_id, member_name, score, comment ) VALUES (#{productNo}, #{memberId}, #{memberName}, #{score}, #{comment})
 	</insert>
-	<update id="updateProductReviewByProductNo" parameterType="ProductReview">
-		UPDATE product_review SET comment = #{comment} WHERE comment_id = #{commentId}
+	<update id="updateProductReviewByCommentNo" parameterType="ProductReview">
+		UPDATE product_review SET comment = #{comment} WHERE comment_no = #{commentNo}
 	</update>
-	<delete id="deleteProductReviewByProductNo" parameterType="int">
+	<delete id="deleteProductReviewByCommentNo" parameterType="int">
 		delete from product_review where comment_no = #{commentNo}
 	</delete>
 
