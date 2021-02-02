@@ -47,7 +47,7 @@ public class ProductReviewContorller {
 
 	@ApiOperation(value = "리뷰를 가져온다.", response = List.class)
 	@GetMapping
-	public List<ProductReview> selectProductReviewByProductNo(@RequestParam("product_no") int productNo) {
+	public List<ProductReview> selectProductReviewByProductNo(@RequestParam int productNo) {
 		return service.selectProductReviewByProductNo(productNo);	
 	}
 	

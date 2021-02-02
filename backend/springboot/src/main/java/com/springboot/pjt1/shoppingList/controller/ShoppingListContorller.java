@@ -47,8 +47,8 @@ public class ShoppingListContorller {
 
 	@ApiOperation(value = "쇼핑리스트들을 가져옴 ", response = List.class)
 	@GetMapping()
-	public List<ShoppingList> selectShoppingListByMemberId(@RequestParam("memeber_id") String MemeberId) {
-		return service.selectShoppingListByMemberId(MemeberId);	
+	public List<ShoppingList> selectShoppingListByMemberId(@RequestParam String MemberId) {
+		return service.selectShoppingListByMemberId(MemberId);	
 	}
 	
 }
