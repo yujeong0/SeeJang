@@ -10,8 +10,8 @@ import com.springboot.pjt1.repository.dto.ProductReview;
 public interface ProductReviewService {
 
 	List<ProductReview> selectProductReviewByProductNo(int ProductNo);
-	int insertProductReview(ProductReview productReview);
-	int updateProductReviewByCommentNo(ProductReview productReview);
-	int deleteProductReviewByCommentNo(int commentNo);
+	void insertProductReview(ProductReview productReview);
+	void updateProductReviewByCommentNo(ProductReview productReview);
+	void deleteProductReviewByCommentNo(int commentNo);
 
 }
