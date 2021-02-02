@@ -31,12 +31,14 @@ export default {
                 userInfo.loginAPI = "naver";
                 userInfo.userToken = naverLogin.accessToken.accessToken;
                 formData.memberPassword = naverLogin.user.getId();
-                formData.memberId = naverLogin.user.getEmail();
+                formData.memberId = userInfo.memberId = naverLogin.user.getEmail();
                 formData.memberName = naverLogin.user.getNickName();
                 sessionStorage.setItem("isLogin", true);
                 sessionStorage.setItem("nickName", formData.memberName);
-                that.$store.commit('TOGGLE_LOGIN_STATE');
-                
+                sessionStorage.setItem("member_id", formData.memberId);
+                that.$store.commit("TOGGLE_LOGIN_STATE");
+                that.$store.commit("SET_USER_INFO", { userInfo });
+
                 http.post("/user/login/naver", formData, { withCredentials: true })
                     .then((response) => {
                         console.log(response);

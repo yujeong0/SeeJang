@@ -38,14 +38,16 @@ export default {
                     },
                     success: (response) => {
                         formData.memberPassword = response.id;
-                        formData.memberId = response.kakao_account.email;
+                        formData.memberId = userInfo.memberId = response.kakao_account.email;
                         formData.memberName = response.properties.nickname;
 
                         console.log("kakaoCallback");
                         console.dir(userInfo);
                         sessionStorage.setItem("isLogin", true);
-                        sessionStorage.setItem("nickName", response.properties.nickname);
+                        sessionStorage.setItem("nickName", formData.memberName);
+                        sessionStorage.setItem("member_id", formData.memberId);
                         that.$store.commit('TOGGLE_LOGIN_STATE');
+                        that.$store.commit('SET_USER_INFO', {userInfo} );
                 
                         http.post("/user/login/kakao", formData, { withCredentials: true })
                             .then((response) => {
