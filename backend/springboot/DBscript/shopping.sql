@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: shopping
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.23
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,31 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `best_product`
+--
+
+DROP TABLE IF EXISTS `best_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `best_product` (
+  `ranking` int NOT NULL,
+  `product_name` varchar(200) NOT NULL,
+  `product_price` varchar(20) NOT NULL,
+  PRIMARY KEY (`ranking`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `best_product`
+--
+
+LOCK TABLES `best_product` WRITE;
+/*!40000 ALTER TABLE `best_product` DISABLE KEYS */;
+INSERT INTO `best_product` VALUES (1,'CJ 비비고왕교자1.12kg','9,480'),(2,'코카콜라 300ml*12PET','7,980'),(3,'삼립 아침엔 밀크 식빵 330g','2,180'),(4,'냉동 블루베리 1.5kg/봉','10,800'),(5,'빙그레 바나나맛 우유(240ml4개) 960ml','4,580');
+/*!40000 ALTER TABLE `best_product` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `category_price`
@@ -188,11 +213,10 @@ DROP TABLE IF EXISTS `shopping_list`;
 CREATE TABLE `shopping_list` (
   `shopping_list_no` int NOT NULL AUTO_INCREMENT,
   `member_id` varchar(20) NOT NULL,
-  `product_name` varchar(100) NOT NULL,
-  `product_price` varchar(20) DEFAULT NULL,
-  `checked` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`shopping_list_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`shopping_list_no`),
+  KEY `member_id` (`member_id`),
+  CONSTRAINT `shopping_list_ibfk_1` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,8 +225,34 @@ CREATE TABLE `shopping_list` (
 
 LOCK TABLES `shopping_list` WRITE;
 /*!40000 ALTER TABLE `shopping_list` DISABLE KEYS */;
-INSERT INTO `shopping_list` VALUES (1,'new0822@naver.com','과자','1000',0);
 /*!40000 ALTER TABLE `shopping_list` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shopping_list_product`
+--
+
+DROP TABLE IF EXISTS `shopping_list_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shopping_list_product` (
+  `shopping_list_no` int NOT NULL,
+  `product_no` int NOT NULL,
+  `quantity` int DEFAULT NULL,
+  KEY `product_no` (`product_no`),
+  KEY `shopping_list_no` (`shopping_list_no`),
+  CONSTRAINT `shopping_list_product_ibfk_1` FOREIGN KEY (`product_no`) REFERENCES `product` (`product_no`),
+  CONSTRAINT `shopping_list_product_ibfk_2` FOREIGN KEY (`shopping_list_no`) REFERENCES `shopping_list` (`shopping_list_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shopping_list_product`
+--
+
+LOCK TABLES `shopping_list_product` WRITE;
+/*!40000 ALTER TABLE `shopping_list_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shopping_list_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -241,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-02 14:48:56
+-- Dump completed on 2021-02-02 14:59:02
