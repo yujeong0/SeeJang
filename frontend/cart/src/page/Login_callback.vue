@@ -36,6 +36,7 @@ export default {
                 sessionStorage.setItem("isLogin", true);
                 sessionStorage.setItem("nickName", formData.memberName);
                 that.$store.commit('TOGGLE_LOGIN_STATE');
+                
                 http.post("/user/login/naver", formData, { withCredentials: true })
                     .then((response) => {
                         console.log(response);
