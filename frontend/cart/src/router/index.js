@@ -26,7 +26,7 @@ const routes = [
     component: HelloWorld,
   },
   {
-    path: '/searchProduct',
+    path: '/blindSearchProduct',
     name: 'BlindSearchProduct',
     component: BlindSearchProduct,
   },
