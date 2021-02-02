@@ -21,7 +21,10 @@ export default new Vuex.Store({
     },
     camera: {
       isPhotoTaken: false,
-      mode : "",
+      isClicked: false,
+      mode: "",
+      item: ""
+      
     }
   },
   mutations: {
@@ -44,10 +47,21 @@ export default new Vuex.Store({
      // ** 로그인 끝 **//
     
      // ** 카메라 시작 **//
-    TOGGLE_CAMERA_CANVAS(state,payload) {
+    TOGGLE_CAMERA_CANVAS(state) {
       state.camera.isPhotoTaken = !state.camera.isPhotoTaken;
+    },
+    TOGGLE_CAMERA_CLICKED(state) {
+      state.camera.isClicked = !state.camera.isClicked;
+    },
+
+    SET_CAMERA_MODE(state, payload) {
       state.camera.mode = payload.mode;
     },
+    SET_CAMERA_ITEM(state, payload) {
+      state.camera.item = payload.item;
+    }
+
+
 
      // ** 카메라 끝 **//
   },
@@ -78,11 +92,19 @@ export default new Vuex.Store({
     },
      // ** 로그인 끝 **//
     
+    // ** 카메라 시작**//
     getCameraIsPhotoTaken(state){
       return state.camera.isPhotoTaken;
     },
     getCameraMode(state){
       return state.camera.mode;
     },
+    getCameraItem(state){
+      return state.camera.item;
+    },
+    getCameraClicked(state){
+      return state.camera.isClicked;
+    },
+    //** 카메라 끝**//
   },
 });
