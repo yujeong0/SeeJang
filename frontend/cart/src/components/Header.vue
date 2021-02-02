@@ -6,7 +6,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text class="user">
-        {{ getUserNickName }} 님
+        {{ nickName }} 님
         <i class="fas fa-user-circle fa-lg"></i>
       </v-btn>
       <v-btn text @click="logout" class="mode" >
@@ -64,7 +64,8 @@ export default {
   components: {},
   data(){
     return {
-      platform: this.$store.getters.getPlatform
+      platform: this.$store.getters.getPlatform,
+      nickName: sessionStorage.getItem('nickName')
     }
   }, 
   computed: {
