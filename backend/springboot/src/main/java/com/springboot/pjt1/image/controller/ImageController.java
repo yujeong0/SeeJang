@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
@@ -21,7 +21,7 @@ public class ImageController {
 	@Autowired
 	private ImageService service;
 	
-	@GetMapping("/searchImage")
+	@PostMapping("/searchImage")
 	public Map<String, Object> searchImage(MultipartRequest request) {
 		System.out.println(request);
 		
