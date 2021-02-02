@@ -64,6 +64,8 @@
 import http from "@/util/http-common.js";
 export default {
     name: "Header",
+    props:{
+    },
     components: {},
     data() {
         return {
@@ -83,6 +85,7 @@ export default {
         },
         changeMode(){ // 비쟁애인 - 시각장애인 모드 변경
             localStorage.setItem('isBlind', 1);
+            sessionStorage.setItem('isLogin', false);
             this.$store.commit("TOGGLE_LOGIN_STATE");
             this.$router.push('/searchProduct')
         },
@@ -116,6 +119,7 @@ export default {
 
             sessionStorage.setItem("isLogin", false);
             sessionStorage.setItem("nickName", "");
+            sessionStorage.setItem("member_id", "");
             localStorage.setItem("isBlind", 0);
             this.$store.commit("TOGGLE_LOGIN_STATE");
             this.$store.commit("INIT");
@@ -128,9 +132,9 @@ export default {
 <style scoped>
 .first {
     background-color: grey;
-    height: 0.5px;
-    border: 0px;
-    width: 85%;
+    height: 1.5px;
+    border: 2px;
+    width: 80%;
     margin: auto;
 }
 .navbar {

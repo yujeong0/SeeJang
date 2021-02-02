@@ -16,6 +16,7 @@ export default new Vuex.Store({
       user_token: "",
       login_platform: "",
       isLogin: false,
+      member_id : "",
     },
     camera: {
       isPhotoTaken: false,
@@ -30,11 +31,13 @@ export default new Vuex.Store({
     INIT(state){
       state.login.user_token = '';
       state.login.login_platform = '';
+      state.login.member_id = "";
     },
     SET_USER_INFO(state, payload) {
       console.log(payload);
       state.login.user_token = payload.userInfo.userToken;
       state.login.login_platform = payload.userInfo.loginAPI;
+      state.login.member_id = payload.userInfo.memberId;
       console.dir(state.login);
     },
      // ** 로그인 끝 **//
@@ -51,6 +54,9 @@ export default new Vuex.Store({
   modules: {},
   getters: {
      // ** 로그인 시작 **//
+    getMemberId(state){
+      return state.login.member_id;
+    },
     getPlatform(state){
       return state.login.login_platform;
     },
