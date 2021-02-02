@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: shopping
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.23
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -126,6 +126,34 @@ INSERT INTO `product` VALUES (1,'[CJ] 비비고왕교자1.12kg','9480','냉장/�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `product_review`
+--
+
+DROP TABLE IF EXISTS `product_review`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product_review` (
+  `comment_no` int NOT NULL AUTO_INCREMENT,
+  `product_no` int NOT NULL,
+  `member_id` varchar(20) NOT NULL,
+  `member_name` varchar(200) NOT NULL,
+  `score` varchar(200) NOT NULL,
+  `comment` varchar(200) NOT NULL,
+  `date` date DEFAULT (now()),
+  PRIMARY KEY (`comment_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_review`
+--
+
+LOCK TABLES `product_review` WRITE;
+/*!40000 ALTER TABLE `product_review` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_review` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `salt`
 --
 
@@ -200,6 +228,33 @@ LOCK TABLES `shopping_list_product` WRITE;
 /*!40000 ALTER TABLE `shopping_list_product` DISABLE KEYS */;
 /*!40000 ALTER TABLE `shopping_list_product` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `wish_list`
+--
+
+DROP TABLE IF EXISTS `wish_list`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `wish_list` (
+  `wish_no` int NOT NULL AUTO_INCREMENT,
+  `member_id` varchar(20) NOT NULL,
+  `link` varchar(200) NOT NULL,
+  `site_name` varchar(200) NOT NULL,
+  `product_name` varchar(200) NOT NULL,
+  `price` varchar(20) NOT NULL,
+  PRIMARY KEY (`wish_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wish_list`
+--
+
+LOCK TABLES `wish_list` WRITE;
+/*!40000 ALTER TABLE `wish_list` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wish_list` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -210,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-02  9:32:23
+-- Dump completed on 2021-02-02 11:25:47
