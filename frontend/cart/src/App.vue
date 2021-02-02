@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <Header v-if="this.$store.getters.getIsLogin || isLogin"></Header>
+        <Header v-if="this.$store.getters.getIsLogin"></Header>
         <router-view />
     </v-app>
 </template>
@@ -9,15 +9,11 @@
 import Header from "./components/Header.vue";
 export default {
     name: "App",
-    created(){
-      console.log(this.isLogin);
-    },
     components: {
         Header,
     },
     data() {
         return {
-            isLogin: sessionStorage.getItem("isLogin"),
         };
     },
 };

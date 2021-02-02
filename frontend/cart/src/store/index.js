@@ -15,7 +15,8 @@ export default new Vuex.Store({
     login: {
       user_token: "",
       login_platform: "",
-      isLogin: false,
+      isLogin: (sessionStorage.getItem('isLogin') == "false" ||
+                sessionStorage.getItem('isLogin') == null) ? false : true,
       member_id : "",
     },
     camera: {

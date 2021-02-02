@@ -25,11 +25,11 @@ import http from "@/util/http-common.js";
 export default {
     name: "ShoppingList",
     created() {
-        var member_id = sessionStorage.getItem("member_id");
+        var member_id = sessionStorage.getItem("userId");
         console.log(member_id);
         http.get("/shoppingList", {
             params: {
-                MemberId  : "member_id",
+                MemberId  : member_id,
             },
             withCredentials: true,
         })
