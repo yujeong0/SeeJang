@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.springboot.pjt1.exception.FileUploadException;
 import com.springboot.pjt1.product.service.ProductService;
 import com.springboot.pjt1.repository.dto.ImageProperties;
-import com.springboot.pjt1.repository.dto.Product;
 
 @Service
 public class ImageService {
@@ -62,12 +60,12 @@ public class ImageService {
     // 일반인과 시각장애인을 위한 상품 확인!! 번호로는 1번 3번
     public String getProductName(String fileName) {	
     	// 여기서 파이썬 코드 돌아감 
-    	return "";
+    	return "정준영 바보";
     }
     
     // 시각 장애인을 위한 상품 위치 찾기!! 번호로는 2번
     public String getDirection(String fileName) {	
     	// 여기서 파이썬 코드 돌아감 
-    	return "";
+    	return "정준영 바보";
     }
 }
