@@ -2,7 +2,7 @@
     <div>
         <v-toolbar id="container" class="nav">
             <v-toolbar-title class="grey--text lastObject">
-                <span class="font-weight-light">장보기</span>
+                <span class="font-weight-light ml-13">장보기</span>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn text @click="changeMode" class="mode">
@@ -15,7 +15,7 @@
                 <i class="fas fa-user-circle fa-lg"></i>
             </v-btn>
             <div>
-                <v-btn text @click="logout" class="lastObject">
+                <v-btn text @click="logout" class="mr-8">
                     <span>로그아웃</span>
                     <v-icon right>exit_to_app</v-icon>
                 </v-btn>
@@ -80,6 +80,11 @@ export default {
         },
         popular_product() {
             this.$router.push("/popularproduct");
+        },
+        changeMode(){ // 비쟁애인 - 시각장애인 모드 변경
+            localStorage.setItem('isBlind', 1);
+            this.$store.commit("TOGGLE_LOGIN_STATE");
+            this.$router.push('/searchProduct')
         },
         logout() {
             // kakao 로그아웃
@@ -187,7 +192,7 @@ export default {
     display: flex;
 }
 .leftObject{
-  margin-right: 10%;
+  margin-right: 20%;
 }
 .clicked {
     width: 100px;

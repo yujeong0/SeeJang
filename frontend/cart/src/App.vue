@@ -13,6 +13,9 @@ export default {
   components: {
     Header,
   },
+  updated(){
+    this.isLogin = sessionStorage.getItem('isLogin')
+  },
   data(){
     return {
       isLogin : sessionStorage.getItem('isLogin')
