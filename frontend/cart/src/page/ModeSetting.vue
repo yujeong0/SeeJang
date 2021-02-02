@@ -6,12 +6,12 @@
         <br />
         <br />
         <v-btn rounded color="#7986CB" dark large class="btn" @click="blindMode">
-            <v-text class="mode">시각장애인 모드</v-text>
+            <label class="mode">시각장애인 모드</label>
         </v-btn>
         <br />
         <br />
         <v-btn rounded color="#7CB342" dark large class="btn" @click="notblindMode">
-            <v-text class="mode">비장애인 모드</v-text>
+            <label class="mode">비장애인 모드</label>
         </v-btn>
     </div>
 </template>
