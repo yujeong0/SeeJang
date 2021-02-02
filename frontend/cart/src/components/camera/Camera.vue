@@ -1,39 +1,22 @@
 <template>
   <div>
-    <!-- 
-    <div v-if="isCameraOpen" class="camera-box">
-      <video ref="camera" :width="450" :height="337.5" autoplay></video>
-    </div> -->
+    <h3 class="mt-7">검색할 상품</h3>
 
-    <h3 class="md-7">검색할 상품</h3>
-
-    <div v-if="isCameraOpen" class="camera-box">
+    <div class="camera-box">
       <video
-        v-show="!isPhotoTaken"
+        v-show="!$store.state.camera.isPhotoTaken"
         ref="camera"
         :width="360"
         :height="370"
         autoplay
       ></video>
       <canvas
-        v-show="isPhotoTaken"
+        v-show="$store.state.camera.isPhotoTaken"
         id="photoTaken"
         ref="canvas"
         :width="360"
         :height="370"
       ></canvas>
-    </div>
-
-    <button type="button" class="button" @click="takePhoto">
-      <img
-        src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
-      />
-    </button>
-
-    <div v-if="isPhotoTaken && isCameraOpen" class="camera-download">
-      <a id="downloadPhoto" class="button" role="button" @click="downloadImage">
-        최저가 확인하기
-      </a>
     </div>
   </div>
 </template>
@@ -42,31 +25,22 @@
 import http from '@/util/http-common.js';
 
 export default {
-  name: 'Post',
-  components: {},
-  watch: {},
   created() {
-    this.isCameraOpen = true;
     this.createCameraElement();
   },
+  data() {
+    return {
+      good: '',
+      isPhotoTaken: this.$store.state.camera.isPhotoTaken, //초기 false -> ture
+    };
+  },
+  updated() {
+    this.isPhotoTaken = this.$store.state.camera.isPhotoTaken;
+    console.log(this.$store.state.camera.isPhotoTaken);
+    console.log(this.$store.state.camera.mode);
+    this.takePhoto();
+  },
   methods: {
-    stopCameraStream() {
-      let tracks = this.$refs.camera.srcObject.getTracks();
-
-      tracks.forEach((track) => {
-        track.stop();
-      });
-    },
-    toggleCamera() {
-      if (this.isCameraOpen) {
-        this.isCameraOpen = false;
-        this.isPhotoTaken = false;
-        //  this.stopCameraStream();
-      } else {
-        this.isCameraOpen = true;
-        this.createCameraElement();
-      }
-    },
     downloadImage() {
       const download = document.getElementById('photoTaken');
       const imgBase64 = download.toDataURL('image/jpeg', 'image/octet-stream');
@@ -81,19 +55,18 @@ export default {
       const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
       let formData = new FormData();
       formData.append('file', file, fileName);
+      formData.append('mode', new Blob(), this.$store.getters.getCameraMode);
+      console.dir(formData);
 
-      for (var key of formData.keys()) {
-        console.log(key);
-      }
-
-      for (var value of formData.values()) {
-        console.log(value);
-      }
-
+      /*
+      for (var key of formData.keys()) console.log(key);
+      for (var value of formData.values()) console.log(value);
+      */
       http
-        .post('/searchImage', formData, {
+        .post('/saveImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
+            withCredentials: true,
           },
         })
         .then((response) => {
@@ -103,12 +76,13 @@ export default {
           console.log(error);
         });
 
-      this.$router.push('/detailProduct');
+      //  this.$router.push('/detailProduct');
     },
     takePhoto() {
-      this.isPhotoTaken = !this.isPhotoTaken;
       const context = this.$refs.canvas.getContext('2d');
       context.drawImage(this.$refs.camera, 0, 0, 360, 370);
+      console.log('테이크포토');
+      this.downloadImage();
     },
     createCameraElement() {
       const constraints = (window.constraints = {
@@ -131,12 +105,6 @@ export default {
           alert("May the browser didn't support or there is some errors.");
         });
     },
-  },
-  data() {
-    return {
-      isCameraOpen: false,
-      isPhotoTaken: false,
-    };
   },
 };
 </script>

@@ -17,8 +17,13 @@ export default new Vuex.Store({
       login_platform: "",
       isLogin: false,
     },
+    camera: {
+      isPhotoTaken: false,
+      mode : "",
+    }
   },
   mutations: {
+   // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
       state.login.isLogin = !state.login.isLogin;
     },
@@ -32,10 +37,20 @@ export default new Vuex.Store({
       state.login.login_platform = payload.userInfo.loginAPI;
       console.dir(state.login);
     },
+     // ** 로그인 끝 **//
+    
+     // ** 카메라 시작 **//
+    TOGGLE_CAMERA_CANVAS(state,payload) {
+      state.camera.isPhotoTaken = !state.camera.isPhotoTaken;
+      state.camera.mode = payload.mode;
+    },
+
+     // ** 카메라 끝 **//
   },
   actions: {},
   modules: {},
   getters: {
+     // ** 로그인 시작 **//
     getPlatform(state){
       return state.login.login_platform;
     },
@@ -53,6 +68,14 @@ export default new Vuex.Store({
     },
     getProductPrice(state) {
       return state.detail.product_price;
+    },
+     // ** 로그인 끝 **//
+    
+    getCameraIsPhotoTaken(state){
+      return state.camera.isPhotoTaken;
+    },
+    getCameraMode(state){
+      return state.camera.mode;
     },
   },
 });
