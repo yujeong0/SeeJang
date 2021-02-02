@@ -20,11 +20,11 @@
 export default {
     methods: {
         blindMode() { // 시각장애인 모드
-          localStorage.setItem("IsBlind", 1);
+          localStorage.setItem("isBlind", 1);
           this.$router.push('/searchProduct');
         },
         notblindMode() { // 비장애인 모드
-          localStorage.setItem("IsBlind", 2);
+          localStorage.setItem("isBlind", 2);
           this.$router.push('/login');
         },
     },
