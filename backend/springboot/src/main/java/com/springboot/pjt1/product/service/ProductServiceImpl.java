@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.pjt1.repository.dto.BestPrice;
 import com.springboot.pjt1.repository.dto.Product;
-import com.springboot.pjt1.repository.dto.ProductReview;
 import com.springboot.pjt1.repository.mapper.ProductMapper;
 import com.springboot.pjt1.repository.mapper.ProductReviewMapper;
 
@@ -24,18 +23,16 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	ProductMapper mapper;
+	
+	@Autowired
 	ProductReviewMapper reviewMapper;
 	
 	@Override
 	public Map<String, Object> searchProductDetail(String name) throws IOException {
 		Map<String, Object> map = new HashMap<>();
 		Product product = selectProductByExactName(name);
-		System.out.println("이거다");
-		System.out.println(product.getProductName());
-		System.out.println(product.getProductNo());
-//		System.out.println(reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
 		map.put("product", product);
-//		map.put("review", reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
+		map.put("review", reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
 		map.put("bestPrice", bestPriceList(name));
 		return map;
 	}
