@@ -1,1 +1,2 @@
 21/2/1 : object detection test code 돌려봄. training dataset 만드는 중
+21/2/2 : test code output 형식 확인.
