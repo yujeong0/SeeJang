@@ -105,6 +105,17 @@ public class MemberController {
         }
     }
     
+    @GetMapping("/logout")
+    public void logout(HttpServletRequest req,
+                          HttpServletResponse res) {
+            final String token = "";
+            final String refreshJwt = "";
+            Cookie accessToken = cookieUtil.createCookie(JwtUtil.ACCESS_TOKEN_NAME, token);
+            Cookie refreshToken = cookieUtil.createCookie(JwtUtil.REFRESH_TOKEN_NAME, refreshJwt);
+            res.addCookie(accessToken);
+            res.addCookie(refreshToken);
+    }
+    
 
     @PostMapping("/verify")
     public Response verify(@RequestBody RequestVerifyEmail requestVerifyEmail, HttpServletRequest req, HttpServletResponse res) {
