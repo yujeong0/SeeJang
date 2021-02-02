@@ -27,28 +27,28 @@ public class ShoppingListContorller {
 	@Autowired
 	private ShoppingListService service;
 	
-	@ApiOperation(value = "쇼핑리스트 제목 등록", response = List.class)
+	@ApiOperation(value = "쇼핑리스트 등록", response = List.class)
 	@PostMapping
 	public void insertShoppingList(ShoppingList shoppingList) {
 		service.insertShoppingList(shoppingList);
 	}
 
-	@ApiOperation(value = "쇼핑리스트 제목 수정", response = List.class)
+	@ApiOperation(value = "쇼핑리스트 수정", response = List.class)
 	@PutMapping
 	public void updateShoppingList(ShoppingList shoppingList) throws IOException {
 		service.updateShoppingList(shoppingList);
 	}
 	
-	@ApiOperation(value = "쇼핑리스트 제목 삭제", response = List.class)
+	@ApiOperation(value = "쇼핑리스트 삭제", response = List.class)
 	@DeleteMapping
 	public void deleteProductReviewByCommentNo(@RequestParam int shoppingListNo) {
 		service.deleteShoppingListByShoppingListNo(shoppingListNo);
 	}
 
-	@ApiOperation(value = "쇼핑리스트들을 가져옴", response = List.class)
+	@ApiOperation(value = "쇼핑리스트들을 가져옴 ", response = List.class)
 	@GetMapping()
-	public List<ShoppingList> selectProductReviewByProductNo(@RequestParam("Memeber_id") String MemeberId) {
-		return service.selectProductReviewByProductNo(MemeberId);	
+	public List<ShoppingList> selectShoppingListByMemberId(@RequestParam("memeber_id") String MemeberId) {
+		return service.selectShoppingListByMemberId(MemeberId);	
 	}
 	
 }
