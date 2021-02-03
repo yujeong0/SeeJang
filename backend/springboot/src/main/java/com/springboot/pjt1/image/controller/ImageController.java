@@ -33,7 +33,6 @@ public class ImageController {
 		else {
 			MultipartFile file = map.get("file").get(0);	// 이미지 파일
 			MultipartFile mode = map.get("mode").get(0);	// 모드 이름
-			MultipartFile item = map.get("item").get(0);	// 찾는 상품이름
 			
 			// 파일을 지정된 경로로 저장
 			String fileName = service.storeFile(file); 
@@ -50,7 +49,7 @@ public class ImageController {
 				}
 				break;
 			case "2":	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
-				String itemName = item.getOriginalFilename();
+				String itemName = map.get("item").get(0).getOriginalFilename();	// 찾는 상품이름
 				resultMap = new HashMap<>();
 				resultMap.put("result", service.getDirection(fileName, itemName));
 				break;
