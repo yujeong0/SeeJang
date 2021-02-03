@@ -44,6 +44,7 @@ export default {
         .then((response) => {
           this.$store.commit('DEL_ITEM', { money });
           console.log(response);
+          this.$emit('del', this.item.shoppingListNo);
         })
         .catch((error) => {
           console.log(error);

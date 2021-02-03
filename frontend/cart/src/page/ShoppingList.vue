@@ -2,7 +2,7 @@
   <div class="wrap" id="container">
     <div class="titleLabel mb-30">My Shopping List</div>
     <hr class="SLHR" />
-    <item v-for="item in items" :item="item" :key="item.shoppingListNo"></item>
+    <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
     <hr class="SLHR" />
     <v-container class="totalpriceArea">
       <v-row no-gutters>
@@ -60,6 +60,16 @@ export default {
   },
   methods: {
     addList() {},
+    del(shoppingListNo) {
+      console.log('삭제완료');
+      console.log(shoppingListNo);
+      for (let i = 0; i < this.items.length; i++) {
+        if (this.items[i].shoppingListNo == shoppingListNo) {
+          this.items.splice(i, 1);
+          break;
+        }
+      }
+    },
   },
 };
 </script>
