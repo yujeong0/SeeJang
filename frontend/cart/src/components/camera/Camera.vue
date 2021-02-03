@@ -92,7 +92,7 @@ export default {
           );
           if (this.$store.getters.getCameraMode == 2) {
             //2번 위치 찾기라면 이름까지 같이 보내줌
-            formData.append('item', new Blob(), JSON.stringify(this.sentences));
+            formData.append('item', new Blob(), this.$store.getters.getCameraItem);
             console.log('여기여기');
             console.log(JSON.stringify(this.$store.getters.getCameraItem));
           }
