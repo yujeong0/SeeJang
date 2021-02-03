@@ -26,38 +26,41 @@ public class ImageController {
 		System.out.println(request);
 		
 		MultiValueMap<String, MultipartFile> map = (MultiValueMap<String, MultipartFile>) request.getMultiFileMap();
-		if (map.size() == 0)
+		if (map.size() == 0) {
 			System.out.println("파일이 없습니다.");
-		else {
-			String fileName = null;
-			for (String key : map.keySet()) {
-				MultipartFile file = map.get(key).get(0);
-				if(file.getOriginalFilename().equals("1")) {	// 1  : 일반인
-					try {
-						return service.searchProductDetail(service.getProductName(fileName));
-					} catch (IOException e) {
-						e.printStackTrace();
-						return null;
-					}
-				}
-				else if(file.getOriginalFilename().equals("2")) {	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
-					Map<String, Object> resultMap = new HashMap<>();
-					resultMap.put("result", service.getDirection(service.getProductName(fileName)));
-					return resultMap;
-					
-				}
-				else if(file.getOriginalFilename().equals("3")) {	// 3  : 시각장애인 상품 확인 음성출력으로 이거 뭐다 
-					Map<String, Object> resultMap = new HashMap<>();
-					resultMap.put("result", service.getProductName(service.getProductName(fileName)));
-					return resultMap;
-				}
-				else {	// 파일을 지정된 경로로 저장
-					fileName = service.storeFile(map.get(key).get(0)); 
-					System.out.println(fileName);
-				}
-			}
+			return null;
 		}
+		else {
+			MultipartFile file = map.get("file").get(0);	// 이미지 파일
+			MultipartFile mode = map.get("mode").get(0);	// 모드 이름
+			MultipartFile item = map.get("item").get(0);	// 찾는 상품이름
+			
+			// 파일을 지정된 경로로 저장
+			String fileName = service.storeFile(file); 
+			System.out.println(fileName);
+			
+			Map<String, Object> resultMap = null;
+			// mode 별 다른 동작
+			switch(mode.getOriginalFilename()) {
+			case "1":	// 1  : 일반인
+				try {
+					return service.searchProductDetail(service.getProductName(fileName));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			case "2":	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
+				String itemName = item.getOriginalFilename();
+				resultMap = new HashMap<>();
+				resultMap.put("result", service.getDirection(fileName, itemName));
+				break;
+			case "3":	// 3  : 시각장애인 상품 확인 음성출력으로 이거 뭐다 
+				resultMap = new HashMap<>();
+				resultMap.put("result", service.getProductName(service.getProductName(fileName)));
+				break;
+			}
+			return resultMap;
 		
-		return null;
+		}
 	}
 }

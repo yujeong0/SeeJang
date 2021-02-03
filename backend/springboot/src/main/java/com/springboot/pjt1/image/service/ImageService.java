@@ -64,8 +64,9 @@ public class ImageService {
     }
     
     // 시각 장애인을 위한 상품 위치 찾기!! 번호로는 2번
-    public String getDirection(String fileName) {	
+    public String getDirection(String fileName, String itemName) {	
     	// 여기서 파이썬 코드 돌아감 
-    	return "정준영 바보";
+    	// 임시로 찾는 품목 리턴
+    	return itemName;
     }
 }
