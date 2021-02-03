@@ -60,13 +60,13 @@ public class ImageService {
     // 일반인과 시각장애인을 위한 상품 확인!! 번호로는 1번 3번
     public String getProductName(String fileName) {	
     	// 여기서 파이썬 코드 돌아감 
-    	return "정준영 바보";
+    	return "비비고 왕교자";
     }
     
     // 시각 장애인을 위한 상품 위치 찾기!! 번호로는 2번
     public String getDirection(String fileName, String itemName) {	
     	// 여기서 파이썬 코드 돌아감 
-    	// 임시로 찾는 품목 리턴
-    	return itemName;
+    	System.out.println(itemName);
+    	return itemName + "은 없지롱";
     }
 }
