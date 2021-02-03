@@ -17,6 +17,11 @@ export default {
   components: {
     SpeechToText,
   },
+  updated() {
+    let item = this.sentences;
+    this.$store.commit('SET_CAMERA_ITEM', { item }); //아이템 넣어주고
+    console.log('아이템집어넣어야됨');
+  },
   data() {
     return {
       text: '',
@@ -55,20 +60,20 @@ export default {
       console.log('찾으실물품?');
       this.speak('찾으실 물품을 말해주세요.');
       setTimeout(() => {
-        this.toggle(2, JSON.stringify(this.sentences));
-      }, 2000);
+        console.log('찾으실물품 3초뒤 toggle함수 부름 ');
+        this.toggle(2, JSON.stringify(this.sentences)); //mode는 2, this.sentencse-> 찾을 물품 음성인식한거
+      }, 3000);
     },
     three() {
-      this.toggle(3, this.sentences);
+      this.toggle(3, 'item'); //mode3 보냄 글 안보내도 상관없음
     },
     toggle(mode, item) {
-      console.log('ddasdfsa');
-      let s = 'dd';
-      console.log('item:' + item);
-      console.log(typeof s);
-      this.$store.commit('TOGGLE_CAMERA_CANVAS');
-      this.$store.commit('SET_CAMERA_MODE', { mode });
-      this.$store.commit('SET_CAMERA_ITEM', { item });
+      console.log('toggle함수 들어옴');
+      // console.log('item:' + item);
+      console.log('카메라 사진찍고, 카메라모드, 아이템 insert');
+      this.$store.commit('TOGGLE_CAMERA_CANVAS'); //카메라 사진찍기
+      this.$store.commit('SET_CAMERA_MODE', { mode }); //카메라 모드 넣어주고
+      // this.$store.commit('SET_CAMERA_ITEM', { item }); //아이템 넣어주고
     },
   },
 };

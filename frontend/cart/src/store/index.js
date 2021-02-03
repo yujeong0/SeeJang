@@ -59,6 +59,7 @@ export default new Vuex.Store({
     },
     SET_CAMERA_ITEM(state, payload) {
       state.camera.item = payload.item;
+      console.log("아이템입력들어왔따:" + state.camera.item);
     }
 
 
@@ -99,7 +100,7 @@ export default new Vuex.Store({
     getCameraMode(state){
       return state.camera.mode;
     },
-    getCameraItem(state){
+    getCameraItem(state) {
       return state.camera.item;
     },
     getCameraClicked(state){
