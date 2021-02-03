@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-btn @click="startSpeechRecognition()">ㅇㅇ </v-btn>
-
-    <template v-if="this.$store.getters.getCameraClicked">
-      <div>dddasfsadf</div>
-    </template>
+    <template v-if="this.$store.getters.getCameraClicked"> </template>
   </div>
 </template>
 
@@ -17,7 +13,7 @@ export default {
     this.isClicked = this.$store.getters.getCameraClicked;
     setTimeout(() => {
       this.startSpeechRecognition();
-    }, 1800);
+    }, 2000);
   },
   props: {
     lang: {
@@ -56,8 +52,6 @@ export default {
       });
     },
     startSpeechRecognition() {
-      console.log('음성인식시작');
-
       if (!recognition) {
         this.error =
           'Speech Recognition is not available on this browser. Please use Chrome or Firefox';

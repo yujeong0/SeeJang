@@ -61,54 +61,67 @@ export default {
       window.speechSynthesis.speak(speechMsg);
     },
     downloadImage() {
-      const download = document.getElementById('photoTaken');
-      const imgBase64 = download.toDataURL('image/jpeg', 'image/octet-stream');
-      const decodImg = atob(imgBase64.split(',')[1]);
+      setTimeout(() => {
+        console.log('다운로드이미지 밑에부분 실행');
+        const download = document.getElementById('photoTaken');
+        const imgBase64 = download.toDataURL(
+          'image/jpeg',
+          'image/octet-stream'
+        );
+        const decodImg = atob(imgBase64.split(',')[1]);
 
-      let array = [];
-      for (let i = 0; i < decodImg.length; i++) {
-        array.push(decodImg.charCodeAt(i));
-      }
-
-      const file = new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
-      const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
-      let formData = new FormData();
-
-      console.log(isBlind);
-      formData.append('file', file, fileName);
-
-      let isBlind = localStorage.getItem('isBlind');
-      if (isBlind == 1) {
-        //시각 장애인
-        formData.append('mode', new Blob(), this.$store.getters.getCameraMode);
-        if (this.$store.getters.getCameraMode == 2) {
-          //2번 위치 찾기라면 이름까지 같이 보내줌
-          formData.append('item', new Blob(), this.$store.getters.getItem);
+        let array = [];
+        for (let i = 0; i < decodImg.length; i++) {
+          array.push(decodImg.charCodeAt(i));
         }
-      }
-      /*
+
+        const file = new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+        const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
+        let formData = new FormData();
+
+        console.log(isBlind);
+        formData.append('file', file, fileName);
+
+        let isBlind = localStorage.getItem('isBlind');
+        if (isBlind == 1) {
+          //시각 장애인
+          formData.append(
+            'mode',
+            new Blob(),
+            this.$store.getters.getCameraMode
+          );
+          if (this.$store.getters.getCameraMode == 2) {
+            //2번 위치 찾기라면 이름까지 같이 보내줌
+            formData.append('item', new Blob(), JSON.stringify(this.sentences));
+            console.log('여기여기');
+            console.log(JSON.stringify(this.$store.getters.getCameraItem));
+          }
+        }
+        /*
       for (var key of formData.keys()) console.log(key);
       for (var value of formData.values()) console.log(value);
       */
-      console.log('보낸다!!!!');
-      http
-        .post('/searchImage', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            withCredentials: true,
-          },
-        })
-        .then((response) => {
-          setTimeout(() => {
-            this.speak(response.data.result);
-          }, 3500);
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        console.log('보낸다!!!!');
+        http
+          .post('/searchImage', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              withCredentials: true,
+            },
+          })
+          .then((response) => {
+            setTimeout(() => {
+              this.speak(response.data.result);
+            }, 3500);
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
-      //  this.$router.push('/detailProduct');
+        //  this.$router.push('/detailProduct');
+        this.$store.commit('TOGGLE_CAMERA_CANVAS');
+      }, 3000);
     },
     takePhoto() {
       const context = this.$refs.canvas.getContext('2d');
