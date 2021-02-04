@@ -8,6 +8,7 @@ RUN npm run build
 
 FROM nginx:stable-alpine as production-stage
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build-stage /s04p13d109/frontend/cart/dist /usr/share/nginx/html/shopping
+COPY ./dist /usr/share/nginx/html/shopping
+
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
