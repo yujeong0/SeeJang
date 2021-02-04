@@ -12,7 +12,7 @@
 		INSERT INTO shopping_list (member_id, product_name, product_price, checked) VALUES (#{memberId}, #{productName}, #{productPrice}, #{checked})
 	</insert>
 	<update id="updateShoppingList" parameterType="ShoppingList">
-		UPDATE shopping_list SET product_name = #{productName},  WHERE shopping_list_no = #{shoppingListNo}
+		UPDATE shopping_list SET product_name = #{productName}, product_price= #{productPrice}, checked=#{checked}  WHERE shopping_list_no = #{shoppingListNo}
 	</update>
 	<delete id="deleteShoppingListByShoppingListNo" parameterType="int">
 		delete from shopping_list where Shopping_list_no = #{ShoppingListNo}
