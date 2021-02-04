@@ -43,6 +43,7 @@ export default {
     },
     methods: {
         check() {
+            console.log(this.checked)
             let money = parseInt(this.productPrice);
             var payload = this.item;
             var no = this.item.shoppingListNo;
