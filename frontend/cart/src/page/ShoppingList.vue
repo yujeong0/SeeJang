@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import item from '@/components/shopping/item.vue';
+import item from '@/components/item.vue';
 import http from '@/util/http-common.js';
-import AddShoppingList from '@/components/shopping/AddShoppingListForm.vue';
+import AddShoppingList from '@/page/AddShoppingList.vue';
 import { mapGetters } from 'vuex';
 
 export default {
