@@ -70,8 +70,8 @@ export default {
         {
           name: 'AddShoppingList-modal',
 
-          width: '500px',
-          height: '250px',
+          width: '35%',
+          height: '50%',
           draggable: false,
         },
         {
