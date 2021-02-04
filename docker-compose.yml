@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:8.0.23
+    container_name: mysql-shopping
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - /Users/d109/datadir:/var/lib/mysql
+  
+  web-front:
+    build:
+      context: frontend/cart
+      dockerfile: frontend.Dockerfile
+    ports:
+    - "8080:8080"
+    expose:
+      - "8080"
+
+  spring:
+    image: pjt1
+    container_name: backend
+    build:
+      context: .
+      dockerfile: ./backend/springboot/backend.Dockerfile
+    ports:
+      - 8000:8000
