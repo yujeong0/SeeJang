@@ -32,13 +32,13 @@ public class ProductController {
 	}
 
 	@ApiOperation(value = "상품명에 맞는 상품 리스트를 반환한다.", response = List.class)
-	@GetMapping("/{name}")
-	public List<Product> searchProductByName(@PathVariable String name) throws IOException {
+	@GetMapping("/name")
+	public List<Product> searchProductByName(@RequestParam String name) throws IOException {
 		return service.searchProductByName(name);
 	}
 	@ApiOperation(value = "카테고리에 맞는 상품 리스트를 반환한다.", response = List.class)
-	@GetMapping("/{category}")
-	public List<Product> searchProductByCategory(@PathVariable String category) {
+	@GetMapping("/category")
+	public List<Product> searchProductByCategory(@RequestParam String category) {
 		return service.searchProductByCategory(category);
 	}
 
