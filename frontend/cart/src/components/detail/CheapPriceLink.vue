@@ -1,6 +1,8 @@
 <template>
   <div id="container">
-    <h3 class="text-h7 mt-4" style="border: 1px solid white">최저가 링크</h3>
+    <h3 class="text-h7 mt-4 pr-1" style="border: 1px solid white">
+      최저가 링크
+    </h3>
     <div v-for="(item, i) in datas" :key="i">
       <hr />
       <div style="text-align: left" class="pl-4 my-1 target">
