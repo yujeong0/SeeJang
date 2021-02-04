@@ -85,7 +85,6 @@ export default {
       );
     },
     add(item) {
-      console.log(item);
       this.items.push(item);
     },
     del(shoppingListNo) {

@@ -39,13 +39,12 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response);
           let item = {
             checked: false,
             memberId: this.$store.getters.getMemberId,
             productName: this.productName,
             productPrice: this.productPrice,
-            shoppingListNo: 10, // 백엔드에서 받아온 No 값으로 변경
+            shoppingListNo: response.data, // 백엔드에서 받아온 No 값으로 변경
           };
           this.$attrs.add(item);
           this.$modal.hide('AddShoppingList-modal');
