@@ -2,7 +2,7 @@
   <v-container id="container" class="mx-auto my-auto">
     <div class="upper">
       <h1> See 장 </h1>
-      <img src="@/assets/list.png" style="width: 15%" />
+      <img src="../assets/list.png" style="width: 15%" />
     </div>
     <div>
       <br />
