@@ -27,22 +27,28 @@ export default new Vuex.Store({
       productNo: 0,
       productPrice: "",
       categorize: false,
+      checkedList: []
     },
+    shoppingList:{
+      shoppingListName: "",
+      shoppingListPrice: "",
+      shoppingListNo: 0
+    }
   },
   mutations: {
     //** 상품정보 **/
     SET_PRODUCT_INFO(state, payload) {
       console.log(payload);
       console.dir(payload);
-      state.product.category= payload.productInfo.category
-      state.product.productName= payload.productInfo.productName
-      state.product.productNo= payload.productInfo.productNo
+      state.product.category = payload.productInfo.category
+      state.product.productName = payload.productInfo.productName
+      state.product.productNo = payload.productInfo.productNo
       state.product.productPrice = payload.productInfo.productPrice
-      
-      console.log("카테고리:"+state.product.category)
-      console.log("상품번호:"+ state.product.productName)
-      console.log("상품이름:"+state.product.productPrice)
-      
+
+      console.log("카테고리:" + state.product.category)
+      console.log("상품번호:" + state.product.productName)
+      console.log("상품이름:" + state.product.productPrice)
+
     },
     // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
@@ -91,6 +97,21 @@ export default new Vuex.Store({
     },
     TOGGLE_CATEGORIZE_STATE(state) {
       state.product.categorize = !state.product.categorize
+    },
+    ADD_CHECK_ITEM(state, payload) {
+      state.product.checkedList.push(payload.payload);
+      console.dir(state.product.checkedList)
+    },
+    DEL_CHECK_ITEM(state,payload){
+      console.log(payload.no)
+      for(var i = 0; i < state.product.checkedList.length; i++){
+        console.log(state.product.checkedList[i])
+        if(state.product.checkedList[i].shoppingListNo == payload.no){
+          state.product.checkedList.splice(i,1);
+          break;
+        }
+      }
+      console.log(state.product.checkedList)
     }
     // ** 상품 관련 끝 ** //
   },
@@ -149,6 +170,9 @@ export default new Vuex.Store({
 
     getCategorizeState(state) {
       return state.product.categorize;
+    },
+    getCheckedList(state){
+      return state.product.checkedList;
     }
     // ** 상품 관련 끝 ** //
   },

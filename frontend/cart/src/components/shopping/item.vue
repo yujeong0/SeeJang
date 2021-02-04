@@ -35,17 +35,23 @@ export default {
     },
     created() {
         if (this.checked) {
+            var payload = this.item;
             let money = parseInt(this.productPrice);
             this.$store.commit("ADD_TOTAL_MONEY", { money });
+            this.$store.commit("ADD_CHECK_ITEM", { payload });
         }
     },
     methods: {
         check() {
             let money = parseInt(this.productPrice);
+            var payload = this.item;
+            var no = this.item.shoppingListNo;
             if (!this.checked) {
                 this.$store.commit("ADD_TOTAL_MONEY", { money });
+                this.$store.commit("ADD_CHECK_ITEM", { payload });
             } else {
                 this.$store.commit("DEL_ITEM", { money });
+                this.$store.commit("DEL_CHECK_ITEM", { no });
             }
             this.update();
         },
