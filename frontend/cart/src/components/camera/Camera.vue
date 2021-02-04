@@ -81,21 +81,12 @@ export default {
 
         console.log(isBlind);
         formData.append('file', file, fileName);
+        formData.append('mode', new Blob(), this.$store.getters.getCameraMode);
 
         let isBlind = localStorage.getItem('isBlind');
-        if (isBlind == 1) {
-          //시각 장애인
-          formData.append(
-            'mode',
-            new Blob(),
-            this.$store.getters.getCameraMode
-          );
-          if (this.$store.getters.getCameraMode == 2) {
-            //2번 위치 찾기라면 이름까지 같이 보내줌
-            formData.append('item', new Blob(), this.$store.getters.getCameraItem);
-            console.log('여기여기');
-            console.log(JSON.stringify(this.$store.getters.getCameraItem));
-          }
+        if (isBlind == 1 && this.$store.getters.getCameraMode == 2) {
+          //2번 위치 찾기라면 이름까지 같이 보내줌
+          formData.append('item', new Blob(), JSON.stringify(this.sentences));
         }
         /*
       for (var key of formData.keys()) console.log(key);
