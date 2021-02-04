@@ -27,9 +27,10 @@ export default new Vuex.Store({
       productNo: 0,
       productPrice: "",
       categorize: false,
-      checkedList: []
+      checkedList: [],
+      categorizeItems: []
     },
-    shoppingList:{
+    shoppingList: {
       shoppingListName: "",
       shoppingListPrice: "",
     }
@@ -100,16 +101,22 @@ export default new Vuex.Store({
     ADD_CHECK_ITEM(state, payload) {
       state.product.checkedList.push(payload.payload);
     },
-    DEL_CHECK_ITEM(state,payload){
+    DEL_CHECK_ITEM(state, payload) {
       var length = state.product.checkedList.length;
-      for(var i = 0; i < length; i++){
-        if(state.product.checkedList[i].shoppingListNo == payload.no){
-          state.product.checkedList.splice(i,1);
+      for (var i = 0; i < length; i++) {
+        if (state.product.checkedList[i].shoppingListNo == payload.no) {
+          state.product.checkedList.splice(i, 1);
           i--;
           length--;
           break;
         }
       }
+    },
+    SET_CATEGORY_STATE(state){
+      state.product.categorize = true;
+    },
+    SET_CATEGORIZE_ITEMS(state, payload) {
+      state.product.categorizeItems = payload.categorizeItems;
     }
     // ** 상품 관련 끝 ** //
   },
@@ -165,11 +172,13 @@ export default new Vuex.Store({
     getProductPrice(state) {
       return state.product.productPrice
     },
-
+    getCategorizeItems(state) {
+      return state.product.categorizeItems;
+    },
     getCategorizeState(state) {
       return state.product.categorize;
     },
-    getCheckedList(state){
+    getCheckedList(state) {
       return state.product.checkedList;
     }
     // ** 상품 관련 끝 ** //
