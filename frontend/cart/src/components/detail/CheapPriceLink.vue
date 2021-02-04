@@ -1,17 +1,19 @@
 <template>
   <div id="container">
-    <h3 class="mt-4">최저가 링크</h3>
+    <h3 class="text-h7 mt-4" style="border: 1px solid white">최저가 링크</h3>
     <div v-for="(item, i) in datas" :key="i">
       <hr />
-      <div style="text-align: left" class="pl-4 my-3 target">
-        <a target="_blank" :href="item.link"> {{ item.siteName }}</a
-        >: {{ item.price }} {{ item.productName }}
+      <div style="text-align: left" class="pl-4 my-1 target">
+        <a target="_blank" :href="item.link"> {{ item.siteName }}</a> :
+        {{ item.productName }}
+        <div class="productPrice" style="text-align: right">
+          {{ item.price }}원
+        </div>
       </div>
       <hr />
     </div>
 
-    <hr class="mt-10" />
-    <h3 class="pl-4 text-h7" style="text-align: left">상품평</h3>
+    <h3 class="text-h7 pr-3">상 품 평</h3>
     <hr />
     <div>
       <div v-for="(item, i) in reviews" :key="i">
@@ -105,6 +107,9 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.productPrice {
+  color: blue;
 }
 
 hr {
