@@ -32,8 +32,14 @@ public class ProductServiceImpl implements ProductService {
 		Map<String, Object> map = new HashMap<>();
 		Product product = selectProductByExactName(name);
 		map.put("product", product);
-		map.put("review", reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
-		map.put("bestPrice", bestPriceList(name));
+		if(product != null) {
+			map.put("review", reviewMapper.selectProductReviewByProductNo(product.getProductNo()));
+			map.put("bestPrice", bestPriceList(name));
+		}
+		else {
+			map.put("review", null);
+			map.put("bestPrice", null);
+		}
 		return map;
 	}
 	
