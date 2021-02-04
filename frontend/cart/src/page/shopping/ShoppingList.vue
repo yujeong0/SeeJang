@@ -6,22 +6,22 @@
             <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
         </div>
         <v-container class="totalpriceArea">
-        <hr class="SLHR" />
+            <hr class="SLHR" />
             <v-row no-gutters>
                 <v-col cols="2" sm></v-col>
                 <v-col style="text-align: left" cols="4"> 예상 총 가격 </v-col>
                 <v-col style="text-align: left"> ₩ {{ getTotalMoney }} </v-col>
             </v-row>
-        <div style="text-align: left; margin-left: 9%; margin-top: 1%">
-            <v-btn class="mr-10" text style="width: 35%" @click="addList">
-                <img src="@/assets/plus.png" alt="" width="3%" />
-                <label style="font-size: 0.9em">쇼핑리스트 추가</label></v-btn
-            >
-            <v-btn class="" text style="width: 35%" @click="confirm">
-                <img src="@/assets/check.png" alt="" width="11%" />
-                <label style="font-size: 0.9em">구매 완료!</label></v-btn
-            >
-        </div>
+            <div style="text-align: left; margin-left: 9%; margin-top: 1%">
+                <v-btn class="mr-10" text style="width: 35%" @click="addList">
+                    <img src="@/assets/plus.png" alt="" width="3%" />
+                    <label style="font-size: 0.9em">쇼핑리스트 추가</label></v-btn
+                >
+                <v-btn class="" text style="width: 35%" @click="confirm">
+                    <img src="@/assets/check.png" alt="" width="11%" />
+                    <label style="font-size: 0.9em">구매 완료!</label></v-btn
+                >
+            </div>
         </v-container>
     </div>
 </template>
@@ -51,7 +51,7 @@ export default {
             });
     },
     computed: {
-        ...mapGetters(["getTotalMoney"]),
+        ...mapGetters(["getTotalMoney", "getCheckedList"]),
     },
     components: {
         item,
@@ -59,7 +59,6 @@ export default {
     data() {
         return {
             items: [],
-            checkedList:[]
         };
     },
     methods: {
@@ -100,14 +99,23 @@ export default {
                 }
             }
         },
-        checked(item){
-          this.checkedList.push(item);
+        confirm() {
+            var checkedItems = this.getCheckedList;
+            for (var i = 0; i < this.items.length; i++) {
+                for (var j = 0; j < checkedItems.length; j++) {
+                    if (this.items[i].shoppingListNo == checkedItems[j].shoppingListNo) {
+                        console.log(checkedItems[j]);
+                        var money = checkedItems[j].productPrice;
+                        var no = checkedItems[j].shoppingListNo;
+                        this.$store.commit("DEL_ITEM", { money });
+                        this.$store.commit("DEL_CHECK_ITEM", { no });
+                        this.items.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            console.log()
         },
-        confirm(){
-          for(var i = 0; i < items.length; i++){
-
-          }
-        }
     },
 };
 </script>
@@ -134,8 +142,8 @@ export default {
 ::-webkit-scrollbar {
     display: none;
 }
-.totalpriceArea{
-  position: fixed;
-  bottom: 0;
+.totalpriceArea {
+    position: fixed;
+    bottom: 0;
 }
 </style>
