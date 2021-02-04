@@ -2,7 +2,8 @@
     <div id="container">
         <br />
         <br />
-        <h1>추가할 물품을 작성해주세요</h1>
+        <h1>추가할 물품을</h1>
+        <h1>작성해주세요</h1>
         <br />
         <br />
         <div class="textArea">
