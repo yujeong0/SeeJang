@@ -8,7 +8,7 @@
 		from shopping_list
 		where member_id = #{memberId}
 	</select>
-	<insert id="insertShoppingList" parameterType="ShoppingList">
+	<insert id="insertShoppingList" useGeneratedKeys="true" keyProperty="shoppingListNo" parameterType="ShoppingList">
 		INSERT INTO shopping_list (member_id, product_name, product_price, checked) VALUES (#{memberId}, #{productName}, #{productPrice}, #{checked})
 	</insert>
 	<update id="updateShoppingList" parameterType="ShoppingList">
