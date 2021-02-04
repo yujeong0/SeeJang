@@ -7,7 +7,7 @@ import Login from '@/page/login/Login.vue';
 import HelloWorld from '@/page/HelloWorld.vue';
 import BlindSearchProduct from '@/page/BlindSearchProduct.vue';
 import NotBlindSearchProduct from '@/page/NotBlindSearchProduct.vue';
-import DetailProduct from '@/components/DetailProduct.vue';
+import DetailProduct from '@/page/DetailProduct.vue';
 import Header from '@/components/Header.vue';
 import Categorize from '@/components/Categorize.vue';
 import ShoppingList from '@/page/shopping/ShoppingList.vue';
