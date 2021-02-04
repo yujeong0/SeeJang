@@ -49,8 +49,8 @@ public class ProductController {
 	}
 	
 	@ApiOperation(value = "상품 하나에 대한 상세 정보, 최저가, 리뷰를 반환한다.", response = Map.class)
-	@GetMapping("/detail/{name}")
-	public Map<String, Object> searchProductDetail(@PathVariable String name) throws IOException {
+	@GetMapping("/detail")
+	public Map<String, Object> searchProductDetail(@RequestParam("name") String name) throws IOException {
 		return service.searchProductDetail(name);
 	}
 }
