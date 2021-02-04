@@ -1,11 +1,9 @@
 package com.springboot.pjt1.image.service;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,16 +11,13 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.pjt1.exception.FileUploadException;
-import com.springboot.pjt1.product.service.ProductService;
 import com.springboot.pjt1.repository.dto.ImageProperties;
 
 @Service
 public class ImageService {
 	
     private final Path fileLocation;
-    
-    @Autowired
-    private ProductService productService;
+
     
     @Autowired
     public ImageService(ImageProperties prop) {
@@ -52,10 +47,6 @@ public class ImageService {
             throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
         }
     }
-    
-	public Map<String, Object> searchProductDetail(String name) throws IOException {
-		return productService.searchProductDetail(name);
-	}
     
     // 일반인과 시각장애인을 위한 상품 확인!! 번호로는 1번 3번
     public String getProductName(String fileName) {	
