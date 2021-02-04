@@ -85,13 +85,20 @@ export default {
 
         let isBlind = localStorage.getItem('isBlind');
         if (isBlind == 1 && this.$store.getters.getCameraMode == 2) {
+          console.log('2번');
+          console.log(this.$store.getters.getCameraItem);
           //2번 위치 찾기라면 이름까지 같이 보내줌
-          formData.append('item', new Blob(), JSON.stringify(this.sentences));
+          formData.append(
+            'item',
+            new Blob(),
+            this.$store.getters.getCameraItem
+          );
         }
         /*
       for (var key of formData.keys()) console.log(key);
       for (var value of formData.values()) console.log(value);
       */
+        console.log(this.sentences);
         console.log('보낸다!!!!');
         http
           .post('/searchImage', formData, {
