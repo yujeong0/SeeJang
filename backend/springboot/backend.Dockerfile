@@ -11,7 +11,7 @@ VOLUME /tmp
 EXPOSE 8081
 
 # 현재 JAR 파일 변수 설정
-ARG JAR_FILE=/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/pjt1-0.0.1-SNAPSHOT.jar
 
 # pjt1.jar의 이름으로 JAR 파일 추가
 ADD ${JAR_FILE} pjt1.jar
