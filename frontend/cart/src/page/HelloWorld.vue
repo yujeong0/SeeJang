@@ -14,11 +14,36 @@
 </template>
 
 <script>
+import http from "@/util/http-common.js";
 export default {
     name: "HelloWorld",
 
     created() {
         sessionStorage.setItem("isLogin", false);
+        // 임시 로그인
+        var formData = {
+            memberId: "cndtjq145@naver.com",
+            memberName: "단우아빠",
+            memberPassword: "48039666",
+        };
+        var userInfo = {
+            loginAPI: "naver",
+            userToken: "tmpToken",
+            memberId: "cndtjq145@naver.com",
+        };
+        sessionStorage.setItem("isLogin", true);
+        sessionStorage.setItem("nickName", formData.memberName);
+        sessionStorage.setItem("userId", formData.memberId);
+        this.$store.commit("SET_USER_INFO", { userInfo });
+
+        http.post("/user/login/naver", formData, { withCredentials: true })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        // 임시 로그인 끝
     },
     data: () => ({
         mode: localStorage.getItem("isBlind"),
@@ -35,6 +60,7 @@ export default {
                 // 비장애인
                 // this.$router.push("/login");
                 // 임시 로그인
+                this.$store.commit("TOGGLE_LOGIN_STATE");
                 this.$router.push("/popularproduct");
             }
         },
