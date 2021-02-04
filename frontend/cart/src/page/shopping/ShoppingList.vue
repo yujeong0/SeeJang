@@ -99,22 +99,39 @@ export default {
                 }
             }
         },
-        confirm() {
-            var checkedItems = this.getCheckedList;
-            for (var i = 0; i < this.items.length; i++) {
-                for (var j = 0; j < checkedItems.length; j++) {
-                    if (this.items[i].shoppingListNo == checkedItems[j].shoppingListNo) {
-                        console.log(checkedItems[j]);
-                        var money = checkedItems[j].productPrice;
-                        var no = checkedItems[j].shoppingListNo;
-                        this.$store.commit("DEL_ITEM", { money });
-                        this.$store.commit("DEL_CHECK_ITEM", { no });
-                        this.items.splice(i, 1);
-                        break;
+        async confirm() {
+            let length = this.items.length;
+            for (let i = 0; i < length; i++) {
+                let flag = false;
+                let clLength = this.getCheckedList.length;
+                for (let j = 0; j < clLength; j++) {
+                    if (flag) break;
+                    if (this.items[i].shoppingListNo == this.getCheckedList[j].shoppingListNo) {
+                        await http
+                            .delete("/shoppingList", {
+                                params: {
+                                    shoppingListNo: this.getCheckedList[j].shoppingListNo,
+                                },
+                                withCredentials: true,
+                            })
+                            .then((response) => {
+                                this.items.splice(i, 1);
+                                let money = this.getCheckedList[j].productPrice;
+                                let no = this.getCheckedList[j].shoppingListNo;
+                                this.$store.commit("DEL_ITEM", { money });
+                                this.$store.commit("DEL_CHECK_ITEM", { no });
+                                i--;
+                                length--;
+                                flag = true;
+                                console.log(response);
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            });
                     }
                 }
             }
-            console.log()
+            console.log();
         },
     },
 };
@@ -136,7 +153,7 @@ export default {
     margin: auto;
 }
 .itemArea {
-    max-height: 65%;
+    max-height: 75%;
     overflow-y: scroll;
 }
 ::-webkit-scrollbar {

@@ -99,18 +99,17 @@ export default new Vuex.Store({
     },
     ADD_CHECK_ITEM(state, payload) {
       state.product.checkedList.push(payload.payload);
-      console.dir(state.product.checkedList)
     },
     DEL_CHECK_ITEM(state,payload){
-      console.log(payload.no)
-      for(var i = 0; i < state.product.checkedList.length; i++){
-        console.log(state.product.checkedList[i])
+      var length = state.product.checkedList.length;
+      for(var i = 0; i < length; i++){
         if(state.product.checkedList[i].shoppingListNo == payload.no){
           state.product.checkedList.splice(i,1);
+          i--;
+          length--;
           break;
         }
       }
-      console.log(state.product.checkedList)
     }
     // ** 상품 관련 끝 ** //
   },
