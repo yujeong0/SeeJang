@@ -54,7 +54,7 @@
     <div class="gridDiv mb-2">
       <v-row no-gutters>
         <v-col @click="shopping_list" class="selected">
-          ><span style="font-size: small" class="mr-3">쇼핑리스트</span></v-col
+          <span style="font-size: small" class="mr-3">쇼핑리스트</span></v-col
         >
         <v-col class="selected" @click="popular_product"
           ><span style="font-size: small" class="ml-3 mr-3"
@@ -217,9 +217,6 @@ export default {
   background-color: #feca57;
   border-radius: 10px;
   transition: background-color 0.3s, border-radius 0.5s, width 0.5s;
-}
-.selected {
-  background-color: black;
 }
 .mode {
   margin-right: -12px;

@@ -26,6 +26,7 @@ export default new Vuex.Store({
       productName: "",
       productNo: 0,
       productPrice: "",
+      categorize: false,
     },
   },
   mutations: {
@@ -88,6 +89,9 @@ export default new Vuex.Store({
     DEL_ITEM(state, payload) {
       state.product.total -= payload.money;
     },
+    TOGGLE_CATEGORIZE_STATE(state) {
+      state.product.categorize = !state.product.categorize
+    }
     // ** 상품 관련 끝 ** //
   },
   actions: {},
@@ -130,7 +134,6 @@ export default new Vuex.Store({
     getTotalMoney(state) {
       return state.product.total;
     },
-
     getProductCategory(state) {
       return state.product.category;
     },
@@ -144,6 +147,9 @@ export default new Vuex.Store({
       return state.product.productPrice
     },
 
+    getCategorizeState(state) {
+      return state.product.categorize;
+    }
     // ** 상품 관련 끝 ** //
   },
 });
