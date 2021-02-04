@@ -145,11 +145,12 @@ export default {
     createCameraElement() {
       const constraints = (window.constraints = {
         audio: false,
-         video: {
-           facingMode: {
-             exact: 'environment',
-           },
-         },
+        video: true,
+        //  video: {
+        //    facingMode: {
+        //      exact: 'environment',
+        //    },
+        //  },
       });
 
       navigator.mediaDevices

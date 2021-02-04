@@ -32,7 +32,6 @@ export default new Vuex.Store({
     shoppingList:{
       shoppingListName: "",
       shoppingListPrice: "",
-      shoppingListNo: 0
     }
   },
   mutations: {
