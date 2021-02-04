@@ -37,13 +37,16 @@ public class ImageController {
 			// 파일을 지정된 경로로 저장
 			String fileName = service.storeFile(file); 
 			System.out.println(fileName);
-			
+			System.out.println("hi");
 			Map<String, Object> resultMap = null;
 			// mode 별 다른 동작
 			switch(mode.getOriginalFilename()) {
 			case "1":	// 1  : 일반인
 				try {
-					return service.searchProductDetail(service.getProductName(fileName));
+					String productName = service.getProductName(fileName);
+					if(productName == null || productName.length() == 0)
+						return null;
+					return service.searchProductDetail(productName);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
