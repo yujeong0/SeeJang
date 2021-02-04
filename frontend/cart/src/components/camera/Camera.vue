@@ -101,16 +101,31 @@ export default {
             },
           })
           .then((response) => {
-            setTimeout(() => {
-              this.speak(response.data.result);
-            }, 3500);
-            console.log(response);
+            if (this.$store.getters.getCameraMode == 2) {
+              //장애인 위치찾기
+              setTimeout(() => {
+                this.speak(response.data.result);
+              }, 3500);
+            }
+            if (this.$store.getters.getCameraMode == 1) {
+              let productInfo = response.data.result[0];
+              console.log(productInfo);
+              console.dir(productInfo);
+              //비장애인
+              this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+            }
+
+            //뮤테이션으로 state에 response넣어주기
+            console.log('받는다!!');
+            // console.log(response);
           })
           .catch((error) => {
             console.log(error);
           });
 
         //  this.$router.push('/detailProduct');
+        if (this.$store.getters.getCameraMode == 1)
+          this.$router.push('detailProduct');
         this.$store.commit('TOGGLE_CAMERA_CANVAS');
       }, 3000);
     },
