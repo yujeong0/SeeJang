@@ -7,7 +7,7 @@ services:
     ports: 
       - 80:80
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/conf.d:/etc/nginx
     depends_on: 
       - spring
 
