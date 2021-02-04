@@ -27,7 +27,9 @@ export default {
     notblindMode() {
       // 비장애인 모드
       localStorage.setItem('isBlind', 2);
-      this.$router.push('/login');
+      // this.$router.push('/login');
+      // 임시 로그인 사용
+      this.$router.push('/popularproduct');
     },
   },
 };
