@@ -25,7 +25,7 @@
 	<select id="selectProductByNameAndCategory" resultType="product" parameterType="product">
 		select * 
 		from product
-		where product_name LIKE concat('%', #{name}, '%')
+		where product_name LIKE concat('%', #{productName}, '%')
 		or category LIKE concat('%', #{category}, '%')
 	</select>
 </mapper>
