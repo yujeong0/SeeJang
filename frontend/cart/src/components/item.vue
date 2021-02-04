@@ -19,7 +19,7 @@
 
 <script>
 import http from "@/util/http-common.js";
-import UpdateForm from "@/components/shopping/updateForm.vue";
+import UpdateForm from "@/page/shopping/updateForm.vue";
 export default {
     name: "item",
     props: {
