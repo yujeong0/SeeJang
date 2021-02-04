@@ -1,25 +1,34 @@
 <template>
     <div id="app" class="columns mt-4">
         <categorize />
-        <br />
-        <div class="column" v-if="noCategorize">
-            
+        <div class="column" v-if="state">
+            <CategoryInfo
+                v-for="item in this.items"
+                :categoryItem="item"
+                :key="item.productNo"
+            ></CategoryInfo>
         </div>
-        <div class="column" v-if="noCategorize">
-        <h3 class="mb-5">이번 주 인기상품</h3>
+        <div class="column" v-if="!state">
+            <h3 class="mb-5">이번 주 인기상품</h3>
             <popular v-for="popular in populars" :popular="popular" :key="popular.id" />
         </div>
-  </div>
+    </div>
 </template>
 
 <script>
-import Popular from '@/components/Popular.vue';
-import Categorize from '@/components/Categorize.vue';
+import Popular from "@/components/Popular.vue";
+import Categorize from "@/components/Categorize.vue";
+import CategoryInfo from "@/components/detail/categoryInfo.vue";
+import { mapGetters } from "vuex";
 
 export default {
     components: {
         Popular,
         Categorize,
+        CategoryInfo,
+    },
+    computed: {
+        ...mapGetters({ items: "getCategorizeItems", state: "getCategorizeState" }),
     },
     data() {
         return {
@@ -46,6 +55,7 @@ export default {
             ],
         };
     },
+    methods: {},
 };
 </script>
 

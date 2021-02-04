@@ -57,8 +57,4 @@ p{
   padding-left: 8px;
   padding-right: 8px;
 }
-
-.icons {
-  
-}
 </style>

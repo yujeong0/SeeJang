@@ -162,5 +162,6 @@ export default {
 .totalpriceArea {
     position: fixed;
     bottom: 0;
+    background-color: white;
 }
 </style>
