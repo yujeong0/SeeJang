@@ -87,7 +87,7 @@ export default {
             localStorage.setItem('isBlind', 1);
             sessionStorage.setItem('isLogin', false);
             this.$store.commit("TOGGLE_LOGIN_STATE");
-            this.$router.push('/searchProduct')
+            this.$router.push('/blindSearchProduct')
         },
         logout() {
             // kakao 로그아웃
