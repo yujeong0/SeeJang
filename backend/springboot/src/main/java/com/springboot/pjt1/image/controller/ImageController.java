@@ -1,7 +1,7 @@
 package com.springboot.pjt1.image.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.springboot.pjt1.image.service.ImageService;
+import com.springboot.pjt1.product.service.ProductService;
+
+import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
 @RestController
@@ -20,7 +23,13 @@ public class ImageController {
 
 	@Autowired
 	private ImageService service;
-	
+    
+    @Autowired
+    private ProductService productService;
+    
+	@ApiOperation(value = "이미지를 받아 모드에 맞에 결과를 반환한다.", 
+			notes = "1번:비장애인용-이미지로 인식한 상품 리스트 반환(List)\n2번:시각장애인용-원하는 물품 위치 반환(String)\n3번:시각장애인용-이미지로 인식한 상품명 반환(String)\nmap의 key는 \"result\"입니다.", 
+			response = List.class)
 	@PostMapping("/searchImage")
 	public Map<String, Object> searchImage(MultipartRequest request) {
 		System.out.println(request);
@@ -37,19 +46,13 @@ public class ImageController {
 			// 파일을 지정된 경로로 저장
 			String fileName = service.storeFile(file); 
 			System.out.println(fileName);
-			System.out.println("hi");
+			
 			Map<String, Object> resultMap = null;
 			// mode 별 다른 동작
 			switch(mode.getOriginalFilename()) {
 			case "1":	// 1  : 일반인
-				try {
-					String productName = service.getProductName(fileName);
-					if(productName == null || productName.length() == 0)
-						return null;
-					return service.searchProductDetail(productName);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				resultMap = new HashMap<>();
+				resultMap.put("result", productService.searchProductByName(service.getProductName(fileName)));
 				break;
 			case "2":	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
 				String itemName = map.get("item").get(0).getOriginalFilename();	// 찾는 상품이름
