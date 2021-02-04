@@ -133,22 +133,21 @@
 import http from "@/util/http-common.js";
 export default {
     data() {
-        return {
-            items: [],
-        };
+        return {};
     },
     methods: {
         clickCategory(categorizeItem) {
-            http.get("/product/category", {
-                params: {
-                    category: categorizeItem,
-                },
-                withCredentials: true,
-            })
+            http
+                .get("/product/category", {
+                    params: {
+                        category: categorizeItem,
+                    },
+                    withCredentials: true,
+                })
                 .then((response) => {
-                    this.items = response.data;
-                    console.log(this.items);
-                    this.$store.commit("TOGGLE_CATEGORIZE_STATE");
+                    let categorizeItems = response.data;
+                    this.$store.commit("SET_CATEGORIZE_ITEMS", { categorizeItems });
+                    this.$store.commit("SET_CATEGORY_STATE");
                 })
                 .catch((error) => {
                     console.log(error);
