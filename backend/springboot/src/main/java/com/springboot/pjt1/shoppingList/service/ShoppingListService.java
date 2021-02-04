@@ -8,7 +8,7 @@ public interface ShoppingListService {
 
 	List<ShoppingList> selectShoppingListByMemberId(String MemeberId);
 
-	void insertShoppingList(ShoppingList shoppingList);
+	int insertShoppingList(ShoppingList shoppingList);
 
 	void updateShoppingList(ShoppingList shoppingList);
 

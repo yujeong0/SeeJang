@@ -29,8 +29,8 @@ public class ShoppingListContorller {
 	
 	@ApiOperation(value = "쇼핑리스트 등록", response = List.class)
 	@PostMapping
-	public void insertShoppingList(ShoppingList shoppingList) {
-		service.insertShoppingList(shoppingList);
+	public int insertShoppingList(ShoppingList shoppingList) {
+		return service.insertShoppingList(shoppingList);
 	}
 
 	@ApiOperation(value = "쇼핑리스트 수정", response = List.class)
