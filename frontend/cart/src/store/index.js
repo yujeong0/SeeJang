@@ -5,13 +5,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    detail: {
-      product_name: '',
-      product_price: '',
-      link: '',
-      score: '',
-      comment: '',
-    },
     login: {
       user_token: '',
       login_platform: '',
@@ -29,9 +22,27 @@ export default new Vuex.Store({
     },
     product: {
       total: 0,
+      category: "",
+      productName: "",
+      productNo: 0,
+      productPrice: "",
     },
   },
   mutations: {
+    //** 상품정보 **/
+    SET_PRODUCT_INFO(state, payload) {
+      console.log(payload);
+      console.dir(payload);
+      state.product.category= payload.productInfo.category
+      state.product.productName= payload.productInfo.productName
+      state.product.productNo= payload.productInfo.productNo
+      state.product.productPrice = payload.productInfo.productPrice
+      
+      console.log("카테고리:"+state.product.category)
+      console.log("상품번호:"+ state.product.productName)
+      console.log("상품이름:"+state.product.productPrice)
+      
+    },
     // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
       state.login.isLogin = !state.login.isLogin;
@@ -98,12 +109,6 @@ export default new Vuex.Store({
     getUserToken(state) {
       return state.login.user_token;
     },
-    getProductName(state) {
-      return state.detail.product_name;
-    },
-    getProductPrice(state) {
-      return state.detail.product_price;
-    },
     // ** 로그인 끝 **//
 
     // ** 카메라 시작**//
@@ -125,6 +130,20 @@ export default new Vuex.Store({
     getTotalMoney(state) {
       return state.product.total;
     },
+
+    getProductCategory(state) {
+      return state.product.category;
+    },
+    getProductNo(state) {
+      return state.product.productNo
+    },
+    getProductName(state) {
+      return state.product.productName
+    },
+    getProductPrice(state) {
+      return state.product.productPrice
+    },
+
     // ** 상품 관련 끝 ** //
   },
 });
