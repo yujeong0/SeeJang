@@ -1,16 +1,16 @@
 <template>
     <div class="itemWrap" id="container">
         <v-container>
-            <v-row no-gutters>
-                <v-col>
+            <v-row class="mb-6" no-gutters >
+                <v-col cols="1" sm>
                     <input type="checkbox" v-model="checked" :checked="checked" @click="check" />
                 </v-col>
-                <v-col style="text-align: center" @click="updateForm">
+                <v-col cols="5" sm style="text-align: left; margin-right: 2%" @click="updateForm">
                     {{ productName }}
                 </v-col>
-                <v-col style="text-align: right" @click="updateForm"> ₩ {{ productPrice }} </v-col>
-                <v-col style="text-align: right; width: 2%">
-                    <v-btn text @click="del" depressed color="error"> del </v-btn></v-col
+                <v-col style="text-align: left" @click="updateForm"> ₩ {{ productPrice }} </v-col>
+                <v-col style="text-align: right; ">
+                    <v-btn text @click="del" depressed color="error" style="padding-bottom: 20%"> del </v-btn></v-col
                 >
             </v-row>
         </v-container>
@@ -62,9 +62,10 @@ export default {
                 {
                     name: "UpdateForm-modal",
 
-                    width: "30%",
-                    height: "50%",
+                    width: "70%",
+                    height: "45%",
                     draggable: false,
+                    shiftY: 0.3,
                 },
                 {
                     closeByName() {
@@ -140,7 +141,8 @@ export default {
 
 <style scope>
 .itemWrap {
-    margin: 1% 10%;
+    margin: 0px 10%;
+    margin-bottom: -10%;
     text-align: left;
 }
 </style>
