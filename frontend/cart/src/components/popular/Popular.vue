@@ -64,7 +64,7 @@ export default {
             formData.append("checked", false);
             formData.append("memberId", this.$store.getters.getMemberId);
             formData.append("productName", this.popular.productName);
-            formData.append("productPrice", this.popular.productPrice);
+            formData.append("productPrice", parseInt(this.popular.productPrice));
             http.post("/shoppingList", formData, {
                 withCredentials: true,
             })
