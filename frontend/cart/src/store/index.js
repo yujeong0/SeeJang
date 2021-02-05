@@ -40,12 +40,10 @@ export default new Vuex.Store({
     SET_PRODUCT_INFO(state, payload) {
       console.log(payload);
       console.dir(payload);
-      state.product.category = payload.productInfo.category
       state.product.productName = payload.productInfo.productName
       state.product.productNo = payload.productInfo.productNo
       state.product.productPrice = payload.productInfo.productPrice
 
-      console.log("카테고리:" + state.product.category)
       console.log("상품번호:" + state.product.productName)
       console.log("상품이름:" + state.product.productPrice)
 
