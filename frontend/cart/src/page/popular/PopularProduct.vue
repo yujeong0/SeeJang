@@ -9,10 +9,10 @@
             ></CategoryInfo>
         </div>
         <div class="column" v-if="!state">
-            <br>
+            <br />
             <h3 class="mb-5">이번 주 인기상품</h3>
-            <hr>
-            <br>
+            <hr />
+            <br />
             <popular v-for="popular in populars" :popular="popular" :key="popular.productNo" />
         </div>
     </div>
@@ -31,7 +31,7 @@ export default {
         Categorize,
         CategoryInfo,
     },
-    created(){
+    created() {
         http.get("/bestproduct", {
             withCredentials: true,
         })
@@ -48,7 +48,7 @@ export default {
     data() {
         return {
             noCategorize: true,
-            populars: []
+            populars: [],
         };
     },
     methods: {},
