@@ -31,8 +31,10 @@ export default {
       // 비쟁애인 - 시각장애인 모드 변경
       localStorage.setItem('isBlind', 0);
       sessionStorage.setItem('isLogin', false);
-      this.$store.commit('TOGGLE_LOGIN_STATE');
-      this.$router.push('/modesetting');
+      setTimeout(() => {
+        this.$store.commit('TOGGLE_LOGIN_STATE');
+        this.$router.push('/modesetting');
+      }, 500);
     },
   },
 };

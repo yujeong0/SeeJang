@@ -52,7 +52,11 @@ export default new Vuex.Store({
     },
     // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
-      state.login.isLogin = !state.login.isLogin;
+      if(sessionStorage.getItem('isLogin') == 'false'){
+        state.login.isLogin = false;
+      } else {
+        state.login.isLogin = true;
+      }
     },
     INIT(state) {
       state.login.user_token = '';
