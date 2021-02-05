@@ -139,13 +139,17 @@ export default {
           console.log(error);
         });
 
-      sessionStorage.setItem('isLogin', false);
-      sessionStorage.setItem('nickName', '');
-      sessionStorage.setItem('member_id', '');
-      localStorage.setItem('isBlind', 0);
-      this.$store.commit('TOGGLE_LOGIN_STATE');
-      this.$store.commit('INIT');
-      this.$router.push('/');
+            sessionStorage.setItem("isLogin", false);
+            sessionStorage.setItem("nickName", "");
+            sessionStorage.setItem("member_id", "");
+            localStorage.setItem("isBlind", 0);
+            this.$store.commit("TOGGLE_LOGIN_STATE");
+            this.$store.commit("INIT");
+            this.$router.push("/");
+        },
+        likeproduct() {
+            this.$router.push("/likeproduct");
+        },
     },
   },
 };
