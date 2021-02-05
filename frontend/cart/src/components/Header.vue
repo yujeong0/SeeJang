@@ -16,7 +16,7 @@
         모드변경
         <i class="fas fa-blind"></i>
       </v-btn>
-      <v-btn text style="margin: 0 4%; margin-top: -3%">
+      <v-btn text @click="likeproduct" style="margin: 0 4%; margin-top: -3%">
         {{ nickName }} 님
         <i class="fas fa-user-circle fa-lg"></i>
       </v-btn>
@@ -151,8 +151,7 @@ export default {
             this.$router.push("/likeproduct");
         },
     },
-  },
-};
+  }
 </script>
 
 <style scoped>
