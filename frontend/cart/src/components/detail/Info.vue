@@ -31,7 +31,7 @@ export default {
     ...mapGetters(['getProductName', 'getProductPrice', 'getProductNo']),
   },
   created() {
-    console.log('인포페이지');
+    console.log('여기왜 안바뀌지..?');
     console.log(this.$store.getters.getProductName);
   },
   methods: {
