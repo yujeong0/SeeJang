@@ -45,12 +45,13 @@ import { mapGetters } from 'vuex';
 
 export default {
   created() {
+    console.log('created');
+    console.log(this.$store.getters.getProductName);
     // let name = this.$store.getters.getProductName;
-    let name = 'CJ 비비고왕교자1.12kg';
     http
       .get('/product/detail', {
         params: {
-          name,
+          name: this.$store.getters.getProductName,
         },
         withCredentials: true,
       })

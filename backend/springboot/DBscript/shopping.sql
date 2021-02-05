@@ -37,7 +37,7 @@ CREATE TABLE `best_product` (
 
 LOCK TABLES `best_product` WRITE;
 /*!40000 ALTER TABLE `best_product` DISABLE KEYS */;
-INSERT INTO `best_product` VALUES (1,1,'CJ 비비고왕교자1.12kg','9,480'),(2,20,'코카콜라 300ml*12PET','7,980'),(3,21,'삼립 아침엔 밀크 식빵 330g','2,180'),(4,42,'냉동 블루베리 1.5kg/봉','10,800'),(5,75,'빙그레 바나나맛 우유(240ml4개) 960ml','4,580');
+INSERT INTO `best_product` VALUES (1,1,'CJ 비비고왕교자1.12kg','9480'),(2,20,'코카콜라 300ml*12PET','7980'),(3,21,'삼립 아침엔 밀크 식빵 330g','2180'),(4,42,'냉동 블루베리 1.5kg/봉','10800'),(5,75,'빙그레 바나나맛 우유(240ml4개) 960ml','4580');
 /*!40000 ALTER TABLE `best_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-05 14:09:45
+-- Dump completed on 2021-02-05 16:20:54
