@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import Popular from "@/components/Popular.vue";
-import Categorize from "@/components/Categorize.vue";
-import CategoryInfo from "@/components/detail/categoryInfo.vue";
+import Popular from "@/components/popular/Popular.vue";
+import Categorize from "@/components/popular/Categorize.vue";
+import CategoryInfo from "@/components/popular/categoryInfo.vue";
 import { mapGetters } from "vuex";
 
 export default {
