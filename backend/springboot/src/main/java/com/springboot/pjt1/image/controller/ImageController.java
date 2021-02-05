@@ -17,7 +17,7 @@ import com.springboot.pjt1.product.service.ProductService;
 
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
+@CrossOrigin(origins = { "*" }, allowCredentials = "true")
 @RestController
 public class ImageController {
 
