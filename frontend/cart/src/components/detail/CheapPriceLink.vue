@@ -10,6 +10,11 @@
         {{ item.productName }}
         <div class="productPrice" style="text-align: right">
           {{ item.price }}원
+          <v-btn text outlined @click="like(item)" style="margin-left:7px; width:3%">_
+              <vue-star style="margin-left:" animate="animated bounce" color="#F05654">
+                  <i slot="icon" class="fas fa-shopping-basket"></i>
+              </vue-star>
+          </v-btn>
         </div>
       </div>
       <hr />
@@ -99,6 +104,28 @@ export default {
       console.log(url);
       return url;
     },
+    like(item) {
+      console.log(item);
+      let formData = new FormData();
+            formData.append("link", item.link);
+            formData.append("memberId", this.$store.getters.getMemberId);
+            formData.append("price", item.price);
+            formData.append("productName", item.productName);
+            formData.append("siteName", item.siteName);
+            http.post("/wishList/add", formData, {
+                withCredentials: true,
+            })
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+
+
+
+    }
   },
 };
 </script>
