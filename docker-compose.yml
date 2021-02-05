@@ -42,7 +42,7 @@ services:
       - mysql
       - redis
     ports:
-      - 8081:8081
+      - 8082:8082
 
   vue:
     image: vue-front

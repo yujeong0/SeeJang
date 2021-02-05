@@ -8,7 +8,7 @@ LABEL maintainer="ssafy"
 VOLUME /tmp
 
 # 외부에 노출되는 포트 번호
-EXPOSE 8081
+EXPOSE 8082
 
 # 현재 JAR 파일 변수 설정
 ARG JAR_FILE=target/pjt1-0.0.1-SNAPSHOT.jar
