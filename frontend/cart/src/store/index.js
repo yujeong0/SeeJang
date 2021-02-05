@@ -116,8 +116,8 @@ export default new Vuex.Store({
         }
       }
     },
-    SET_CATEGORY_STATE(state){
-      state.product.categorize = true;
+    SET_CATEGORY_STATE(state, payload){
+      state.product.categorize = payload;
     },
     SET_CATEGORIZE_ITEMS(state, payload) {
       state.product.categorizeItems = payload.categorizeItems;
