@@ -1,17 +1,21 @@
 version: "3"
 
 services:
-  web:
+  nginx:
     image: nginx
     container_name: nginx
     ports: 
       - 80:80
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+    build: 
+      context: nginx
+      dockerfile: nginx.Dockerfile
+    # volumes:
+    #   - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on: 
+      - vue
       - spring
 
-  db:
+  mysql:
     image: mysql:8.0.23
     container_name: mysql
     ports:
@@ -24,14 +28,19 @@ services:
     volumes:
       - /Users/d109/datadir:/var/lib/mysql
 
+  redis:                      # redis 
+   image: redis
+   restart: always
+
   spring:
-    image: pjt1
+    image: spring-backend
     container_name: backend
     build:
       context: backend/springboot
       dockerfile: backend.Dockerfile
     depends_on: 
-      - db
+      - mysql
+      - redis
     ports:
       - 8081:8081
 
@@ -41,6 +50,9 @@ services:
     build:
       context: frontend/cart
       dockerfile: frontend.Dockerfile
+    depends_on: 
+      - spring
     ports:
-    - "8080:8080"
+      - "8080:8080"
+
 
