@@ -6,6 +6,7 @@
 	<select id="selectBestProduct" resultType="bestProduct">
 		select * 
 		from best_product
+		order by ranking;
 	</select>
 
 </mapper>
