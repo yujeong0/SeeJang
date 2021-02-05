@@ -76,7 +76,15 @@ export default {
                 });
         },
         detail() {
-          
+            let productInfo = {
+                productName: this.popular.productName,
+                productNo: this.popular.productNo,
+                productPrice: this.popular.productPrice,
+            };
+            console.log("setproductInfo부른다");
+            this.$store.commit("SET_PRODUCT_INFO", { productInfo });
+            console.log("setproductInfo부른뒤");
+            this.$router.push("/detailProduct");
         },
     },
 };
