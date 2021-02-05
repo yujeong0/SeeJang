@@ -82,16 +82,33 @@ export default {
           console.log(error);
         });
     },
-    detail() {
-      let productInfo = {
-        productName: this.popular.productName,
-        productNo: this.popular.productNo,
-        productPrice: this.popular.productPrice,
-      };
-      console.log('setproductInfo부른다');
-      this.$store.commit('SET_PRODUCT_INFO', { productInfo });
-      console.log('setproductInfo부른뒤');
-      this.$router.push('/detailProduct');
+    methods: {
+        addShoppingList() {
+            let formData = new FormData();
+            formData.append("checked", false);
+            formData.append("memberId", this.$store.getters.getMemberId);
+            formData.append("productName", this.popular.productName);
+            formData.append("productPrice", parseInt(this.popular.productPrice));
+            http.post("/shoppingList", formData, {
+                withCredentials: true,
+            })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        detail() {
+          let productInfo = {
+            productName: this.popular.productName,
+            productNo: this.popular.productNo,
+            productPrice: this.popular.productPrice,
+          };
+          console.log('setproductInfo부른다');
+          this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+          console.log('setproductInfo부른뒤');
+          this.$router.push('/detailProduct');
     },
   },
 };
