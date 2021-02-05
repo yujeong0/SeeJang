@@ -5,7 +5,10 @@
         <div class="itemArea">
             <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
         </div>
-        <v-container class="totalpriceArea">
+        <br />
+        <br />
+        <br />
+        <div class="totalpriceArea">
             <hr class="SLHR" />
             <v-row no-gutters>
                 <v-col cols="2" sm></v-col>
@@ -22,7 +25,7 @@
                     <label style="font-size: 0.9em">구매 완료!</label></v-btn
                 >
             </div>
-        </v-container>
+        </div>
     </div>
 </template>
 
@@ -151,10 +154,6 @@ export default {
     border: 2px;
     width: 80%;
     margin: auto;
-}
-.itemArea {
-    max-height: 75%;
-    overflow-y: scroll;
 }
 ::-webkit-scrollbar {
     display: none;
