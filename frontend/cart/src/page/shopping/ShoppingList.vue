@@ -1,7 +1,6 @@
 <template>
     <div id="container">
-        <div class="titleLabel mb-30">My Shopping List</div>
-        <hr class="SLHR" />
+        <div class="titleLabel mb-30 pt-5">My Shopping List</div>
         <div class="itemArea">
             <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
         </div>
@@ -142,25 +141,31 @@ export default {
 
 <style scoped>
 .titleLabel {
+    border-bottom: 1px solid;
     text-align: left;
-    margin: 2% 10%;
+    margin: 0px 10%;
     font-weight: 1000;
     font-size: large;
     width: 80%;
+    position: fixed;
+    background-color: white;
+    left: 0;
+    right: 0;
+    z-index: 10;
 }
 .SLHR {
     background-color: grey;
     height: 1.5px;
     border: 2px;
-    width: 80%;
+    width: 60%;
     margin: auto;
-}
-::-webkit-scrollbar {
-    display: none;
 }
 .totalpriceArea {
     position: fixed;
     bottom: 0;
     background-color: white;
+}
+.itemArea {
+    padding-top: 39px;
 }
 </style>
