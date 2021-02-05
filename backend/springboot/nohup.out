@@ -126,3 +126,346 @@
 2021-02-04 07:12:42.704 DEBUG 177001 --- [0.1-8001-exec-6] c.s.p.r.m.P.insertProductReview          : ==>  Preparing: INSERT INTO product_review (product_no, member_id, member_name, score, comment ) VALUES (?, ?, ?, ?, ?)
 2021-02-04 07:12:42.705 DEBUG 177001 --- [0.1-8001-exec-6] c.s.p.r.m.P.insertProductReview          : ==> Parameters: 1(Integer), new0822@naver.com(String), 강민창(String), 5(String), 별점 5점 드립니다.(String)
 2021-02-04 07:12:42.714 DEBUG 177001 --- [0.1-8001-exec-6] c.s.p.r.m.P.insertProductReview          : <==    Updates: 1
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2021-02-04 18:47:23.049  INFO 253889 --- [           main] c.springboot.pjt1.SpringbootApplication  : Starting SpringbootApplication v0.0.1-SNAPSHOT on ip-172-26-0-209 with PID 253889 (/home/ubuntu/s04p13d109/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/s04p13d109/backend/springboot)
+2021-02-04 18:47:23.062 DEBUG 253889 --- [           main] c.springboot.pjt1.SpringbootApplication  : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2021-02-04 18:47:23.062  INFO 253889 --- [           main] c.springboot.pjt1.SpringbootApplication  : No active profile set, falling back to default profiles: default
+2021-02-04 18:47:24.317  INFO 253889 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:47:24.320  INFO 253889 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-04 18:47:24.562  INFO 253889 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 229ms. Found 2 JPA repository interfaces.
+2021-02-04 18:47:24.586  INFO 253889 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:47:24.588  INFO 253889 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-04 18:47:24.607  INFO 253889 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:47:24.608  INFO 253889 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.SaltRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:47:24.608  INFO 253889 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+2021-02-04 18:47:25.708  INFO 253889 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-04 18:47:25.721  INFO 253889 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-04 18:47:25.722  INFO 253889 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-02-04 18:47:25.787  INFO 253889 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2021-02-04 18:47:25.788  INFO 253889 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2652 ms
+2021-02-04 18:47:25.994  INFO 253889 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-04 18:47:26.112  INFO 253889 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2021-02-04 18:47:26.312  INFO 253889 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-02-04 18:47:26.481  INFO 253889 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-04 18:47:26.954  INFO 253889 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-04 18:47:26.998  INFO 253889 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-02-04 18:47:28.163  INFO 253889 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-04 18:47:28.177  INFO 253889 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-04 18:47:29.218 DEBUG 253889 --- [           main] c.s.pjt1.config.JwtRequestFilter         : Filter 'jwtRequestFilter' configured for use
+2021-02-04 18:47:29.665  WARN 253889 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-04 18:47:30.325  INFO 253889 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/api-docs'], []
+2021-02-04 18:47:30.325  INFO 253889 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2021-02-04 18:47:30.325  INFO 253889 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2021-02-04 18:47:30.325  INFO 253889 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2021-02-04 18:47:30.325  INFO 253889 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger/**'], []
+2021-02-04 18:47:30.376  INFO 253889 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@292d1c71, org.springframework.security.web.context.SecurityContextPersistenceFilter@4d098f9b, org.springframework.security.web.header.HeaderWriterFilter@51e8e6e6, org.springframework.security.web.authentication.logout.LogoutFilter@74cadd41, com.springboot.pjt1.config.JwtRequestFilter@17a1e4ca, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4f2613d1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20b5f2ac, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@293d0107, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b491fee, org.springframework.security.web.session.SessionManagementFilter@36676c1a, org.springframework.security.web.access.ExceptionTranslationFilter@9ed238c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@470a696f]
+2021-02-04 18:47:30.406  INFO 253889 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-02-04 18:47:30.541  INFO 253889 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 18:47:30.879  INFO 253889 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-04 18:47:30.909  INFO 253889 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-04 18:47:30.960  INFO 253889 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-04 18:47:31.224  INFO 253889 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductReviewByCommentNoUsingDELETE_1
+2021-02-04 18:47:31.301  INFO 253889 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2021-02-04 18:47:31.304  INFO 253889 --- [           main] c.springboot.pjt1.SpringbootApplication  : Started SpringbootApplication in 8.754 seconds (JVM running for 9.292)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2021-02-04 18:47:37.238  INFO 253927 --- [           main] c.springboot.pjt1.SpringbootApplication  : Starting SpringbootApplication v0.0.1-SNAPSHOT on ip-172-26-0-209 with PID 253927 (/home/ubuntu/s04p13d109/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/s04p13d109/backend/springboot)
+2021-02-04 18:47:37.241 DEBUG 253927 --- [           main] c.springboot.pjt1.SpringbootApplication  : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2021-02-04 18:47:37.242  INFO 253927 --- [           main] c.springboot.pjt1.SpringbootApplication  : No active profile set, falling back to default profiles: default
+2021-02-04 18:47:38.494  INFO 253927 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:47:38.497  INFO 253927 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-04 18:47:38.741  INFO 253927 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 222ms. Found 2 JPA repository interfaces.
+2021-02-04 18:47:38.763  INFO 253927 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:47:38.765  INFO 253927 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-04 18:47:38.783  INFO 253927 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:47:38.783  INFO 253927 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.SaltRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:47:38.784  INFO 253927 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2021-02-04 18:47:39.808  INFO 253927 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-02-04 18:47:39.821  INFO 253927 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-04 18:47:39.821  INFO 253927 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-02-04 18:47:39.886  INFO 253927 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2021-02-04 18:47:39.886  INFO 253927 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2568 ms
+2021-02-04 18:47:40.095  INFO 253927 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-04 18:47:40.212  INFO 253927 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2021-02-04 18:47:40.404  INFO 253927 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-02-04 18:47:40.569  INFO 253927 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-04 18:47:41.030  INFO 253927 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-04 18:47:41.062  INFO 253927 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-02-04 18:47:42.191  INFO 253927 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-04 18:47:42.205  INFO 253927 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-04 18:47:43.298 DEBUG 253927 --- [           main] c.s.pjt1.config.JwtRequestFilter         : Filter 'jwtRequestFilter' configured for use
+2021-02-04 18:47:43.733  WARN 253927 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-04 18:47:44.351  INFO 253927 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/api-docs'], []
+2021-02-04 18:47:44.352  INFO 253927 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2021-02-04 18:47:44.352  INFO 253927 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2021-02-04 18:47:44.352  INFO 253927 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2021-02-04 18:47:44.352  INFO 253927 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger/**'], []
+2021-02-04 18:47:44.399  INFO 253927 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@350ec41e, org.springframework.security.web.context.SecurityContextPersistenceFilter@1c80e49b, org.springframework.security.web.header.HeaderWriterFilter@5b64c4b7, org.springframework.security.web.authentication.logout.LogoutFilter@4d098f9b, com.springboot.pjt1.config.JwtRequestFilter@7f36662c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7fc44dec, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@15c25153, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@56276db8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69637b10, org.springframework.security.web.session.SessionManagementFilter@72445aba, org.springframework.security.web.access.ExceptionTranslationFilter@7829b776, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6f603e89]
+2021-02-04 18:47:44.427  INFO 253927 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-02-04 18:47:44.555  INFO 253927 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 18:47:44.877  INFO 253927 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-04 18:47:44.907  INFO 253927 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-04 18:47:44.958  INFO 253927 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-04 18:47:45.204  INFO 253927 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductReviewByCommentNoUsingDELETE_1
+2021-02-04 18:47:45.276  INFO 253927 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/api'
+2021-02-04 18:47:45.279  INFO 253927 --- [           main] c.springboot.pjt1.SpringbootApplication  : Started SpringbootApplication in 8.53 seconds (JVM running for 9.072)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2021-02-04 18:50:10.836  INFO 254020 --- [           main] c.springboot.pjt1.SpringbootApplication  : Starting SpringbootApplication v0.0.1-SNAPSHOT on ip-172-26-0-209 with PID 254020 (/home/ubuntu/s04p13d109/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/s04p13d109/backend/springboot)
+2021-02-04 18:50:10.839 DEBUG 254020 --- [           main] c.springboot.pjt1.SpringbootApplication  : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2021-02-04 18:50:10.840  INFO 254020 --- [           main] c.springboot.pjt1.SpringbootApplication  : No active profile set, falling back to default profiles: default
+2021-02-04 18:50:12.125  INFO 254020 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:50:12.128  INFO 254020 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-04 18:50:12.368  INFO 254020 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 228ms. Found 2 JPA repository interfaces.
+2021-02-04 18:50:12.392  INFO 254020 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:50:12.394  INFO 254020 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-04 18:50:12.413  INFO 254020 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:50:12.413  INFO 254020 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.SaltRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:50:12.414  INFO 254020 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2021-02-04 18:50:13.503  INFO 254020 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-02-04 18:50:13.516  INFO 254020 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-04 18:50:13.516  INFO 254020 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-02-04 18:50:13.583  INFO 254020 --- [           main] o.a.c.c.C.[.[localhost].[/springboot]    : Initializing Spring embedded WebApplicationContext
+2021-02-04 18:50:13.583  INFO 254020 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2674 ms
+2021-02-04 18:50:13.804  INFO 254020 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-04 18:50:13.926  INFO 254020 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2021-02-04 18:50:14.133  INFO 254020 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-02-04 18:50:14.308  INFO 254020 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-04 18:50:14.783  INFO 254020 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-04 18:50:14.817  INFO 254020 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-02-04 18:50:15.973  INFO 254020 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-04 18:50:15.988  INFO 254020 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-04 18:50:17.090 DEBUG 254020 --- [           main] c.s.pjt1.config.JwtRequestFilter         : Filter 'jwtRequestFilter' configured for use
+2021-02-04 18:50:17.555  WARN 254020 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-04 18:50:18.206  INFO 254020 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/api-docs'], []
+2021-02-04 18:50:18.207  INFO 254020 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2021-02-04 18:50:18.207  INFO 254020 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2021-02-04 18:50:18.207  INFO 254020 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2021-02-04 18:50:18.207  INFO 254020 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger/**'], []
+2021-02-04 18:50:18.284  INFO 254020 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d24ffa1, org.springframework.security.web.context.SecurityContextPersistenceFilter@73ff4fae, org.springframework.security.web.header.HeaderWriterFilter@31e75d13, org.springframework.security.web.authentication.logout.LogoutFilter@5778826f, com.springboot.pjt1.config.JwtRequestFilter@6ee660fb, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@72445aba, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b968a76, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54227100, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@65a4798f, org.springframework.security.web.session.SessionManagementFilter@4b3c354a, org.springframework.security.web.access.ExceptionTranslationFilter@366ef90e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@55e8ec2f]
+2021-02-04 18:50:18.314  INFO 254020 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-02-04 18:50:18.449  INFO 254020 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 18:50:18.788  INFO 254020 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-04 18:50:18.819  INFO 254020 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-04 18:50:18.872  INFO 254020 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-04 18:50:19.131  INFO 254020 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductReviewByCommentNoUsingDELETE_1
+2021-02-04 18:50:19.219  INFO 254020 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/springboot'
+2021-02-04 18:50:19.222  INFO 254020 --- [           main] c.springboot.pjt1.SpringbootApplication  : Started SpringbootApplication in 8.929 seconds (JVM running for 9.48)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2021-02-04 18:50:32.261  INFO 254058 --- [           main] c.springboot.pjt1.SpringbootApplication  : Starting SpringbootApplication v0.0.1-SNAPSHOT on ip-172-26-0-209 with PID 254058 (/home/ubuntu/s04p13d109/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/s04p13d109/backend/springboot)
+2021-02-04 18:50:32.265 DEBUG 254058 --- [           main] c.springboot.pjt1.SpringbootApplication  : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2021-02-04 18:50:32.265  INFO 254058 --- [           main] c.springboot.pjt1.SpringbootApplication  : No active profile set, falling back to default profiles: default
+2021-02-04 18:50:33.460  INFO 254058 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:50:33.463  INFO 254058 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-04 18:50:33.717  INFO 254058 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 239ms. Found 2 JPA repository interfaces.
+2021-02-04 18:50:33.741  INFO 254058 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:50:33.742  INFO 254058 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-04 18:50:33.761  INFO 254058 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:50:33.761  INFO 254058 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.SaltRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:50:33.761  INFO 254058 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2021-02-04 18:50:34.823  INFO 254058 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-02-04 18:50:34.836  INFO 254058 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-04 18:50:34.836  INFO 254058 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-02-04 18:50:34.901  INFO 254058 --- [           main] o.a.c.c.C.[.[localhost].[/springboot]    : Initializing Spring embedded WebApplicationContext
+2021-02-04 18:50:34.901  INFO 254058 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2575 ms
+2021-02-04 18:50:35.108  INFO 254058 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-04 18:50:35.222  INFO 254058 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2021-02-04 18:50:35.410  INFO 254058 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-02-04 18:50:35.572  INFO 254058 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-04 18:50:36.046  INFO 254058 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-04 18:50:36.081  INFO 254058 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-02-04 18:50:37.231  INFO 254058 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-04 18:50:37.243  INFO 254058 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-04 18:50:38.290 DEBUG 254058 --- [           main] c.s.pjt1.config.JwtRequestFilter         : Filter 'jwtRequestFilter' configured for use
+2021-02-04 18:50:38.739  WARN 254058 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-04 18:50:39.378  INFO 254058 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/api-docs'], []
+2021-02-04 18:50:39.378  INFO 254058 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2021-02-04 18:50:39.378  INFO 254058 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2021-02-04 18:50:39.378  INFO 254058 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2021-02-04 18:50:39.378  INFO 254058 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger/**'], []
+2021-02-04 18:50:39.425  INFO 254058 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1de5f0ef, org.springframework.security.web.context.SecurityContextPersistenceFilter@47dbb1e2, org.springframework.security.web.header.HeaderWriterFilter@293d0107, org.springframework.security.web.authentication.logout.LogoutFilter@4c51bb7, com.springboot.pjt1.config.JwtRequestFilter@c4ed84, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5b080f3a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2e54db99, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6d24ffa1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@376a312c, org.springframework.security.web.session.SessionManagementFilter@7b64240d, org.springframework.security.web.access.ExceptionTranslationFilter@7fc44dec, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@50eca7c6]
+2021-02-04 18:50:39.452  INFO 254058 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-02-04 18:50:39.580  INFO 254058 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 18:50:39.908  INFO 254058 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-04 18:50:39.938  INFO 254058 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-04 18:50:39.988  INFO 254058 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-04 18:50:40.232  INFO 254058 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductReviewByCommentNoUsingDELETE_1
+2021-02-04 18:50:40.311  INFO 254058 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path '/springboot'
+2021-02-04 18:50:40.313  INFO 254058 --- [           main] c.springboot.pjt1.SpringbootApplication  : Started SpringbootApplication in 8.552 seconds (JVM running for 9.099)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2021-02-04 18:52:44.834  INFO 254142 --- [           main] c.springboot.pjt1.SpringbootApplication  : Starting SpringbootApplication v0.0.1-SNAPSHOT on ip-172-26-0-209 with PID 254142 (/home/ubuntu/s04p13d109/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/s04p13d109/backend/springboot)
+2021-02-04 18:52:44.837 DEBUG 254142 --- [           main] c.springboot.pjt1.SpringbootApplication  : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2021-02-04 18:52:44.838  INFO 254142 --- [           main] c.springboot.pjt1.SpringbootApplication  : No active profile set, falling back to default profiles: default
+2021-02-04 18:52:46.154  INFO 254142 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:52:46.156  INFO 254142 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-04 18:52:46.390  INFO 254142 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 222ms. Found 2 JPA repository interfaces.
+2021-02-04 18:52:46.414  INFO 254142 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:52:46.415  INFO 254142 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-04 18:52:46.433  INFO 254142 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:52:46.434  INFO 254142 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.SaltRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:52:46.434  INFO 254142 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2021-02-04 18:52:47.482  INFO 254142 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-02-04 18:52:47.495  INFO 254142 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-04 18:52:47.496  INFO 254142 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-02-04 18:52:47.561  INFO 254142 --- [           main] o.a.c.c.C.[.[localhost].[/springboot]    : Initializing Spring embedded WebApplicationContext
+2021-02-04 18:52:47.561  INFO 254142 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2635 ms
+2021-02-04 18:52:47.776  INFO 254142 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-04 18:52:47.895  INFO 254142 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2021-02-04 18:52:48.085  INFO 254142 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-02-04 18:52:48.252  INFO 254142 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-04 18:52:48.795  INFO 254142 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-04 18:52:48.830  INFO 254142 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-02-04 18:52:50.017  INFO 254142 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-04 18:52:50.031  INFO 254142 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-04 18:52:51.163 DEBUG 254142 --- [           main] c.s.pjt1.config.JwtRequestFilter         : Filter 'jwtRequestFilter' configured for use
+2021-02-04 18:52:51.629  WARN 254142 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-04 18:52:52.282  INFO 254142 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/api-docs'], []
+2021-02-04 18:52:52.282  INFO 254142 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2021-02-04 18:52:52.282  INFO 254142 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2021-02-04 18:52:52.282  INFO 254142 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2021-02-04 18:52:52.282  INFO 254142 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger/**'], []
+2021-02-04 18:52:52.334  INFO 254142 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55e8ec2f, org.springframework.security.web.context.SecurityContextPersistenceFilter@4b3c354a, org.springframework.security.web.header.HeaderWriterFilter@366ef90e, org.springframework.security.web.authentication.logout.LogoutFilter@3f446bef, com.springboot.pjt1.config.JwtRequestFilter@9ef8eb7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5b64c4b7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@73ff4fae, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f9a01c1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f2613d1, org.springframework.security.web.session.SessionManagementFilter@31e75d13, org.springframework.security.web.access.ExceptionTranslationFilter@26a4842b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@74cadd41]
+2021-02-04 18:52:52.365  INFO 254142 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-02-04 18:52:52.506  INFO 254142 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 18:52:52.848  INFO 254142 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-04 18:52:52.879  INFO 254142 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-04 18:52:52.930  INFO 254142 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-04 18:52:53.183  INFO 254142 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductReviewByCommentNoUsingDELETE_1
+2021-02-04 18:52:53.260  INFO 254142 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/springboot'
+2021-02-04 18:52:53.262  INFO 254142 --- [           main] c.springboot.pjt1.SpringbootApplication  : Started SpringbootApplication in 8.951 seconds (JVM running for 9.505)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2021-02-04 18:54:06.387  INFO 254181 --- [           main] c.springboot.pjt1.SpringbootApplication  : Starting SpringbootApplication v0.0.1-SNAPSHOT on ip-172-26-0-209 with PID 254181 (/home/ubuntu/s04p13d109/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/s04p13d109/backend/springboot)
+2021-02-04 18:54:06.390 DEBUG 254181 --- [           main] c.springboot.pjt1.SpringbootApplication  : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2021-02-04 18:54:06.391  INFO 254181 --- [           main] c.springboot.pjt1.SpringbootApplication  : No active profile set, falling back to default profiles: default
+2021-02-04 18:54:07.673  INFO 254181 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:54:07.675  INFO 254181 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-04 18:54:07.912  INFO 254181 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 224ms. Found 2 JPA repository interfaces.
+2021-02-04 18:54:07.935  INFO 254181 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:54:07.937  INFO 254181 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-04 18:54:07.954  INFO 254181 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:54:07.955  INFO 254181 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.SaltRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:54:07.955  INFO 254181 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2021-02-04 18:54:09.007  INFO 254181 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-02-04 18:54:09.020  INFO 254181 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-04 18:54:09.021  INFO 254181 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-02-04 18:54:09.088  INFO 254181 --- [           main] o.a.c.c.C.[.[localhost].[/springboot]    : Initializing Spring embedded WebApplicationContext
+2021-02-04 18:54:09.089  INFO 254181 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2628 ms
+2021-02-04 18:54:09.298  INFO 254181 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-04 18:54:09.421  INFO 254181 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2021-02-04 18:54:09.615  INFO 254181 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-02-04 18:54:09.786  INFO 254181 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-04 18:54:10.265  INFO 254181 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-04 18:54:10.297  INFO 254181 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-02-04 18:54:11.494  INFO 254181 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-04 18:54:11.506  INFO 254181 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-04 18:54:12.535 DEBUG 254181 --- [           main] c.s.pjt1.config.JwtRequestFilter         : Filter 'jwtRequestFilter' configured for use
+2021-02-04 18:54:12.982  WARN 254181 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-04 18:54:13.631  INFO 254181 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/api-docs'], []
+2021-02-04 18:54:13.632  INFO 254181 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2021-02-04 18:54:13.632  INFO 254181 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2021-02-04 18:54:13.632  INFO 254181 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2021-02-04 18:54:13.632  INFO 254181 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger/**'], []
+2021-02-04 18:54:13.683  INFO 254181 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@277f7dd3, org.springframework.security.web.context.SecurityContextPersistenceFilter@56276db8, org.springframework.security.web.header.HeaderWriterFilter@458342d3, org.springframework.security.web.authentication.logout.LogoutFilter@293d0107, com.springboot.pjt1.config.JwtRequestFilter@54dcfa5a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@62fad19, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@56f6d40b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d098f9b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c8bca63, org.springframework.security.web.session.SessionManagementFilter@1252b961, org.springframework.security.web.access.ExceptionTranslationFilter@61bcd567, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@165b2f7f]
+2021-02-04 18:54:13.713  INFO 254181 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-02-04 18:54:13.848  INFO 254181 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 18:54:14.182  INFO 254181 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-04 18:54:14.214  INFO 254181 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-04 18:54:14.266  INFO 254181 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-04 18:54:14.521  INFO 254181 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductReviewByCommentNoUsingDELETE_1
+2021-02-04 18:54:14.600  INFO 254181 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/springboot'
+2021-02-04 18:54:14.608  INFO 254181 --- [           main] c.springboot.pjt1.SpringbootApplication  : Started SpringbootApplication in 8.751 seconds (JVM running for 9.298)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2021-02-04 18:58:13.648  INFO 254281 --- [           main] c.springboot.pjt1.SpringbootApplication  : Starting SpringbootApplication v0.0.1-SNAPSHOT on ip-172-26-0-209 with PID 254281 (/home/ubuntu/s04p13d109/backend/springboot/target/pjt1-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/s04p13d109/backend/springboot)
+2021-02-04 18:58:13.651 DEBUG 254281 --- [           main] c.springboot.pjt1.SpringbootApplication  : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2021-02-04 18:58:13.651  INFO 254281 --- [           main] c.springboot.pjt1.SpringbootApplication  : No active profile set, falling back to default profiles: default
+2021-02-04 18:58:14.953  INFO 254281 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:58:14.956  INFO 254281 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-04 18:58:15.193  INFO 254281 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 225ms. Found 2 JPA repository interfaces.
+2021-02-04 18:58:15.218  INFO 254281 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 18:58:15.219  INFO 254281 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-04 18:58:15.238  INFO 254281 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.MemberRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:58:15.239  INFO 254281 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.springboot.pjt1.repository.jpa.SaltRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-02-04 18:58:15.239  INFO 254281 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2021-02-04 18:58:16.330  INFO 254281 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-02-04 18:58:16.344  INFO 254281 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-04 18:58:16.344  INFO 254281 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-02-04 18:58:16.412  INFO 254281 --- [           main] o.a.c.c.C.[.[localhost].[/springboot]    : Initializing Spring embedded WebApplicationContext
+2021-02-04 18:58:16.412  INFO 254281 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2699 ms
+2021-02-04 18:58:16.620  INFO 254281 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-04 18:58:16.732  INFO 254281 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2021-02-04 18:58:16.918  INFO 254281 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-02-04 18:58:17.084  INFO 254281 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-04 18:58:17.613  INFO 254281 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-04 18:58:17.646  INFO 254281 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-02-04 18:58:18.769  INFO 254281 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-04 18:58:18.784  INFO 254281 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-04 18:58:19.856 DEBUG 254281 --- [           main] c.s.pjt1.config.JwtRequestFilter         : Filter 'jwtRequestFilter' configured for use
+2021-02-04 18:58:20.314  WARN 254281 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-04 18:58:20.967  INFO 254281 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/v2/api-docs'], []
+2021-02-04 18:58:20.968  INFO 254281 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2021-02-04 18:58:20.968  INFO 254281 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2021-02-04 18:58:20.968  INFO 254281 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2021-02-04 18:58:20.968  INFO 254281 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/swagger/**'], []
+2021-02-04 18:58:21.018  INFO 254281 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@64df9a61, org.springframework.security.web.context.SecurityContextPersistenceFilter@878452d, org.springframework.security.web.header.HeaderWriterFilter@4f2613d1, org.springframework.security.web.authentication.logout.LogoutFilter@6f603e89, com.springboot.pjt1.config.JwtRequestFilter@542e560f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@69637b10, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c51bb7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b080f3a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77602954, org.springframework.security.web.session.SessionManagementFilter@65a4798f, org.springframework.security.web.access.ExceptionTranslationFilter@2e54db99, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@51850751]
+2021-02-04 18:58:21.048  INFO 254281 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-02-04 18:58:21.187  INFO 254281 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 18:58:21.525  INFO 254281 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-04 18:58:21.556  INFO 254281 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-04 18:58:21.608  INFO 254281 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-04 18:58:21.865  INFO 254281 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductReviewByCommentNoUsingDELETE_1
+2021-02-04 18:58:21.953  INFO 254281 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/springboot'
+2021-02-04 18:58:21.956  INFO 254281 --- [           main] c.springboot.pjt1.SpringbootApplication  : Started SpringbootApplication in 8.802 seconds (JVM running for 9.345)
