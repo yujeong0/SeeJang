@@ -147,7 +147,7 @@ export default {
                 .then((response) => {
                     let categorizeItems = response.data;
                     this.$store.commit("SET_CATEGORIZE_ITEMS", { categorizeItems });
-                    this.$store.commit("SET_CATEGORY_STATE");
+                    this.$store.commit("SET_CATEGORY_STATE", true);
                 })
                 .catch((error) => {
                     console.log(error);
