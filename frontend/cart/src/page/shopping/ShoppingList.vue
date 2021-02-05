@@ -1,11 +1,13 @@
 <template>
     <div id="container">
-        <div class="titleLabel mb-30">My Shopping List</div>
-        <hr class="SLHR" />
+        <div class="titleLabel mb-30 pt-5">My Shopping List</div>
         <div class="itemArea">
             <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
         </div>
-        <v-container class="totalpriceArea">
+        <br />
+        <br />
+        <br />
+        <div class="totalpriceArea">
             <hr class="SLHR" />
             <v-row no-gutters>
                 <v-col cols="2" sm></v-col>
@@ -22,7 +24,7 @@
                     <label style="font-size: 0.9em">구매 완료!</label></v-btn
                 >
             </div>
-        </v-container>
+        </div>
     </div>
 </template>
 
@@ -139,29 +141,31 @@ export default {
 
 <style scoped>
 .titleLabel {
+    border-bottom: 1px solid;
     text-align: left;
-    margin: 2% 10%;
+    margin: 0px 10%;
     font-weight: 1000;
     font-size: large;
     width: 80%;
+    position: fixed;
+    background-color: white;
+    left: 0;
+    right: 0;
+    z-index: 10;
 }
 .SLHR {
     background-color: grey;
     height: 1.5px;
     border: 2px;
-    width: 80%;
+    width: 60%;
     margin: auto;
-}
-.itemArea {
-    max-height: 75%;
-    overflow-y: scroll;
-}
-::-webkit-scrollbar {
-    display: none;
 }
 .totalpriceArea {
     position: fixed;
     bottom: 0;
     background-color: white;
+}
+.itemArea {
+    padding-top: 39px;
 }
 </style>
