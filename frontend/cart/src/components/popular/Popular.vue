@@ -36,7 +36,7 @@
                             <i slot="icon" class="fas fa-shopping-basket"></i>
                         </vue-star>
                     </v-btn> -->
-                    <v-col style="margin-top:5px">
+                    <v-col style="margin-top: 5px">
                         <v-btn style="margin-left: 2%" text outlined @click="detail"
                             >상세 보기
                         </v-btn>
@@ -64,7 +64,7 @@ export default {
             formData.append("checked", false);
             formData.append("memberId", this.$store.getters.getMemberId);
             formData.append("productName", this.popular.productName);
-            formData.append("productPrice", this.popular.productPrice);
+            formData.append("productPrice", parseInt(this.popular.productPrice));
             http.post("/shoppingList", formData, {
                 withCredentials: true,
             })
