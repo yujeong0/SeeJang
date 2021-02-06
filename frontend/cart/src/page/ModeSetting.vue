@@ -6,12 +6,12 @@
     <br />
     <br />
     <v-btn rounded color="#7986CB" dark large class="btn" @click="blindMode">
-      <v-text class="mode">시각장애인 모드</v-text>
+      <label class="mode">시각장애인 모드</label>
     </v-btn>
     <br />
     <br />
     <v-btn rounded color="#7CB342" dark large class="btn" @click="notblindMode">
-      <v-text class="mode">비장애인 모드</v-text>
+      <label class="mode">비장애인 모드</label>
     </v-btn>
   </div>
 </template>
@@ -22,11 +22,15 @@ export default {
     blindMode() {
       // 시각장애인 모드
       localStorage.setItem('isBlind', 1);
+      sessionStorage.setItem('isLogin', false);
+      this.$store.commit('TOGGLE_LOGIN_STATE');
       this.$router.push('/blindSearchProduct');
     },
     notblindMode() {
       // 비장애인 모드
       localStorage.setItem('isBlind', 2);
+      sessionStorage.setItem('isLogin', true);
+      this.$store.commit('TOGGLE_LOGIN_STATE');
       // this.$router.push('/login');
       // 임시 로그인 사용
       this.$router.push('/popularproduct');

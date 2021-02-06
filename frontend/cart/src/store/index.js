@@ -28,7 +28,8 @@ export default new Vuex.Store({
       productPrice: "",
       categorize: false,
       checkedList: [],
-      categorizeItems: []
+      categorizeItems: [],
+      categorizeItem: "",
     },
     shoppingList: {
       shoppingListName: "",
@@ -40,19 +41,21 @@ export default new Vuex.Store({
     SET_PRODUCT_INFO(state, payload) {
       console.log(payload);
       console.dir(payload);
-      state.product.category = payload.productInfo.category
       state.product.productName = payload.productInfo.productName
       state.product.productNo = payload.productInfo.productNo
       state.product.productPrice = payload.productInfo.productPrice
 
-      console.log("카테고리:" + state.product.category)
       console.log("상품번호:" + state.product.productName)
       console.log("상품이름:" + state.product.productPrice)
 
     },
     // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
-      state.login.isLogin = !state.login.isLogin;
+      if (sessionStorage.getItem('isLogin') == 'false') {
+        state.login.isLogin = false;
+      } else {
+        state.login.isLogin = true;
+      }
     },
     INIT(state) {
       state.login.user_token = '';
@@ -112,11 +115,14 @@ export default new Vuex.Store({
         }
       }
     },
-    SET_CATEGORY_STATE(state){
-      state.product.categorize = true;
+    SET_CATEGORY_STATE(state, payload) {
+      state.product.categorize = payload;
     },
     SET_CATEGORIZE_ITEMS(state, payload) {
       state.product.categorizeItems = payload.categorizeItems;
+    },
+    SET_CATEGORIZE_ITEM(state, payload) {
+      state.product.categorizeItem = payload.categorizeItem;
     }
     // ** 상품 관련 끝 ** //
   },
@@ -175,12 +181,15 @@ export default new Vuex.Store({
     getCategorizeItems(state) {
       return state.product.categorizeItems;
     },
+    getCategorizeItem(state){
+      return state.product.categorizeItem;
+    },
     getCategorizeState(state) {
       return state.product.categorize;
     },
     getCheckedList(state) {
       return state.product.checkedList;
-    }
+    },
     // ** 상품 관련 끝 ** //
   },
 });
