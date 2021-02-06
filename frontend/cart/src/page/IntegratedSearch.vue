@@ -2,8 +2,8 @@
   <div id="container">
     <hr />
     <h3 class="ma-3">
-      <div v-if="productsNum == 0">
-        '{{ $store.getters.getSearchName }}에 대한 검색결과가 없습니다.
+      <div v-if="productsNum === 0">
+        '{{ $store.getters.getSearchName }}'에 대한 검색결과가 없습니다.
       </div>
       <div v-else>
         <strong
@@ -56,6 +56,10 @@ export default {
       products: [],
       productsNum: '',
     };
+  },
+  created() {
+    this.products = this.$store.getters.getintegratedSearch;
+    this.productsNum = this.products.length;
   },
   updated() {
     this.products = this.$store.getters.getintegratedSearch;
