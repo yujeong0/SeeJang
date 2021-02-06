@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    /** 로그인 **/
     login: {
       user_token: '',
       login_platform: '',
@@ -14,12 +15,19 @@ export default new Vuex.Store({
           : true,
       member_id: sessionStorage.getItem('userId'),
     },
+  /** 로그인 **/
+    
+    /** 카메라 **/
     camera: {
       isPhotoTaken: false,
       isClicked: false,
       mode: '',
       item: '',
     },
+
+  /** 카메라 **/
+    
+    /** 상품 **/
     product: {
       total: 0,
       category: "",
@@ -31,23 +39,36 @@ export default new Vuex.Store({
       categorizeItems: [],
       categorizeItem: "",
     },
+
+   /** 상품 **/
+    
+    /** 쇼핑리스트 **/
     shoppingList: {
       shoppingListName: "",
       shoppingListPrice: "",
-    }
+    },
+
+  /** 쇼핑리스트 **/
+    
+  /** 통합검색 **/
+    integratedSearch: []
+  
+    /** 통합검색 **/
   },
   mutations: {
+    //** 통합검색 Set **/
+    SET_INTEGRATED_SEARCH(state, payload) {
+      state.integratedSearch.splice(0); //배열 내용 초기화해주기
+      state.integratedSearch = payload.response.data;
+    },
+    //** 통합검색 Set **/
+    
     //** 상품정보 **/
+    //상품정보 넣어주기
     SET_PRODUCT_INFO(state, payload) {
-      console.log(payload);
-      console.dir(payload);
       state.product.productName = payload.productInfo.productName
       state.product.productNo = payload.productInfo.productNo
       state.product.productPrice = payload.productInfo.productPrice
-
-      console.log("상품번호:" + state.product.productName)
-      console.log("상품이름:" + state.product.productPrice)
-
     },
     // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
@@ -63,11 +84,9 @@ export default new Vuex.Store({
       state.login.member_id = '';
     },
     SET_USER_INFO(state, payload) {
-      console.log(payload);
       state.login.user_token = payload.userInfo.userToken;
       state.login.login_platform = payload.userInfo.loginAPI;
       state.login.member_id = payload.userInfo.memberId;
-      console.dir(state.login);
     },
     // ** 로그인 끝 **//
 
@@ -84,7 +103,6 @@ export default new Vuex.Store({
     },
     SET_CAMERA_ITEM(state, payload) {
       state.camera.item = payload.item;
-      console.log('아이템입력들어왔따:' + state.camera.item);
     },
     // ** 카메라 끝 **//
 
@@ -191,5 +209,11 @@ export default new Vuex.Store({
       return state.product.checkedList;
     },
     // ** 상품 관련 끝 ** //
+
+    //** 통합검색 **/
+    getintegratedSearch(state) {
+      return state.integratedSearch;
+    }
+    //** 통합검색 **/
   },
 });

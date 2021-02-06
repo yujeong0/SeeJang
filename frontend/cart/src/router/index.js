@@ -17,6 +17,7 @@ import ModeSetting from '@/page/ModeSetting.vue';
 import BlindProduct from '@/page/BlindProduct.vue';
 import Login_callback from '@/page/login/Login_callback.vue';
 import Kakao_callback from '@/page/login/KakaoLoginCallback.vue';
+import IntegratedSearch from '@/page/IntegratedSearch.vue';
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ const routes = [
     path: '/',
     name: 'hello',
     component: HelloWorld,
+  },
+  {
+    path: '/integratedSearch',
+    name: 'integratedSearch',
+    component: IntegratedSearch,
   },
   {
     path: '/notBlindSearchProduct',

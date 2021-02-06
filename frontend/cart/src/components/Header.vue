@@ -31,6 +31,8 @@
       placeholder="상품을 검색해주세요."
       outlined
       dense
+      @keyup.enter="goDetail"
+      v-model="serachName"
       style="width: 80%; margin: 1% auto; margin-bottom: -7%"
       class="text"
     ></v-text-field>
@@ -84,11 +86,33 @@ export default {
   components: {},
   data() {
     return {
+      serachName: '',
       platform: this.$store.getters.getPlatform,
       nickName: sessionStorage.getItem('nickName'),
     };
   },
   methods: {
+    goDetail() {
+      http
+        .get('/product/name', {
+          params: {
+            name: this.serachName,
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log(response);
+          console.log(response.data.length);
+          this.$store.commit('SET_INTEGRATED_SEARCH', { response }); //검색한 상품들의 정보를 셋팅
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      if (this.$router.currentRoute.path == '/integratedSearch') {
+      } else {
+        this.$router.push('/integratedSearch');
+      }
+    },
     camera() {
       this.$router.push('/notBlindSearchProduct');
     },
@@ -139,19 +163,19 @@ export default {
           console.log(error);
         });
 
-            sessionStorage.setItem("isLogin", false);
-            sessionStorage.setItem("nickName", "");
-            sessionStorage.setItem("member_id", "");
-            localStorage.setItem("isBlind", 0);
-            this.$store.commit("TOGGLE_LOGIN_STATE");
-            this.$store.commit("INIT");
-            this.$router.push("/");
-        },
-        likeproduct() {
-            this.$router.push("/likeproduct");
-        },
+      sessionStorage.setItem('isLogin', false);
+      sessionStorage.setItem('nickName', '');
+      sessionStorage.setItem('member_id', '');
+      localStorage.setItem('isBlind', 0);
+      this.$store.commit('TOGGLE_LOGIN_STATE');
+      this.$store.commit('INIT');
+      this.$router.push('/');
     },
-  }
+    likeproduct() {
+      this.$router.push('/likeproduct');
+    },
+  },
+};
 </script>
 
 <style scoped>
