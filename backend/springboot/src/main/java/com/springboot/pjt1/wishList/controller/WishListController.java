@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +41,7 @@ public class WishListController {
 	}
 	
 	@ApiOperation(value = "사용자의 찜 목록 중 한 항목을 삭제한다.", response = Integer.class)
-	@PostMapping("/remove")
+	@DeleteMapping("/remove")
 	public String removeWishListByNo(int wishNo) {
 		try { 
 			service.removeWishListByNo(wishNo);
