@@ -13,30 +13,24 @@
                     style="border-radius: 40px 40px"
                 />
             </v-col>
+        </v-row>
+        <v-row>
             <v-col>
-                <v-row>
-                    <br />
-                </v-row>
                 <v-row no-gutters>
                     <v-col>
                         <div class="pro_name" style="text-align: center">
                             <strong>{{ this.popular.productName }}</strong>
                         </div>
                         <div style="text-align: center">
-                            <strong>{{ this.popular.productPrice }} 원</strong>
+                            <strong style="color:blue">{{ this.popular.productPrice }} 원</strong>
                         </div>
                     </v-col>
                 </v-row>
                 <v-row no-gutters>
-                    <v-col>
+                    <v-col style="text-align:right; padding-left:6%">
                         <v-btn text outlined @click="addShoppingList">쇼핑리스트 추가 </v-btn>
                     </v-col>
-                    <!-- <v-btn text outlined style="margin-left:7px; width:3%">
-                        <vue-star animate="animated bounce" color="#F05654">
-                            <i slot="icon" class="fas fa-shopping-basket"></i>
-                        </vue-star>
-                    </v-btn> -->
-                    <v-col style="margin-top: 5px">
+                    <v-col style="text-align:left; padding-left:3%" md-4 offset-md="4">
                         <v-btn style="margin-left: 2%" text outlined @click="detail"
                             >상세 보기
                         </v-btn>
@@ -101,7 +95,12 @@ export default {
 }
 
 .pro_name {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
     margin-bottom: -2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 p {
