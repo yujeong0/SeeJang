@@ -4,9 +4,6 @@
         <div class="itemArea">
             <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
         </div>
-        <br />
-        <br />
-        <br />
         <div class="totalpriceArea">
             <hr class="SLHR" />
             <v-row no-gutters>
@@ -47,6 +44,7 @@ export default {
         })
             .then((response) => {
                 this.items = response.data;
+                console.log(this.items)
             })
             .catch((error) => {
                 console.log(error);
@@ -166,6 +164,8 @@ export default {
     background-color: white;
 }
 .itemArea {
+    height: auto;
+    overflow-y: scroll;
     padding-top: 39px;
 }
 </style>
