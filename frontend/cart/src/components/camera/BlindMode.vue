@@ -56,13 +56,18 @@ export default {
     },
 
     two() {
-      this.$store.commit('TOGGLE_CAMERA_CLICKED');
-      console.log('찾으실물품?');
-      this.speak('찾으실 물품을 말해주세요.');
-      setTimeout(() => {
-        console.log('찾으실물품 3초뒤 toggle함수 부름 ');
-        this.toggle(2, JSON.stringify(this.sentences)); //mode는 2, this.sentencse-> 찾을 물품 음성인식한거
-      }, 3000);
+      this.speak('찾으실 상품을 말씀해주세요.');
+      console.log('상품위치찾기 버튼 클릭');
+      let that = this;
+      setTimeout(function () {
+        console.log('음성인식 시작');
+        that.$store.commit('TOGGLE_CAMERA_CLICKED');
+      }, 2000);
+
+      setTimeout(function () {
+        console.log('음성출력 시작');
+        that.toggle(2, JSON.stringify(this.sentences)); //mode는 2, this.sentencse-> 찾을 물품 음성인식한거
+      }, 5000);
     },
     three() {
       this.toggle(3, 'item'); //mode3 보냄 글 안보내도 상관없음

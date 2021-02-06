@@ -10,10 +10,9 @@ let SpeechRecognition =
 let recognition = SpeechRecognition ? new SpeechRecognition() : false;
 export default {
   updated() {
+    console.log('음성인식시작');
     this.isClicked = this.$store.getters.getCameraClicked;
-    setTimeout(() => {
-      this.startSpeechRecognition();
-    }, 2000);
+    this.startSpeechRecognition();
   },
   props: {
     lang: {
