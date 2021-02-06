@@ -32,11 +32,11 @@ export default {
   data() {
     return {
       isPhotoTaken: this.$store.state.camera.isPhotoTaken, //초기 false -> ture
+      result: '',
     };
   },
   updated() {
     this.isPhotoTaken = this.$store.state.camera.isPhotoTaken;
-    console.log(this.$store.state.camera.isPhotoTaken);
     if (this.isPhotoTaken) this.takePhoto();
   },
   methods: {
@@ -60,81 +60,65 @@ export default {
       // SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
       window.speechSynthesis.speak(speechMsg);
     },
-    downloadImage() {
-      setTimeout(() => {
-        console.log('다운로드이미지 밑에부분 실행');
-        const download = document.getElementById('photoTaken');
-        const imgBase64 = download.toDataURL(
-          'image/jpeg',
-          'image/octet-stream'
-        );
-        const decodImg = atob(imgBase64.split(',')[1]);
+    async downloadImage() {
+      const download = document.getElementById('photoTaken');
+      const imgBase64 = download.toDataURL('image/jpeg', 'image/octet-stream');
+      const decodImg = atob(imgBase64.split(',')[1]);
 
-        let array = [];
-        for (let i = 0; i < decodImg.length; i++) {
-          array.push(decodImg.charCodeAt(i));
-        }
+      let array = [];
+      for (let i = 0; i < decodImg.length; i++) {
+        array.push(decodImg.charCodeAt(i));
+      }
 
-        const file = new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
-        const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
-        let formData = new FormData();
+      const file = new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+      const fileName = 'canvas_img_' + new Date().getMilliseconds() + '.jpg';
+      let formData = new FormData();
 
-        console.log(isBlind);
-        formData.append('file', file, fileName);
-        formData.append('mode', new Blob(), this.$store.getters.getCameraMode);
+      formData.append('file', file, fileName);
+      formData.append('mode', new Blob(), this.$store.getters.getCameraMode);
 
-        let isBlind = localStorage.getItem('isBlind');
-        if (isBlind == 1 && this.$store.getters.getCameraMode == 2) {
-          console.log('2번');
-          console.log(this.$store.getters.getCameraItem);
-          //2번 위치 찾기라면 이름까지 같이 보내줌
-          formData.append(
-            'item',
-            new Blob(),
-            this.$store.getters.getCameraItem
-          );
-        }
-        /*
+      let isBlind = localStorage.getItem('isBlind');
+      if (isBlind == 1 && this.$store.getters.getCameraMode == 2) {
+        //2번 위치 찾기라면 이름까지 같이 보내줌
+        formData.append('item', new Blob(), this.$store.getters.getCameraItem);
+      }
+      /*
       for (var key of formData.keys()) console.log(key);
       for (var value of formData.values()) console.log(value);
       */
-        console.log(this.sentences);
-        console.log('보낸다!!!!');
-        http
-          .post('/searchImage', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              withCredentials: true,
-            },
-          })
-          .then((response) => {
-            if (this.$store.getters.getCameraMode == 2) {
-              //장애인 위치찾기
-              setTimeout(() => {
-                this.speak(response.data.result);
-              }, 3500);
-            }
-            if (this.$store.getters.getCameraMode == 1) {
-              let productInfo = response.data.result[0];
-              console.log(productInfo);
-              console.dir(productInfo);
-              //비장애인
-              this.$store.commit('SET_PRODUCT_INFO', { productInfo });
-            }
+      console.log('사진, 모드, 아이템이름 액시오스로 보냄');
+      await http
+        .post('/searchImage', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            withCredentials: true,
+          },
+        })
+        .then((response) => {
+          this.result = response.data.result;
+          if (
+            this.$store.getters.getCameraMode == 2 ||
+            this.$store.getters.getCameraMode == 3
+          ) {
+            this.speak(this.result);
+            //장애인 위치찾기
+          }
+          if (this.$store.getters.getCameraMode == 1) {
+            let productInfo = response.data.result[0];
+            this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+          }
 
-            //뮤테이션으로 state에 response넣어주기
-            console.log('받는다!!');
-            // console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+          console.log('액시오스 값받아옴');
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-        //  this.$router.push('/detailProduct');
-        if (this.$store.getters.getCameraMode == 1)
-          this.$router.push('detailProduct');
-        this.$store.commit('TOGGLE_CAMERA_CANVAS');
-      }, 3000);
+      //  this.$router.push('/detailProduct');
+      if (this.$store.getters.getCameraMode == 1)
+        this.$router.push('detailProduct');
+      this.$store.commit('TOGGLE_CAMERA_CANVAS');
     },
     takePhoto() {
       const context = this.$refs.canvas.getContext('2d');
