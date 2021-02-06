@@ -38,6 +38,7 @@ export default new Vuex.Store({
       checkedList: [],
       categorizeItems: [],
       categorizeItem: "",
+      searchName : "",
     },
 
    /** 상품 **/
@@ -51,6 +52,7 @@ export default new Vuex.Store({
   /** 쇼핑리스트 **/
     
   /** 통합검색 **/
+    
     integratedSearch: []
   
     /** 통합검색 **/
@@ -60,6 +62,10 @@ export default new Vuex.Store({
     SET_INTEGRATED_SEARCH(state, payload) {
       state.integratedSearch.splice(0); //배열 내용 초기화해주기
       state.integratedSearch = payload.response.data;
+    },
+    SET_SERACH_NAME(state, payload) {
+      console.log(payload.searchName);
+      state.product.searchName = payload.searchName;
     },
     //** 통합검색 Set **/
     
@@ -209,10 +215,18 @@ export default new Vuex.Store({
       return state.product.checkedList;
     },
     // ** 상품 관련 끝 ** //
+    SET_SERACH_NAME(state, payload) {
+      console.log(payload.serachName);
+      state.product.searchName = payload.serachName;
+    },
 
     //** 통합검색 **/
     getintegratedSearch(state) {
       return state.integratedSearch;
+    },
+
+    getSearchName(state) {
+      return state.product.searchName;
     }
     //** 통합검색 **/
   },
