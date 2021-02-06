@@ -20,7 +20,6 @@ export default {
   updated() {
     let item = this.sentences;
     this.$store.commit('SET_CAMERA_ITEM', { item }); //아이템 넣어주고
-    console.log('아이템집어넣어야됨');
   },
   data() {
     return {
