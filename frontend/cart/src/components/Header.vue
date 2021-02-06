@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="container" class="header">
     <v-toolbar class="nav" style="height: 45px">
       <v-toolbar-title
         class="grey--text lastObject"
@@ -16,7 +16,7 @@
         모드변경
         <i class="fas fa-blind"></i>
       </v-btn>
-      <v-btn text style="margin: 0 4%; margin-top: -3%">
+      <v-btn text @click="likeproduct" style="margin: 0 4%; margin-top: -3%">
         {{ nickName }} 님
         <i class="fas fa-user-circle fa-lg"></i>
       </v-btn>
@@ -55,7 +55,7 @@
         /></v-col>
       </v-row>
     </div>
-    <div class="gridDiv mb-2">
+    <div class="gridDiv mb-1" style="margin-top: -16px">
       <v-row no-gutters>
         <v-col @click="shopping_list" class="selected">
           <span style="font-size: small" class="mr-3">쇼핑리스트</span></v-col
@@ -96,7 +96,12 @@ export default {
       this.$router.push('/shoppinglist');
     },
     popular_product() {
-      this.$router.push('/popularproduct');
+      console.log();
+      if (this.$router.currentRoute.path == '/popularproduct') {
+        this.$store.commit('SET_CATEGORY_STATE', false);
+      } else {
+        this.$router.push('/popularproduct');
+      }
     },
     changeMode() {
       // 비쟁애인 - 시각장애인 모드 변경
@@ -134,16 +139,19 @@ export default {
           console.log(error);
         });
 
-      sessionStorage.setItem('isLogin', false);
-      sessionStorage.setItem('nickName', '');
-      sessionStorage.setItem('member_id', '');
-      localStorage.setItem('isBlind', 0);
-      this.$store.commit('TOGGLE_LOGIN_STATE');
-      this.$store.commit('INIT');
-      this.$router.push('/');
+            sessionStorage.setItem("isLogin", false);
+            sessionStorage.setItem("nickName", "");
+            sessionStorage.setItem("member_id", "");
+            localStorage.setItem("isBlind", 0);
+            this.$store.commit("TOGGLE_LOGIN_STATE");
+            this.$store.commit("INIT");
+            this.$router.push("/");
+        },
+        likeproduct() {
+            this.$router.push("/likeproduct");
+        },
     },
-  },
-};
+  }
 </script>
 
 <style scoped>
