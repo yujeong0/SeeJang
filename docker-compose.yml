@@ -6,11 +6,8 @@ services:
     container_name: nginx
     ports: 
       - 80:80
-    build: 
-      context: nginx
-      dockerfile: nginx.Dockerfile
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./frontend/cart/nginx:/etc/nginx/conf.d
     depends_on: 
       - spring
 
@@ -18,7 +15,7 @@ services:
     image: mysql:8.0.23
     container_name: mysql
     ports:
-      - "3307:3306"
+      - 3307:3306
     environment:
       MYSQL_ROOT_PASSWORD: "root"
     command:
@@ -27,7 +24,7 @@ services:
     volumes:
       - /Users/d109/datadir:/var/lib/mysql
 
-  redis:                      # redis 
+  redis:                     
    image: redis
    restart: always
 
@@ -47,11 +44,11 @@ services:
     image: vue-front
     container_name: frontend
     build:
-      context: frontend/cart
+      context: ./frontend/cart
       dockerfile: frontend.Dockerfile
     depends_on: 
       - spring
     ports:
-      - "8080:8080"
+      - 8080:8080
 
 
