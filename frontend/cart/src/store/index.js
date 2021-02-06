@@ -28,7 +28,8 @@ export default new Vuex.Store({
       productPrice: "",
       categorize: false,
       checkedList: [],
-      categorizeItems: []
+      categorizeItems: [],
+      categorizeItem: "",
     },
     shoppingList: {
       shoppingListName: "",
@@ -50,7 +51,7 @@ export default new Vuex.Store({
     },
     // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
-      if(sessionStorage.getItem('isLogin') == 'false'){
+      if (sessionStorage.getItem('isLogin') == 'false') {
         state.login.isLogin = false;
       } else {
         state.login.isLogin = true;
@@ -114,11 +115,14 @@ export default new Vuex.Store({
         }
       }
     },
-    SET_CATEGORY_STATE(state, payload){
+    SET_CATEGORY_STATE(state, payload) {
       state.product.categorize = payload;
     },
     SET_CATEGORIZE_ITEMS(state, payload) {
       state.product.categorizeItems = payload.categorizeItems;
+    },
+    SET_CATEGORIZE_ITEM(state, payload) {
+      state.product.categorizeItem = payload.categorizeItem;
     }
     // ** 상품 관련 끝 ** //
   },
@@ -177,12 +181,15 @@ export default new Vuex.Store({
     getCategorizeItems(state) {
       return state.product.categorizeItems;
     },
+    getCategorizeItem(state){
+      return state.product.categorizeItem;
+    },
     getCategorizeState(state) {
       return state.product.categorize;
     },
     getCheckedList(state) {
       return state.product.checkedList;
-    }
+    },
     // ** 상품 관련 끝 ** //
   },
 });
