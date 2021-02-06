@@ -2,6 +2,10 @@
     <div id="app" class="columns mt-4">
         <categorize />
         <div class="column" v-if="state">
+            <br />
+            <h3 class="mb-5">{{category}}</h3>
+            <hr />
+            <br />
             <CategoryInfo
                 v-for="item in this.items"
                 :categoryItem="item"
@@ -43,7 +47,7 @@ export default {
             });
     },
     computed: {
-        ...mapGetters({ items: "getCategorizeItems", state: "getCategorizeState" }),
+        ...mapGetters({ items: "getCategorizeItems", state: "getCategorizeState", category : "getCategorizeItem" }),
     },
     data() {
         return {
