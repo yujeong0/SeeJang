@@ -57,10 +57,10 @@
                     <v-col @click="clickCategory('양념/오일')"
                         ><img src="@/assets/oil.png/" alt="" width="40px" class="mr-4"
                     /></v-col>
-                    <v-col @click="clickCategory('우유')"
+                    <v-col @click="clickCategory('우유/유제품')"
                         ><img src="@/assets/milk.png/" alt="" width="40px" class="ml-4 mr-4"
                     /></v-col>
-                    <v-col @click="clickCategory('베이커리')"
+                    <v-col @click="clickCategory('베이커리/잼')"
                         ><img src="@/assets/bread.png/" alt="" width="40px" class="ml-4 mr-4"
                     /></v-col>
                     <v-col @click="clickCategory('쌀/잡곡')"
@@ -82,7 +82,7 @@
                         ><span
                             style="font-size: small"
                             class="mr-0.5"
-                            @click="clickCategory('우유')"
+                            @click="clickCategory('우유/유제품')"
                             >우유/</span
                         ></v-col
                     >
@@ -90,7 +90,7 @@
                         ><span
                             style="font-size: small"
                             class="ml-0.5"
-                            @click="clickCategory('베이커리')"
+                            @click="clickCategory('베이커리/잼')"
                             >베이커리/</span
                         ></v-col
                     >
@@ -111,12 +111,12 @@
                         ><span
                             style="font-size: small"
                             class="ml-4"
-                            @click="clickCategory('유제품')"
+                            @click="clickCategory('우유/유제품')"
                             >유제품</span
                         ></v-col
                     >
                     <v-col
-                        ><span style="font-size: small" class="mr-6" @click="clickCategory('잼')"
+                        ><span style="font-size: small" class="mr-6" @click="clickCategory('베이커리/잼')"
                             >잼</span
                         ></v-col
                     >
@@ -146,6 +146,7 @@ export default {
                 })
                 .then((response) => {
                     let categorizeItems = response.data;
+                    this.$store.commit("SET_CATEGORIZE_ITEM", { categorizeItem });
                     this.$store.commit("SET_CATEGORIZE_ITEMS", { categorizeItems });
                     this.$store.commit("SET_CATEGORY_STATE", true);
                 })
