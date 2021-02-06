@@ -91,11 +91,6 @@ const routes = [
     name: 'modesetting',
     component: ModeSetting,
   },
-  {
-    path: '/blindproduct',
-    name: 'blindproduct',
-    component: BlindProduct,
-  },
 ];
 
 const router = new VueRouter({
