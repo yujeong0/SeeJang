@@ -25,10 +25,10 @@
                     </v-col>
                 </v-row>
                 <v-row no-gutters>
-                    <v-col>
+                    <v-col style="text-align:right; padding-left:6%">
                         <v-btn text outlined @click="addShoppingList">쇼핑리스트 추가 </v-btn>
                     </v-col>
-                    <v-col style="margin-top: 5px">
+                    <v-col style="text-align:left; padding-left:3%" md-4 offset-md="4">
                         <v-btn style="margin-left: 2%" text outlined @click="detail"
                             >상세 보기
                         </v-btn>
