@@ -1,6 +1,19 @@
 <template>
   <div id="container">
-    <div class="pt-10">
+    <hr />
+    <h3 class="ma-3">
+      <div v-if="productsNum == 0">
+        '{{ $store.getters.getSearchName }}에 대한 검색결과가 없습니다.
+      </div>
+      <div v-else>
+        <strong
+          >'{{ $store.getters.getSearchName }}'에 대한
+          {{ this.products.length }}개의 검색결과</strong
+        >
+      </div>
+    </h3>
+    <hr />
+    <div class="pt-3">
       <div style="text-align: center" v-for="(product, i) in products" :key="i">
         <img
           :src="
@@ -17,7 +30,7 @@
         <div>
           <strong style="color: blue">{{ product.productPrice }} 원</strong>
         </div>
-        <v-row no-gutters>
+        <v-row no-gutters class="my-2">
           <v-col style="text-align: right; padding-left: 6%">
             <v-btn text outlined @click="addShoppingList(i)"
               >쇼핑리스트 추가
@@ -41,16 +54,12 @@ export default {
   data() {
     return {
       products: [],
+      productsNum: '',
     };
-  },
-  created() {
-    console.log('들어왓냐');
-    this.products = this.$store.getters.getintegratedSearch;
-    console.log(this.products);
-    console.log(this.products.length);
   },
   updated() {
     this.products = this.$store.getters.getintegratedSearch;
+    this.productsNum = this.products.length;
   },
   methods: {
     addShoppingList(idx) {

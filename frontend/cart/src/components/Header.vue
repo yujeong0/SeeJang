@@ -74,7 +74,7 @@
         >
       </v-row>
     </div>
-    <hr class="first" />
+    <hr />
   </div>
 </template>
 
@@ -93,6 +93,8 @@ export default {
   },
   methods: {
     goDetail() {
+      let searchName = this.serachName;
+      this.$store.commit('SET_SERACH_NAME', { searchName });
       http
         .get('/product/name', {
           params: {
@@ -102,7 +104,6 @@ export default {
         })
         .then((response) => {
           console.log(response);
-          console.log(response.data.length);
           this.$store.commit('SET_INTEGRATED_SEARCH', { response }); //검색한 상품들의 정보를 셋팅
         })
         .catch((error) => {
