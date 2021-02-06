@@ -10,19 +10,30 @@
         {{ item.productName }}
         <div class="productPrice" style="text-align: right">
           {{ item.price }}원
-          <v-btn text outlined @click="like(item)" style="margin-left:7px; width:3%">_
-              <vue-star style="margin-left:" animate="animated bounce" color="#F05654">
-                  <i slot="icon" class="fas fa-shopping-basket"></i>
-              </vue-star>
+          <v-btn
+            text
+            outlined
+            @click="like(item)"
+            style="margin-left: 7px; width: 3%"
+            >_
+            <vue-star
+              style="margin-left: "
+              animate="animated bounce"
+              color="#F05654"
+            >
+              <i slot="icon" class="fas fa-shopping-basket"></i>
+            </vue-star>
           </v-btn>
         </div>
       </div>
       <hr />
     </div>
-
     <h3 class="text-h7 pr-3">상 품 평</h3>
     <hr />
-    <div>
+    <div v-if="reviewNum == 0">
+      <strong>상품평이 존재하지 않습니다.</strong>
+    </div>
+    <div v-else>
       <div v-for="(item, i) in reviews" :key="i">
         <div class="pl-4" style="text-align: left">
           <strong>{{ item.memberName }}</strong>
@@ -72,7 +83,7 @@ export default {
           console.log(this.datas[i].productName);
           console.log(this.datas[i].siteName);
         }
-
+        this.reviewNum = response.data.review.length;
         for (let i = 0; i < response.data.review.length; i++) {
           this.reviews.push(response.data.review[i]);
           console.log(this.reviews[i].comment);
@@ -87,6 +98,7 @@ export default {
     return {
       datas: [],
       reviews: [],
+      reviewNum: '',
     };
   },
   computed: {
@@ -97,35 +109,25 @@ export default {
     console.log(sessionStorage.getItem('nickName'));
   },
   methods: {
-    getPic(index) {
-      console.log(this.reviews[index]);
-      let url =
-        '@/assets/static/reviewscore/' + this.reviews[index].score + 'star.png';
-      console.log(url);
-      return url;
-    },
     like(item) {
       console.log(item);
       let formData = new FormData();
-            formData.append("link", item.link);
-            formData.append("memberId", this.$store.getters.getMemberId);
-            formData.append("price", item.price);
-            formData.append("productName", item.productName);
-            formData.append("siteName", item.siteName);
-            http.post("/wishList/add", formData, {
-                withCredentials: true,
-            })
-                .then((response) => {
-                    console.log(response)
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-
-
-
-
-    }
+      formData.append('link', item.link);
+      formData.append('memberId', this.$store.getters.getMemberId);
+      formData.append('price', item.price);
+      formData.append('productName', item.productName);
+      formData.append('siteName', item.siteName);
+      http
+        .post('/wishList/add', formData, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
