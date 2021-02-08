@@ -10,5 +10,4 @@ COPY --from=build-stage ./app/dist /usr/share/nginx/html/shopping
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./nginx/nginx.conf /etc/nginx/conf.d
 EXPOSE 80
-CMD ["cd", "/etc/nginx/key", "ls"]
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
