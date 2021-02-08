@@ -40,6 +40,7 @@ export default {
             shoppingListNo: response.data, // 백엔드에서 받아온 No 값으로 변경
           };
           this.$attrs.add(item);
+          this.$store.commit('TOGGLE_MODAL_STATE');
           this.$modal.hide('AddShoppingList-modal');
         })
         .catch((error) => {
@@ -47,6 +48,7 @@ export default {
         });
     },
     cancel() {
+      this.$store.commit('TOGGLE_MODAL_STATE');
       this.$modal.hide('AddShoppingList-modal');
     },
     search() {
