@@ -6,7 +6,7 @@
     >
       <img
         :src="require('@/assets/static/productImg/' + getProductNo + '.png')"
-        alt="dd"
+        alt="사진이 없습니다"
         width="134px"
         height="140px"
         style="border-radius: 40px 40px"
