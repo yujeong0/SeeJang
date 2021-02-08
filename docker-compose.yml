@@ -43,6 +43,8 @@ services:
   vue:
     image: vue_frontend
     container_name: frontend
+    volumes:
+      - ./key:/etc/nginx/key
     build:
       context: ./frontend/cart
       dockerfile: frontend.Dockerfile
@@ -50,4 +52,5 @@ services:
       - spring
     ports:
       - 80:80
+    
 
