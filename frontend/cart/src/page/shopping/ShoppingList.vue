@@ -6,7 +6,7 @@
             <shoppingListHeader @check="check"></shoppingListHeader>
         </div>
         <div class="itemArea">
-            <item v-for="(item) in items" :allcheck="checkbox" :item="item" :key="item.idx" @del="del"></item>
+            <item v-for="(item, idx) in items" :item="item" :key="idx" @del="del"></item>
         </div>
         <div class="totalpriceArea">
             <hr class="SLHR" />
@@ -49,18 +49,12 @@ export default {
         })
             .then((response) => {
                 this.items = response.data;
-                for (let i = 0; i < this.items.length; i++) {
-                    this.items[i] = {...this.items[i], idx:i};
-                }
-                console.log(this.items);
             })
             .catch((error) => {
                 console.log(error);
             });
     },
     updated() {
-        console.log("upd");
-        console.log(this.checkbox);
     },
     computed: {
         ...mapGetters(["getTotalMoney", "getCheckedList"]),
@@ -72,7 +66,6 @@ export default {
     data() {
         return {
             items: [],
-            checkbox: false,
         };
     },
     methods: {
@@ -145,10 +138,17 @@ export default {
                     }
                 }
             }
-            console.log();
         },
-        check() {
-            this.checkbox = !this.checkbox;
+        async check(check) {
+            this.$store.commit("SET_ZERO_TOTAL");
+            let list = [...this.items];
+            for (let i = 0; i < list.length; i++) {
+                let element = list[i];
+                element.checked = check;
+                list.splice(i, 1, element);
+            }
+            await this.items.splice(0);
+            this.items = list;
         },
     },
 };
