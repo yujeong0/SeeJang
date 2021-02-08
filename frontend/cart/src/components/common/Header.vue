@@ -5,7 +5,7 @@
         class="grey--text lastObject"
         style="margin-left: -2%; margin-top: -3%"
       >
-        <label style="color: blue">See 장</label>
+        <label>장보기</label>
       </v-toolbar-title>
       <v-btn
         text
@@ -92,10 +92,10 @@ export default {
     };
   },
   methods: {
-    async goDetail() {
+    goDetail() {
       let searchName = this.serachName;
-      await this.$store.commit('SET_SERACH_NAME', { searchName });
-      await http
+      this.$store.commit('SET_SERACH_NAME', { searchName });
+      http
         .get('/product/name', {
           params: {
             name: this.serachName,
@@ -109,10 +109,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-
       if (this.$router.currentRoute.path == '/integratedSearch') {
       } else {
-        await this.$router.push('/integratedSearch');
+        this.$router.push('/integratedSearch');
       }
     },
     camera() {

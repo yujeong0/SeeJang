@@ -5,18 +5,18 @@ Vue.use(VueRouter);
 
 import Login from '@/page/login/Login.vue';
 import HelloWorld from '@/page/HelloWorld.vue';
-import BlindSearchProduct from '@/page/BlindSearchProduct.vue';
-import NotBlindSearchProduct from '@/page/NotBlindSearchProduct.vue';
-import DetailProduct from '@/page/DetailProduct.vue';
-import Header from '@/components/Header.vue';
+import BlindSearchProduct from '@/page/camera/BlindSearchProduct.vue';
+import NotBlindSearchProduct from '@/page/camera/NotBlindSearchProduct.vue';
+import DetailProduct from '@/page/product/DetailProduct.vue';
+import Header from '@/components/common/Header.vue';
 import Categorize from '@/components/popular/Categorize.vue';
 import ShoppingList from '@/page/shopping/ShoppingList.vue';
-import LikeProduct from '@/page/LikeProduct.vue';
-import PopularProduct from '@/page/popular/PopularProduct.vue';
+import LikeProduct from '@/page/product/LikeProduct.vue';
+import PopularProduct from '@/page/product/PopularProduct.vue';
 import ModeSetting from '@/page/ModeSetting.vue';
-import BlindProduct from '@/page/BlindProduct.vue';
 import Login_callback from '@/page/login/Login_callback.vue';
 import Kakao_callback from '@/page/login/KakaoLoginCallback.vue';
+import IntegratedSearch from '@/page/product/IntegratedSearch.vue';
 // import SearchProduct from "@/components/SearchProduct.vue"
 Vue.use(VueRouter);
 
@@ -25,6 +25,11 @@ const routes = [
     path: '/',
     name: 'hello',
     component: HelloWorld,
+  },
+  {
+    path: '/integratedSearch',
+    name: 'integratedSearch',
+    component: IntegratedSearch,
   },
   {
     path: '/notBlindSearchProduct',
@@ -85,11 +90,6 @@ const routes = [
     path: '/modesetting',
     name: 'modesetting',
     component: ModeSetting,
-  },
-  {
-    path: '/blindproduct',
-    name: 'blindproduct',
-    component: BlindProduct,
   },
 ];
 
