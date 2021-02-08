@@ -24,7 +24,7 @@
             <div style="margin-bottom: 12px">
                 <v-row no-gutters>
                     <v-col sm style="max-width: 8%; margin-left: 4%">
-                        <v-btn icon outlined>My</v-btn></v-col
+                        <v-btn icon outlined @click="MyFavorite">My</v-btn></v-col
                     >
                     <v-col sm style="max-width: 25%; margin-left: 4%">
                         <v-btn class="" text @click="addList"
@@ -49,6 +49,7 @@ import item from "@/components/shopping/item.vue";
 import http from "@/util/http-common.js";
 import AddShoppingList from "@/components/shopping/AddShoppingListForm.vue";
 import shoppingListHeader from "@/components/shopping/shoppingListHeader.vue";
+import MyFavoriteShoppingList from "@/components/shopping/MyFavoriteShoppingList.vue"
 import { mapGetters } from "vuex";
 
 export default {
@@ -77,6 +78,7 @@ export default {
     components: {
         item,
         shoppingListHeader,
+        MyFavoriteShoppingList
     },
     data() {
         return {
@@ -97,7 +99,7 @@ export default {
                     name: "AddShoppingList-modal",
 
                     width: "70%",
-                    height: "60%",
+                    height: "65%",
                     draggable: false,
                     shiftY: 0.5,
                 },
@@ -168,6 +170,32 @@ export default {
             await this.items.splice(0);
             this.items = list;
         },
+        MyFavorite(){
+            this.$modal.show(
+                MyFavoriteShoppingList,
+                {
+                    add: this.add,
+                    addData: "data",
+                    modal: this.$modal,
+                },
+                {
+                    name: "MyFavoriteShoppingList-modal",
+
+                    width: "70%",
+                    height: "65%",
+                    draggable: false,
+                    shiftY: 0.5,
+                },
+                {
+                    closeByName() {
+                        this.$modal.hide("MyFavoriteShoppingList-modal");
+                    },
+                    closeByEvent() {
+                        this.$emit("close");
+                    },
+                }
+            );
+        }
     },
 };
 </script>
