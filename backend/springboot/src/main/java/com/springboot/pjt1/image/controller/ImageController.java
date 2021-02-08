@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
 public class ImageController {
 
 	@Autowired
-	private ImageService service;
+	private ImageService imageService;
     
     @Autowired
     private ProductService productService;
@@ -43,25 +43,25 @@ public class ImageController {
 			MultipartFile file = map.get("file").get(0);	// 이미지 파일
 			MultipartFile mode = map.get("mode").get(0);	// 모드 이름
 			
-			// 파일을 지정된 경로로 저장
-			String fileName = service.storeFile(file); 
-			System.out.println(fileName);
+//			// 파일을 지정된 경로로 저장
+//			String fileName = service.storeFile(file); 
+//			System.out.println(fileName);
 			
 			Map<String, Object> resultMap = null;
 			// mode 별 다른 동작
 			switch(mode.getOriginalFilename()) {
 			case "1":	// 1  : 일반인
 				resultMap = new HashMap<>();
-				resultMap.put("result", productService.searchProductByName(service.getProductName(fileName)));
+				resultMap.put("result", productService.searchProductByName(imageService.getProductName(file)));
 				break;
 			case "2":	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
 				String itemName = map.get("item").get(0).getOriginalFilename();	// 찾는 상품이름
 				resultMap = new HashMap<>();
-				resultMap.put("result", service.getDirection(fileName, itemName));
+				resultMap.put("result", imageService.getDirection(file, itemName));
 				break;
-			case "3":	// 3  : 시각장애인 상품 확인 음성출력으로 이거 뭐다 
+			case "3" :	// 3  : 시각장애인 상품 확인 음성출력으로 이거 뭐다 
 				resultMap = new HashMap<>();
-				resultMap.put("result", service.getProductName(service.getProductName(fileName)));
+				resultMap.put("result", imageService.getProductName(file));
 				break;
 			}
 			return resultMap;
