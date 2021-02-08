@@ -10,7 +10,6 @@ let SpeechRecognition =
 let recognition = SpeechRecognition ? new SpeechRecognition() : false;
 export default {
   updated() {
-    console.log('음성인식시작');
     this.isClicked = this.$store.getters.getCameraClicked;
     this.startSpeechRecognition();
   },
@@ -61,23 +60,19 @@ export default {
       recognition.interimResults = true;
 
       recognition.addEventListener('speechstart', () => {
-        // console.log('speechstart');
         this.speaking = true;
       });
 
       recognition.addEventListener('speechend', () => {
-        // console.log('speechend');
         this.speaking = false;
       });
 
       recognition.addEventListener('result', () => {
-        // console.log('array :' + Array.from(event.results).map(result[0]));
         const text = Array.from(event.results)
           .map((result) => result[0])
           .map((result) => result.transcript)
           .join('');
 
-        //console.log(text);
         this.runtimeTranscription = text;
 
         this.endSpeechRecognition();

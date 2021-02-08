@@ -55,8 +55,8 @@ export default {
   },
   data() {
     return {
-      //productName: this.$store.getters.getProductName,
-      //   productPrice: this.$store.getters.getProductPrice,
+      productName: this.$store.getters.getProductName,
+      productPrice: this.$store.getters.getProductPrice,
     };
   },
 };
