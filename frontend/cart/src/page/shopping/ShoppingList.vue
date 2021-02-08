@@ -6,7 +6,13 @@
             <shoppingListHeader @check="check"></shoppingListHeader>
         </div>
         <div class="itemArea">
-            <item v-for="(item, idx) in items" :item="item" :key="idx" @del="del"></item>
+            <item
+                v-for="(item) in items"
+                :allCheck="allCheck"
+                :item="item"
+                :key="item.shoppingListNo"
+                @del="del"
+            ></item>
         </div>
         <div class="totalpriceArea">
             <hr class="SLHR" style="width: 80%" />
@@ -17,12 +23,20 @@
             </v-row>
             <div style="margin-bottom: 12px">
                 <v-row no-gutters>
-                    <v-col sm style="max-width:8%; margin-left:4%"> <v-btn icon outlined @click="mySL">My</v-btn></v-col>
-                    <v-col sm style="max-width:25%; margin-left:4%">
-                        <v-btn class="" text @click="addList"><v-img src="@/assets/plus.png" style="width:20px"></v-img> 쇼핑리스트 추가</v-btn>
+                    <v-col sm style="max-width: 8%; margin-left: 4%">
+                        <v-btn icon outlined>My</v-btn></v-col
+                    >
+                    <v-col sm style="max-width: 25%; margin-left: 4%">
+                        <v-btn class="" text @click="addList"
+                            ><v-img src="@/assets/plus.png" style="width: 20px"></v-img> 쇼핑리스트
+                            추가</v-btn
+                        >
                     </v-col>
-                    <v-col sm style="max-width:50%">
-                        <v-btn class="footerBtns" text @click="confirm"><v-img src="@/assets/check.png" style="width:20px"></v-img> 선택 상품 삭제!</v-btn>
+                    <v-col sm style="max-width: 50%">
+                        <v-btn class="footerBtns" text @click="confirm"
+                            ><v-img src="@/assets/check.png" style="width: 20px"></v-img> 선택 상품
+                            삭제!</v-btn
+                        >
                     </v-col>
                 </v-row>
             </div>
@@ -41,6 +55,7 @@ export default {
     name: "ShoppingList",
     created() {
         this.$store.commit("SET_ZERO_TOTAL");
+        this.$store.commit("INIT_CHECKLIST")
         var member_id = sessionStorage.getItem("userId");
         http.get("/shoppingList", {
             params: {
@@ -66,6 +81,7 @@ export default {
     data() {
         return {
             items: [],
+            allCheck: false,
         };
     },
     methods: {
@@ -140,6 +156,8 @@ export default {
             }
         },
         async check(check) {
+            this.$store.commit("INIT_CHECKLIST");
+            this.allCheck = check;
             this.$store.commit("SET_ZERO_TOTAL");
             let list = [...this.items];
             for (let i = 0; i < list.length; i++) {
@@ -150,9 +168,6 @@ export default {
             await this.items.splice(0);
             this.items = list;
         },
-        mySL(){
-            
-        }
     },
 };
 </script>
@@ -189,8 +204,8 @@ export default {
     overflow-y: scroll;
     padding-top: 80px;
 }
-.footerBtns{
-    text-align:left; 
-    margin-left:4%; 
+.footerBtns {
+    text-align: left;
+    margin-left: 4%;
 }
 </style>
