@@ -1,8 +1,9 @@
 <template>
     <div id="container">
-        <div class="titleLabel mb-30 mt-3">My Shopping List
-            <hr class="SLHR" style="width:100%">
-            <shoppingListHeader></shoppingListHeader>
+        <div class="titleLabel mb-30 mt-3">
+            My Shopping List
+            <hr class="SLHR" style="width: 100%" />
+            <shoppingListHeader @check="check"></shoppingListHeader>
         </div>
         <div class="itemArea">
             <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
@@ -48,7 +49,7 @@ export default {
         })
             .then((response) => {
                 this.items = response.data;
-                console.log(this.items)
+                console.log(this.items);
             })
             .catch((error) => {
                 console.log(error);
@@ -59,7 +60,7 @@ export default {
     },
     components: {
         item,
-        shoppingListHeader
+        shoppingListHeader,
     },
     data() {
         return {
@@ -137,6 +138,19 @@ export default {
                 }
             }
             console.log();
+        },
+        check(check) {
+            let list = [...this.items];
+
+            for (let i = 0; i < list.length; i++) {
+                let element = list[i];
+                element.checked = check;
+                list.splice(i, 1, element);
+            }
+
+            this.items = list;
+            console.log(this.items);
+            this.$forceUpdate;
         },
     },
 };

@@ -34,12 +34,16 @@ export default {
         };
     },
     created() {
+        console.log("created");
         if (this.checked) {
             var payload = this.item;
             let money = parseInt(this.productPrice);
             this.$store.commit("ADD_TOTAL_MONEY", { money });
             this.$store.commit("ADD_CHECK_ITEM", { payload });
         }
+    },
+    updated(){
+        console.log("update");
     },
     methods: {
         check() {
