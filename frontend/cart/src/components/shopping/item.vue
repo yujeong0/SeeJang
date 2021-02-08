@@ -42,7 +42,7 @@ export default {
     },
     created() {
         console.log("created");
-
+        
         if (this.ischecked) {
             var payload = this.item;
             let money = parseInt(this.productPrice);
