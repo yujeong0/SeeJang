@@ -3,7 +3,7 @@
         <v-container>
             <v-row class="mb-6" no-gutters >
                 <v-col cols="1" sm>
-                    <input type="checkbox" v-model="checked" :checked="checked" @click="check" />
+                    <input type="checkbox"  :ref="'aa'+index" v-model="ischecked" @click="check" />
                 </v-col>
                 <v-col cols="5" sm style="text-align: left; margin-right: 2%" @click="updateForm">
                     {{ productName }}
@@ -21,20 +21,25 @@
 import http from "@/util/http-common.js";
 import UpdateForm from "@/components/shopping/updateForm.vue";
 export default {
+    
     name: "item",
     props: {
         item: Object,
+        allcheck: Boolean,
+        index : Number
     },
     data() {
         return {
-            checked: this.item.checked,
+            ischecked: this.item.checked,
             productName: this.item.productName,
             productPrice: this.item.productPrice,
             shoppingListNo: this.item.shoppingListNo,
         };
     },
     created() {
-        console.log("created");
+        console.log("created"+this.index)
+        console.log(this.$refs);
+        // console.log
         if (this.checked) {
             var payload = this.item;
             let money = parseInt(this.productPrice);
@@ -44,6 +49,7 @@ export default {
     },
     updated(){
         console.log("update");
+        this.ischecked = this.allcheck;
     },
     methods: {
         check() {
