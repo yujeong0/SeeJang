@@ -1,16 +1,23 @@
 <template>
     <div class="itemWrap" id="container">
         <v-container>
-            <v-row class="mb-6" no-gutters >
+            <v-row class="mb-6" no-gutters>
                 <v-col cols="1" sm>
-                    <input type="checkbox"  :ref="'aa'+index" v-model="ischecked" :checked="ischecked" @click="check" />
+                    <input
+                        type="checkbox"
+                        v-model="ischecked"
+                        :checked="ischecked"
+                        @click="check"
+                    />
                 </v-col>
                 <v-col cols="5" sm style="text-align: left; margin-right: 2%" @click="updateForm">
                     {{ productName }}
                 </v-col>
                 <v-col style="text-align: left" @click="updateForm"> ₩ {{ productPrice }} </v-col>
-                <v-col style="text-align: right; ">
-                    <v-btn text @click="del" depressed color="error" style="padding-bottom: 20%"> del </v-btn></v-col
+                <v-col style="text-align: right">
+                    <v-btn text @click="del" depressed color="error" style="padding-bottom: 20%">
+                        del
+                    </v-btn></v-col
                 >
             </v-row>
         </v-container>
@@ -21,12 +28,9 @@
 import http from "@/util/http-common.js";
 import UpdateForm from "@/components/shopping/updateForm.vue";
 export default {
-    
     name: "item",
     props: {
         item: Object,
-        allcheck: Boolean,
-        index : Number
     },
     data() {
         return {
@@ -37,9 +41,8 @@ export default {
         };
     },
     created() {
-        console.log("created"+this.index)
-        console.log(this.$refs);
-        // console.log
+        console.log("created");
+
         if (this.ischecked) {
             var payload = this.item;
             let money = parseInt(this.productPrice);
@@ -47,12 +50,8 @@ export default {
             this.$store.commit("ADD_CHECK_ITEM", { payload });
         }
     },
-    updated(){
-        console.log("update");
-    },
     methods: {
         check() {
-            console.log(this.checked)
             let money = parseInt(this.productPrice);
             var payload = this.item;
             var no = this.item.shoppingListNo;
