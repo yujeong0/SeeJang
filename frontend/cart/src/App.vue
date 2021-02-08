@@ -28,6 +28,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
 }
 .header {
   position: fixed;
@@ -40,6 +41,7 @@ export default {
 }
 body {
   padding-top: 175px;
+  overflow: hidden;
   /* 생략 */
 }
 </style>
