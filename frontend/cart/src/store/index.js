@@ -15,8 +15,8 @@ export default new Vuex.Store({
           : true,
       member_id: sessionStorage.getItem('userId'),
     },
-  /** 로그인 **/
-    
+    /** 로그인 **/
+
     /** 카메라 **/
     camera: {
       isPhotoTaken: false,
@@ -25,8 +25,8 @@ export default new Vuex.Store({
       item: '',
     },
 
-  /** 카메라 **/
-    
+    /** 카메라 **/
+
     /** 상품 **/
     product: {
       total: 0,
@@ -38,23 +38,23 @@ export default new Vuex.Store({
       checkedList: [],
       categorizeItems: [],
       categorizeItem: "",
-      searchName : "",
+      searchName: "",
     },
 
-   /** 상품 **/
-    
+    /** 상품 **/
+
     /** 쇼핑리스트 **/
     shoppingList: {
       shoppingListName: "",
       shoppingListPrice: "",
     },
 
-  /** 쇼핑리스트 **/
-    
-  /** 통합검색 **/
-    
+    /** 쇼핑리스트 **/
+
+    /** 통합검색 **/
+
     integratedSearch: []
-  
+
     /** 통합검색 **/
   },
   mutations: {
@@ -68,7 +68,7 @@ export default new Vuex.Store({
       state.product.searchName = payload.searchName;
     },
     //** 통합검색 Set **/
-    
+
     //** 상품정보 **/
     //상품정보 넣어주기
     SET_PRODUCT_INFO(state, payload) {
@@ -133,8 +133,6 @@ export default new Vuex.Store({
       for (var i = 0; i < length; i++) {
         if (state.product.checkedList[i].shoppingListNo == payload.no) {
           state.product.checkedList.splice(i, 1);
-          i--;
-          length--;
           break;
         }
       }
@@ -147,6 +145,9 @@ export default new Vuex.Store({
     },
     SET_CATEGORIZE_ITEM(state, payload) {
       state.product.categorizeItem = payload.categorizeItem;
+    },
+    INIT_CHECKLIST(state) {
+      state.product.checkedList.splice(0);
     }
     // ** 상품 관련 끝 ** //
   },
@@ -205,7 +206,7 @@ export default new Vuex.Store({
     getCategorizeItems(state) {
       return state.product.categorizeItems;
     },
-    getCategorizeItem(state){
+    getCategorizeItem(state) {
       return state.product.categorizeItem;
     },
     getCategorizeState(state) {
