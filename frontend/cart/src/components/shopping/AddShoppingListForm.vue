@@ -37,9 +37,12 @@
         <br />
         <br />
         <div>
-            <v-btn text outlined style="margin: 2%" @click="add" @add="add">확인~!</v-btn>
-            <v-btn text outlined @click="cancel">취소~!</v-btn>
+            <v-btn text outlined style="margin: 2% 1%" @click="add" @add="add">추가하기</v-btn>
+            <v-btn text outlined @click="cancel">취소하기</v-btn>
         </div>
+        <v-btn text outlined @click="favorite" class="mt-3" style="margin-left: 3px; width: 59%"
+            >즐겨찾기 추가하기</v-btn
+        >
     </div>
 </template>
 
@@ -61,28 +64,30 @@ export default {
     },
     methods: {
         add() {
-            let formData = new FormData();
-            formData.append("checked", false);
-            formData.append("memberId", this.$store.getters.getMemberId);
-            formData.append("productName", this.productName);
-            formData.append("productPrice", this.productPrice);
-            http.post("/shoppingList", formData, {
-                withCredentials: true,
-            })
-                .then((response) => {
-                    let item = {
-                        checked: false,
-                        memberId: this.$store.getters.getMemberId,
-                        productName: this.productName,
-                        productPrice: this.productPrice,
-                        shoppingListNo: response.data, // 백엔드에서 받아온 No 값으로 변경
-                    };
-                    this.$attrs.add(item);
-                    this.$modal.hide("AddShoppingList-modal");
+            if (this.productName.length != 0 && this.productPrice.length != 0) {
+                let formData = new FormData();
+                formData.append("checked", false);
+                formData.append("memberId", this.$store.getters.getMemberId);
+                formData.append("productName", this.productName);
+                formData.append("productPrice", this.productPrice);
+                http.post("/shoppingList", formData, {
+                    withCredentials: true,
                 })
-                .catch((error) => {
-                    console.log(error);
-                });
+                    .then((response) => {
+                        let item = {
+                            checked: false,
+                            memberId: this.$store.getters.getMemberId,
+                            productName: this.productName,
+                            productPrice: this.productPrice,
+                            shoppingListNo: response.data, // 백엔드에서 받아온 No 값으로 변경
+                        };
+                        this.$attrs.add(item);
+                        this.$modal.hide("AddShoppingList-modal");
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
         },
         cancel() {
             this.$modal.hide("AddShoppingList-modal");
@@ -121,6 +126,9 @@ export default {
                 }
             }
             this.searchedState = false;
+        },
+        favorite() {
+            console.log("즐찾~");
         },
     },
 };
