@@ -9,21 +9,22 @@
             <item v-for="(item, idx) in items" :item="item" :key="idx" @del="del"></item>
         </div>
         <div class="totalpriceArea">
-            <hr class="SLHR" />
+            <hr class="SLHR" style="width: 80%" />
             <v-row no-gutters>
                 <v-col cols="2" sm></v-col>
                 <v-col style="text-align: left" cols="4"> 예상 총 가격 </v-col>
                 <v-col style="text-align: left"> ₩ {{ getTotalMoney }} </v-col>
             </v-row>
-            <div style="text-align: left; margin-left: 9%; margin-top: 1%">
-                <v-btn class="mr-10" text style="width: 35%" @click="addList">
-                    <img src="@/assets/plus.png" alt="" width="3%" />
-                    <label style="font-size: 0.9em">쇼핑리스트 추가</label></v-btn
-                >
-                <v-btn class="" text style="width: 35%" @click="confirm">
-                    <img src="@/assets/check.png" alt="" width="12%" />
-                    <label style="font-size: 0.9em">선택 상품 삭제!</label></v-btn
-                >
+            <div style="margin-bottom: 12px">
+                <v-row no-gutters>
+                    <v-col sm style="max-width:8%; margin-left:4%"> <v-btn icon outlined @click="mySL">My</v-btn></v-col>
+                    <v-col sm style="max-width:25%; margin-left:4%">
+                        <v-btn class="" text @click="addList"><v-img src="@/assets/plus.png" style="width:20px"></v-img> 쇼핑리스트 추가</v-btn>
+                    </v-col>
+                    <v-col sm style="max-width:50%">
+                        <v-btn class="footerBtns" text @click="confirm"><v-img src="@/assets/check.png" style="width:20px"></v-img> 선택 상품 삭제!</v-btn>
+                    </v-col>
+                </v-row>
             </div>
         </div>
     </div>
@@ -54,8 +55,7 @@ export default {
                 console.log(error);
             });
     },
-    updated() {
-    },
+    updated() {},
     computed: {
         ...mapGetters(["getTotalMoney", "getCheckedList"]),
     },
@@ -150,6 +150,9 @@ export default {
             await this.items.splice(0);
             this.items = list;
         },
+        mySL(){
+            
+        }
     },
 };
 </script>
@@ -176,6 +179,7 @@ export default {
     margin: auto;
 }
 .totalpriceArea {
+    width: 100%;
     position: fixed;
     bottom: 0;
     background-color: white;
@@ -184,5 +188,9 @@ export default {
     height: auto;
     overflow-y: scroll;
     padding-top: 80px;
+}
+.footerBtns{
+    text-align:left; 
+    margin-left:4%; 
 }
 </style>
