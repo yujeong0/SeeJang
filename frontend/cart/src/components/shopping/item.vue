@@ -3,7 +3,7 @@
         <v-container>
             <v-row class="mb-6" no-gutters >
                 <v-col cols="1" sm>
-                    <input type="checkbox"  :ref="'aa'+index" v-model="ischecked" @click="check" />
+                    <input type="checkbox"  :ref="'aa'+index" v-model="ischecked" :checked="ischecked" @click="check" />
                 </v-col>
                 <v-col cols="5" sm style="text-align: left; margin-right: 2%" @click="updateForm">
                     {{ productName }}
@@ -40,7 +40,7 @@ export default {
         console.log("created"+this.index)
         console.log(this.$refs);
         // console.log
-        if (this.checked) {
+        if (this.ischecked) {
             var payload = this.item;
             let money = parseInt(this.productPrice);
             this.$store.commit("ADD_TOTAL_MONEY", { money });
@@ -49,7 +49,6 @@ export default {
     },
     updated(){
         console.log("update");
-        this.ischecked = this.allcheck;
     },
     methods: {
         check() {
@@ -57,7 +56,7 @@ export default {
             let money = parseInt(this.productPrice);
             var payload = this.item;
             var no = this.item.shoppingListNo;
-            if (!this.checked) {
+            if (!this.ischecked) {
                 this.$store.commit("ADD_TOTAL_MONEY", { money });
                 this.$store.commit("ADD_CHECK_ITEM", { payload });
             } else {
@@ -97,7 +96,7 @@ export default {
         updateNamePrice(updatedItem) {
             console.log(updatedItem);
             let formData = new FormData();
-            formData.append("checked", this.checked);
+            formData.append("checked", this.ischecked);
             formData.append("memberId", this.$store.getters.getMemberId);
             formData.append("productName", updatedItem.productName);
             formData.append("productPrice", updatedItem.productPrice);
@@ -117,7 +116,7 @@ export default {
         },
         update() {
             let formData = new FormData();
-            formData.append("checked", !this.checked);
+            formData.append("checked", !this.ischecked);
             formData.append("memberId", this.$store.getters.getMemberId);
             formData.append("productName", this.productName);
             formData.append("productPrice", this.productPrice);
@@ -142,7 +141,7 @@ export default {
                 withCredentials: true,
             })
                 .then((response) => {
-                    if (this.checked) {
+                    if (this.ischecked) {
                         this.$store.commit("DEL_ITEM", { money });
                     }
                     console.log(response);

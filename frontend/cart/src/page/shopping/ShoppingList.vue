@@ -6,7 +6,7 @@
             <shoppingListHeader @check="check"></shoppingListHeader>
         </div>
         <div class="itemArea">
-            <item v-for="(item ,i) in items" :index="i" :checkBox="checkbox" :item="item" :key="i" @del="del"></item>
+            <item v-for="(item) in items" :allcheck="checkbox" :item="item" :key="item.idx" @del="del"></item>
         </div>
         <div class="totalpriceArea">
             <hr class="SLHR" />
@@ -49,7 +49,9 @@ export default {
         })
             .then((response) => {
                 this.items = response.data;
-                for (let i = 0; i < this.items.length; i++) {}
+                for (let i = 0; i < this.items.length; i++) {
+                    this.items[i] = {...this.items[i], idx:i};
+                }
                 console.log(this.items);
             })
             .catch((error) => {
@@ -58,6 +60,7 @@ export default {
     },
     updated() {
         console.log("upd");
+        console.log(this.checkbox);
     },
     computed: {
         ...mapGetters(["getTotalMoney", "getCheckedList"]),
