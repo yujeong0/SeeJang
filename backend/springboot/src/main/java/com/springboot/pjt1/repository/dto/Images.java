@@ -5,7 +5,14 @@ public class Images {
 	private byte[] image;
 	private char state;
 	private int num;
+	private String memberId;
 	
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
 	public byte[] getImage() {
 		return image;
 	}
