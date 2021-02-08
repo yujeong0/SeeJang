@@ -1,6 +1,9 @@
 <template>
     <div id="container">
-        <div class="titleLabel mb-30 pt-5">My Shopping List</div>
+        <div class="titleLabel mb-30 mt-3">My Shopping List
+            <hr class="SLHR" style="width:100%">
+            <shoppingListHeader></shoppingListHeader>
+        </div>
         <div class="itemArea">
             <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
         </div>
@@ -29,6 +32,7 @@
 import item from "@/components/shopping/item.vue";
 import http from "@/util/http-common.js";
 import AddShoppingList from "@/components/shopping/AddShoppingListForm.vue";
+import shoppingListHeader from "@/components/shopping/shoppingListHeader.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -55,6 +59,7 @@ export default {
     },
     components: {
         item,
+        shoppingListHeader
     },
     data() {
         return {
@@ -166,6 +171,6 @@ export default {
 .itemArea {
     height: auto;
     overflow-y: scroll;
-    padding-top: 39px;
+    padding-top: 80px;
 }
 </style>
