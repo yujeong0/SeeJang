@@ -6,7 +6,7 @@
             <shoppingListHeader @check="check"></shoppingListHeader>
         </div>
         <div class="itemArea">
-            <item v-for="item in items" :item="item" :key="item.shoppingListNo" @del="del"></item>
+            <item v-for="(item ,i) in items" :index="i" :checkBox="checkbox" :item="item" :key="i" @del="del"></item>
         </div>
         <div class="totalpriceArea">
             <hr class="SLHR" />
@@ -21,8 +21,8 @@
                     <label style="font-size: 0.9em">쇼핑리스트 추가</label></v-btn
                 >
                 <v-btn class="" text style="width: 35%" @click="confirm">
-                    <img src="@/assets/check.png" alt="" width="11%" />
-                    <label style="font-size: 0.9em">구매 완료!</label></v-btn
+                    <img src="@/assets/check.png" alt="" width="12%" />
+                    <label style="font-size: 0.9em">선택 상품 삭제!</label></v-btn
                 >
             </div>
         </div>
@@ -49,11 +49,15 @@ export default {
         })
             .then((response) => {
                 this.items = response.data;
+                for (let i = 0; i < this.items.length; i++) {}
                 console.log(this.items);
             })
             .catch((error) => {
                 console.log(error);
             });
+    },
+    updated() {
+        console.log("upd");
     },
     computed: {
         ...mapGetters(["getTotalMoney", "getCheckedList"]),
@@ -65,6 +69,7 @@ export default {
     data() {
         return {
             items: [],
+            checkbox: false,
         };
     },
     methods: {
@@ -139,18 +144,8 @@ export default {
             }
             console.log();
         },
-        check(check) {
-            let list = [...this.items];
-
-            for (let i = 0; i < list.length; i++) {
-                let element = list[i];
-                element.checked = check;
-                list.splice(i, 1, element);
-            }
-
-            this.items = list;
-            console.log(this.items);
-            this.$forceUpdate;
+        check() {
+            this.checkbox = !this.checkbox;
         },
     },
 };

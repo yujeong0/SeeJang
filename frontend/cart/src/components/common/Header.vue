@@ -64,7 +64,7 @@
         >
         <v-col class="selected" @click="popular_product"
           ><span style="font-size: small" class="ml-3 mr-3"
-            >이번주 상품</span
+            >상품목록</span
           ></v-col
         >
         <v-col class="selected" @click="camera"
