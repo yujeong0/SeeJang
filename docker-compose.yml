@@ -53,7 +53,7 @@ services:
       - 8081:8081
 
   vue:
-    image: vue_frontend
+    image: vue-frontend
     container_name: frontend
     volumes:
       - ./key:/etc/nginx/key
