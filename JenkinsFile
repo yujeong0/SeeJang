@@ -60,7 +60,7 @@ pipeline {
                 sh 'docker run -d --name vue-frontend \
                     -p 80:80 \
                     -p 443:443 \
-                    -v ./key/privkey.pem:/etc/nginx/key/privkey.pem \
+                    -v ./key:/etc/nginx/key \
                     --network s04p13d109_default \
                     vue-frontend:latest'
                 sh 'docker run -d --name spring-backend -p 8080:8080 spring-backend:latest'
