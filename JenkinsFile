@@ -30,8 +30,8 @@ pipeline {
         stage('Docker build') {
             agent any
             steps {
-                sh 'docker build -t vue-frontend:latest ./frontend/cart/frontend.Dockerfile'
-                sh 'docker build -t spring-backend:latest ./backend/springboot/backend.Dockerfile'
+                sh 'docker build -t vue-frontend:latest ./frontend/cart'
+                sh 'docker build -t spring-backend:latest ./backend/springboot'
             }
         }
         stage('Docker run') {
@@ -55,11 +55,17 @@ pipeline {
                 // dangling 상태가 되기 때문에 이미지를 일괄 삭제
                 sh 'docker images -f dangling=true && \
                 docker rmi $(docker images -f "dangling=true" -q)'
+
                 // docker container 실행
-                sh 'docker run -d --name vue-frontend -p 80:80 vue-frontend:latest'
+                sh 'docker run -d --name vue-frontend \
+                    -p 80:80 \
+                    -p 443:443 \
+                    -v key:/etc/nginx/key \
+                    --network s04p13d109_default \
+                    vue-frontend:latest'
                 sh 'docker run -d --name spring-backend -p 8080:8080 spring-backend:latest'
-                // sh 'docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql' : mysql 은 현재 ec2 local로 써서 안 함
                 sh 'docker run -d --name redis_boot -p 6379:6379 redis'
+                // sh 'docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql' : mysql 은 현재 ec2 local로 써서 안 함
             }
         }
     }
