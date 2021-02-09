@@ -34,7 +34,7 @@ public class MyProductController {
 		return service.searchMyProductByMemberId(id);
 	}
 	
-	@ApiOperation(value = "새로운 상품 정보를 입력한다. 그리고 DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@ApiOperation(value = "새로운 상품 정보를 입력한다. DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@PostMapping
 	ResponseEntity<String> addMyProduct(MyProduct myProduct) {
 		if(service.addMyProduct(myProduct)) {
@@ -43,10 +43,10 @@ public class MyProductController {
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "상품 정보를 삭제한다. 그리고 DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@ApiOperation(value = "즐겨찾기 번호로 상품 정보를 삭제한다. DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@DeleteMapping
-	ResponseEntity<String> removeMyProduct(MyProduct myProduct) {
-		if(service.removeMyProduct(myProduct)) {
+	ResponseEntity<String> removeMyProduct(int myProductNo) {
+		if(service.removeMyProduct(myProductNo)) {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
