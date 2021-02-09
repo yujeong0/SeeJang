@@ -31,13 +31,14 @@ public class ShoppingListContorller {
 	@Autowired
 	private ShoppingListService service;
 	
-	@ApiOperation(value = "쇼핑리스트 상품 등록. DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@ApiOperation(value = "쇼핑리스트 상품 등록. DB 입력 성공여부에 따라 해당 'shoppingListNo' 또는 '0' 값을 반환한다.", response = String.class)
 	@PostMapping
-	public ResponseEntity<String> insertShoppingList(ShoppingList shoppingList) {
-		if(service.insertShoppingList(shoppingList)) {
-			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+	public ResponseEntity<Integer> insertShoppingList(ShoppingList shoppingList) {
+		int shoppingListNo = service.insertShoppingList(shoppingList);
+		if(shoppingListNo != 0) {
+			return new ResponseEntity<Integer>(shoppingListNo, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+		return new ResponseEntity<Integer>(0, HttpStatus.NO_CONTENT);
 	}
 
 	@ApiOperation(value = "쇼핑리스트 상품 수정. DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
@@ -53,6 +54,7 @@ public class ShoppingListContorller {
 	@DeleteMapping
 	public ResponseEntity<String> deleteProductReviewByCommentNo(@RequestParam int shoppingListNo) {
 		if(service.deleteShoppingListByShoppingListNo(shoppingListNo)) {
+			
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);

@@ -20,8 +20,8 @@ public class ShoppingListServiceImpl implements ShoppingListService   {
 	}
 
 	@Override
-	public boolean insertShoppingList(ShoppingList shoppingList) {
-		return mapper.insertShoppingList(shoppingList) == 1;
+	public int insertShoppingList(ShoppingList shoppingList) {
+		return mapper.insertShoppingList(shoppingList);
 	}
 
 	@Override
