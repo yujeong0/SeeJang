@@ -18,7 +18,7 @@
 	<delete id="deleteMyProduct" parameterType="myProduct">
 		delete 
 		from my_product 
-		where product_name = #{productName} and member_id = #{memberId}
+		where my_product_no = #{myProductNo}
 	</delete>
 
 </mapper>
