@@ -30,8 +30,8 @@ pipeline {
         stage('Docker build') {
             agent any
             steps {
-                sh 'docker build -f frontend.Dockerfile -t vue-frontend:latest'
-                sh 'docker build -f backend.Dockerfile -t spring-backend:latest'
+                sh 'docker build -t vue-frontend:latest ./frontend/cart'
+                sh 'docker build -t spring-backend:latest ./backend/springboot'
             }
         }
         stage('Docker run') {
