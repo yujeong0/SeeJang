@@ -4,7 +4,7 @@
       <v-row no-gutters>
         <v-col
           ><img
-            src="@/assets/fruit.png/"
+            src="@/assets/fruit_unclick.png/"
             alt=""
             width="40px"
             class="mr-4"
@@ -12,7 +12,7 @@
         /></v-col>
         <v-col
           ><img
-            src="@/assets/tea.png/"
+            src="@/assets/tea_unclick.png/"
             alt=""
             width="40px"
             class="ml-4 mr-4"
@@ -20,14 +20,14 @@
         /></v-col>
         <v-col @click="clickCategory('냉장/냉동')"
           ><img
-            src="@/assets/instant.png/"
+            src="@/assets/instant_unclick.png/"
             alt=""
             width="40px"
             class="ml-4 mr-4"
         /></v-col>
         <v-col
           ><img
-            src="@/assets/drink.png/"
+            src="@/assets/drink_unclick.png/"
             alt=""
             width="40px"
             class="ml-4"
@@ -68,24 +68,24 @@
       <div class="gridDiv">
         <v-row no-gutters>
           <v-col @click="clickCategory('양념/오일')"
-            ><img src="@/assets/oil.png/" alt="" width="40px" class="mr-4"
+            ><img src="@/assets/oil_unclick.png/" alt="" width="40px" class="mr-4"
           /></v-col>
           <v-col @click="clickCategory('우유/유제품')"
             ><img
-              src="@/assets/milk.png/"
+              src="@/assets/milk_unclick.png/"
               alt=""
               width="40px"
               class="ml-4 mr-4"
           /></v-col>
           <v-col @click="clickCategory('베이커리/잼')"
             ><img
-              src="@/assets/bread.png/"
+              src="@/assets/bread_unclick.png/"
               alt=""
               width="40px"
               class="ml-4 mr-4"
           /></v-col>
           <v-col @click="clickCategory('쌀/잡곡')"
-            ><img src="@/assets/rice.png/" alt="" width="40px" class="ml-4"
+            ><img src="@/assets/rice_unclick.png/" alt="" width="40px" class="ml-4"
           /></v-col>
         </v-row>
       </div>

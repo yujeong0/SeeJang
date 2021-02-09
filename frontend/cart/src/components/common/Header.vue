@@ -40,20 +40,20 @@
       <v-row no-gutters>
         <v-col @click="shopping_list"
           ><img
-            src="@/assets/shoppinglist.png/"
+            src="@/assets/shoppinglist_unclick.png/"
             alt=""
             width="60px"
             class="mr-4"
         /></v-col>
         <v-col @click="popular_product"
           ><img
-            src="@/assets/populer.png/"
+            src="@/assets/populer_unclick.png/"
             alt=""
             width="60px"
             class="ml-4 mr-4"
         /></v-col>
         <v-col @click="camera"
-          ><img src="@/assets/search.png/" alt="" width="60px" class="ml-4"
+          ><img src="@/assets/search_unclick.png/" alt="" width="60px" class="ml-4"
         /></v-col>
       </v-row>
     </div>
