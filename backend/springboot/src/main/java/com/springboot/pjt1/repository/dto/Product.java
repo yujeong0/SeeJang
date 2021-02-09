@@ -1,11 +1,21 @@
 package com.springboot.pjt1.repository.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "상품 목록의 상품 정보를 담는 dto")
 public class Product {
+	@ApiModelProperty(notes = "상품 번호")
 	private int productNo;
+	@ApiModelProperty(notes = "상품명")
 	private String productName;
+	@ApiModelProperty(notes = "상품 가격")
 	private String productPrice;
+	@ApiModelProperty(notes = "상품 분류")
 	private String category;
+	@ApiModelProperty(notes = "이마트 상품 리뷰 링크")
 	private String reviewLink;
+	@ApiModelProperty(notes = "저장된 상품 이미지 파일명")
 	private String imageName;
 	
 	public String getImageName() {
