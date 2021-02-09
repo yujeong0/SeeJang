@@ -61,7 +61,7 @@
                     <div class="pl-4" style="text-align: left">
                          <v-row no-gutters>
                               <v-col cols="8"> {{ item.comment }}</v-col>
-                              <v-row
+                              <v-row v-if="userId == reviews[i].memberId"
                                    no-gutters
                                    style="margin-top: -3px; margin-bottom: 10px; text-align: right"
                               >
@@ -131,6 +131,7 @@ export default {
                reviews: [],
                reviewNum: "",
                reviewArea: document.getElementById("contents"),
+               userId : sessionStorage.getItem('userId'),
           };
      },
      computed: {
@@ -245,7 +246,34 @@ export default {
                          console.log(error);
                     });
           },
-          delReivew() {},
+          async delReivew(idx) {
+               await http
+                    .delete("/product/review", {
+                         params: {
+                              commentNo: this.reviews[idx].commentNo,
+                         },
+                         withCredentials: true,
+                    })
+                    .then((response) => {
+                         console.log(response);
+                         http.get("/product/review", {
+                              params: {
+                                   productNo: this.$store.getters.getProductNo,
+                              },
+                              withCredentials: true,
+                         })
+                              .then((response) => {
+                                   this.reviews.splice(0);
+                                   this.reviews = response.data;
+                              })
+                              .catch((error) => {
+                                   console.log(error);
+                              });
+                    })
+                    .catch((error) => {
+                         console.log(error);
+                    });
+          },
      },
 };
 </script>
