@@ -61,7 +61,7 @@ export default {
                 // this.$router.push("/login");
                 // 임시 로그인
                 this.$store.commit("TOGGLE_LOGIN_STATE");
-                this.$router.push("/popularproduct");
+                this.$router.push("/shoppingList");
             }
         },
     },
