@@ -60,7 +60,7 @@
     <div class="gridDiv mb-1" style="margin-top: -16px">
       <v-row no-gutters>
         <v-col @click="shopping_list" class="selected">
-          <span style="font-size: small" class="mr-3">쇼핑리스트</span></v-col
+          <span style="font-size: small" class="mr-3" >쇼핑리스트</span></v-col
         >
         <v-col class="selected" @click="popular_product"
           ><span style="font-size: small" class="ml-3 mr-3"
@@ -91,6 +91,9 @@ export default {
       nickName: sessionStorage.getItem('nickName'),
     };
   },
+  computed: {
+
+  },
   methods: {
     goDetail() {
       let searchName = this.serachName;
@@ -118,7 +121,11 @@ export default {
       this.$router.push('/notBlindSearchProduct');
     },
     shopping_list() {
-      this.$router.push('/shoppinglist');
+      if (this.$router.currentRoute.path == '/shoppingList') {
+        this.$store.commit('SET_SHOPPING_STATE', false);
+      } else {
+        this.$router.push('/shoppingList');
+      }
     },
     popular_product() {
       console.log();
