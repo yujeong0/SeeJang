@@ -57,7 +57,7 @@ pipeline {
                 docker rmi $(docker images -f "dangling=true" -q)'
 
                 // docker container 실행
-                sh 'docker run -d --name <front-image-name> \
+                sh 'docker run -d --name vue-frontend \
                     -p 80:80 \
                     -p 443:443 \
                     -v ./key/privkey.pem:/etc/nginx/key/privkey.pem \
