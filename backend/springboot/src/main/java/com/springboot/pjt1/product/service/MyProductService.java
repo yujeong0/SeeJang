@@ -10,6 +10,6 @@ public interface MyProductService {
 
 	boolean addMyProduct(MyProduct myProduct);
 
-	boolean removeMyProduct(MyProduct myProduct);
+	boolean removeMyProduct(int myProductNo);
 
 }
