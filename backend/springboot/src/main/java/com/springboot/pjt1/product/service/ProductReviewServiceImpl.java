@@ -20,18 +20,18 @@ public class ProductReviewServiceImpl implements ProductReviewService {
 	}
 
 	@Override
-	public void insertProductReview(ProductReview productReview) {
-		mapper.insertProductReview(productReview);
+	public boolean insertProductReview(ProductReview productReview) {
+		return mapper.insertProductReview(productReview) == 1;
 	}
 
 	@Override
-	public void updateProductReviewByCommentNo(ProductReview productReview) {
-		mapper.updateProductReviewByCommentNo(productReview);
+	public boolean updateProductReviewByCommentNo(ProductReview productReview) {
+		return mapper.updateProductReviewByCommentNo(productReview) == 1;
 	}
 
 	@Override
-	public void deleteProductReviewByCommentNo(int commentNo) {
-		mapper.deleteProductReviewByCommentNo(commentNo);
+	public boolean deleteProductReviewByCommentNo(int commentNo) {
+		return mapper.deleteProductReviewByCommentNo(commentNo) == 1;
 	}
 	
 }
