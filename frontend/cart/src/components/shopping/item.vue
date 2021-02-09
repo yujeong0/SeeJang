@@ -64,7 +64,6 @@ export default {
   },
   filters: {
     comma(val) {
-      let num = new Number(val);
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     },
   },
