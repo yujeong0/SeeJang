@@ -38,6 +38,7 @@ export default new Vuex.Store({
       checkedList: [],
       categorizeItems: [],
       categorizeItem: '',
+      reviewLink:'',
       searchName: '',
     },
 
@@ -74,6 +75,8 @@ export default new Vuex.Store({
     //** 상품정보 **/
     //상품정보 넣어주기
     SET_PRODUCT_INFO(state, payload) {
+      
+      state.product.reviewLink = payload.productInfo.reviewLink;
       state.product.productName = payload.productInfo.productName;
       state.product.productNo = payload.productInfo.productNo;
       state.product.productPrice = payload.productInfo.productPrice;
@@ -226,6 +229,9 @@ export default new Vuex.Store({
     },
     getCheckedList(state) {
       return state.product.checkedList;
+    },
+    getReviewLink(state) {
+      return state.product.reviewLink;
     },
     getModalState(state) {
       return state.shoppingList.modalState;

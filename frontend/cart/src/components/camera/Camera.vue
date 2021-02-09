@@ -85,8 +85,8 @@ export default {
         formData.append('item', new Blob(), this.$store.getters.getCameraItem);
       }
 
-      for (var key of formData.keys()) console.log(key);
-      for (var value of formData.values()) console.log(value);
+      // for (var key of formData.keys()) console.log(key);
+      // for (var value of formData.values()) console.log(value);
 
       console.log('사진, 모드, 아이템이름 액시오스로 보냄');
       await http
@@ -97,7 +97,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log('잘된다');
           this.result = response.data.result;
           if (
             this.$store.getters.getCameraMode == 2 ||
@@ -107,13 +106,9 @@ export default {
             //장애인 위치찾기
           }
           if (this.$store.getters.getCameraMode == 1) {
-            console.log('비장애인');
-            console.log(response);
             let productInfo = response.data.result[0];
             this.$store.commit('SET_PRODUCT_INFO', { productInfo });
           }
-
-          console.log('액시오스 값받아옴');
         })
         .catch((error) => {
           console.log(error);
