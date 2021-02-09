@@ -1,5 +1,7 @@
 package com.springboot.pjt1.image.controller;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +44,7 @@ public class ImageController {
 		else {
 			MultipartFile file = map.get("file").get(0);	// 이미지 파일
 			MultipartFile mode = map.get("mode").get(0);	// 모드 이름
-			MultipartFile memberId = map.get("memberId").get(0);	// 사용자 ID
+			String memberId = map.get("memberId").get(0).getOriginalFilename();	// 사용자 ID
 			
 //			// 파일을 지정된 경로로 저장
 //			String fileName = service.storeFile(file); 
@@ -53,20 +55,19 @@ public class ImageController {
 			switch(mode.getOriginalFilename()) {
 			case "1":	// 1  : 일반인
 				resultMap = new HashMap<>();
-				resultMap.put("result", productService.searchProductByName(imageService.getProductName(file, memberId.getOriginalFilename())));
+				resultMap.put("result", productService.searchProductByName(imageService.getProductName(file, memberId)));
 				break;
 			case "2":	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
 				String itemName = map.get("item").get(0).getOriginalFilename();	// 찾는 상품이름
 				resultMap = new HashMap<>();
-				resultMap.put("result", imageService.getDirection(file, itemName, memberId.getOriginalFilename()));
+				resultMap.put("result", imageService.getDirection(file, itemName, memberId));
 				break;
 			case "3" :	// 3  : 시각장애인 상품 확인 음성출력으로 이거 뭐다 
 				resultMap = new HashMap<>();
-				resultMap.put("result", imageService.getProductName(file, memberId.getOriginalFilename()));
+				resultMap.put("result", imageService.getProductName(file, memberId));
 				break;
 			}
 			return resultMap;
-		
 		}
 	}
 }
