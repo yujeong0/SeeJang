@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: shopping
+-- Host: i4d109.p.ssafy.io    Database: shopping
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.23-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -158,11 +158,11 @@ DROP TABLE IF EXISTS `my_product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `my_product` (
-  `product_no` int NOT NULL,
+  `my_product_no` int NOT NULL AUTO_INCREMENT,
   `member_id` varchar(20) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_price` varchar(20) NOT NULL,
-  PRIMARY KEY (`member_id`,`product_name`)
+  PRIMARY KEY (`my_product_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -172,7 +172,6 @@ CREATE TABLE `my_product` (
 
 LOCK TABLES `my_product` WRITE;
 /*!40000 ALTER TABLE `my_product` DISABLE KEYS */;
-INSERT INTO `my_product` VALUES (1,'cndtjq145@naver.com','CJ 비비고왕교자1.12kg','9480');
 /*!40000 ALTER TABLE `my_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-08 23:23:27
+-- Dump completed on 2021-02-09 12:09:25
