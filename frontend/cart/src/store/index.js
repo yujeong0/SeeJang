@@ -48,6 +48,7 @@ export default new Vuex.Store({
       shoppingListName: '',
       shoppingListPrice: '',
       modalState: true,
+      shoppingListState: false,
     },
 
     /** 쇼핑리스트 **/
@@ -154,6 +155,13 @@ export default new Vuex.Store({
       state.shoppingList.modalState = !state.shoppingList.modalState;
     },
     // ** 상품 관련 끝 ** //
+
+    // ** 쇼핑리스트 시작 ** //
+    SET_SHOPPING_STATE(state, payload) {
+      state.shoppingList.shoppingListState = payload;
+    }
+    // ** 쇼핑리스트 끝 ** //
+
   },
   actions: {},
   modules: {},

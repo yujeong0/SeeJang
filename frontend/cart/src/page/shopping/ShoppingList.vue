@@ -214,7 +214,7 @@ export default {
   border-bottom: 1px solid;
   text-align: left;
   margin: 0px 10%;
-  margin-top: 7px;
+  margin-top: 5%;
   font-weight: 1000;
   font-size: large;
   width: 80%;
