@@ -84,8 +84,35 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (9),(9);
+INSERT INTO `hibernate_sequence` VALUES (11),(11);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `images` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `member_id` varchar(20) NOT NULL,
+  `image` blob NOT NULL,
+  `state` char(1) NOT NULL DEFAULT 'F',
+  `num` int DEFAULT NULL,
+  `reg_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -119,8 +146,34 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,0,'2021-01-31 09:53:15.598000','string','string','$2a$10$Y9zPMZzzlKGum/bN6Q4dU.jdYSswq5IuwIjqcFhkAyH0cUGYVluTa',NULL,'ROLE_NOT_PERMITTED','2021-01-31 09:53:15.598000',2),(3,0,'2021-02-01 10:26:13.008000','','new0822@naver.com','$2a$10$t5Cnhhhfd9drjGicF7OleuKTDQJLUf9s4UJFs8u.9ofa7dbALmq8K',NULL,'ROLE_NOT_PERMITTED','2021-02-01 10:26:13.008000',4),(5,0,'2021-02-01 10:28:55.623000','new0822@naver.com','강민창','$2a$10$YuQNvssgYsMDhHeNp6Bs5eIktpdILij8HZcVtsSYTxJjJZBrk5b8q',NULL,'ROLE_NOT_PERMITTED','2021-02-01 10:28:55.623000',6),(7,0,'2021-02-01 11:00:51.418000','민창22@naver.com','민창','$2a$10$th5MGnV513RE6rM1QgdBau.eFHlbduJhy/2mDjF5OeEsvHUDUqdCK','네이버','ROLE_NOT_PERMITTED','2021-02-01 11:00:51.418000',8);
+INSERT INTO `member` VALUES (1,0,'2021-01-31 09:53:15.598000','string','string','$2a$10$Y9zPMZzzlKGum/bN6Q4dU.jdYSswq5IuwIjqcFhkAyH0cUGYVluTa',NULL,'ROLE_NOT_PERMITTED','2021-01-31 09:53:15.598000',2),(3,0,'2021-02-01 10:26:13.008000','','new0822@naver.com','$2a$10$t5Cnhhhfd9drjGicF7OleuKTDQJLUf9s4UJFs8u.9ofa7dbALmq8K',NULL,'ROLE_NOT_PERMITTED','2021-02-01 10:26:13.008000',4),(5,0,'2021-02-01 10:28:55.623000','new0822@naver.com','강민창','$2a$10$YuQNvssgYsMDhHeNp6Bs5eIktpdILij8HZcVtsSYTxJjJZBrk5b8q',NULL,'ROLE_NOT_PERMITTED','2021-02-01 10:28:55.623000',6),(7,0,'2021-02-01 11:00:51.418000','민창22@naver.com','민창','$2a$10$th5MGnV513RE6rM1QgdBau.eFHlbduJhy/2mDjF5OeEsvHUDUqdCK','네이버','ROLE_NOT_PERMITTED','2021-02-01 11:00:51.418000',8),(9,0,'2021-02-06 04:03:18.579000','cndtjq145@naver.com','단우아빠','$2a$10$FsO8d7NgiUBSMl9Nmc8MDehh8KJzAsk5uw4Q98giiFpIHUX0jjRhu',NULL,'ROLE_NOT_PERMITTED','2021-02-06 04:03:18.579000',10);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `my_product`
+--
+
+DROP TABLE IF EXISTS `my_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `my_product` (
+  `product_no` int NOT NULL,
+  `member_id` varchar(20) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `product_price` varchar(20) NOT NULL,
+  PRIMARY KEY (`member_id`,`product_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `my_product`
+--
+
+LOCK TABLES `my_product` WRITE;
+/*!40000 ALTER TABLE `my_product` DISABLE KEYS */;
+INSERT INTO `my_product` VALUES (1,'cndtjq145@naver.com','CJ 비비고왕교자1.12kg','9480');
+/*!40000 ALTER TABLE `my_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -200,7 +253,7 @@ CREATE TABLE `salt` (
 
 LOCK TABLES `salt` WRITE;
 /*!40000 ALTER TABLE `salt` DISABLE KEYS */;
-INSERT INTO `salt` VALUES (2,'$2a$10$Y9zPMZzzlKGum/bN6Q4dU.'),(4,'$2a$10$t5Cnhhhfd9drjGicF7Oleu'),(6,'$2a$10$YuQNvssgYsMDhHeNp6Bs5e'),(8,'$2a$10$th5MGnV513RE6rM1QgdBau');
+INSERT INTO `salt` VALUES (2,'$2a$10$Y9zPMZzzlKGum/bN6Q4dU.'),(4,'$2a$10$t5Cnhhhfd9drjGicF7Oleu'),(6,'$2a$10$YuQNvssgYsMDhHeNp6Bs5e'),(8,'$2a$10$th5MGnV513RE6rM1QgdBau'),(10,'$2a$10$FsO8d7NgiUBSMl9Nmc8MDe');
 /*!40000 ALTER TABLE `salt` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +271,7 @@ CREATE TABLE `shopping_list` (
   `product_price` varchar(20) DEFAULT NULL,
   `checked` tinyint(1) DEFAULT (false),
   PRIMARY KEY (`shopping_list_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +280,7 @@ CREATE TABLE `shopping_list` (
 
 LOCK TABLES `shopping_list` WRITE;
 /*!40000 ALTER TABLE `shopping_list` DISABLE KEYS */;
-INSERT INTO `shopping_list` VALUES (1,'new0822@naver.com','딸기잼','5000',0);
+INSERT INTO `shopping_list` VALUES (1,'new0822@naver.com','딸기잼','5000',0),(2,'cndtjq145@naver.com','노브랜드 칠리 새우 400g','6580',0);
 /*!40000 ALTER TABLE `shopping_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,7 +326,7 @@ CREATE TABLE `wish_list` (
   `product_name` varchar(200) NOT NULL,
   `price` varchar(20) NOT NULL,
   PRIMARY KEY (`wish_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,6 +335,7 @@ CREATE TABLE `wish_list` (
 
 LOCK TABLES `wish_list` WRITE;
 /*!40000 ALTER TABLE `wish_list` DISABLE KEYS */;
+INSERT INTO `wish_list` VALUES (2,'cndtjq145@naver.com','https://www.coupang.com/vp/products/296011355?itemId=1096246769&vendorItemId=5617019683','쿠팡','곰곰 블루베리 (냉동), 1kg, 2개','12,650');
 /*!40000 ALTER TABLE `wish_list` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -294,4 +348,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-05 16:20:54
+-- Dump completed on 2021-02-08 23:23:27
