@@ -75,7 +75,6 @@ public class ImageServiceImpl implements ImageService {
 			img.setImage(file.getBytes());
 			mapper.insertImage(img);
 			
-			System.out.println(itemName);
 			return itemName + "은 없지롱";
 		} catch (Exception e) {
 			e.printStackTrace();
