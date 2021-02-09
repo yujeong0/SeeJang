@@ -20,13 +20,13 @@ public class WishListServiceImpl implements WishListService {
 	}
 
 	@Override
-	public void addWishListByMemberId(WishList wishList) {
-		mapper.insertWishList(wishList);
+	public boolean addWishListByMemberId(WishList wishList) {
+		return mapper.insertWishList(wishList) == 1;
 	}
 	
 	@Override
-	public void removeWishListByNo(int wishNo) {
-		mapper.deleteWishListByNo(wishNo);
+	public boolean removeWishListByNo(int wishNo) {
+		return mapper.deleteWishListByNo(wishNo) == 1;
 	}
 	
 }
