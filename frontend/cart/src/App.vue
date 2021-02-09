@@ -1,7 +1,9 @@
 <template>
      <v-app>
           <Header v-if="this.$store.getters.getIsLogin"></Header>
-          <router-view />
+          <div id="contents">
+               <router-view />
+          </div>
      </v-app>
 </template>
 
@@ -22,6 +24,13 @@ export default {
 #container {
      font-family: "Do Hyeon", sans-serif;
 }
+#contents{
+     margin-top: 190px;
+     height: 100%;
+     overflow-x: hidden;
+     overflow-y: hidden;
+     overscroll-behavior: contain;
+}
 #app {
      font-family: Avenir, Helvetica, Arial, sans-serif;
      -webkit-font-smoothing: antialiased;
@@ -39,12 +48,5 @@ export default {
      right: 0;
      z-index: 10;
      display: block;
-}
-body {
-     padding-top: 175px;
-     overflow-x: hidden;
-     overflow-y: scroll;
-     overscroll-behavior: contain;
-     /* 생략 */
 }
 </style>
