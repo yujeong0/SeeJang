@@ -38,7 +38,6 @@ export default new Vuex.Store({
       checkedList: [],
       categorizeItems: [],
       categorizeItem: '',
-      reviewLink:'',
       searchName: '',
     },
 
@@ -49,7 +48,6 @@ export default new Vuex.Store({
       shoppingListName: '',
       shoppingListPrice: '',
       modalState: true,
-      shoppingListState: false,
     },
 
     /** 쇼핑리스트 **/
@@ -75,8 +73,6 @@ export default new Vuex.Store({
     //** 상품정보 **/
     //상품정보 넣어주기
     SET_PRODUCT_INFO(state, payload) {
-      
-      state.product.reviewLink = payload.productInfo.reviewLink;
       state.product.productName = payload.productInfo.productName;
       state.product.productNo = payload.productInfo.productNo;
       state.product.productPrice = payload.productInfo.productPrice;
@@ -158,13 +154,6 @@ export default new Vuex.Store({
       state.shoppingList.modalState = !state.shoppingList.modalState;
     },
     // ** 상품 관련 끝 ** //
-
-    // ** 쇼핑리스트 시작 ** //
-    SET_SHOPPING_STATE(state, payload) {
-      state.shoppingList.shoppingListState = payload;
-    }
-    // ** 쇼핑리스트 끝 ** //
-
   },
   actions: {},
   modules: {},
@@ -229,9 +218,6 @@ export default new Vuex.Store({
     },
     getCheckedList(state) {
       return state.product.checkedList;
-    },
-    getReviewLink(state) {
-      return state.product.reviewLink;
     },
     getModalState(state) {
       return state.shoppingList.modalState;
