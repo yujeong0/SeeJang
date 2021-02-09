@@ -58,7 +58,7 @@ pipeline {
 
                 // docker container 실행
                 sh 'docker run -d --name spring-backend -p 8081:8081 spring-backend:latest'
-                sh 'docker run -d --name vue-frontend \
+                sh 'docker run --name vue-frontend \
                     -p 80:80 \
                     -p 443:443 \
                     -v /key:/etc/nginx/key \
