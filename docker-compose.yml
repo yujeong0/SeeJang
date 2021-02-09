@@ -11,18 +11,18 @@ services:
   #   depends_on: 
   #     - spring
 
-  mysql:
-    image: mysql:8.0.23
-    container_name: mysql
-    ports:
-      - 3307:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: "root"
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - /Users/d109/datadir:/var/lib/mysql
+  # mysql:
+  #   image: mysql:8.0.23
+  #   container_name: mysql
+  #   ports:
+  #     - 3307:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: "root"
+  #   command:
+  #     - --character-set-server=utf8mb4
+  #     - --collation-server=utf8mb4_unicode_ci
+  #   volumes:
+  #     - /Users/d109/datadir:/var/lib/mysql
 
   redis:                     
    image: redis
@@ -35,7 +35,6 @@ services:
       context: ./backend/springboot
       dockerfile: backend.Dockerfile
     depends_on: 
-      - mysql
       - redis
     ports:
       - 8081:8081
@@ -52,5 +51,7 @@ services:
       - spring
     ports:
       - 80:80
+
+
     
 
