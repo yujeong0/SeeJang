@@ -28,8 +28,8 @@ public class MyProductServiceImpl implements MyProductService {
 	
 	@Override
 	@Transactional
-	public boolean removeMyProduct(MyProduct myProduct) {
-		return mapper.deleteMyProduct(myProduct) == 1;
+	public boolean removeMyProduct(int myProductNo) {
+		return mapper.deleteMyProduct(myProductNo) == 1;
 	}
 	
 }
