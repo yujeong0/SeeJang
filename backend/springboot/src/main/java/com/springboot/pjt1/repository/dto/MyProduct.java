@@ -1,9 +1,17 @@
 package com.springboot.pjt1.repository.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "사용자가 즐겨찾기에 추가한 상품 dto")
 public class MyProduct {
+	@ApiModelProperty(notes = "상품 번호")
 	private int productNo;
+	@ApiModelProperty(notes = "회원 ID")
 	private String memberId;
+	@ApiModelProperty(notes = "상품명")
 	private String productName;
+	@ApiModelProperty(notes = "상품가격")
 	private String productPrice;
 	
 	public int getProductNo() {

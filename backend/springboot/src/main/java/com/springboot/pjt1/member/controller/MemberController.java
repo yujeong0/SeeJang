@@ -1,6 +1,7 @@
 package com.springboot.pjt1.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -29,6 +30,7 @@ import com.springboot.pjt1.repository.jpa.dto.request.RequestChangePassword2;
 import com.springboot.pjt1.repository.jpa.dto.request.RequestLoginUser;
 import com.springboot.pjt1.repository.jpa.dto.request.RequestVerifyEmail;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -48,7 +50,7 @@ public class MemberController {
     @Autowired
     private RedisUtil redisUtil;
 
-
+    @ApiOperation(value = "회원 가입을 한다.", response = Response.class)
     @PostMapping("/signup")
     public Response signUpUser(@RequestBody Member member) {
         try {
@@ -59,6 +61,7 @@ public class MemberController {
         }
     }
     
+    @ApiOperation(value = "네이버 로그인을 한다.", response = Response.class)
     @PostMapping("/login/naver")
     public Response naverLogin(@RequestBody Member member,
                           HttpServletRequest req,
@@ -86,6 +89,7 @@ public class MemberController {
     }
     
     
+    @ApiOperation(value = "일반 로그인을 한다.", response = Response.class)
     @PostMapping("/login")
     public Response login(@RequestBody RequestLoginUser user,
                           HttpServletRequest req,
@@ -105,6 +109,7 @@ public class MemberController {
         }
     }
     
+    @ApiOperation(value = "로그아웃을 한다.", response = Response.class)
     @GetMapping("/logout")
     public void logout(HttpServletRequest req,
                           HttpServletResponse res) {
@@ -117,6 +122,7 @@ public class MemberController {
     }
     
 
+    @ApiOperation(value = "로그인 인증메일을 보낸다.", response = Response.class)
     @PostMapping("/verify")
     public Response verify(@RequestBody RequestVerifyEmail requestVerifyEmail, HttpServletRequest req, HttpServletResponse res) {
         Response response;
@@ -130,6 +136,7 @@ public class MemberController {
         return response;
     }
 
+    @ApiOperation(value = "로그인 인증메일을 확인한다.", response = Response.class)
     @GetMapping("/verify/{key}")
     public Response getVerify(@PathVariable String key) {
         Response response;
@@ -187,8 +194,4 @@ public class MemberController {
 
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return "Hello World!";
-    }
 }

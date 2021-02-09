@@ -20,19 +20,18 @@ public class ShoppingListServiceImpl implements ShoppingListService   {
 	}
 
 	@Override
-	public int insertShoppingList(ShoppingList shoppingList) {
-		mapper.insertShoppingList(shoppingList);
-		return shoppingList.getShoppingListNo();
+	public boolean insertShoppingList(ShoppingList shoppingList) {
+		return mapper.insertShoppingList(shoppingList) == 1;
 	}
 
 	@Override
-	public void updateShoppingList(ShoppingList shoppingList) {
-		mapper.updateShoppingList(shoppingList);
+	public boolean updateShoppingList(ShoppingList shoppingList) {
+		return mapper.updateShoppingList(shoppingList) == 1;
 	}
 
 	@Override
-	public void deleteShoppingListByShoppingListNo(int shoppingListNo) {
-		mapper.deleteShoppingListByShoppingListNo(shoppingListNo);
+	public boolean deleteShoppingListByShoppingListNo(int shoppingListNo) {
+		return mapper.deleteShoppingListByShoppingListNo(shoppingListNo) == 1;
 	}
 	
 }
