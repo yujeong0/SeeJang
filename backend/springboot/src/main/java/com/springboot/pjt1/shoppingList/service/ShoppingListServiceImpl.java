@@ -21,7 +21,8 @@ public class ShoppingListServiceImpl implements ShoppingListService   {
 
 	@Override
 	public int insertShoppingList(ShoppingList shoppingList) {
-		return mapper.insertShoppingList(shoppingList);
+		mapper.insertShoppingList(shoppingList);
+		return shoppingList.getShoppingListNo();
 	}
 
 	@Override
