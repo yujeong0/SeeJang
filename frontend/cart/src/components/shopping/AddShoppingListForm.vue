@@ -82,6 +82,7 @@ export default {
             withCredentials: true,
           })
           .then((response) => {
+            console.log(response);
             let item = {
               checked: false,
               memberId: this.$store.getters.getMemberId,
