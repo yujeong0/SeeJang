@@ -8,6 +8,19 @@
 import http from '@/util/http-common.js';
 import SuggestSearch from '@/components/shopping/SuggestSearch.vue';
 export default {
+  created() {
+    console.log('dd');
+    http
+      .get('/myProduct', {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   props: ['addData'],
   components: {
     SuggestSearch,
