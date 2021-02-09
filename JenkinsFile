@@ -60,8 +60,8 @@ pipeline {
                 sh 'docker run -d --name vue-frontend \
                     -p 80:80 \
                     -p 443:443 \
-                    -v key:/etc/nginx/key \
-                    --network s04p13d109_default \
+                    -v /key:/etc/nginx/key \
+                    --network jenkins \
                     vue-frontend:latest'
                 sh 'docker run -d --name spring-backend -p 8080:8080 spring-backend:latest'
                 sh 'docker run -d --name redis_boot -p 6379:6379 redis'
