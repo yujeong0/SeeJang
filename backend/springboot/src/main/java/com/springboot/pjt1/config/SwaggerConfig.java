@@ -28,7 +28,7 @@ public class SwaggerConfig {
     
     private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("장보기 API")
-				.description("<h3>장보기 API Reference for Developers</h3> 장보기 API입니다. 모두들 파이팅 ^0^")
+				.description("<h3>장보기 API Reference for D109 Developers</h3> 장보기 API입니다. 모두들 파이팅 ^0^")
 				.build();
 	}
 }

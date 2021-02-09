@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="columns mt-4">
+    <div id="container" class="columns mt-4">
         <categorize />
         <div class="column" v-if="state">
             <br />
