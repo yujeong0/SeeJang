@@ -24,6 +24,19 @@ services:
   #   volumes:
   #     - /Users/d109/datadir:/var/lib/mysql
 
+  jenkins:
+    image: 'jenkinsci/blueocean'
+    restart: unless-stopped
+    user: root
+    privileged: true
+    ports:
+      - '9090:80'
+    volumes:
+      -'/home/ubuntu/docker/jenkins-data:/var/jenkins_home'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '$HOME:/home'
+    container_name: 'jenkins'
+
   redis:                     
    image: redis
    restart: always
