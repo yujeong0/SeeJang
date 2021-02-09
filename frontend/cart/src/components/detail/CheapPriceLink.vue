@@ -61,7 +61,8 @@
                     <div class="pl-4" style="text-align: left">
                          <v-row no-gutters>
                               <v-col cols="8"> {{ item.comment }}</v-col>
-                              <v-row v-if="userId == reviews[i].memberId"
+                              <v-row
+                                   v-if="userId == reviews[i].memberId"
                                    no-gutters
                                    style="margin-top: -3px; margin-bottom: 10px; text-align: right"
                               >
@@ -83,20 +84,20 @@
 </template>
 
 <script>
-import WriteReview from "@/components/detail/WriteReview.vue";
-import ReviewUpdate from "@/components/detail/ReviewUpdate.vue";
-import http from "@/util/http-common.js";
-import { mapGetters } from "vuex";
+import WriteReview from '@/components/detail/WriteReview.vue';
+import ReviewUpdate from '@/components/detail/ReviewUpdate.vue';
+import http from '@/util/http-common.js';
+import { mapGetters } from 'vuex';
 
 export default {
      components: {
           WriteReview,
      },
      created() {
-          console.log("created");
+          console.log('created');
           console.log(this.$store.getters.getProductName);
           // let name = this.$store.getters.getProductName;
-          http.get("/product/detail", {
+          http.get('/product/detail', {
                params: {
                     name: this.$store.getters.getProductName,
                },
@@ -129,28 +130,28 @@ export default {
           return {
                datas: [],
                reviews: [],
-               reviewNum: "",
-               reviewArea: document.getElementById("contents"),
-               userId : sessionStorage.getItem('userId'),
+               reviewNum: '',
+               reviewArea: document.getElementById('contents'),
+               userId: sessionStorage.getItem('userId'),
           };
      },
      computed: {
-          ...mapGetters(["getProductName", "getProductPrice"]),
+          ...mapGetters(['getProductName', 'getProductPrice']),
      },
      updated() {
-          console.log(sessionStorage.getItem("userId"));
-          console.log(sessionStorage.getItem("nickName"));
+          console.log(sessionStorage.getItem('userId'));
+          console.log(sessionStorage.getItem('nickName'));
      },
      methods: {
           like(item) {
                console.log(item);
                let formData = new FormData();
-               formData.append("link", item.link);
-               formData.append("memberId", this.$store.getters.getMemberId);
-               formData.append("price", item.price);
-               formData.append("productName", item.productName);
-               formData.append("siteName", item.siteName);
-               http.post("/wishList/add", formData, {
+               formData.append('link', item.link);
+               formData.append('memberId', this.$store.getters.getMemberId);
+               formData.append('price', item.price);
+               formData.append('productName', item.productName);
+               formData.append('siteName', item.siteName);
+               http.post('/wishList/add', formData, {
                     withCredentials: true,
                })
                     .then((response) => {
@@ -165,31 +166,31 @@ export default {
                     WriteReview,
                     {
                          add: this.add,
-                         reviewData: "data",
+                         reviewData: 'data',
                          modal: this.$modal,
                     },
                     {
-                         name: "WriteReview-modal",
+                         name: 'WriteReview-modal',
 
-                         width: "85%",
-                         height: "75%",
+                         width: '85%',
+                         height: '75%',
                          draggable: false,
                          shiftY: 0.5,
                     },
                     {
                          closeByName() {
-                              this.$modal.hide("WriteReview-modal");
+                              this.$modal.hide('WriteReview-modal');
                          },
                          closeByEvent() {
-                              this.$emit("close");
+                              this.$emit('close');
                          },
                     }
                );
           },
           async add() {
-               console.log("리뷰작성성공");
+               console.log('리뷰작성성공');
                await http
-                    .get("/product/review", {
+                    .get('/product/review', {
                          params: {
                               productNo: this.$store.getters.getProductNo,
                          },
@@ -198,6 +199,7 @@ export default {
                     .then((response) => {
                          this.reviews.splice(0);
                          this.reviews = response.data;
+                         this.reviewNum = this.reviews.length;
                     })
                     .catch((error) => {
                          console.log(error);
@@ -208,31 +210,31 @@ export default {
                     ReviewUpdate,
                     {
                          updateComplete: this.updateComplete,
-                         ReviewUpdate: "data",
+                         ReviewUpdate: 'data',
                          review: this.reviews[idx],
                          modal: this.$modal,
                     },
                     {
-                         name: "ReviewUpdate-modal",
+                         name: 'ReviewUpdate-modal',
 
-                         width: "85%",
-                         height: "75%",
+                         width: '85%',
+                         height: '75%',
                          draggable: false,
                          shiftY: 0.5,
                     },
                     {
                          closeByName() {
-                              this.$modal.hide("ReviewUpdate-modal");
+                              this.$modal.hide('ReviewUpdate-modal');
                          },
                          closeByEvent() {
-                              this.$emit("close");
+                              this.$emit('close');
                          },
                     }
                );
           },
           async updateComplete() {
                await http
-                    .get("/product/review", {
+                    .get('/product/review', {
                          params: {
                               productNo: this.$store.getters.getProductNo,
                          },
@@ -248,7 +250,7 @@ export default {
           },
           async delReivew(idx) {
                await http
-                    .delete("/product/review", {
+                    .delete('/product/review', {
                          params: {
                               commentNo: this.reviews[idx].commentNo,
                          },
@@ -256,7 +258,7 @@ export default {
                     })
                     .then((response) => {
                          console.log(response);
-                         http.get("/product/review", {
+                         http.get('/product/review', {
                               params: {
                                    productNo: this.$store.getters.getProductNo,
                               },
@@ -265,6 +267,7 @@ export default {
                               .then((response) => {
                                    this.reviews.splice(0);
                                    this.reviews = response.data;
+                                   this.reviewNum = this.reviews.length;
                               })
                               .catch((error) => {
                                    console.log(error);
