@@ -31,7 +31,11 @@
     <v-row>
       <v-col></v-col>
       <v-col> <h3 class="text-h7 pr-3">상 품 평</h3></v-col>
-      <v-col style="text-align: right; padding-right: 18px">이마트몰리뷰</v-col>
+      <v-col style="text-align: right; padding-right: 18px">
+        <a target="_blank" :href="$store.getters.getReviewLink"
+          >이마트몰리뷰</a
+        ></v-col
+      >
     </v-row>
     <hr />
     <div v-if="reviewNum == 0">
