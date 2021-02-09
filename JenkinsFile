@@ -53,16 +53,19 @@ pipeline {
                 | xargs -r docker container rm'
                 // docker image build 시 기존에 존재하던 이미지는
                 // dangling 상태가 되기 때문에 이미지를 일괄 삭제
-                // ++ 사용하고 있는 이미지가 none 인 경우가 있어서 명령어를 좀 바꿔야할 것 같아 바꿨다.
                 sh 'docker images -f dangling=true && \
                 docker rmi $(docker images -f "dangling=true" -q)'
-                // sh 'docker images -f dangling=true && \
-                // docker rmi $(docker rm  $(docker ps -q -a))'
+
                 // docker container 실행
-                sh 'docker run -d --name vue-frontend -p 80:80 vue-frontend:latest'
+                sh 'docker run -d --name <front-image-name> \
+                    -p 80:80 \
+                    -p 443:443 \
+                    -v ./key/privkey.pem:/etc/nginx/key/privkey.pem \
+                    --network s04p13d109_default \
+                    vue-frontend:latest'
                 sh 'docker run -d --name spring-backend -p 8080:8080 spring-backend:latest'
-                // sh 'docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql' : mysql 은 현재 ec2 local로 써서 안 함
                 sh 'docker run -d --name redis_boot -p 6379:6379 redis'
+                // sh 'docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql' : mysql 은 현재 ec2 local로 써서 안 함
             }
         }
     }
