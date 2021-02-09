@@ -1,7 +1,4 @@
----
-
----
-
+# 개발 환경 세팅
 <h3>롬복 적용<h3>
 <a>yunyoung1819.tistory.com/95</a>
 
@@ -12,7 +9,6 @@
 
 
 
-***
 # SEE 장
 <img src="/frontend/cart/src/assets/cart.gif" width="40%" height="30%" title="see장 로고" alt="see장로고"></img>
 
@@ -41,7 +37,7 @@
 
 
 
-# :star:주요기능
+# 🍤주요기능
 
 ### 시각장애인
 
@@ -60,114 +56,22 @@
 
 
 
-# 📜Tech Log
-<details>
-<summary>2021.02.01</summary>
+# 📜회의록
 
-- 깃, 지라 이관 완료<br>
-- 현재까지 진행상황 및 앞으로 할 기능 명세 의견 획일화<br>
-- 업무 다시 분장<br>
-    - 깃 readme<br>
-        - [https://github.com/scl2589/Cobook](https://github.com/scl2589/Cobook) (코북 readme 참고)<br>
-    - jira 관리 ( 개인 이슈는 알아서, 잘 관리되고 있는지 체크 )<br>
-    - 회의록 (스크럼 및 회의 내용 작성)<br>
-    - ppt작성<br>
-    - ucc담당<br>
-- 피드백 파일 확인하기<br>
-</details>
-<br>
-<details>
-<summary>2021.02.02</summary>
+**SubPJT3 1주차 - 핵심기능구현, 로컬 배포**
 
-** 오늘 할 일 **
-
-Front : HTTP + AXIOS 통신 할 때 헤더에 { withCredentials: true }  추가해서 보내주기<br>
-
-- 쿠키 정보를 자동으로 포함해서 보내겠다는 의미!<br>
-
-Back : 잊지말고 CORS 정보 디테일하게 적고, Credentials Allow 해주기<br>
-
-백엔드 배포도..<br>
-
-**민창**<br>
-
-- 쇼핑리스트 컨트롤러 수정<br>
-- 로그인 연동 ← 이거 왜 아직있어? (충섭) 번개조 대기중 (민창) 대단하다!민창!(충섭)<br>
-- 로그아웃 처리<br>
-- db 덤프 만들기<br>
-- 리뷰 다 돌아가는 지 확인하기<br>
-- AWS 클라우드 서버 실행해보기<br>
-- docker 배포<br>
-- 젠킨스????<br>
-
-**유정**
-
-- wishList 컨트롤러 수정<br>
-- wishList 디비 수정<br>
-- 최저가 크롤링 사이트이름 넣기 수정<br>
-- image 컨트롤러 모드별로 바꾸기<br>
-- db 덤프 만들기<br>
-- 인기상품 db 만들기<br>
-- 정준영한테 말해야할 것 : 이미지 컨트롤러 경로랑 이름바꿈, 매개변수 file → request로 바꿈
-- read.me
-
-**충섭**
-
-- ~~세션을 이용해서 헤더 유지하기~~
-- ~~로그아웃 확인하기~~
-- ~~모드 변경 페이지 넣기~~
-- ~~localStorage에 isBlind 생성~~
-    - **0, null → 로그우앗, 처음 사용자**
-    - **1 → 시각장애인**
-    - **2 → 비장애인**
-- ~~모드변경 추가~~
-- **헤더 왜 안없어지냐 진짜 !!!!!!!!!!!!!!!!!!!!**
-- **쇼핑리스트 UI 드디어 만지기!!!**
-
-**유리**
-
-- ~~기능명세 수정~~
-- 프론트앤드 배포
-
-**서연**
-
-**준영**
-
-- 시각장애인 카메라 페이지 vuex로 만들기
-- 시각장애인 카메라 페이지 모드마다 다른거 하게 바꾸기
-- 시각장애인 카메라 페이지 백엔드에서 값 받아서 음성출력하기
-- 시각장애인 카메라 페이지 음성인식으로 상품찾기
-
-로컬스토리지에서 isBlind를 통해 시각장애인 모드인지 아닌지 확인함.
-
-그리고 카메라를 통해 이미지 넘길 때 
-
-1: 일반인
-
-2:시각장애인 위치찾기
-
-3:시각장애인 상품확인하기
-
-숫자를 매개변수로 해서 넘겨줌 
-
-## 이슈
-
-**로그인부분**
-
-@CrossOrigin(origins = { "[http://localhost:8080](http://localhost:8080/)" }, allowCredentials = "true"
-
-origins = "*"로 해도 로그인되는지 테스트
-
-**음성인식**
-
-음성으로 말을 하고 종료하는 시점을 어떻게 하나???
-
-## 오후 종례 미팅
+[2021.02.01(월)_회의록](https://www.notion.so/2021-02-01-_-83559ab29920491885d471022358b444) <br>
+[2021.02.02(화)_회의록](https://www.notion.so/2021-02-02-_-96882fb264dc417f81d2d848e793e139) <br>
+[2021.02.03(수)_회의록](https://www.notion.so/2021-02-03-_-91f6fbfdbb6a456b9467931362677f9a) <br>
+[2021.02.04(목)_회의록](https://www.notion.so/2021-02-04-_-2120ad1fd48d4d30a2c1837dfb2d231d) <br>
+[2021.02.05(금)_회의록](https://www.notion.so/2021-02-05-_-c160b7cfd3cf44d7a29500815b984f26) <br>
 
 ---
 
-### 중간점검
-</details>
+**SubPJT3 2주차 - UI/UX, 도커 배포(젠킨스), UCC**
+
+[2021.02.08(월)_회의록](https://www.notion.so/2021-02-08-_-34c59144de5e4cd2a61f2e80c3f836cb) <br>
+[2021.02.09(화)_회의록](https://www.notion.so/2021-02-09-_-1d537e59e7a245dc8cf43e7033b64aa5) <br>
 
 <br>
 <br>
@@ -176,6 +80,7 @@ origins = "*"로 해도 로그인되는지 테스트
 * vue.js
 * spring boot
 * MySQL
-* Docker - redis
+* redis
+* Docker
 * tensorflow
 
