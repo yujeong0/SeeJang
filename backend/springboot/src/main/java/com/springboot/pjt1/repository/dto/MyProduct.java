@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "사용자가 즐겨찾기에 추가한 상품 dto")
 public class MyProduct {
-	@ApiModelProperty(notes = "상품 번호")
-	private int productNo;
+	@ApiModelProperty(notes = "즐겨찾기 번호")
+	private int myProductNo;
 	@ApiModelProperty(notes = "회원 ID")
 	private String memberId;
 	@ApiModelProperty(notes = "상품명")
@@ -14,11 +14,11 @@ public class MyProduct {
 	@ApiModelProperty(notes = "상품가격")
 	private String productPrice;
 	
-	public int getProductNo() {
-		return productNo;
+	public int getMyProductNo() {
+		return myProductNo;
 	}
-	public void setProductNo(int productNo) {
-		this.productNo = productNo;
+	public void setMyProductNo(int myProductNo) {
+		this.myProductNo = myProductNo;
 	}
 	public String getMemberId() {
 		return memberId;
