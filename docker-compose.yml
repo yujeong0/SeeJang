@@ -1,29 +1,6 @@
 version: "3"
 
 services:
-  # nginx:
-  #   image: nginx
-  #   container_name: nginx
-  #   ports: 
-  #     - 80:80
-  #   volumes:
-  #     - ./frontend/cart/nginx:/etc/nginx/conf.d
-  #   depends_on: 
-  #     - spring
-
-  # mysql:
-  #   image: mysql:8.0.23
-  #   container_name: mysql
-  #   ports:
-  #     - 3307:3306
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: "root"
-  #   command:
-  #     - --character-set-server=utf8mb4
-  #     - --collation-server=utf8mb4_unicode_ci
-  #   volumes:
-  #     - /Users/d109/datadir:/var/lib/mysql
-
   jenkins:
     image: 'jenkinsci/blueocean'
     restart: unless-stopped
@@ -37,34 +14,34 @@ services:
       - '$HOME:/home'
     container_name: 'jenkins'
 
-  redis:                     
-   image: redis
-   restart: always
+  # redis:                     
+  #  image: redis
+  #  restart: always
 
-  spring:
-    image: spring-backend
-    container_name: backend
-    build:
-      context: ./backend/springboot
-      dockerfile: backend.Dockerfile
-    depends_on: 
-      - redis
-    ports:
-      - 8081:8081
+  # spring:
+  #   image: spring-backend
+  #   container_name: backend
+  #   build:
+  #     context: ./backend/springboot
+  #     dockerfile: backend.Dockerfile
+  #   depends_on: 
+  #     - redis
+  #   ports:
+  #     - 8081:8081
 
-  vue:
-    image: vue-frontend
-    container_name: frontend
-    volumes:
-      - ./key:/etc/nginx/key
-    build:
-      context: ./frontend/cart
-      dockerfile: frontend.Dockerfile
-    depends_on: 
-      - spring
-    ports:
-      - 80:80
-      - 443:443
+  # vue:
+  #   image: vue-frontend
+  #   container_name: frontend
+  #   volumes:
+  #     - ./key:/etc/nginx/key
+  #   build:
+  #     context: ./frontend/cart
+  #     dockerfile: frontend.Dockerfile
+  #   depends_on: 
+  #     - spring
+  #   ports:
+  #     - 80:80
+  #     - 443:443
 
 
     
