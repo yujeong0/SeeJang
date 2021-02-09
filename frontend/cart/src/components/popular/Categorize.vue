@@ -8,6 +8,7 @@
             alt=""
             width="40px"
             class="mr-4"
+            :class="{active:isFruit }"
             @click="clickCategory('과일')"
         /></v-col>
         <v-col
@@ -16,9 +17,10 @@
             alt=""
             width="40px"
             class="ml-4 mr-4"
+            :class="{active:isTea }"
             @click="clickCategory('커피/차')"
         /></v-col>
-        <v-col @click="clickCategory('냉장/냉동')"
+        <v-col @click="clickCategory('냉장/냉동')" :class="{active:isRefri }"
           ><img
             src="@/assets/instant_unclick.png/"
             alt=""
@@ -31,6 +33,7 @@
             alt=""
             width="40px"
             class="ml-4"
+            :class="{active:isDrink }"
             @click="clickCategory('생수/음료')"
         /></v-col>
       </v-row>
@@ -40,24 +43,28 @@
         <v-col
           style="font-size: small"
           class="mr-2"
+          :class="{active:isFruit }"
           @click="clickCategory('과일')"
           >과일</v-col
         >
         <v-col
           style="font-size: small"
           class="ml-2 mr-2"
+          :class="{active:isTea }"
           @click="clickCategory('커피/차')"
           >커피/차</v-col
         >
         <v-col
           style="font-size: small"
           class="ml-2 mr-2"
+          :class="{active:isRefri }"
           @click="clickCategory('냉장/냉동')"
           >냉장/냉동</v-col
         >
         <v-col
           style="font-size: small"
           class="ml-2"
+          :class="{active:isDrink }"
           @click="clickCategory('생수/음료')"
           >생수/음료</v-col
         >
@@ -67,24 +74,24 @@
     <div>
       <div class="gridDiv">
         <v-row no-gutters>
-          <v-col @click="clickCategory('양념/오일')"
+          <v-col @click="clickCategory('양념/오일')" :class="{active:isOil }"
             ><img src="@/assets/oil_unclick.png/" alt="" width="40px" class="mr-4"
           /></v-col>
-          <v-col @click="clickCategory('우유/유제품')"
+          <v-col @click="clickCategory('우유/유제품')" :class="{active:isMilk }"
             ><img
               src="@/assets/milk_unclick.png/"
               alt=""
               width="40px"
               class="ml-4 mr-4"
           /></v-col>
-          <v-col @click="clickCategory('베이커리/잼')"
+          <v-col @click="clickCategory('베이커리/잼')" :class="{active:isBread }"
             ><img
               src="@/assets/bread_unclick.png/"
               alt=""
               width="40px"
               class="ml-4 mr-4"
           /></v-col>
-          <v-col @click="clickCategory('쌀/잡곡')"
+          <v-col @click="clickCategory('쌀/잡곡')" :class="{active:isRice }"
             ><img src="@/assets/rice_unclick.png/" alt="" width="40px" class="ml-4"
           /></v-col>
         </v-row>
@@ -95,6 +102,7 @@
             ><span
               style="font-size: small"
               class="mr-2"
+              :class="{active:isOil }"
               @click="clickCategory('양념/오일')"
               >양념/오일</span
             ></v-col
@@ -103,6 +111,7 @@
             ><span
               style="font-size: small"
               class="mr-0.5"
+              :class="{active:isMilk }"
               @click="clickCategory('우유/유제품')"
               >우유/</span
             ></v-col
@@ -111,6 +120,7 @@
             ><span
               style="font-size: small"
               class="ml-0.5"
+              :class="{active:isBread }"
               @click="clickCategory('베이커리/잼')"
               >베이커리/</span
             ></v-col
@@ -119,6 +129,7 @@
             ><span
               style="font-size: small"
               class="ml-2"
+              :class="{active:isRice }"
               @click="clickCategory('쌀/잡곡')"
               >쌀/잡곡</span
             ></v-col
@@ -132,6 +143,7 @@
             ><span
               style="font-size: small"
               class="ml-4"
+              :class="{active:isMilk }"
               @click="clickCategory('우유/유제품')"
               >유제품</span
             ></v-col
@@ -140,6 +152,7 @@
             ><span
               style="font-size: small"
               class="mr-6"
+              :class="{active:isBread }"
               @click="clickCategory('베이커리/잼')"
               >잼</span
             ></v-col
@@ -157,10 +170,59 @@
 import http from '@/util/http-common.js';
 export default {
   data() {
-    return {};
+    return {
+      isFruit:false,
+      isTea:false,
+      isRefri:false,
+      isDrink:false,
+      isOil:false,
+      isMilk:false,
+      isBread:false,
+      isRice:false,
+    };
   },
   methods: {
     clickCategory(categorizeItem) {
+      // 배 열 초기화 -arr = [ isFruit, isTea, isRefri ... ]
+      // 모두 false로 
+      // for(let i = 0; i < arr.length; i++){
+      //   arr[i] = false;
+      this.isFruit = false;
+      this.isTea = false;
+      this.isRefri = false;
+      this.isDrink = false;
+      this.isOil = false;
+      this.isMilk = false;
+      this.isBread = false;
+      this.isRice = false;
+
+      // String의 문자랑 맞는거만 true로
+      switch(categorizeItem){
+        case "과일" : 
+          this.isFruit = true;
+          break;
+        case "커피/차" : 
+          this.isTea = true;
+          break;
+        case "냉장/냉동" : 
+          this.isRefri = true;
+          break;
+        case "생수/음료" : 
+          this.isDrink = true;
+          break;
+        case "양념/오일" : 
+          this.isOil = true;
+          break;
+        case "우유/유제품" : 
+          this.isMilk = true;
+          break;
+        case "베이커리/잼" : 
+          this.isBread = true;
+          break;
+        case "쌀/잡곡" : 
+          this.isRice = true;
+          break;
+      }
       http
         .get('/product/category', {
           params: {
@@ -193,6 +255,9 @@ export default {
 .gridDiv2 {
   text-align: center;
   margin: -3% 0;
+}
+.active {
+  color: green;
 }
 
 </style>
