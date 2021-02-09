@@ -10,6 +10,6 @@ public interface MyProductMapper {
 	
 	int insertMyProduct(MyProduct myProduct);
 	
-	int deleteMyProduct(MyProduct myProduct);
+	int deleteMyProduct(int myProductNo);
 	
 }
