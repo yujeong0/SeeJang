@@ -58,5 +58,10 @@ public class Product {
 		this.productName = productName;
 		this.category = category;
 	}
+	@Override
+	public String toString() {
+		return "Product [productNo=" + productNo + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", category=" + category + ", reviewLink=" + reviewLink + ", imageName=" + imageName + "]";
+	}
 	
 }

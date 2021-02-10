@@ -82,15 +82,31 @@ export default {
           console.log(error);
         });
     },
-    detail() {
-      let productInfo = {
-        productName: this.popular.productName,
-        productNo: this.popular.productNo,
-        productPrice: this.popular.productPrice,
-      };
-      console.log('setproductInfo부른다');
-      this.$store.commit('SET_PRODUCT_INFO', { productInfo });
-      console.log('setproductInfo부른뒤');
+    async detail() {
+      console.log('Asdfasdfasdfas3');
+      let name = this.popular.productName;
+      await http
+        .get('/product/name', {
+          params: {
+            name: name,
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log('Asdfasdfasdfas1');
+          let productInfo = {
+            productName: this.popular.productName,
+            productNo: this.popular.productNo,
+            productPrice: this.popular.productPrice,
+            reviewLink: response.data[0].reviewLink,
+          };
+          this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+          console.log('ddddddddasdfasdfdddddddd');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       this.$router.push('/detailProduct');
     },
   },
