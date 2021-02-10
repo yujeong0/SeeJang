@@ -57,18 +57,7 @@ public class ImageServiceImpl implements ImageService {
 			img.setImage(file.getBytes());
 			mapper.insertImage(img);
 			
-			ImagesResults imagesResults = new ImagesResults();
-			while(true) {
-				imagesResults = mapper.selectImageResultsByMemberId(memberId);
-				System.out.println(imagesResults);
-				if(imagesResults != null) { 
-					mapper.deleteImagesResults(imagesResults.getId());
-					break;
-				}
-				Thread.sleep(1000);
-				System.out.println("결과 기다리는중");
-			}
-			return imagesResults.getResult();
+			return getImageResult(memberId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "처리오류";
@@ -87,11 +76,28 @@ public class ImageServiceImpl implements ImageService {
 			img.setImage(file.getBytes());
 			mapper.insertImage(img);
 			
-			return itemName + "은 없지롱";
+			return getImageResult(memberId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "처리오류";
 		}
 	}
+	
+	String getImageResult(String memberId) throws InterruptedException {
+		ImagesResults imagesResults = new ImagesResults();
+		while(true) {
+			imagesResults = mapper.selectImageResultsByMemberId(memberId);
+			System.out.println(imagesResults);
+			if(imagesResults != null) { 
+				mapper.deleteImagesResults(imagesResults.getId());
+				break;
+			}
+			Thread.sleep(1000);
+			System.out.println("결과 기다리는중");
+		}
+		
+		return imagesResults.getResult();
+	}
+	
 
 }
