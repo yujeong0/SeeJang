@@ -14,7 +14,7 @@
     </div>
     <div class="column" v-if="!state">
       <br />
-      <h3 class="mb-5">이번 주 인기상품</h3>
+      <h3 class="highlight mb-5">이번 주 인기상품</h3>
       <hr />
       <br />
       <popular
@@ -68,4 +68,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.highlight {
+  background-color:#feca57;
+  width: 50%;
+  margin-left: 25%;
+}
+</style>
