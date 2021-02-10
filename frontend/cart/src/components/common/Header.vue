@@ -203,7 +203,10 @@ export default {
                this.goDetail();
           },
           camera() {
-               this.$router.push('/notBlindSearchProduct');
+               if (this.$router.currentRoute.path == '/notBlindSearchProduct') {
+               } else {
+                    this.$router.push('/notBlindSearchProduct');
+               }
           },
           shopping_list() {
                if (this.$router.currentRoute.path == '/shoppingList') {
