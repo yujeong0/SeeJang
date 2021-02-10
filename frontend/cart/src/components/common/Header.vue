@@ -31,11 +31,23 @@
       placeholder="상품을 검색해주세요."
       outlined
       dense
+      @keyup="searchState"
       @keyup.enter="goDetail"
       v-model="serachName"
-      style="width: 80%; margin: 1% auto; margin-bottom: -7%"
+      style="width: 80%; margin: 1% auto; margin-bottom: -6%"
       class="text"
     ></v-text-field>
+    <div class="searchedArea" v-if="searchedState">
+        <hr style="width: 100%; margin: auto" />
+        <SuggestSearch
+          v-for="product in searchedProducts"
+          :name="product.productName"
+          :key="product.productNo"
+          @sel="sel"
+        >
+        </SuggestSearch>
+        <hr style="width: 60%; margin: auto" />
+      </div>
     <div class="gridDiv">
       <v-row no-gutters>
         <v-col @click="update('/shoppingList')"
@@ -99,10 +111,13 @@
 
 <script>
 import http from '@/util/http-common.js';
+import SuggestSearch from '@/components/shopping/SuggestSearch.vue';
 export default {
   name: 'Header',
   props: {},
-  components: {},
+  components: {
+    SuggestSearch
+  },
   data() {
     return {
       serachName: '',
@@ -112,6 +127,8 @@ export default {
       isshopping: false,
       ispopular: false,
       iscamera: false,
+      searchedProducts: [],
+      searchedState: false,
     };
   },
   computed: {
@@ -153,6 +170,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.$store.commit('SET_INTEGRATED_SEARCH', { response }); //검색한 상품들의 정보를 셋팅
+          this.searchedState = false;
         })
         .catch((error) => {
           console.log(error);
@@ -161,6 +179,10 @@ export default {
       } else {
         this.$router.push('/integratedSearch');
       }
+    },
+    sel(item){
+      this.serachName = item.name;
+      this.goDetail();
     },
     camera() {
       this.$router.push('/notBlindSearchProduct');
@@ -227,6 +249,28 @@ export default {
     likeproduct() {
       this.$router.push('/likeproduct');
     },
+    async searchState(){
+      if (this.serachName != '') {
+        await http
+          .get('/product/name', {
+            params: {
+              name: this.serachName,
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            this.searchedProducts.splice(0);
+            this.searchedState = true;
+            this.searchedProducts = response.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        this.searchedState = false;
+        this.searchedProducts.splice(0);
+      }
+    }
   },
 };
 </script>
@@ -318,5 +362,17 @@ export default {
 .active {
   color: #FFAB00;
   -webkit-text-stroke: 0.2px rgb(255, 145, 0);
+}
+.searchedArea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+  max-height: 103px;
+  overflow-y: scroll;
+  text-align: left;
+  width: 78%;
+  margin: auto;
 }
 </style>
