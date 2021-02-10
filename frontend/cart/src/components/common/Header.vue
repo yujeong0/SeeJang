@@ -134,6 +134,22 @@ export default {
   computed: {
 
   },
+  created(){
+    console.log("created");
+    this.update(this.$router.currentRoute.path);
+  },
+  watch:{
+	//해당 라우트에서 주소가 바꼈을시 호출됨
+	'$route' (to, from) {
+    console.log("라우터변경")
+    console.log(to.path)
+    if(to.path != '/')
+      this.update(to.path)
+    else {
+      this.update('/shoppingList')
+    }
+	}
+},
   methods: {
     update(path) {
       if (this.$router.currentRoute.path != this.active) {
@@ -189,7 +205,6 @@ export default {
     },
     shopping_list() {
       if (this.$router.currentRoute.path == '/shoppingList') {
-        this.$store.commit('SET_SHOPPING_STATE', false);
       } else {
         this.$router.push('/shoppingList');
       }
