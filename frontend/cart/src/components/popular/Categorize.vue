@@ -3,39 +3,73 @@
     <div class="gridDiv">
       <v-row no-gutters>
         <v-col
-          ><img
+          ><img v-if="!isFruit"
             src="@/assets/fruit_unclick.png/"
             alt=""
             width="50px"
             class="mr-3"
             :class="{active:isFruit }"
             @click="clickCategory('과일')"
-        /></v-col>
+        />
+          <img v-else-if="isFruit"
+            src="@/assets/fruit_click.png/"
+            alt=""
+            width="50px"
+            class="mr-3"
+            :class="{active:isFruit }"
+            @click="clickCategory('과일')"
+        />
+        </v-col>
         <v-col
-          ><img
+          ><img v-if="!isTea"
             src="@/assets/tea_unclick.png/"
             alt=""
             width="50px"
             class="ml-3 mr-3"
             :class="{active:isTea }"
             @click="clickCategory('커피/차')"
-        /></v-col>
+        />
+          <img v-else-if="isTea"
+            src="@/assets/tea_click.png/"
+            alt=""
+            width="50px"
+            class="ml-3 mr-3"
+            :class="{active:isTea }"
+            @click="clickCategory('커피/차')"
+        />
+        </v-col>
         <v-col @click="clickCategory('냉장/냉동')" :class="{active:isRefri }"
-          ><img
+          ><img v-if="!isRefri"
             src="@/assets/instant_unclick.png/"
             alt=""
             width="50px"
             class="ml-3 mr-3"
-        /></v-col>
+        />
+        <img v-else-if="isRefri"
+            src="@/assets/instant_click.png/"
+            alt=""
+            width="50px"
+            class="ml-3 mr-3"
+        />
+        </v-col>
         <v-col
-          ><img
+          ><img v-if="!isDrink"
             src="@/assets/drink_unclick.png/"
             alt=""
             width="50px"
             class="ml-3"
             :class="{active:isDrink }"
             @click="clickCategory('생수/음료')"
-        /></v-col>
+        />
+          <img v-else-if="isDrink"
+            src="@/assets/drink_click.png/"
+            alt=""
+            width="50px"
+            class="ml-3"
+            :class="{active:isDrink }"
+            @click="clickCategory('생수/음료')"
+        />
+        </v-col>
       </v-row>
     </div>
     <div class="gridTextDiv">
@@ -75,25 +109,45 @@
       <div class="gridDiv">
         <v-row no-gutters>
           <v-col @click="clickCategory('양념/오일')" :class="{active:isOil }"
-            ><img src="@/assets/oil_unclick.png/" alt="" width="50px" class="mr-3"
-          /></v-col>
+            ><img v-if="!isOil" src="@/assets/oil_unclick.png/" alt="" width="50px" class="mr-3"
+          />
+            <img v-else-if="isOil" src="@/assets/oil_click.png/" alt="" width="50px" class="mr-3"
+          />
+          </v-col>
           <v-col @click="clickCategory('우유/유제품')" :class="{active:isMilk }"
-            ><img
+            ><img v-if="!isMilk"
               src="@/assets/milk_unclick.png/"
               alt=""
               width="50px"
               class="ml-3 mr-3"
-          /></v-col>
+          />
+            <img v-else-if="isMilk"
+              src="@/assets/milk_click.png/"
+              alt=""
+              width="50px"
+              class="ml-3 mr-3"
+          />
+          </v-col>
           <v-col @click="clickCategory('베이커리/잼')" :class="{active:isBread }"
-            ><img
+            ><img v-if="!isBread"
               src="@/assets/bread_unclick.png/"
               alt=""
               width="50px"
               class="ml-3 mr-3"
-          /></v-col>
+          />
+            <img v-else-if="isBread"
+              src="@/assets/bread_click.png/"
+              alt=""
+              width="50px"
+              class="ml-3 mr-3"
+          />
+          </v-col>
           <v-col @click="clickCategory('쌀/잡곡')" :class="{active:isRice }"
-            ><img src="@/assets/rice_unclick.png/" alt="" width="50px" class="ml-3"
-          /></v-col>
+            ><img v-if="!isRice" src="@/assets/rice_unclick.png/" alt="" width="50px" class="ml-3"
+          />
+            <img v-else-if="isRice" src="@/assets/rice_click.png/" alt="" width="50px" class="ml-3"
+          />
+          </v-col>
         </v-row>
       </div>
       <div class="gridTextDiv">
@@ -257,7 +311,8 @@ export default {
   margin: -3% 0;
 }
 .active {
-  color: green;
+  color: #FFAB00;
+  -webkit-text-stroke: 0.2px rgb(255, 115, 0);
 }
 
 </style>
