@@ -57,7 +57,11 @@ pipeline {
                 docker rmi $(docker images -f "dangling=true" -q)'
 
                 // docker container 실행
-                sh 'docker run -d --name spring-backend -p 8081:8081 \
+                // network 설정했기 때문에 port 안 줘도 됨 ㅎㅎㅎ
+                // sh 'docker run -d --name spring-backend -p 8081:8081 \
+                //     --network jenkins \
+                //     spring-backend:latest'
+                sh 'docker run -d --name spring-backend \
                     --network jenkins \
                     spring-backend:latest'
                 sh 'docker run --name vue-frontend \
