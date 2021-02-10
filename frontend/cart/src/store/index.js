@@ -39,6 +39,7 @@ export default new Vuex.Store({
       categorizeItems: [],
       categorizeItem: '',
       searchName: '',
+      reviewLink:'',
     },
 
     /** 상품 **/
@@ -73,9 +74,15 @@ export default new Vuex.Store({
     //** 상품정보 **/
     //상품정보 넣어주기
     SET_PRODUCT_INFO(state, payload) {
+      console.log("리뷰set info");
+      console.log(payload.productInfo.reviewLink);
       state.product.productName = payload.productInfo.productName;
       state.product.productNo = payload.productInfo.productNo;
       state.product.productPrice = payload.productInfo.productPrice;
+      state.product.reviewLink = payload.productInfo.reviewLink;
+      
+      console.log( "리뷰@@@@@@@@@@@@")
+      console.log(state.product.reviewLink)
     },
     // ** 로그인 시작 **//
     TOGGLE_LOGIN_STATE(state) {
@@ -227,6 +234,9 @@ export default new Vuex.Store({
       console.log(payload.serachName);
       state.product.searchName = payload.serachName;
     },
+    getReviewLink(state, payload) {
+      return state.product.reviewLink;
+    },
 
     //** 통합검색 **/
     getintegratedSearch(state) {
@@ -236,6 +246,7 @@ export default new Vuex.Store({
     getSearchName(state) {
       return state.product.searchName;
     },
+    
     //** 통합검색 **/
   },
 });

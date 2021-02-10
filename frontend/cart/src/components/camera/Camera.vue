@@ -106,7 +106,7 @@ export default {
             //장애인 위치찾기
           }
           if (this.$store.getters.getCameraMode == 1) {
-            let productInfo = response.data.result[0];
+            let productInfo = response.data.result;
             this.$store.commit('SET_PRODUCT_INFO', { productInfo });
           }
         })
