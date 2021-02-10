@@ -135,17 +135,17 @@ export default {
 
   },
   created(){
-    this.update(this.$router.currentRoute.path);
+    // this.update(this.$router.currentRoute.path);
   },
   watch:{
 	//해당 라우트에서 주소가 바꼈을시 호출됨
-	'$route' (to, from) {
-    if(to.path != '/')
-      this.update(to.path)
-    else {
-      this.update('/shoppingList')
-    }
-	}
+	// '$route' (to, from) {
+  //   if(to.path != '/')
+  //     this.update(to.path)
+  //   else {
+  //     this.update('/shoppingList')
+  //   }
+	// }
 },
   methods: {
     update(path) {
@@ -234,19 +234,21 @@ export default {
           },
         });
       } else if (this.platform == 'naver') {
+        console.log("naver 로그아웃")
       }
 
       http
         .get('/user/logout', { withCredentials: true })
         .then((response) => {
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
 
       sessionStorage.setItem('isLogin', false);
-      sessionStorage.setItem('nickName', '');
-      sessionStorage.setItem('userId', '');
+      sessionStorage.setItem('nickName', null);
+      sessionStorage.setItem('userId', null);
       localStorage.setItem('isBlind', 0);
       this.$store.commit('TOGGLE_LOGIN_STATE');
       this.$store.commit('INIT');
