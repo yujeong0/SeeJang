@@ -74,13 +74,9 @@ export default {
       var payload = this.item;
       var no = this.item.shoppingListNo;
       if (!this.ischecked) {
-        console.log('삭제체크입력');
-        console.log(no);
         this.$store.commit('ADD_TOTAL_MONEY', { money });
         this.$store.commit('ADD_CHECK_ITEM', { payload });
       } else {
-        console.log('삭제체크삭제');
-        console.log(no);
         this.$store.commit('DEL_ITEM', { money });
         this.$store.commit('DEL_CHECK_ITEM', { no });
       }
@@ -115,7 +111,6 @@ export default {
       );
     },
     updateNamePrice(updatedItem) {
-      console.log(updatedItem);
       let formData = new FormData();
       formData.append('checked', this.ischecked);
       formData.append('memberId', this.$store.getters.getMemberId);

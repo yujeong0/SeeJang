@@ -135,14 +135,11 @@ export default {
 
   },
   created(){
-    console.log("created");
     this.update(this.$router.currentRoute.path);
   },
   watch:{
 	//해당 라우트에서 주소가 바꼈을시 호출됨
 	'$route' (to, from) {
-    console.log("라우터변경")
-    console.log(to.path)
     if(to.path != '/')
       this.update(to.path)
     else {
@@ -184,7 +181,6 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response);
           this.$store.commit('SET_INTEGRATED_SEARCH', { response }); //검색한 상품들의 정보를 셋팅
           this.searchedState = false;
         })
@@ -210,7 +206,6 @@ export default {
       }
     },
     popular_product() {
-      console.log();
       if (this.$router.currentRoute.path == '/popularproduct') {
         this.$store.commit('SET_CATEGORY_STATE', false);
       } else {
@@ -230,24 +225,20 @@ export default {
         // window.Kakao.Auth.logout(function () {
         //   console.log(window.Kakao.Auth.getAccessToken());
         // });
-        console.log('kakao logout');
         window.Kakao.API.request({
           url: '/v1/user/unlink',
           success: function (response) {
-            console.log(response);
           },
           fail: function (error) {
             console.log(error);
           },
         });
       } else if (this.platform == 'naver') {
-        console.log('naver logout');
       }
 
       http
         .get('/user/logout', { withCredentials: true })
         .then((response) => {
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);
