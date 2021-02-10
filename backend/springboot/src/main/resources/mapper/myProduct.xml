@@ -11,8 +11,8 @@
 
 	<insert id="insertMyProduct" parameterType="myProduct">
 		insert 
-		into my_product(product_no, member_id, product_name, product_price)
-		values(#{productNo}, #{memberId}, #{productName}, #{productPrice})
+		into my_product(member_id, product_name, product_price)
+		values(#{memberId}, #{productName}, #{productPrice})
 	</insert>
 	
 	<delete id="deleteMyProduct" parameterType="myProduct">

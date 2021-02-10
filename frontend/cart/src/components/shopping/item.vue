@@ -3,17 +3,32 @@
     <v-container>
       <v-row class="mb-6" no-gutters>
         <v-col cols="1" sm>
-          <input type="checkbox" v-model="ischecked" :checked="ischecked" @click="check" />
+          <input
+            type="checkbox"
+            v-model="ischecked"
+            :checked="ischecked"
+            @click="check"
+          />
         </v-col>
-        <v-col cols="5" sm style="text-align: left; margin-right: 2%" @click="updateForm">
+        <v-col
+          cols="5"
+          sm
+          style="text-align: left; margin-right: 2%"
+          @click="updateForm"
+        >
           {{ productName }}
         </v-col>
-        <v-col style="text-align: left" @click="updateForm"> ₩ {{ productPrice }} </v-col>
+        <v-col style="text-align: left" @click="updateForm">
+          ₩ {{ productPrice | comma }}
+        </v-col>
         <v-col style="text-align: right">
-          <v-btn text @click="del" depressed color="error" style="padding-bottom: 20%">
-            del
-          </v-btn></v-col
-        >
+          <v-btn text @click="del" style="padding-left: 50px">
+            <v-img
+              src="@/assets/static/shoppingList/minus.png"
+              alt="DEL"
+              style="max-width: 20px; margin-bottom: 13px"
+            ></v-img> </v-btn
+        ></v-col>
       </v-row>
     </v-container>
   </div>
@@ -46,6 +61,11 @@ export default {
     if (this.allCheck) {
       this.update();
     }
+  },
+  filters: {
+    comma(val) {
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
   },
   methods: {
     check() {

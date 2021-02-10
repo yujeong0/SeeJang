@@ -82,6 +82,7 @@ export default {
             withCredentials: true,
           })
           .then((response) => {
+            console.log(response);
             let item = {
               checked: false,
               memberId: this.$store.getters.getMemberId,
@@ -137,7 +138,22 @@ export default {
       this.searchedState = false;
     },
     favorite() {
-      console.log('즐찾~');
+      if (this.productName.length != 0 && this.productPrice.length != 0) {
+        let formData = new FormData();
+        formData.append('memberId', this.$store.getters.getMemberId);
+        formData.append('productName', this.productName);
+        formData.append('productPrice', this.productPrice);
+        http
+          .post('/myProduct', formData, {
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
   },
 };
