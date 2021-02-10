@@ -12,7 +12,7 @@
 		INSERT INTO product_review (product_no, member_id, member_name, score, comment ) VALUES (#{productNo}, #{memberId}, #{memberName}, #{score}, #{comment})
 	</insert>
 	<update id="updateProductReviewByCommentNo" parameterType="ProductReview">
-		UPDATE product_review SET comment = #{comment} WHERE comment_no = #{commentNo}
+		UPDATE product_review SET comment = #{comment}, score = #{score}, date = now() WHERE comment_no = #{commentNo}
 	</update>
 	<delete id="deleteProductReviewByCommentNo" parameterType="int">
 		delete from product_review where comment_no = #{commentNo}
