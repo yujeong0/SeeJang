@@ -25,10 +25,13 @@ export default {
         index: Number,
     },
     created() {
+        console.log(this.index);
+        console.log(this.like);
     },
     methods: {
         async del() {
             let wishNo = this.like.wishNo;
+            console.log(typeof wishNo);
             await http
                 .delete("/wishList", {
                     params: {
@@ -37,6 +40,7 @@ export default {
                     withCredentials: true,
                 })
                 .then((response) => {
+                    console.log(response);
                     this.$emit("del", wishNo);
                 })
                 .catch((error) => {

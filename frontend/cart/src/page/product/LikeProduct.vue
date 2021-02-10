@@ -30,6 +30,7 @@ export default {
   },
   created() {
     var member_id = sessionStorage.getItem('userId');
+    console.log(member_id);
     http
       .get('/wishList', {
         params: {
@@ -39,6 +40,7 @@ export default {
       })
       .then((response) => {
         this.likes = response.data;
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);

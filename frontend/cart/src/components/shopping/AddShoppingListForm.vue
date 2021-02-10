@@ -97,6 +97,7 @@ export default {
             withCredentials: true,
           })
           .then((response) => {
+            console.log(response);
             let item = {
               checked: false,
               memberId: this.$store.getters.getMemberId,
@@ -141,6 +142,7 @@ export default {
       this.searchedState = false;
     },
     sel(selecteditem) {
+      console.log(selecteditem);
       for (let i = 0; i < this.searchedProducts.length; i++) {
         if (this.searchedProducts[i].productName == selecteditem.name) {
           this.productName = this.searchedProducts[i].productName;
@@ -161,6 +163,7 @@ export default {
             withCredentials: true,
           })
           .then((response) => {
+            console.log(response);
           })
           .catch((error) => {
             console.log(error);
