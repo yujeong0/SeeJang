@@ -80,11 +80,6 @@ export default {
   },
   mounted() {},
   updated() {
-    /** 쇼핑리스트 높이 맞추는 코드 */
-    this.itemArea = document.getElementById('IA');
-    let height = this.itemArea.clientHeight + 20;
-    console.log(height);
-    this.itemArea.scrollTop = this.itemArea.scrollHeight;
   },
   computed: {
     ...mapGetters(['getTotalMoney', 'getCheckedList', 'getModalState']),
@@ -106,6 +101,7 @@ export default {
       items: [],
       allCheck: false,
       itemArea: document.getElementById('IA'),
+      iteamState : '',
     };
   },
   methods: {
@@ -137,6 +133,7 @@ export default {
     },
     add(item) {
       this.items.push(item);
+      this.iteamState = 'add';
     },
     del(shoppingListNo) {
       for (let i = 0; i < this.items.length; i++) {
@@ -145,6 +142,7 @@ export default {
           break;
         }
       }
+      this.iteamState = 'del';
     },
     async confirm() {
       let length = this.items.length;
@@ -256,7 +254,7 @@ export default {
   background-color: white;
 }
 .itemArea {
-  height: 600px;
+  height: 400px;
   padding-top: 10px;
   margin-top: 80px;
   overflow-y: scroll;
