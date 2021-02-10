@@ -27,13 +27,19 @@ export default {
       this.$router.push('/blindSearchProduct');
     },
     notblindMode() {
-      // 비장애인 모드
+      // // 비장애인 모드
       localStorage.setItem('isBlind', 2);
-      sessionStorage.setItem('isLogin', true);
-      this.$store.commit('TOGGLE_LOGIN_STATE');
+      // console.log(sessionStorage.getItem("userId"));
+      if(sessionStorage.getItem("userId") == ''){
+        this.$router.push('/login');
+      }
+      else{
+        sessionStorage.setItem('isLogin', true);
+        this.$store.commit('TOGGLE_LOGIN_STATE');
+        this.$router.push('/shoppingList');
+      }
       // this.$router.push('/login');
       // 임시 로그인 사용
-      this.$router.push('/popularproduct');
     },
   },
 };
