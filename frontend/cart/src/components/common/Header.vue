@@ -240,7 +240,7 @@ export default {
 
       sessionStorage.setItem('isLogin', false);
       sessionStorage.setItem('nickName', '');
-      sessionStorage.setItem('member_id', '');
+      sessionStorage.setItem('userId', '');
       localStorage.setItem('isBlind', 0);
       this.$store.commit('TOGGLE_LOGIN_STATE');
       this.$store.commit('INIT');
