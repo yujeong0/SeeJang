@@ -62,11 +62,11 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'ShoppingList',
-  created() {
+  async created() {
     this.$store.commit('SET_ZERO_TOTAL');
     this.$store.commit('INIT_CHECKLIST');
-    var member_id = sessionStorage.getItem('userId');
-    http
+    let member_id = sessionStorage.getItem('userId');
+  await http
       .get('/shoppingList', {
         params: {
           MemberId: member_id,
