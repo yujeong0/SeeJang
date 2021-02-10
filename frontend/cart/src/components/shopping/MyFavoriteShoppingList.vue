@@ -1,42 +1,53 @@
 <template>
   <div id="container">
-    <h1 style="margin-bottom: 10px">상품 즐겨찾기</h1>
-    <hr />
-    <v-row style="height: 50px; margin: auto">
-      <v-col> <h2>상품정보</h2></v-col>
-      <v-col> <h2>추가/삭제</h2></v-col>
-    </v-row>
-    <hr />
-    <div v-for="(item, i) in myProduct" :key="i" style="margin-top: 10px">
-      <v-row>
-        <v-col style="margin: auto"> {{ item.productName }}</v-col>
-        <v-col style="margin: auto"
-          ><v-btn @click="AddShoppingList(i)" style="width: 65%"
-            >쇼핑리스트 담기</v-btn
-          ></v-col
-        >
+    <div class="modalHeader">
+      <br />
+      <h1 style="margin-bottom: 10px">상품 즐겨찾기</h1>
+      <hr />
+      <br />
+      <v-row style="height: 50px; margin: auto">
+        <v-col> <h2>상품정보</h2></v-col>
+        <v-col> <h2>추가/삭제</h2></v-col>
       </v-row>
-      <v-row>
-        <v-col style="margin: auto; color: blue">
-          {{ item.productPrice | comma }}원</v-col
-        >
-        <v-col style="margin: auto">
-          <v-btn @click="deleteMyProduct(i)" style="width: 65%"
-            >즐겨찾기 삭제</v-btn
-          ></v-col
-        >
-      </v-row>
+      <br />
+      <hr />
+    </div>
+    <div style="margin-top: 180px">
+      <div v-for="(item, i) in myProduct" :key="i" style="margin-top: 10px">
+        <v-row>
+          <v-col style="margin: auto"> {{ item.productName }}</v-col>
+          <v-col style="margin: auto"
+            ><v-btn @click="AddShoppingList(i)" style="width: 65%"
+              >쇼핑리스트 담기</v-btn
+            ></v-col
+          >
+        </v-row>
+        <v-row>
+          <v-col style="margin: auto; color: blue">
+            {{ item.productPrice | comma }}원</v-col
+          >
+          <v-col style="margin: auto">
+            <v-btn @click="deleteMyProduct(i)" style="width: 65%"
+              >즐겨찾기 삭제</v-btn
+            ></v-col
+          >
+        </v-row>
 
-      <!-- <div style="margin-top: 10px"><v-btn>쇼핑리스트에 추가하기</v-btn></div>
+        <!-- <div style="margin-top: 10px"><v-btn>쇼핑리스트에 추가하기</v-btn></div>
       <div style="margin-top: 10px; margin-bottom: 10px">
         <v-btn>즐겨찾기에서 삭제하기</v-btn>
       </div> -->
-      <hr style="margin-top: 10px" />
+        <hr style="margin-top: 10px" />
+      </div>
     </div>
     <v-card class="footer">
-      <v-footer absolute class="font-weight-medium">
-        <v-col class="text-center" cols="12">
-          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+      <v-footer
+        style="background-color: black; height: 70px"
+        absolute
+        class="font-weight-medium"
+      >
+        <v-col @click="close" class="text-center" cols="12">
+          <h2 style="color: white">닫 기</h2>
         </v-col>
       </v-footer>
     </v-card>
@@ -75,6 +86,9 @@ export default {
       });
   },
   methods: {
+    close() {
+      this.$modal.hide('MyFavoriteShoppingList-modal');
+    },
     deleteMyProduct(index) {
       console.log(index);
       http
@@ -165,14 +179,23 @@ export default {
 </script>
 
 <style scoped>
+.modalHeader {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+}
 .footer {
-  width: 90%;
-  position: fixed;
-  bottom: 10%;
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
   background-color: white;
 }
 #container {
+  height: 88%;
   text-align: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .textArea {
   text-align: center;
