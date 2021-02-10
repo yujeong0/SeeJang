@@ -5,7 +5,7 @@
         class="grey--text lastObject"
         style="margin-left: -2%; margin-top: -3%"
       >
-        <label>장보기</label>
+        <label style="color:#F9A825">장보기</label>
       </v-toolbar-title>
       <v-btn
         text
@@ -16,11 +16,11 @@
         모드변경
         <i class="fas fa-blind"></i>
       </v-btn>
-      <v-btn text @click="likeproduct" style="margin: 0 4%; margin-top: -3%">
+      <v-btn text @click="likeproduct" style="margin: 0 5%; margin-top: -3%">
         {{ nickName }} 님
         <i class="fas fa-user-circle fa-lg"></i>
       </v-btn>
-      <v-btn text @click="logout" style="padding: 0; margin-top: -3%">
+      <v-btn text @click="logout" style="padding: 0; margin-top: -3%;">
         <span>로그아웃</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
