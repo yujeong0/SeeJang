@@ -9,5 +9,14 @@
 		INTO images (member_id, image, state, num) 
 		VALUES (#{memberId}, #{image}, #{state}, #{num})
 	</insert>
-	
+	<select id="selectImageResultsByMemberId" resultType="imagesResults" parameterType="String">
+		select *
+		from images_results
+		where member_id = #{memberId}
+	</select>
+	<delete id="deleteImagesResults" parameterType="int">
+		delete 
+		from images_results 
+		where id = #{id}
+	</delete>
 </mapper>
