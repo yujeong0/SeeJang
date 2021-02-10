@@ -7,5 +7,6 @@ public interface ImageMapper {
 	
 	void insertImage(Images image);
 	ImagesResults selectImageResultsByMemberId(String memberId);
+	int deleteImagesResults(int id);
 	
 }

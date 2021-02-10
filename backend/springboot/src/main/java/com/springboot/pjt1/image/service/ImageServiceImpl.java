@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.pjt1.repository.dto.Images;
+import com.springboot.pjt1.repository.dto.ImagesResults;
 import com.springboot.pjt1.repository.mapper.ImageMapper;
 
 @Service
@@ -56,7 +57,18 @@ public class ImageServiceImpl implements ImageService {
 			img.setImage(file.getBytes());
 			mapper.insertImage(img);
 			
-			return "왕교자";
+			ImagesResults imagesResults = new ImagesResults();
+			while(true) {
+				imagesResults = mapper.selectImageResultsByMemberId(memberId);
+				System.out.println(imagesResults);
+				if(imagesResults != null) { 
+					mapper.deleteImagesResults(imagesResults.getId());
+					break;
+				}
+				Thread.sleep(1000);
+				System.out.println("결과 기다리는중");
+			}
+			return imagesResults.getResult();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "처리오류";
