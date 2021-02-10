@@ -156,7 +156,7 @@ export default {
       await http
         .delete('/shoppingList', {
           params: {
-            shoppingListNo: this.shoppingListNo,
+            shoppingListNo: parseInt(this.shoppingListNo),
           },
           withCredentials: true,
         })
