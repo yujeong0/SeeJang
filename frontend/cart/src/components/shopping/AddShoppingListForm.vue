@@ -37,10 +37,14 @@
     <br />
     <br />
     <div>
-      <v-btn text outlined style="margin: 2% 1%" @click="add" @add="add"
-        >추가하기</v-btn
+      <v-btn
+        text
+        outlined
+        style="margin: 2% 1%; width: 59%"
+        @click="add"
+        @add="add"
+        >쇼핑리스트 추가하기</v-btn
       >
-      <v-btn text outlined @click="cancel">취소하기</v-btn>
     </div>
     <v-btn
       text
@@ -50,6 +54,17 @@
       style="margin-left: 3px; width: 59%"
       >즐겨찾기 추가하기</v-btn
     >
+    <v-card class="footer">
+      <v-footer
+        style="background-color: black; height: 70px"
+        absolute
+        class="font-weight-medium"
+      >
+        <v-col @click="cancel" class="text-center" cols="12">
+          <h2 style="color: white">닫 기</h2>
+        </v-col>
+      </v-footer>
+    </v-card>
   </div>
 </template>
 
@@ -184,5 +199,11 @@ export default {
   text-align: left;
   width: 60%;
   margin: auto;
+}
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  background-color: white;
 }
 </style>
