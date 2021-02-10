@@ -18,7 +18,7 @@
       <hr class="SLHR" style="width: 80%" />
       <v-row no-gutters>
         <v-col cols="2" sm></v-col>
-        <v-col style="text-align: left" cols="4"> 예상 총 가격 </v-col>
+        <v-col style="text-align: left" cols="5"> 예상 총 가격 </v-col>
         <v-col style="text-align: left"> ₩ {{ getTotalMoney | comma }} </v-col>
       </v-row>
       <div style="margin-bottom: 12px">
@@ -256,7 +256,7 @@ export default {
   background-color: white;
 }
 .itemArea {
-  height: 400px;
+  height: 600px;
   padding-top: 10px;
   margin-top: 80px;
   overflow-y: scroll;
