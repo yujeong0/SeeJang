@@ -123,7 +123,6 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response);
           this.productName = updatedItem.productName;
           this.productPrice = updatedItem.productPrice;
         })
@@ -144,7 +143,6 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -165,7 +163,6 @@ export default {
             this.$store.commit('DEL_ITEM', { money });
             this.$store.commit('DEL_CHECK_ITEM', { no });
           }
-          console.log(response);
           this.$emit('del', this.shoppingListNo);
         })
         .catch((error) => {

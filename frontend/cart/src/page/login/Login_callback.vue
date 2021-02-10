@@ -12,7 +12,7 @@
 <script>
 import http from "@/util/http-common.js";
 export default {
-    mounted() {
+    async mounted() {
         const that = this;
         const naverLogin = new naver.LoginWithNaverId({
             clientId: "9zJZugyWUILEG91zo8TK",
@@ -26,7 +26,7 @@ export default {
         };
 
         naverLogin.init();
-        naverLogin.getLoginStatus((status) => {
+        await naverLogin.getLoginStatus((status) => {
             if (status) {
                 userInfo.loginAPI = "naver";
                 userInfo.userToken = naverLogin.accessToken.accessToken;
@@ -41,12 +41,10 @@ export default {
                 that.$store.commit("TOGGLE_LOGIN_STATE");
                 that.$store.commit("SET_USER_INFO", { userInfo });
 
-                console.log(formData);
 
-                http.post("/user/login/naver", formData, { withCredentials: true })
+               http.post("/user/login/naver", formData, { withCredentials: true })
                     .then((response) => {
-                        console.log(response);
-                    })
+                        })
                     .catch((error) => {
                         console.log(error);
                     });
@@ -55,9 +53,9 @@ export default {
                 alert("문제가 발생했습니다! 다시 로그인 해주세요!");
                 this.$router.push("/login");
             }
+            that.$router.push("/shoppingList");
         });
 
-        this.$router.push("/popularproduct");
     },
 };
 </script>
