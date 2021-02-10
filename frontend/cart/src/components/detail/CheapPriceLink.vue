@@ -151,7 +151,7 @@ export default {
                formData.append('price', item.price);
                formData.append('productName', item.productName);
                formData.append('siteName', item.siteName);
-               http.post('/wishList/add', formData, {
+               http.post('/wishList', formData, {
                     withCredentials: true,
                })
                     .then((response) => {
