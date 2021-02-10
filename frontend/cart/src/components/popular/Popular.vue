@@ -76,14 +76,12 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
     },
     async detail() {
-      console.log('Asdfasdfasdfas3');
       let name = this.popular.productName;
       await http
         .get('/product/name', {
@@ -93,7 +91,6 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log('Asdfasdfasdfas1');
           let productInfo = {
             productName: this.popular.productName,
             productNo: this.popular.productNo,
@@ -101,7 +98,6 @@ export default {
             reviewLink: response.data[0].reviewLink,
           };
           this.$store.commit('SET_PRODUCT_INFO', { productInfo });
-          console.log('ddddddddasdfasdfdddddddd');
         })
         .catch((error) => {
           console.log(error);
