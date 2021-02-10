@@ -75,7 +75,7 @@ export default {
       let formData = new FormData();
 
       formData.append('file', file, fileName);
-      console.log(sessionStorage.getItem('userId') + '유저아이디!!!!');
+      // console.log(sessionStorage.getItem('userId') + '유저아이디!!!!');
       formData.append('memberId', new Blob(), sessionStorage.getItem('userId'));
       formData.append('mode', new Blob(), this.$store.getters.getCameraMode);
 
@@ -88,7 +88,6 @@ export default {
       // for (var key of formData.keys()) console.log(key);
       // for (var value of formData.values()) console.log(value);
 
-      console.log('사진, 모드, 아이템이름 액시오스로 보냄');
       await http
         .post('/searchImage', formData, {
           headers: {

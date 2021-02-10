@@ -119,7 +119,6 @@ export default {
                          withCredentials: true,
                     })
                          .then((response) => {
-                              console.log(response);
                               // let review = {
                               //      memberId: this.$store.getters.getMemberId,
                               //      memberName: sessionStorage.getItem("nickName"),
