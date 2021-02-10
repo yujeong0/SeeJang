@@ -33,6 +33,13 @@
       </div> -->
       <hr style="margin-top: 10px" />
     </div>
+    <v-card class="footer">
+      <v-footer absolute class="font-weight-medium">
+        <v-col class="text-center" cols="12">
+          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        </v-col>
+      </v-footer>
+    </v-card>
   </div>
 </template>
 
@@ -158,6 +165,12 @@ export default {
 </script>
 
 <style scoped>
+.footer {
+  width: 90%;
+  position: fixed;
+  bottom: 10%;
+  background-color: white;
+}
 #container {
   text-align: center;
 }
