@@ -62,9 +62,6 @@ export default {
   props: {
     categoryItem: Object,
   },
-  created() {
-    console.log('인포페이지');
-  },
   data() {
     return {};
   },
