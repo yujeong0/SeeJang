@@ -47,7 +47,7 @@
             class="mr-4"
         />
           <img v-else-if="isshopping"
-            src="@/assets/shoppinglist_click2.png"
+            src="@/assets/shoppinglist_click3.png"
             alt=""
             width="60px"
             class="mr-4"
@@ -62,7 +62,7 @@
             class="ml-4 mr-4"
         />
           <img v-else-if="ispopular"
-            src="@/assets/populer_click2.png/"
+            src="@/assets/populer_click3.png/"
             alt=""
             width="60px"
             class="ml-4 mr-4"
@@ -71,7 +71,7 @@
         <v-col @click="update('/notBlindSearchProduct')"
           ><img v-if="!iscamera" src="@/assets/search_unclick.png/" alt="" width="60px" class="ml-4"
         />
-          <img v-else-if="iscamera" src="@/assets/search_click2.png/" alt="" width="60px" class="ml-4"
+          <img v-else-if="iscamera" src="@/assets/search_click3.png/" alt="" width="60px" class="ml-4"
         />
         </v-col>
       </v-row>
@@ -79,15 +79,15 @@
     <div class="gridDiv mb-1" style="margin-top: -16px" :class="active">
       <v-row no-gutters>
         <v-col  :class="{active:isshopping }" @click="update('/shoppingList')">
-          <span style="font-size: small" class="mr-3" >쇼핑리스트</span></v-col
+          <span style="font-size: medium" class="mr-3" >쇼핑리스트</span></v-col
         >
         <v-col @click="update('/popularproduct')" :class="{active:ispopular}" 
-          ><span style="font-size: small" class="ml-3 mr-3"
+          ><span style="font-size: medium" class="ml-3 mr-3"
             >상품목록</span
           ></v-col
         >
         <v-col @click="update('/notBlindSearchProduct')" :class="{active:iscamera}"
-          ><span style="font-size: small" class="ml-6 mr-3"
+          ><span style="font-size: medium" class="ml-6 mr-3"
             >상품찾기</span
           ></v-col
         >
@@ -316,6 +316,7 @@ export default {
   color: green;
 }
 .active {
-  color: green;
+  color: #FFAB00;
+  -webkit-text-stroke: 0.2px rgb(255, 145, 0);
 }
 </style>
