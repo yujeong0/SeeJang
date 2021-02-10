@@ -11,24 +11,25 @@
           />
         </v-col>
         <v-col
-          cols="5"
+          cols="6"
           sm
           style="text-align: left; margin-right: 2%"
           @click="updateForm"
         >
           {{ productName }}
         </v-col>
-        <v-col style="text-align: left" @click="updateForm">
+        <v-col style="text-align: left" @click="updateForm" cols="3">
           ₩ {{ productPrice | comma }}
         </v-col>
-        <v-col style="text-align: right">
-          <v-btn text @click="del" style="padding-left: 50px">
+        <v-col style="text-align: right; max-width: 10px;">
+          <v-btn text @click="del" style="max-width: 10px;">
             <v-img
               src="@/assets/static/shoppingList/minus.png"
               alt="DEL"
               style="max-width: 20px; margin-bottom: 13px"
             ></v-img> </v-btn
         ></v-col>
+        <v-col></v-col>
       </v-row>
     </v-container>
   </div>
