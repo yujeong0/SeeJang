@@ -30,7 +30,7 @@ export default {
       // // 비장애인 모드
       localStorage.setItem('isBlind', 2);
       // console.log(sessionStorage.getItem("userId"));
-      if(sessionStorage.getItem("userId") == ''){
+      if(sessionStorage.getItem("userId") == "null"){
         this.$router.push('/login');
       }
       else{
