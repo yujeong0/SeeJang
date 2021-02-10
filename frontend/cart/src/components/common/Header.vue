@@ -142,17 +142,19 @@ export default {
      },
      computed: {},
      created() {
-          // this.update(this.$router.currentRoute.path);
+          this.update(this.$router.currentRoute.path);
      },
      watch: {
           //해당 라우트에서 주소가 바꼈을시 호출됨
-          // '$route' (to, from) {
-          //   if(to.path != '/')
-          //     this.update(to.path)
-          //   else {
-          //     this.update('/shoppingList')
-          //   }
-          // }
+          '$route' (to, from) {
+            if(to.path == '/shoppingList' ||
+               to.path == '/popularproduct' ||
+               to.path == '/notBlindSearchProduct')
+              this.update(to.path)
+          //    else {
+          //      this.update('/shoppingList')
+          //    }
+          }
      },
      methods: {
           update(path) {
@@ -167,7 +169,7 @@ export default {
                          this.ispopular = true;
                          this.iscamera = false;
                          this.popular_product();
-                    } else {
+                    } else if (path == '/notBlindSearchProduct') {
                          this.isshopping = false;
                          this.ispopular = false;
                          this.iscamera = true;
@@ -221,7 +223,7 @@ export default {
                localStorage.setItem('isBlind', 1);
                sessionStorage.setItem('isLogin', false);
                this.$store.commit('TOGGLE_LOGIN_STATE');
-               this.$router.push('/blindSearchProduct');
+               this.$router.push('/modesetting');
           },
           logout() {
                // kakao 로그아웃

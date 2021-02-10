@@ -3,7 +3,7 @@
     <categorize />
     <div class="column" v-if="state">
       <br />
-      <h3 class="mb-5">{{ category }}</h3>
+      <h3 class="highlight mb-5">{{ category }}</h3>
       <hr />
       <br />
       <CategoryInfo
@@ -71,7 +71,8 @@ export default {
 <style>
 .highlight {
   background-color:#feca57;
-  width: 50%;
-  margin-left: 25%;
+  width: 40%;
+  margin-left: 30%;
+  /* filter: alpha(opacity= 40); 투명도 조절*/
 }
 </style>
