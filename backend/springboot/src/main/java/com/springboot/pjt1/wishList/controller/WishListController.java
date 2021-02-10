@@ -17,7 +17,7 @@ import com.springboot.pjt1.wishList.service.WishListService;
 
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
+@CrossOrigin(origins = { "*" }, allowCredentials = "true")
 @RestController
 @RequestMapping("/wishList")
 public class WishListController {

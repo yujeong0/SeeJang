@@ -38,36 +38,55 @@
     ></v-text-field>
     <div class="gridDiv">
       <v-row no-gutters>
-        <v-col @click="shopping_list"
-          ><img
-            src="@/assets/shoppinglist_unclick.png/"
+        <v-col @click="update('/shoppingList')"
+          >
+          <img v-if="!isshopping"
+            src="@/assets/shoppinglist_unclick.png"
             alt=""
             width="60px"
             class="mr-4"
-        /></v-col>
-        <v-col @click="popular_product"
-          ><img
+        />
+          <img v-else-if="isshopping"
+            src="@/assets/shoppinglist_click2.png"
+            alt=""
+            width="60px"
+            class="mr-4"
+        />
+        </v-col>
+
+        <v-col @click="update('/popularproduct')"
+          ><img v-if="!ispopular"
             src="@/assets/populer_unclick.png/"
             alt=""
             width="60px"
             class="ml-4 mr-4"
-        /></v-col>
-        <v-col @click="camera"
-          ><img src="@/assets/search_unclick.png/" alt="" width="60px" class="ml-4"
-        /></v-col>
+        />
+          <img v-else-if="ispopular"
+            src="@/assets/populer_click2.png/"
+            alt=""
+            width="60px"
+            class="ml-4 mr-4"
+        />
+        </v-col>
+        <v-col @click="update('/notBlindSearchProduct')"
+          ><img v-if="!iscamera" src="@/assets/search_unclick.png/" alt="" width="60px" class="ml-4"
+        />
+          <img v-else-if="iscamera" src="@/assets/search_click2.png/" alt="" width="60px" class="ml-4"
+        />
+        </v-col>
       </v-row>
     </div>
-    <div class="gridDiv mb-1" style="margin-top: -16px">
+    <div class="gridDiv mb-1" style="margin-top: -16px" :class="active">
       <v-row no-gutters>
-        <v-col @click="shopping_list" class="selected">
+        <v-col  :class="{active:isshopping }" @click="update('/shoppingList')">
           <span style="font-size: small" class="mr-3" >쇼핑리스트</span></v-col
         >
-        <v-col class="selected" @click="popular_product"
+        <v-col @click="update('/popularproduct')" :class="{active:ispopular}" 
           ><span style="font-size: small" class="ml-3 mr-3"
             >상품목록</span
           ></v-col
         >
-        <v-col class="selected" @click="camera"
+        <v-col @click="update('/notBlindSearchProduct')" :class="{active:iscamera}"
           ><span style="font-size: small" class="ml-6 mr-3"
             >상품찾기</span
           ></v-col
@@ -89,12 +108,38 @@ export default {
       serachName: '',
       platform: this.$store.getters.getPlatform,
       nickName: sessionStorage.getItem('nickName'),
+      active: '',
+      isshopping: false,
+      ispopular: false,
+      iscamera: false,
     };
   },
   computed: {
 
   },
   methods: {
+    update(path) {
+      if (this.$router.currentRoute.path != this.active) {
+        if (path == '/shoppingList') {
+          this.isshopping = true
+          this.ispopular = false
+          this.iscamera = false
+          this.shopping_list()
+        }
+        else if (path == '/popularproduct') {
+          this.isshopping = false
+          this.ispopular = true
+          this.iscamera = false
+          this.popular_product()
+        }
+        else {
+          this.isshopping = false
+          this.ispopular = false
+          this.iscamera = true
+          this.camera()
+        }
+      } 
+    },
     goDetail() {
       let searchName = this.serachName;
       this.$store.commit('SET_SERACH_NAME', { searchName });
@@ -266,5 +311,11 @@ export default {
 }
 .nav {
   margin-bottom: 10px;
+}
+.selected span.select {
+  color: green;
+}
+.active {
+  color: green;
 }
 </style>
