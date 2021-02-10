@@ -51,7 +51,7 @@ public class ImageServiceImpl implements ImageService {
 			// 일단 빨리 저장까지만 
 			Images img = new Images();
 			img.setMemberId(memberId);
-			img.setNum(2);
+			img.setNum(1);
 			img.setState('F');
 			img.setImage(file.getBytes());
 			mapper.insertImage(img);
@@ -69,7 +69,7 @@ public class ImageServiceImpl implements ImageService {
 		try {
 			// 일단 빨리 저장까지만 
 			Images img = new Images();
-			img.setNum(1);
+			img.setNum(2);
 			img.setMemberId(memberId);
 			img.setState('F');
 			img.setImage(file.getBytes());
