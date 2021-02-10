@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="columns mt-4">
     <div id="container">
-      <h3>나의 찜 목록</h3>
+      <h3 class="highlight">나의 찜 목록</h3>
       <div class="column">
         <like
           v-for="(like, index) in likes"

@@ -1,7 +1,9 @@
 <template class="wrap">
   <div id="container">
     <div class="titleLabel mb-30">
+      <div class="highlight">
       My Shopping List
+      </div>
       <hr class="SLHR" style="width: 100%" />
       <shoppingListHeader @check="check"></shoppingListHeader>
     </div>
@@ -339,5 +341,11 @@ export default {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
+}
+.highlight {
+  background-color:#FFCA28;
+  width: 50%;
+  margin-left: 0.1px;
+  text-align: center;
 }
 </style>
