@@ -6,8 +6,8 @@
           ><img
             src="@/assets/fruit_unclick.png/"
             alt=""
-            width="40px"
-            class="mr-4"
+            width="50px"
+            class="mr-3"
             :class="{active:isFruit }"
             @click="clickCategory('과일')"
         /></v-col>
@@ -15,8 +15,8 @@
           ><img
             src="@/assets/tea_unclick.png/"
             alt=""
-            width="40px"
-            class="ml-4 mr-4"
+            width="50px"
+            class="ml-3 mr-3"
             :class="{active:isTea }"
             @click="clickCategory('커피/차')"
         /></v-col>
@@ -24,15 +24,15 @@
           ><img
             src="@/assets/instant_unclick.png/"
             alt=""
-            width="40px"
-            class="ml-4 mr-4"
+            width="50px"
+            class="ml-3 mr-3"
         /></v-col>
         <v-col
           ><img
             src="@/assets/drink_unclick.png/"
             alt=""
-            width="40px"
-            class="ml-4"
+            width="50px"
+            class="ml-3"
             :class="{active:isDrink }"
             @click="clickCategory('생수/음료')"
         /></v-col>
@@ -41,28 +41,28 @@
     <div class="gridTextDiv">
       <v-row no-gutters>
         <v-col
-          style="font-size: small"
+          style="font-size: 95%"
           class="mr-2"
           :class="{active:isFruit }"
           @click="clickCategory('과일')"
           >과일</v-col
         >
         <v-col
-          style="font-size: small"
+          style="font-size: 95%"
           class="ml-2 mr-2"
           :class="{active:isTea }"
           @click="clickCategory('커피/차')"
           >커피/차</v-col
         >
         <v-col
-          style="font-size: small"
+          style="font-size: 95%"
           class="ml-2 mr-2"
           :class="{active:isRefri }"
           @click="clickCategory('냉장/냉동')"
           >냉장/냉동</v-col
         >
         <v-col
-          style="font-size: small"
+          style="font-size: 95%"
           class="ml-2"
           :class="{active:isDrink }"
           @click="clickCategory('생수/음료')"
@@ -75,24 +75,24 @@
       <div class="gridDiv">
         <v-row no-gutters>
           <v-col @click="clickCategory('양념/오일')" :class="{active:isOil }"
-            ><img src="@/assets/oil_unclick.png/" alt="" width="40px" class="mr-4"
+            ><img src="@/assets/oil_unclick.png/" alt="" width="50px" class="mr-3"
           /></v-col>
           <v-col @click="clickCategory('우유/유제품')" :class="{active:isMilk }"
             ><img
               src="@/assets/milk_unclick.png/"
               alt=""
-              width="40px"
-              class="ml-4 mr-4"
+              width="50px"
+              class="ml-3 mr-3"
           /></v-col>
           <v-col @click="clickCategory('베이커리/잼')" :class="{active:isBread }"
             ><img
               src="@/assets/bread_unclick.png/"
               alt=""
-              width="40px"
-              class="ml-4 mr-4"
+              width="50px"
+              class="ml-3 mr-3"
           /></v-col>
           <v-col @click="clickCategory('쌀/잡곡')" :class="{active:isRice }"
-            ><img src="@/assets/rice_unclick.png/" alt="" width="40px" class="ml-4"
+            ><img src="@/assets/rice_unclick.png/" alt="" width="50px" class="ml-3"
           /></v-col>
         </v-row>
       </div>
@@ -100,8 +100,8 @@
         <v-row no-gutters>
           <v-col
             ><span
-              style="font-size: small"
-              class="mr-2"
+              style="font-size: 95%"
+              class="mr-3"
               :class="{active:isOil }"
               @click="clickCategory('양념/오일')"
               >양념/오일</span
@@ -109,7 +109,7 @@
           >
           <v-col
             ><span
-              style="font-size: small"
+              style="font-size: 95%"
               class="mr-0.5"
               :class="{active:isMilk }"
               @click="clickCategory('우유/유제품')"
@@ -118,7 +118,7 @@
           >
           <v-col
             ><span
-              style="font-size: small"
+              style="font-size: 95%"
               class="ml-0.5"
               :class="{active:isBread }"
               @click="clickCategory('베이커리/잼')"
@@ -127,8 +127,8 @@
           >
           <v-col
             ><span
-              style="font-size: small"
-              class="ml-2"
+              style="font-size: 95%"
+              class="ml-3"
               :class="{active:isRice }"
               @click="clickCategory('쌀/잡곡')"
               >쌀/잡곡</span
@@ -141,7 +141,7 @@
           <v-col><span style="font-size: small" class="mr-2"></span></v-col>
           <v-col
             ><span
-              style="font-size: small"
+              style="font-size: 95%"
               class="ml-4"
               :class="{active:isMilk }"
               @click="clickCategory('우유/유제품')"
@@ -150,7 +150,7 @@
           >
           <v-col
             ><span
-              style="font-size: small"
+              style="font-size: 95%"
               class="mr-6"
               :class="{active:isBread }"
               @click="clickCategory('베이커리/잼')"
