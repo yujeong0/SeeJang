@@ -69,6 +69,7 @@ export default {
     },
   },
   created() {
+    console.log('상품즐겨찾기!!!!');
     http
       .get('/myProduct', {
         params: {
@@ -78,6 +79,7 @@ export default {
       })
       .then((response) => {
         this.myProduct = response.data;
+        console.log(this.myProduct);
       })
       .catch((error) => {
         console.log(error);
@@ -88,6 +90,7 @@ export default {
       this.$modal.hide('MyFavoriteShoppingList-modal');
     },
     deleteMyProduct(index) {
+      console.log(index);
       http
         .delete('/myProduct', {
           params: {
@@ -96,6 +99,8 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
+          console.log('삭제성공~');
+          console.log(response);
         })
         .catch((error) => {
           console.log('삭제실패~');
@@ -159,6 +164,7 @@ export default {
       this.searchedState = false;
     },
     sel(selecteditem) {
+      console.log(selecteditem);
       for (let i = 0; i < this.searchedProducts.length; i++) {
         if (this.searchedProducts[i].productName == selecteditem.name) {
           this.productName = this.searchedProducts[i].productName;

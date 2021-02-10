@@ -96,6 +96,8 @@ export default {
     WriteReview,
   },
   created() {
+    console.log('created');
+    console.log(this.$store.getters.getProductName);
     // let name = this.$store.getters.getProductName;
     http
       .get('/product/detail', {
@@ -106,12 +108,20 @@ export default {
       })
       .then((response) => {
         // this.datas = resopnse.data.bestPrice;
+        console.log(response);
+        console.log(response.data.bestPrice.length);
+
         for (let i = 0; i < response.data.bestPrice.length; i++) {
           this.datas.push(response.data.bestPrice[i]);
+          console.log(this.datas[i].link);
+          console.log(this.datas[i].price);
+          console.log(this.datas[i].productName);
+          console.log(this.datas[i].siteName);
         }
         this.reviewNum = response.data.review.length;
         for (let i = 0; i < response.data.review.length; i++) {
           this.reviews.push(response.data.review[i]);
+          console.log(this.reviews[i].comment);
         }
       })
       .catch((error) => {
@@ -132,9 +142,12 @@ export default {
     ...mapGetters(['getProductName', 'getProductPrice']),
   },
   updated() {
+    console.log(sessionStorage.getItem('userId'));
+    console.log(sessionStorage.getItem('nickName'));
   },
   methods: {
     like(item) {
+      console.log(item);
       let formData = new FormData();
       formData.append('link', item.link);
       formData.append('memberId', this.$store.getters.getMemberId);
@@ -146,6 +159,7 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -178,6 +192,7 @@ export default {
       );
     },
     async add() {
+      console.log('리뷰작성성공');
       await http
         .get('/product/review', {
           params: {
@@ -246,6 +261,7 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
+          console.log(response);
           http
             .get('/product/review', {
               params: {

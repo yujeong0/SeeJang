@@ -41,6 +41,8 @@ export default {
                         formData.memberId = userInfo.memberId = response.kakao_account.email;
                         formData.memberName = response.properties.nickname;
 
+                        console.log("kakaoCallback");
+                        console.dir(userInfo);
                         sessionStorage.setItem("isLogin", true);
                         sessionStorage.setItem("nickName", formData.memberName);
                         sessionStorage.setItem("userId", formData.memberId);
@@ -49,6 +51,7 @@ export default {
                 
                         http.post("/user/login/naver", formData, { withCredentials: true })
                             .then((response) => {
+                                console.log(response);
                             })
                             .catch((error) => {
                                 console.log(error);

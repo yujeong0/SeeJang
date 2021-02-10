@@ -113,6 +113,13 @@ export default {
      },
      methods: {
           update() {
+               console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+               console.log(this.rating);
+               console.log(typeof this.rating);
+               console.log(this.comment.length);
+               console.log(this.review.commentNo);
+               console.log(this.$store.getters.getProductNo);
+
                if (this.comment.length != 0 && this.rating != 0) {
                     let formData = new FormData();
                     formData.append("comment", this.comment);
@@ -125,6 +132,7 @@ export default {
                          withCredentials: true,
                     })
                          .then((response) => {
+                              console.log(response);
                               this.$attrs.updateComplete();
                               this.$modal.hide("ReviewUpdate-modal");
                          })

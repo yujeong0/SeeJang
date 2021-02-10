@@ -135,33 +135,20 @@ export default {
 
   },
   created(){
-    console.log("생성")
-    console.log(this.$router.currentRoute.path)
     this.update(this.$router.currentRoute.path);
   },
   watch:{
 	//해당 라우트에서 주소가 바꼈을시 호출됨
 	'$route' (to, from) {
-    switch(to.path){
-      case "/":
-        this.update('/shoppingList')
-        break;
-      default:
-        console.log(to.path)
-        this.update(to.path)
-        break;
+    if(to.path != '/')
+      this.update(to.path)
+    else {
+      this.update('/shoppingList')
     }
-    // if(to.path == '/'){
-    //   this.update('/shoppingList')
-    // }
-    // else {
-    //   this.update(to.path)
-    // }
 	}
 },
   methods: {
     update(path) {
-      console.log(path)
       if (this.$router.currentRoute.path != this.active) {
         if (path == '/shoppingList') {
           this.isshopping = true

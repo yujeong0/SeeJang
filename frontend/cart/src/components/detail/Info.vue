@@ -31,6 +31,8 @@ export default {
     ...mapGetters(['getProductName', 'getProductPrice', 'getProductNo']),
   },
   created() {
+    console.log('여기왜 안바뀌지..?');
+    console.log(this.$store.getters.getProductName);
   },
   methods: {
     addShoppingList() {
@@ -44,6 +46,7 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);

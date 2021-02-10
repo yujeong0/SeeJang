@@ -77,6 +77,7 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -88,7 +89,9 @@ export default {
         productNo: this.categoryItem.productNo,
         productPrice: this.categoryItem.productPrice,
       };
+      console.log('setproductInfo부른다');
       this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+      console.log('setproductInfo부른뒤');
       this.$router.push('/detailProduct');
     },
   },
