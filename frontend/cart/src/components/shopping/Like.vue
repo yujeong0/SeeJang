@@ -31,8 +31,9 @@ export default {
     methods: {
         async del() {
             let wishNo = this.like.wishNo;
+            console.log(typeof wishNo);
             await http
-                .delete("/wishList/remove", {
+                .delete("/wishList", {
                     params: {
                         wishNo: wishNo,
                     },
