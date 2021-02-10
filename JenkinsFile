@@ -57,13 +57,18 @@ pipeline {
                 docker rmi $(docker images -f "dangling=true" -q)'
 
                 // docker container 실행
-                sh 'docker run -d --name vue-frontend \
+                // network 설정했기 때문에 port 안 줘도 됨 ㅎㅎㅎ
+                // sh 'docker run -d --name spring-backend -p 8081:8081 \
+                //     --network jenkins \
+                //     spring-backend:latest'
+                sh 'docker run -d --name spring-backend \
+                    --network jenkins \
+                    spring-backend:latest'
+                sh 'docker run --name vue-frontend \
                     -p 80:80 \
                     -p 443:443 \
-                    -v key:/etc/nginx/key \
-                    --network s04p13d109_default \
+                    --network jenkins \
                     vue-frontend:latest'
-                sh 'docker run -d --name spring-backend -p 8080:8080 spring-backend:latest'
                 sh 'docker run -d --name redis_boot -p 6379:6379 redis'
                 // sh 'docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql' : mysql 은 현재 ec2 local로 써서 안 함
             }
