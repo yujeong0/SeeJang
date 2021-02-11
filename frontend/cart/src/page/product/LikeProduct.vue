@@ -33,7 +33,7 @@ export default {
           };
      },
      created() {
-          var member_id = sessionStorage.getItem('userId');
+          let member_id = sessionStorage.getItem('userId');
           console.log(member_id);
           http.get('/wishList', {
                params: {
@@ -50,13 +50,25 @@ export default {
                });
      },
      methods: {
-          del(wishNo) {
-               for (let i = 0; i < this.likes.length; i++) {
-                    if (this.likes[i].wishNo == wishNo) {
-                         this.likes.splice(i, 1);
-                         break;
-                    }
-               }
+          async del() {
+               let member_id = sessionStorage.getItem('userId');
+               console.log(member_id);
+               await setTimeout(() => {
+                    this.likes.splice(0);
+                    http.get('/wishList', {
+                         params: {
+                              memberId: member_id,
+                         },
+                         withCredentials: true,
+                    })
+                         .then((response) => {
+                              this.likes = response.data;
+                              console.log(res);
+                         })
+                         .catch((error) => {
+                              console.log(error);
+                         });
+               }, 200);
           },
      },
 };
