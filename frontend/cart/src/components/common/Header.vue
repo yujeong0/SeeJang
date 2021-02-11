@@ -242,16 +242,17 @@ export default {
                     // window.Kakao.Auth.logout(function () {
                     //   console.log(window.Kakao.Auth.getAccessToken());
                     // });
-                    window.Kakao.API.request({
-                         url: '/v1/user/unlink',
-                         success: function (response) {
-                              console.log(response);
-                              console.log('kakao 로그아웃');
-                         },
-                         fail: function (error) {
-                              console.log(error);
-                         },
-                    });
+                    // window.Kakao.API.request({
+                    //      url: '/v1/user/unlink',
+                    //      success: function (response) {
+                    //           console.log(response);
+                    //           console.log('kakao 로그아웃');
+                    //      },
+                    //      fail: function (error) {
+                    //           console.log(error);
+                    //      },
+                    // });
+                    console.log('kakao 로그아웃');
                } else if (this.platform == 'naver') {
                     console.log('naver 로그아웃');
                }
