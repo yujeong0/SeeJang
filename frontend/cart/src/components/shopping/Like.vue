@@ -8,8 +8,8 @@
                     {{ like.price }}원
                     <v-btn text outlined @click="del" style="margin-left: 7px; width: 3%"
                          >_
-                         <vue-star animate="animated bounce" color="#F05654">
-                              <i slot="icon" class="fas fa-trash-alt"></i>
+                         <vue-star style="z-index: 5" animate="animated bounce" color="#F05654">
+                              <v-icon slot="icon">fas fa-trash-alt</v-icon>
                          </vue-star>
                     </v-btn>
                </div>
@@ -40,7 +40,7 @@ export default {
                     })
                     .then((response) => {
                          console.log(response);
-                         this.$emit('del', wishNo);
+                         this.$emit('del');
                     })
                     .catch((error) => {
                          console.log(error);
