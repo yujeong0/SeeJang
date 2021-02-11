@@ -213,14 +213,12 @@ export default {
                this.goDetail();
           },
           camera() {
-               if (this.$router.currentRoute.path == '/notBlindSearchProduct') {
-               } else {
+               if (this.$router.currentRoute.path != '/notBlindSearchProduct') {
                     this.$router.push('/notBlindSearchProduct');
                }
           },
           shopping_list() {
-               if (this.$router.currentRoute.path == '/shoppingList') {
-               } else {
+               if (this.$router.currentRoute.path != '/shoppingList') {
                     this.$router.push('/shoppingList');
                }
           },
@@ -275,7 +273,9 @@ export default {
                this.$router.push('/');
           },
           likeproduct() {
-               this.$router.push('/likeproduct');
+               if (this.$router.currentRoute.path != '/likeproduct') {
+                    this.$router.push('/likeproduct');
+               }
           },
           async searchState() {
                if (this.serachName != '') {
