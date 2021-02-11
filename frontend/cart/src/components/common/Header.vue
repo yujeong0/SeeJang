@@ -5,7 +5,7 @@
                     class="grey--text lastObject"
                     style="margin-left: -2%; margin-top: -3%"
                >
-                    <label style="color: #f9a825">장보기</label>
+                    <label style="color: #f9a825">SEE 장</label>
                </v-toolbar-title>
                <v-btn
                     text
@@ -146,15 +146,25 @@ export default {
      },
      watch: {
           //해당 라우트에서 주소가 바꼈을시 호출됨
-          '$route' (to, from) {
-            if(to.path == '/shoppingList' ||
-               to.path == '/popularproduct' ||
-               to.path == '/notBlindSearchProduct')
-              this.update(to.path)
-          //    else {
-          //      this.update('/shoppingList')
-          //    }
-          }
+          /*
+           * 헤더의 쇼핑리스트 / 이번주상품 / 카메라만 색이 켜졌다 꺼졌다 해야하므로
+           * 3개의 정보만 update함수에 넣어서 true / false 조절
+           * 근데 생각해보니까 이렇게 하면 2중 호출 아닌가 ?ㅁ?
+           */
+          $route(to, from) {
+               if (
+                    to.path == '/shoppingList' ||
+                    to.path == '/popularproduct' ||
+                    to.path == '/notBlindSearchProduct'
+               ) {
+                    this.update(to.path);
+               } else {
+                    // 나머지는 모두 false로 색을 끄고 원래 가려던 길로 보낸다.
+                    this.isshopping = false;
+                    this.ispopular = false;
+                    this.iscamera = false;
+               }
+          },
      },
      methods: {
           update(path) {
@@ -236,7 +246,10 @@ export default {
                     // });
                     window.Kakao.API.request({
                          url: '/v1/user/unlink',
-                         success: function (response) {},
+                         success: function (response) {
+                              console.log(response);
+                              console.log('kakao 로그아웃');
+                         },
                          fail: function (error) {
                               console.log(error);
                          },
