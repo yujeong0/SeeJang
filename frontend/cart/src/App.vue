@@ -26,8 +26,6 @@ export default {
           };
      },
 };
-</script>
-<script>
 window.addEventListener("load", function () {
      setTimeout(function () {
           // This hides the address bar:
@@ -35,6 +33,7 @@ window.addEventListener("load", function () {
      }, 0);
 });
 </script>
+
 <style>
 #container {
      font-family: "Do Hyeon", sans-serif;
