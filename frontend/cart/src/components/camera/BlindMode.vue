@@ -1,7 +1,9 @@
 <template>
   <div>
-    <v-btn class="btn" @click="two">상품위치찾기</v-btn>
-    <v-btn class="btn" @click="three">상품확인하기</v-btn>
+    <v-btn class="btn" style="font-size: 30px" @click="two">상품위치찾기</v-btn>
+    <v-btn class="btn" style="font-size: 30px" @click="three"
+      >상품확인하기</v-btn
+    >
 
     <v-container fluid>
       <speech-to-text :text.sync="text" @speechend="speechEnd"></speech-to-text>
@@ -84,9 +86,8 @@ export default {
 
 <style scoped>
 .btn {
+  font-weight: 50px;
   width: 50%;
   min-height: 400px;
-  color: red;
-  background-color: blue;
 }
 </style>
