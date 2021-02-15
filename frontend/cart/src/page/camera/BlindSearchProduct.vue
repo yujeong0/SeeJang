@@ -13,6 +13,7 @@
     </v-toolbar>
     <Camera></Camera>
     <BlindMode></BlindMode>
+
     <!-- <mode-choice></mode-choice> -->
   </div>
 </template>
@@ -29,22 +30,28 @@ export default {
   methods: {
     changeMode() {
       // 비쟁애인 - 시각장애인 모드 변경
-      if(sessionStorage.getItem('userId') == '' ||
-      sessionStorage.getItem('userId') == null){
+      if (
+        sessionStorage.getItem('userId') == '' ||
+        sessionStorage.getItem('userId') == null
+      ) {
         this.$router.push('/login');
+      } else {
+        //   localStorage.setItem('isBlind', 2);
+        //   sessionStorage.setItem('isLogin', true);
+        //   setTimeout(() => {
+        //     this.$store.commit('TOGGLE_LOGIN_STATE');
+        //     this.$router.push('/modesetting');
+        //   }, 500);
+        this.$router.push('/modesetting');
       }
-      else{
-      //   localStorage.setItem('isBlind', 2);
-      //   sessionStorage.setItem('isLogin', true);
-      //   setTimeout(() => {
-      //     this.$store.commit('TOGGLE_LOGIN_STATE');
-      //     this.$router.push('/modesetting');
-      //   }, 500);
-      this.$router.push('/modesetting');
-       }
-    }
+    },
   },
-}
+};
 </script>
 
-<style></style>
+<style scoped>
+#contents {
+  margin-top: -150px;
+  z-index: -100;
+}
+</style>
