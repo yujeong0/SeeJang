@@ -15,4 +15,5 @@ public interface ProductMapper {
 	List<Product> selectProductByCategory(String category);
 	
 	List<Product> selectProductByNameAndCategory(Product product);
+	
 }
