@@ -40,6 +40,36 @@ export default {
     if (this.isPhotoTaken) this.takePhoto();
   },
   methods: {
+    httpCall(formData) {
+      http
+        .post('/searchImage', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log('찍히나');
+          this.result = response.data.result;
+          if (
+            this.$store.getters.getCameraMode == 2 ||
+            this.$store.getters.getCameraMode == 3
+          ) {
+            this.speak(this.result);
+            this.$store.commit('TOGGLE_CAMERA_CANVAS');
+            //장애인 위치찾기
+          }
+          if (this.$store.getters.getCameraMode == 1) {
+            let productInfo = response.data.result;
+            this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+          }
+          console.log(response);
+          console.log('dddd');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     speak(msg) {
       if (
         typeof SpeechSynthesisUtterance === 'undefined' ||
@@ -61,6 +91,7 @@ export default {
       window.speechSynthesis.speak(speechMsg);
     },
     async downloadImage() {
+      const that = this;
       const download = document.getElementById('photoTaken');
       const imgBase64 = download.toDataURL('image/jpeg', 'image/octet-stream');
       const decodImg = atob(imgBase64.split(',')[1]);
@@ -80,49 +111,47 @@ export default {
       formData.append('mode', new Blob(), this.$store.getters.getCameraMode);
 
       let isBlind = localStorage.getItem('isBlind');
+
       if (isBlind == 1 && this.$store.getters.getCameraMode == 2) {
-        //2번 위치 찾기라면 이름까지 같이 보내줌
-        formData.append('item', new Blob(), this.$store.getters.getCameraItem);
+        //시각 장애인 모드 2번 상품위치찾기
+        setTimeout(function () {
+          that.speak('찾으실 상품을 말씀해주세요.');
+        }, 1000);
+        setTimeout(function () {
+          console.log('음성인식 시작');
+          that.$store.commit('TOGGLE_CAMERA_CLICKED');
+        }, 3000);
+
+        setTimeout(function () {
+          console.log('사진, 모드, 아이템이름 액시오스로 보냄');
+          console.log(that.$store.getters.getCameraItem);
+          formData.append(
+            'item',
+            new Blob(),
+            that.$store.getters.getCameraItem
+          );
+          that.httpCall(formData);
+        }, 5000);
       }
+
+      this.httpCall(formData);
 
       // for (var key of formData.keys()) console.log(key);
       // for (var value of formData.values()) console.log(value);
-
-      console.log('사진, 모드, 아이템이름 액시오스로 보냄');
-      await http
-        .post('/searchImage', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            withCredentials: true,
-          },
-        })
-        .then((response) => {
-          this.result = response.data.result;
-          if (
-            this.$store.getters.getCameraMode == 2 ||
-            this.$store.getters.getCameraMode == 3
-          ) {
-            this.speak(this.result);
-            //장애인 위치찾기
-          }
-          if (this.$store.getters.getCameraMode == 1) {
-            let productInfo = response.data.result;
-            this.$store.commit('SET_PRODUCT_INFO', { productInfo });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      console.log('확인해보자');
+      console.log(this.$store.getters.getCameraMode);
+      console.log(this.$store.getters.getCameraItem);
 
       //  this.$router.push('/detailProduct');
-      if (this.$store.getters.getCameraMode == 1)
+      if (this.$store.getters.getCameraMode == 1) {
         this.$router.push('detailProduct');
-      this.$store.commit('TOGGLE_CAMERA_CANVAS');
+        this.$store.commit('TOGGLE_CAMERA_CANVAS');
+      }
     },
     takePhoto() {
       const context = this.$refs.canvas.getContext('2d');
       context.drawImage(this.$refs.camera, 0, 0, 360, 370);
-      // console.log('테이크포토');
+      console.log('테이크포토');
       this.downloadImage();
     },
     createCameraElement() {
