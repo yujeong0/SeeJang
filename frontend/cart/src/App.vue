@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Header from "./components/common/Header.vue";
+import Header from './components/common/Header.vue';
 export default {
-     name: "App",
+     name: 'App',
      components: {
           Header,
      },
@@ -22,9 +22,9 @@ export default {
 
 <style>
 #container {
-     font-family: "Do Hyeon", sans-serif;
+     font-family: 'Do Hyeon', sans-serif;
 }
-#contents{
+#contents {
      margin-top: 190px;
      height: 100%;
      overflow-x: hidden;
@@ -46,7 +46,20 @@ export default {
      background-color: white;
      left: 0;
      right: 0;
-     z-index: 10;
+     z-index: 100;
      display: block;
+}
+.highlight {
+     border-bottom: 7px solid #feca57;
+     width: 30%;
+     margin: auto;
+     /* filter: alpha(opacity= 40); 투명도 조절*/
+
+     /* 원래코드
+      background-color: #ffca28;
+     width: 50%;
+     margin-left: 0.1px;
+     text-align: center;
+      */
 }
 </style>
