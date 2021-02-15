@@ -158,7 +158,10 @@ export default {
                     to.path == '/notBlindSearchProduct'
                ) {
                     this.update(to.path);
-               } else {
+               } else if(to.path == '/'){
+                    this.logout();
+               }
+               else {
                     // 나머지는 모두 false로 색을 끄고 원래 가려던 길로 보낸다.
                     this.isshopping = false;
                     this.ispopular = false;
