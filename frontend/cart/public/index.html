@@ -54,16 +54,32 @@
           />
 
           <!-- 폰트 끝-->
+
+          <!-- 이미지 넣기 -->
+          <link
+               rel="icon"
+               type="image/png"
+               sizes="32x32"
+               href="/image/32x32_bread_click.png"
+          />
+          <link
+               rel="icon"
+               type="image/png"
+               sizes="16x16"
+               href="/image/16x16_bread_click.png"
+          />
+          <!-- 이미지 넣기 끝-->
+
           <!-- 상태바 없애기 -->
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
           <meta name="mobile-web-app-capable" content="yes" />
 
           <link
-          rel="manifest"
-          crossorigin="use-credentials"
-          href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json"
-        />
+               rel="manifest"
+               crossorigin="use-credentials"
+               href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json"
+          />
      </head>
      <body>
           <div id="app"></div>
