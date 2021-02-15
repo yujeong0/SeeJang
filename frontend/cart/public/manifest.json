@@ -3,16 +3,16 @@
      "short_name": "See 장!",
      "icons": [
           {
-               "src": "/image/bread_click.png",
-               "sizes": "535x537",
+               "src": "/image/192x192_bread_click.png",
+               "sizes": "192x192",
                "type": "image/png"
           },
           {
-               "src": "/image/bread_click.png",
-               "sizes": "535x537",
+               "src": "/image/512x512_bread_click.png",
+               "sizes": "512x512",
                "type": "image/png"
           }
      ],
      "start_url": "/",
-     "display": "standalone"
+     "display": "minimal-ui"
 }
