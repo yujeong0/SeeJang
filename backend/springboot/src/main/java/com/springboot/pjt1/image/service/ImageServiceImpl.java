@@ -47,12 +47,12 @@ public class ImageServiceImpl implements ImageService {
 	
 	// 일반인과 시각장애인을 위한 상품 확인!! 번호(mode)로는 1번 3번
 	@Override
-	public String getProductName(int mode, MultipartFile file, String memberId) {
+	public String getProductName(MultipartFile file, String memberId) {
 		try {
 			// 일단 빨리 저장까지만 
 			Images img = new Images();
 			img.setMemberId(memberId);
-			img.setNum(mode);
+			img.setNum(1);
 			img.setState('F');
 			img.setImage(file.getBytes());
 			mapper.insertImage(img);
