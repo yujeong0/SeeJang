@@ -75,7 +75,7 @@ public class ImageServiceImpl implements ImageService {
 			img.setState('F');
 			img.setImage(file.getBytes());
 			img.setSearch(itemName);
-			mapper.insertImage(img);
+			mapper.insertImageWithItemName(img);
 			
 			return getImageResult(memberId);
 		} catch (Exception e) {
