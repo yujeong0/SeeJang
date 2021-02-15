@@ -88,6 +88,6 @@ export default {
 .btn {
   font-weight: 50px;
   width: 50%;
-  min-height: 400px;
+  min-height: 250px;
 }
 </style>
