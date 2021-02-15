@@ -9,7 +9,7 @@ export default {
           const that = this;
           const naverLogin = new window.naver.LoginWithNaverId({
                clientId: '9zJZugyWUILEG91zo8TK',
-               isPopup: true,
+               isPopup: false,
           });
           let userInfo = {};
           let formData = {
