@@ -1,0 +1,18 @@
+{
+     "name": "See 장!",
+     "short_name": "See 장!",
+     "icons": [
+          {
+               "src": "/image/bread_click.png",
+               "sizes": "535x537",
+               "type": "image/png"
+          },
+          {
+               "src": "/image/bread_click.png",
+               "sizes": "535x537",
+               "type": "image/png"
+          }
+     ],
+     "start_url": "/index.html",
+     "display": "standalone"
+}
