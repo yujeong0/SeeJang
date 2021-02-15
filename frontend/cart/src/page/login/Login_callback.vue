@@ -2,19 +2,12 @@
      <v-layout column> </v-layout>
 </template>
 
-<!--네이버-->
-<script
-     type="text/javascript"
-     src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
-     charset="utf-8"
-></script>
-
 <script>
 import http from '@/util/http-common.js';
 export default {
      async mounted() {
           const that = this;
-          const naverLogin = new naver.LoginWithNaverId({
+          const naverLogin = new window.naver.LoginWithNaverId({
                clientId: '9zJZugyWUILEG91zo8TK',
                isPopup: false,
           });
@@ -48,7 +41,7 @@ export default {
                     http.post('/user/login/naver', formData, { withCredentials: true })
                          .then((response) => {
                               console.log(response);
-                              this.$router.push('/shoppingList');
+                              this.$router.replace('/shoppingList');
                          })
                          .catch((error) => {
                               console.log(error);
