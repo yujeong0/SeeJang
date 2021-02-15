@@ -108,6 +108,8 @@ export default {
       })
       .then((response) => {
         // this.datas = resopnse.data.bestPrice;
+        console.log(response);
+        console.log(response.data.bestPrice.length);
 
         for (let i = 0; i < response.data.bestPrice.length; i++) {
           this.datas.push(response.data.bestPrice[i]);
