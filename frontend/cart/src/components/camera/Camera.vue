@@ -40,8 +40,8 @@ export default {
     if (this.isPhotoTaken) this.takePhoto();
   },
   methods: {
-    httpCall(formData) {
-      http
+   async httpCall(formData) {
+     await http
         .post('/searchImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -49,7 +49,6 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log('찍히나');
           this.result = response.data.result;
           if (
             this.$store.getters.getCameraMode == 2 ||
