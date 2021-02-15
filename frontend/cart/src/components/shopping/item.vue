@@ -96,7 +96,7 @@ export default {
           name: 'UpdateForm-modal',
 
           width: '70%',
-          height: '45%',
+          height: '90%',
           draggable: false,
           shiftY: 0.3,
         },
