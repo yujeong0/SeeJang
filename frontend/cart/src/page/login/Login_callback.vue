@@ -17,7 +17,6 @@ export default {
                memberPassword: '',
                memberName: '',
           };
-
           naverLogin.init();
           await naverLogin.getLoginStatus((status) => {
                if (status) {
@@ -29,19 +28,21 @@ export default {
                     userInfo.memberId = naverLogin.user.getEmail();
                     formData.memberName = naverLogin.user.getNickName();
 
-                    sessionStorage.setItem('isLogin', true);
-                    sessionStorage.setItem('nickName', formData.memberName);
-                    sessionStorage.setItem('userId', formData.memberId);
-                    that.$store.commit('TOGGLE_LOGIN_STATE');
-                    that.$store.commit('SET_USER_INFO', { userInfo });
 
                     console.log('formdata');
                     console.log(formData);
-
+                    
                     http.post('/user/login/naver', formData, { withCredentials: true })
                          .then((response) => {
+                              sessionStorage.setItem('isLogin', true);
+                              sessionStorage.setItem('nickName', formData.memberName);
+                              sessionStorage.setItem('userId', formData.memberId);
+                              that.$store.commit('TOGGLE_LOGIN_STATE');
+                              that.$store.commit('SET_USER_INFO', { userInfo });
                               console.log(response);
-                              this.$router.replace('/shoppingList');
+
+                              window.close();
+                              // this.$router.replace('/shoppingList');
                          })
                          .catch((error) => {
                               console.log(error);

@@ -42,6 +42,7 @@ export default {
       },
     });
     naverLogin.init();
+    
   },
   methods: {
     kakaoLogin() {
@@ -49,6 +50,10 @@ export default {
         redirectUri: `${window.location.origin}/kakaologin`,
       });
     },
+    naverDone() {
+       console.log("done");
+      this.$router.replace('/shoppingList'); 
+    }
   },
 };
 </script>
