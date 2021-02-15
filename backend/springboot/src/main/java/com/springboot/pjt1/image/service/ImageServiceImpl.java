@@ -90,7 +90,7 @@ public class ImageServiceImpl implements ImageService {
 			imagesResults = mapper.selectImageResultsByMemberId(memberId);
 			System.out.println(imagesResults);
 			if(imagesResults != null) { 
-				mapper.deleteImagesResults(imagesResults.getId());
+				mapper.deleteImagesResults();
 				break;
 			}
 			Thread.sleep(1000);
