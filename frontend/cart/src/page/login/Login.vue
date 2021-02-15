@@ -1,60 +1,59 @@
 <template>
-  <v-container id="container" class="mx-auto my-auto">
-    <div class="upper">
-      <h1> See 장 </h1>
-      <img src="@/assets/list.png" style="width: 15%" />
-    </div>
-    <div>
-      <br />
-    </div>
-    <div class="LinkAreaDiv">
-      <div id="naverIdLogin" class="LinkArea"></div>
-      <div class="LinkArea">
-        <v-btn text style="width: 278px">
-          <v-img
-            src="@/assets/kakao_login_large_narrow.png"
-            alt="KAKAO_IMAGE"
-            @click="kakaoLogin"
-            width="278px"
-            height="55px"
-          />
-        </v-btn>
-      </div>
-    </div>
-  </v-container>
+     <v-container id="container" class="mx-auto my-auto">
+          <div class="upper">
+               <h1>See 장</h1>
+               <img src="@/assets/list.png" style="width: 15%" />
+          </div>
+          <div>
+               <br />
+          </div>
+          <div class="LinkAreaDiv">
+               <div id="naverIdLogin" class="LinkArea"></div>
+               <div class="LinkArea">
+                    <v-btn text style="width: 278px">
+                         <v-img
+                              src="@/assets/kakao_login_large_narrow.png"
+                              alt="KAKAO_IMAGE"
+                              @click="kakaoLogin"
+                              width="278px"
+                              height="55px"
+                         />
+                    </v-btn>
+               </div>
+          </div>
+     </v-container>
 </template>
 <script>
 export default {
-  name: 'login',
-  components: {},
-  data() {
-    return {};
-  },
-  mounted() {
-    const naverLogin = new window.naver.LoginWithNaverId({
-      clientId: '9zJZugyWUILEG91zo8TK',
-      callbackUrl: `${window.location.origin}/login_callback`,
-      isPopup: true,
-      loginButton: {
-        color: 'green',
-        type: 3,
-        height: 60,
-      },
-    });
-    naverLogin.init();
-    
-  },
-  methods: {
-    kakaoLogin() {
-      window.Kakao.Auth.authorize({
-        redirectUri: `${window.location.origin}/kakaologin`,
-      });
-    },
-    naverDone() {
-       console.log("done");
-      this.$router.replace('/shoppingList'); 
-    }
-  },
+     name: 'login',
+     components: {},
+     data() {
+          return {};
+     },
+     mounted() {
+          const naverLogin = new window.naver.LoginWithNaverId({
+               clientId: '9zJZugyWUILEG91zo8TK',
+               callbackUrl: `${window.location.origin}/login_callback`,
+               isPopup: true,
+               loginButton: {
+                    color: 'green',
+                    type: 3,
+                    height: 60,
+               },
+          });
+          naverLogin.init();
+     },
+     methods: {
+          kakaoLogin() {
+               window.Kakao.Auth.authorize({
+                    redirectUri: `${window.location.origin}/kakaologin`,
+               });
+          },
+          naverDone() {
+               console.log('done');
+               this.$router.replace('/shoppingList');
+          },
+     },
 };
 </script>
 >
@@ -64,13 +63,13 @@ export default {
         min-height: 90vh;   
     } */
 .upper {
-  margin-top: 10%;
+     margin-top: 10%;
 }
 .LinkAreaDiv {
-  margin-top: 10%;
+     margin-top: 10%;
 }
 .LinkArea {
-  margin: auto;
-  margin: 5% 0;
+     margin: auto;
+     margin: 5% 0;
 }
 </style>

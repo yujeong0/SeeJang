@@ -130,7 +130,7 @@ export default {
      data() {
           return {
                serachName: '',
-               platform: this.$store.getters.getPlatform,
+               platform: sessionStorage.getItem('loginPlatform'),
                nickName: sessionStorage.getItem('nickName'),
                active: '',
                isshopping: false,
@@ -158,10 +158,12 @@ export default {
                     to.path == '/notBlindSearchProduct'
                ) {
                     this.update(to.path);
-               } else if(to.path == '/'){
-                    this.logout();
-               }
-               else {
+               } else if (to.path == '/' || to.path == '/modesetting') {
+                    console.log('route To');
+                    console.log(to.path);
+                    sessionStorage.setItem('isLogin', false);
+                    this.$store.commit('TOGGLE_LOGIN_STATE');
+               } else {
                     // 나머지는 모두 false로 색을 끄고 원래 가려던 길로 보낸다.
                     this.isshopping = false;
                     this.ispopular = false;
@@ -271,9 +273,9 @@ export default {
                sessionStorage.setItem('isLogin', false);
                sessionStorage.removeItem('userId');
                sessionStorage.removeItem('nickName');
+               sessionStorage.removeItem('loginPlatform');
                localStorage.setItem('isBlind', 0);
                this.$store.commit('TOGGLE_LOGIN_STATE');
-               this.$store.commit('INIT');
                this.$router.push('/');
           },
           likeproduct() {
