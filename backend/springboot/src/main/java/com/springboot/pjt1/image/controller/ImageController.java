@@ -33,6 +33,7 @@ public class ImageController {
 	@PostMapping("/searchImage")
 	public Map<String, Object> searchImage(MultipartRequest request) {
 		System.out.println(request);
+		System.out.println("dddddddddddddddddddddd");
 		
 		MultiValueMap<String, MultipartFile> map = (MultiValueMap<String, MultipartFile>) request.getMultiFileMap();
 		if (map.size() == 0) {
@@ -57,6 +58,7 @@ public class ImageController {
 				break;
 			case "2":	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
 				String itemName = map.get("item").get(0).getOriginalFilename();	// 찾는 상품이름
+				System.out.println("이거다!! " + itemName);
 				resultMap = new HashMap<>();
 				resultMap.put("result", imageService.getDirection(file, itemName, memberId));
 				break;
