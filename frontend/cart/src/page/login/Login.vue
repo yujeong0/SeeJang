@@ -34,7 +34,7 @@ export default {
     const naverLogin = new window.naver.LoginWithNaverId({
       clientId: '9zJZugyWUILEG91zo8TK',
       callbackUrl: `${window.location.origin}/login_callback`,
-      isPopup: false,
+      isPopup: true,
       loginButton: {
         color: 'green',
         type: 3,

@@ -22,10 +22,9 @@
 		where member_id = #{memberId}
 	</select>
 	
-	<delete id="deleteImagesResults" parameterType="int">
+	<delete id="deleteImagesResults" >
 		delete 
 		from images_results 
-		where id = #{id}
 	</delete>
 	
 </mapper>
