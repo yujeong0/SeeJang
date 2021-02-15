@@ -6,8 +6,6 @@
     </div>
     <div>
       <br />
-      <h1 style="color: pink">~ 장보기 시작 ~</h1>
-      <br />
     </div>
     <div class="LinkAreaDiv">
       <div id="naverIdLogin" class="LinkArea"></div>
