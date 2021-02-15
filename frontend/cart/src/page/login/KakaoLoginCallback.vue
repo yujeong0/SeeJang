@@ -6,7 +6,7 @@
 import axios from 'axios';
 import http from '@/util/http-common.js';
 export default {
-      async mounted() {
+     async mounted() {
           const that = this;
           const qs = require('qs');
           const parameter = {
@@ -14,11 +14,12 @@ export default {
                client_id: 'b3bdce092bdd7e37d7b394bb8c363098',
                code: this.$route.query.code,
           };
-          await axios.post('https://kauth.kakao.com/oauth/token', qs.stringify(parameter), {
-               headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-               },
-          })
+          await axios
+               .post('https://kauth.kakao.com/oauth/token', qs.stringify(parameter), {
+                    headers: {
+                         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    },
+               })
                .then((res) => {
                     var userInfo = {};
                     var formData = {
@@ -46,13 +47,13 @@ export default {
                               sessionStorage.setItem('isLogin', true);
                               sessionStorage.setItem('nickName', formData.memberName);
                               sessionStorage.setItem('userId', formData.memberId);
-                              that.$store.commit('TOGGLE_LOGIN_STATE');
-                              that.$store.commit('SET_USER_INFO', { userInfo });
+                              sessionStorage.setItem('loginPlatform', 'kakao');
+                              this.$store.commit('TOGGLE_LOGIN_STATE');
 
-                             http.post('/user/login/naver', formData, { withCredentials: true })
+                              http.post('/user/login/naver', formData, { withCredentials: true })
                                    .then((response) => {
                                         console.log(response);
-                                        this.$router.push('/shoppingList');
+                                        this.$router.replace('/shoppingList');
                                    })
                                    .catch((error) => {
                                         console.log(error);
