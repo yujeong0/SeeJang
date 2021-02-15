@@ -83,7 +83,6 @@ export default {
         });
     },
     async detail() {
-      console.log('Asdfasdfasdfas3');
       let name = this.popular.productName;
       await http
         .get('/product/name', {
