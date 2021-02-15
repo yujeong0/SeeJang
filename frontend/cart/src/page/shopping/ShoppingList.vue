@@ -117,7 +117,7 @@ export default {
                          name: 'AddShoppingList-modal',
 
                          width: '70%',
-                         height: '75%',
+                         height: '90%',
                          draggable: false,
                          shiftY: 0.5,
                     },
@@ -204,7 +204,7 @@ export default {
                          name: 'MyFavoriteShoppingList-modal',
 
                          width: '90%',
-                         height: '80%',
+                         height: '90%',
                          draggable: false,
                          shiftY: 0.5,
                     },
