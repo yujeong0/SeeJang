@@ -6,7 +6,7 @@
 import axios from 'axios';
 import http from '@/util/http-common.js';
 export default {
-     mounted() {
+      async mounted() {
           const that = this;
           const qs = require('qs');
           const parameter = {
@@ -14,7 +14,7 @@ export default {
                client_id: 'b3bdce092bdd7e37d7b394bb8c363098',
                code: this.$route.query.code,
           };
-          axios.post('https://kauth.kakao.com/oauth/token', qs.stringify(parameter), {
+          await axios.post('https://kauth.kakao.com/oauth/token', qs.stringify(parameter), {
                headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
                },
@@ -37,7 +37,8 @@ export default {
                          },
                          success: (response) => {
                               formData.memberPassword = response.id;
-                              formData.memberId = userInfo.memberId = response.kakao_account.email;
+                              formData.memberId = response.kakao_account.email;
+                              userInfo.memberId = response.kakao_account.email;
                               formData.memberName = response.properties.nickname;
 
                               console.log('kakaoCallback');
@@ -48,7 +49,7 @@ export default {
                               that.$store.commit('TOGGLE_LOGIN_STATE');
                               that.$store.commit('SET_USER_INFO', { userInfo });
 
-                              http.post('/user/login/naver', formData, { withCredentials: true })
+                             http.post('/user/login/naver', formData, { withCredentials: true })
                                    .then((response) => {
                                         console.log(response);
                                         this.$router.push('/shoppingList');
