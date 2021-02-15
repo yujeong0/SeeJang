@@ -98,11 +98,11 @@ export default {
   created() {
     console.log('created');
     console.log(this.$store.getters.getProductName);
-    // let name = this.$store.getters.getProductName;
+    let name = this.$store.getters.getProductName;
     http
       .get('/product/detail', {
         params: {
-          name: this.$store.getters.getProductName,
+          name,
         },
         withCredentials: true,
       })
@@ -112,6 +112,7 @@ export default {
         console.log(response.data.bestPrice.length);
 
         for (let i = 0; i < response.data.bestPrice.length; i++) {
+          console.log(response.data.bestPrice[i]);
           this.datas.push(response.data.bestPrice[i]);
           console.log(this.datas[i].link);
           console.log(this.datas[i].price);
@@ -143,34 +144,6 @@ export default {
   },
   updated() {
     // let name = this.$store.getters.getProductName;
-    http
-      .get('/product/detail', {
-        params: {
-          name: this.$store.getters.getProductName,
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        // this.datas = resopnse.data.bestPrice;
-        console.log(response);
-        console.log(response.data.bestPrice.length);
-
-        for (let i = 0; i < response.data.bestPrice.length; i++) {
-          this.datas.push(response.data.bestPrice[i]);
-          console.log(this.datas[i].link);
-          console.log(this.datas[i].price);
-          console.log(this.datas[i].productName);
-          console.log(this.datas[i].siteName);
-        }
-        this.reviewNum = response.data.review.length;
-        for (let i = 0; i < response.data.review.length; i++) {
-          this.reviews.push(response.data.review[i]);
-          console.log(this.reviews[i].comment);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   },
   methods: {
     like(item) {
