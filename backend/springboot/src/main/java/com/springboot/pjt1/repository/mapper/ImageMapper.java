@@ -11,6 +11,6 @@ public interface ImageMapper {
 	
 	ImagesResults selectImageResultsByMemberId(String memberId);
 	
-	int deleteImagesResults(int id);
+	int deleteImagesResults();
 	
 }
