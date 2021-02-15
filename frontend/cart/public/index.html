@@ -59,19 +59,16 @@
           <meta name="mobile-web-app-capable" content="yes" />
           <!-- 상태바 없애기 끝 -->
           <script>
-               document.readyState;
-          </script>
+            window.addEventListener("load", function () {
+                 setTimeout(function () {
+                      // This hides the address bar:
+                      window.scrollTo(0, 1);
+                 }, 0);
+            });
+       </script>
      </head>
      <body>
           <div id="app"></div>
           <!-- built files will be auto injected -->
-          <script>
-               window.addEventListener("load", function () {
-                    setTimeout(function () {
-                         // This hides the address bar:
-                         window.scrollTo(0, 1);
-                    }, 0);
-               });
-          </script>
      </body>
 </html>
