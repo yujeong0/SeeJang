@@ -87,14 +87,17 @@ export default {
 
       // for (var key of formData.keys()) console.log(key);
       // for (var value of formData.values()) console.log(value);
+      console.log("확인해보자")
+      console.log(this.$store.getters.getCameraMode)
+      console.log(this.$store.getters.getCameraItem)
 
       console.log('사진, 모드, 아이템이름 액시오스로 보냄');
       await http
         .post('/searchImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
-            withCredentials: true,
           },
+          withCredentials: true,
         })
         .then((response) => {
           this.result = response.data.result;
@@ -109,6 +112,8 @@ export default {
             let productInfo = response.data.result;
             this.$store.commit('SET_PRODUCT_INFO', { productInfo });
           }
+          console.log(response)
+          console.log("dddd");
         })
         .catch((error) => {
           console.log(error);
