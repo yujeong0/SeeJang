@@ -96,6 +96,7 @@ public class ImageServiceImpl implements ImageService {
 			Thread.sleep(1000);
 			System.out.println("결과 기다리는중");
 		}
+		System.out.println("-----------------"+imagesResults.getResult()+"-----------------");
 		return imagesResults.getResult();
 	}
 	
