@@ -40,8 +40,8 @@ export default {
     if (this.isPhotoTaken) this.takePhoto();
   },
   methods: {
-   async httpCall(formData) {
-     await http
+    async httpCall(formData) {
+      await http
         .post('/searchImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -61,6 +61,9 @@ export default {
           if (this.$store.getters.getCameraMode == 1) {
             let productInfo = response.data.result;
             this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+            console.log('이거확인해야함...이거다음 created');
+            console.log(productInfo);
+            this.$router.push('detailProduct');
           }
           console.log(response);
           console.log('dddd');
@@ -143,7 +146,7 @@ export default {
 
       //  this.$router.push('/detailProduct');
       if (this.$store.getters.getCameraMode == 1) {
-        this.$router.push('detailProduct');
+        //  this.$router.push('detailProduct');
         this.$store.commit('TOGGLE_CAMERA_CANVAS');
       }
     },

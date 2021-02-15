@@ -1,6 +1,8 @@
 <template>
   <div>
-    <v-btn @click="toggle">최저가 확인하기</v-btn>
+    <v-btn class="btn" rounded color="primary" @click="toggle"
+      >최저가 확인하기</v-btn
+    >
   </div>
 </template>
 
@@ -19,3 +21,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.btn {
+  width: 300px;
+  min-height: 80px;
+  font-size: large;
+}
+</style>
