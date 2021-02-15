@@ -3,7 +3,7 @@ package com.springboot.pjt1.repository.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "이번주 상품 정보를 담는 dto")
+@ApiModel(description = "이미지 처리를 위한 정보를 담는 dto")
 public class Images {
 	@ApiModelProperty(notes = "이미지를 담고있는 byte 배열")
 	private byte[] image;
@@ -13,7 +13,15 @@ public class Images {
 	private int num;
 	@ApiModelProperty(notes = "이미지 처리 요청을 한 회원 ID")
 	private String memberId;
+	@ApiModelProperty(notes = "찾는 물품")
+	private String search;
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public String getMemberId() {
 		return memberId;
 	}
