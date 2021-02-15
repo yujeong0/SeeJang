@@ -86,13 +86,32 @@ export default {
           console.log(error);
         });
     },
-    detail(idx) {
-      let productInfo = {
-        productName: this.products[idx].productName,
-        productNo: this.products[idx].productNo,
-        productPrice: this.products[idx].productPrice,
-      };
-      this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+    async detail(idx) {
+      let name = this.products[idx].productName;
+      console.log('선택' + name);
+      await http
+        .get('/product/name', {
+          params: {
+            name: name,
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log('으아아ㅏ아아아ㅏㄱ');
+          console.log(response);
+          let productInfo = {
+            productName: response.data[0].productName,
+            productNo: response.data[0].productNo,
+            productPrice: response.data[0].productPrice,
+            reviewLink: response.data[0].reviewLink,
+          };
+          console.log('끝');
+          this.$store.commit('SET_PRODUCT_INFO', { productInfo });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log('디테일로 넘긴다');
       this.$router.push('/detailProduct');
     },
   },
