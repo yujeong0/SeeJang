@@ -54,11 +54,7 @@ public class ImageController {
 			switch(mode.getOriginalFilename()) {
 			case "1":	// 1  : 일반인
 				resultMap = new HashMap<>();
-				try {
-					resultMap.put("result", productService.searchProductDetail(imageService.getProductName(file, memberId)));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				resultMap.put("result", productService.selectProductByExactName(imageService.getProductName(file, memberId)));
 				break;
 			case "2":	// 2  : 시각장애인 위치 찾기 음성출력으로 왼쪽, 오른쪽에 있다.
 				String itemName = map.get("item").get(0).getOriginalFilename();	// 찾는 상품이름
