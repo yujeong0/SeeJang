@@ -11,29 +11,18 @@ export default {
                clientId: '9zJZugyWUILEG91zo8TK',
                isPopup: false,
           });
-          let userInfo = {};
           let formData = {
                memberId: '',
                memberPassword: '',
                memberName: '',
           };
-
           naverLogin.init();
           await naverLogin.getLoginStatus((status) => {
                if (status) {
                     console.log('로그인 들어옴');
-                    userInfo.loginAPI = 'naver';
-                    userInfo.userToken = naverLogin.accessToken.accessToken;
                     formData.memberPassword = naverLogin.user.getId();
                     formData.memberId = naverLogin.user.getEmail();
-                    userInfo.memberId = naverLogin.user.getEmail();
                     formData.memberName = naverLogin.user.getNickName();
-
-                    sessionStorage.setItem('isLogin', true);
-                    sessionStorage.setItem('nickName', formData.memberName);
-                    sessionStorage.setItem('userId', formData.memberId);
-                    that.$store.commit('TOGGLE_LOGIN_STATE');
-                    that.$store.commit('SET_USER_INFO', { userInfo });
 
                     console.log('formdata');
                     console.log(formData);
@@ -41,7 +30,17 @@ export default {
                     http.post('/user/login/naver', formData, { withCredentials: true })
                          .then((response) => {
                               console.log(response);
-                              this.$router.replace('/shoppingList');
+                              //localStorage.setItem('naverlogin', true);
+                              // opener.document.location.reload();
+                              opener.sessionStorage.setItem('isLogin', true);
+                              opener.sessionStorage.setItem('nickName', formData.memberName);
+                              opener.sessionStorage.setItem('userId', formData.memberId);
+                              opener.sessionStorage.setItem('loginPlatform', 'naver');
+                              opener.document.location.replace(
+                                   `${window.location.origin}/shoppingList`
+                              );
+                              window.close();
+                              // this.$router.replace('/shoppingList');
                          })
                          .catch((error) => {
                               console.log(error);
