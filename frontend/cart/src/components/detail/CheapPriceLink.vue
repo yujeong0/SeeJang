@@ -150,7 +150,7 @@ export default {
       console.log(item);
       let formData = new FormData();
       formData.append('link', item.link);
-      formData.append('memberId', this.$store.getters.getMemberId);
+      formData.append('memberId', sessionStorage.getItem('userId'));
       formData.append('price', item.price);
       formData.append('productName', item.productName);
       formData.append('siteName', item.siteName);

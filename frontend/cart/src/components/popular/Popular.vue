@@ -66,9 +66,10 @@ export default {
   },
   methods: {
     addShoppingList() {
+      console.log('멤버아이디:' + sessionStorage.getItem('userId'));
       let formData = new FormData();
       formData.append('checked', false);
-      formData.append('memberId', this.$store.getters.getMemberId);
+      formData.append('memberId', sessionStorage.getItem('userId'));
       formData.append('productName', this.popular.productName);
       formData.append('productPrice', parseInt(this.popular.productPrice));
       http

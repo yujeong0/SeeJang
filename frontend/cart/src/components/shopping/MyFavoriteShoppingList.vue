@@ -112,7 +112,7 @@ export default {
     AddShoppingList(index) {
       let formData = new FormData();
       formData.append('checked', false);
-      formData.append('memberId', this.$store.getters.getMemberId);
+      formData.append('memberId', sessionStorage.getItem('userId'));
       formData.append('productName', this.myProduct[index].productName);
       formData.append('productPrice', this.myProduct[index].productPrice);
       http
@@ -122,7 +122,7 @@ export default {
         .then((response) => {
           let item = {
             checked: false,
-            memberId: this.$store.getters.getMemberId,
+            memberId: sessionStorage.getItem('userId'),
             productName: this.myProduct[index].productName,
             productPrice: this.myProduct[index].productPrice,
             shoppingListNo: response.data, // 백엔드에서 받아온 No 값으로 변경
