@@ -70,7 +70,7 @@ export default {
 </script>
 >
 
-<style scope>
+<style scoped>
 /* .v-application--wrap{
         min-height: 90vh;   
     } */

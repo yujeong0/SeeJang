@@ -53,7 +53,7 @@ export default {
                } else {
                     console.log('AccessToken이 올바르지 않습니다.');
                     alert('문제가 발생했습니다! 다시 로그인 해주세요!');
-                    this.$router.push('/login');
+                    opener.document.location.replace(`${window.location.origin}/login`);
                }
           });
      },

@@ -21,21 +21,22 @@ export default {
      methods: {
           blindMode() {
                // 시각장애인 모드
+               // 랜덤 memberId 생성
                let max = 10;
                let arr = ['@','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-                          'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+                         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
                let str = '';
                let length = arr.length;
 
-               for(let i = 0; i < 10; i++){
+               for(let i = 0; i < 15; i++){
                     str += (Math.floor(Math.random()* (max+ 1))) + arr[(Math.floor(Math.random()* (length)))];
                }
+               sessionStorage.setItem('userId',str);
 
                localStorage.setItem('isBlind', 1);
-               sessionStorage.setItem('userId',str);
                sessionStorage.setItem('isLogin', false);
                this.$store.commit('TOGGLE_LOGIN_STATE');
-               this.$router.push('/blindSearchProduct');
+               this.$router.replace('/blindSearchProduct');
           },
           notblindMode() {
                // // 비장애인 모드
@@ -44,7 +45,7 @@ export default {
                     localStorage.getItem('userId') == '' ||
                     localStorage.getItem('userId') == null
                ) {
-                    this.$router.push('/login');
+                    this.$router.replace('/login');
                } else {
                     sessionStorage.setItem('isLogin', true);
                     sessionStorage.setItem('userId', localStorage.getItem('userId'));
@@ -52,7 +53,7 @@ export default {
                     sessionStorage.setItem('loginPlatform', localStorage.getItem('loginPlatform'));
 
                     this.$store.commit('TOGGLE_LOGIN_STATE');
-                    this.$router.push('/shoppingList');
+                    this.$router.replace('/shoppingList');
                }
                // this.$router.push('/login');
                // 임시 로그인 사용
