@@ -30,20 +30,21 @@ export default {
   methods: {
     changeMode() {
       // 비쟁애인 - 시각장애인 모드 변경
-      if (
-        localStorage.getItem('userId') == '' ||
-        localStorage.getItem('userId') == null
-      ) {
-        this.$router.push('/login');
-      } else {
-        //   localStorage.setItem('isBlind', 2);
-        //   sessionStorage.setItem('isLogin', true);
-        //   setTimeout(() => {
-        //     this.$store.commit('TOGGLE_LOGIN_STATE');
-        //     this.$router.push('/modesetting');
-        //   }, 500);
-        this.$router.push('/modesetting');
-      }
+      // if (
+      //   localStorage.getItem('userId') == '' ||
+      //   localStorage.getItem('userId') == null
+      // ) {
+      //   this.$router.push('/login');
+      // } else {
+      //   //   localStorage.setItem('isBlind', 2);
+      //   //   sessionStorage.setItem('isLogin', true);
+      //   //   setTimeout(() => {
+      //   //     this.$store.commit('TOGGLE_LOGIN_STATE');
+      //   //     this.$router.push('/modesetting');
+      //   //   }, 500);
+      //   this.$router.push('/modesetting');
+      // }
+      this.$router.replace('/modesetting');
     },
   },
 };
