@@ -1,5 +1,17 @@
 <template>
      <v-container id="container" class="mx-auto my-auto">
+          <div style="text-align: left; margin-left: 15%">
+               <v-btn text @click="changeMode" style="padding: 0; margin-left: 3%; margin-top: -3%">
+                    모드변경
+                    <i class="fas fa-blind"></i>
+               </v-btn>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <div class="upper">
                <h1>See 장</h1>
                <img src="@/assets/list.png" style="width: 15%" />
@@ -25,18 +37,18 @@
 </template>
 <script>
 export default {
-     name: 'login',
+     name: "login",
      components: {},
      data() {
           return {};
      },
      mounted() {
           const naverLogin = new window.naver.LoginWithNaverId({
-               clientId: '9zJZugyWUILEG91zo8TK',
+               clientId: "9zJZugyWUILEG91zo8TK",
                callbackUrl: `${window.location.origin}/login_callback`,
                isPopup: true,
                loginButton: {
-                    color: 'green',
+                    color: "green",
                     type: 3,
                     height: 60,
                },
@@ -49,9 +61,9 @@ export default {
                     redirectUri: `${window.location.origin}/kakaologin`,
                });
           },
-          naverDone() {
-               console.log('done');
-               this.$router.replace('/shoppingList');
+          changeMode() {
+               // 비쟁애인 - 시각장애인 모드 변경
+               this.$router.replace("/modesetting");
           },
      },
 };
@@ -62,6 +74,9 @@ export default {
 /* .v-application--wrap{
         min-height: 90vh;   
     } */
+.contents {
+     margin-top: 100px;
+}
 .upper {
      margin-top: 10%;
 }
