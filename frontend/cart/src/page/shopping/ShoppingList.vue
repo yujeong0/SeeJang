@@ -231,7 +231,7 @@ export default {
   text-align: left;
   margin: 0px 10%;
   margin-top: 200px;
-  margin-bottom: 20px;
+  margin-bottom: 10%;
   font-weight: 1000;
   font-size: large;
   width: 80%;
@@ -258,7 +258,7 @@ export default {
 .itemArea {
   height: 400px;
   padding-top: 10px;
-  margin-top: 80px;
+  margin-top: 25%;
   overflow-y: scroll;
   overscroll-behavior: contain;
 }
