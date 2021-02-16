@@ -33,6 +33,11 @@ export default {
                               //localStorage.setItem('naverlogin', true);
                               // opener.document.location.reload();
                               opener.sessionStorage.setItem('isLogin', true);
+                              opener.localStorage.setItem('isBlind',2);
+                              opener.localStorage.setItem('nickName', formData.memberName);
+                              opener.localStorage.setItem('userId', formData.memberId);
+                              opener.localStorage.setItem('loginPlatform', 'naver');
+                              // 진작 로컬로 할걸 그랬지
                               opener.sessionStorage.setItem('nickName', formData.memberName);
                               opener.sessionStorage.setItem('userId', formData.memberId);
                               opener.sessionStorage.setItem('loginPlatform', 'naver');

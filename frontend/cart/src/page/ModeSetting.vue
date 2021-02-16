@@ -21,7 +21,18 @@ export default {
      methods: {
           blindMode() {
                // 시각장애인 모드
+               let max = 10;
+               let arr = ['@','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+                          'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+               let str = '';
+               let length = arr.length;
+
+               for(let i = 0; i < 10; i++){
+                    str += (Math.floor(Math.random()* (max+ 1))) + arr[(Math.floor(Math.random()* (length)))];
+               }
+
                localStorage.setItem('isBlind', 1);
+               sessionStorage.setItem('userId',str);
                sessionStorage.setItem('isLogin', false);
                this.$store.commit('TOGGLE_LOGIN_STATE');
                this.$router.push('/blindSearchProduct');
@@ -30,12 +41,16 @@ export default {
                // // 비장애인 모드
                localStorage.setItem('isBlind', 2);
                if (
-                    sessionStorage.getItem('userId') == '' ||
-                    sessionStorage.getItem('userId') == null
+                    localStorage.getItem('userId') == '' ||
+                    localStorage.getItem('userId') == null
                ) {
                     this.$router.push('/login');
                } else {
                     sessionStorage.setItem('isLogin', true);
+                    sessionStorage.setItem('userId', localStorage.getItem('userId'));
+                    sessionStorage.setItem('nickName', localStorage.getItem('nickName'));
+                    sessionStorage.setItem('loginPlatform', localStorage.getItem('loginPlatform'));
+
                     this.$store.commit('TOGGLE_LOGIN_STATE');
                     this.$router.push('/shoppingList');
                }
@@ -49,6 +64,7 @@ export default {
 <style scoped>
 #container {
      margin: auto;
+     margin-top: 30%;
 }
 .mode {
      font-size: 1.5rem;
