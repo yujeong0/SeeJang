@@ -26,6 +26,11 @@ export default {
           };
      },
 };
+history.pushState(null, null, location.href);
+
+window.onpopstate = function (event) {
+     history.go(1);
+};
 </script>
 
 <style>
