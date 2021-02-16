@@ -14,7 +14,7 @@
           </div>
           <div class="column" v-if="!state">
                <br />
-               <h3 class="highlight mb-5">이번 주 인기상품</h3>
+               <h3 class="highlight mb-5" style="width: 50%">이번 주 인기상품</h3>
                <hr />
                <br />
                <popular v-for="popular in populars" :popular="popular" :key="popular.productNo" />
