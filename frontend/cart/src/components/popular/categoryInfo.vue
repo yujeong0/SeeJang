@@ -69,7 +69,7 @@ export default {
     addShoppingList() {
       let formData = new FormData();
       formData.append('checked', false);
-      formData.append('memberId', this.$store.getters.getMemberId);
+      formData.append('memberId', sessionStorage.getItem('userId'));
       formData.append('productName', this.categoryItem.productName);
       formData.append('productPrice', this.categoryItem.productPrice);
       http
