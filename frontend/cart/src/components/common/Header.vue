@@ -279,6 +279,7 @@ export default {
                sessionStorage.removeItem('loginPlatform');
 
                localStorage.removeItem('userId');
+               localStorage.removeItem('userPw');
                localStorage.removeItem('nickName');
                localStorage.removeItem('loginPlatform');
                localStorage.setItem('isBlind', 0);
