@@ -21,8 +21,8 @@
         <v-col style="text-align: left" @click="updateForm" cols="3">
           ₩ {{ productPrice | comma }}
         </v-col>
-        <v-col style="text-align: right; max-width: 10px;">
-          <v-btn text @click="del" style="max-width: 10px;">
+        <v-col style="text-align: right; max-width: 10px">
+          <v-btn text @click="del" style="max-width: 10px">
             <v-img
               src="@/assets/static/shoppingList/minus.png"
               alt="DEL"
@@ -113,7 +113,7 @@ export default {
     updateNamePrice(updatedItem) {
       let formData = new FormData();
       formData.append('checked', this.ischecked);
-      formData.append('memberId', this.$store.getters.getMemberId);
+      formData.append('memberId', sessionStorage.getItem('userId'));
       formData.append('productName', updatedItem.productName);
       formData.append('productPrice', updatedItem.productPrice);
       formData.append('shoppingListNo', this.shoppingListNo);
@@ -134,7 +134,7 @@ export default {
     update() {
       let formData = new FormData();
       formData.append('checked', !this.ischecked);
-      formData.append('memberId', this.$store.getters.getMemberId);
+      formData.append('memberId', sessionStorage.getItem('userId'));
       formData.append('productName', this.productName);
       formData.append('productPrice', this.productPrice);
       formData.append('shoppingListNo', this.shoppingListNo);
