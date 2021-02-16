@@ -48,6 +48,11 @@ export default {
                               sessionStorage.setItem('nickName', formData.memberName);
                               sessionStorage.setItem('userId', formData.memberId);
                               sessionStorage.setItem('loginPlatform', 'kakao');
+
+                              localStorage.setItem('isBlind',2);
+                              localStorage.setItem('nickName', formData.memberName);
+                              localStorage.setItem('userId', formData.memberId);
+                              localStorage.setItem('loginPlatform', 'kakao');
                               this.$store.commit('TOGGLE_LOGIN_STATE');
 
                               http.post('/user/login/naver', formData, { withCredentials: true })

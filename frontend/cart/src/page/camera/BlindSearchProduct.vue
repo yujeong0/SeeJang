@@ -31,8 +31,8 @@ export default {
     changeMode() {
       // 비쟁애인 - 시각장애인 모드 변경
       if (
-        sessionStorage.getItem('userId') == '' ||
-        sessionStorage.getItem('userId') == null
+        localStorage.getItem('userId') == '' ||
+        localStorage.getItem('userId') == null
       ) {
         this.$router.push('/login');
       } else {
