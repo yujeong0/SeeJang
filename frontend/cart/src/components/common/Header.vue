@@ -33,6 +33,7 @@
                dense
                @keyup="searchState"
                @keyup.enter="goDetail"
+               ref="searchBar"
                v-model="serachName"
                style="width: 80%; margin: 1% auto; margin-bottom: -6%"
                class="text"
@@ -204,6 +205,8 @@ export default {
                     .then((response) => {
                          this.$store.commit('SET_INTEGRATED_SEARCH', { response }); //검색한 상품들의 정보를 셋팅
                          this.searchedState = false;
+                         this.serachName = '';
+                         this.$refs.searchBar.focus();
                     })
                     .catch((error) => {
                          console.log(error);
