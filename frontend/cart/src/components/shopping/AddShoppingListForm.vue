@@ -89,7 +89,7 @@ export default {
       if (this.productName.length != 0 && this.productPrice.length != 0) {
         let formData = new FormData();
         formData.append('checked', false);
-        formData.append('memberId', this.$store.getters.getMemberId);
+        formData.append('memberId', sessionStorage.getItem('userId'));
         formData.append('productName', this.productName);
         formData.append('productPrice', this.productPrice);
         http
@@ -100,7 +100,7 @@ export default {
             console.log(response);
             let item = {
               checked: false,
-              memberId: this.$store.getters.getMemberId,
+              memberId: sessionStorage.getItem('userId'),
               productName: this.productName,
               productPrice: this.productPrice,
               shoppingListNo: response.data, // 백엔드에서 받아온 No 값으로 변경
@@ -155,7 +155,7 @@ export default {
     favorite() {
       if (this.productName.length != 0 && this.productPrice.length != 0) {
         let formData = new FormData();
-        formData.append('memberId', this.$store.getters.getMemberId);
+        formData.append('memberId', sessionStorage.getItem('userId'));
         formData.append('productName', this.productName);
         formData.append('productPrice', this.productPrice);
         http
