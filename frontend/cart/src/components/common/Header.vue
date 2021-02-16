@@ -274,6 +274,10 @@ export default {
                sessionStorage.removeItem('userId');
                sessionStorage.removeItem('nickName');
                sessionStorage.removeItem('loginPlatform');
+
+               localStorage.removeItem('userId');
+               localStorage.removeItem('nickName');
+               localStorage.removeItem('loginPlatform');
                localStorage.setItem('isBlind', 0);
                this.$store.commit('TOGGLE_LOGIN_STATE');
                this.$router.push('/');
