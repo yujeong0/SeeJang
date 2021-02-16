@@ -67,7 +67,7 @@ export default {
                          fail: function (error) {
                               console.log(error);
                               alert('문제가 발생했습니다! 다시 로그인 해주세요!');
-                              this.$router.push('/login');
+                              this.$router.replace('/login');
                          },
                     });
                })
