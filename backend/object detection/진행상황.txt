@@ -5,3 +5,5 @@
 21/2/5 : 데이터셋 다시 만드는 중
 
 21/2/10 : classification 연동 최종 확인. object detection은 아직 학습 중,,,
+
+21/2/16 : classification 데이터셋 추가 후 재학습 중
