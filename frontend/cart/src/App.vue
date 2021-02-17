@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Loader></Loader>
     <Header v-if="this.$store.getters.getIsLogin"></Header>
     <div :class="{ contents: this.$store.getters.getIsLogin }">
       <router-view />
@@ -9,6 +10,7 @@
 
 <script>
 import Header from './components/common/Header.vue';
+import Loader from './components/common/Loader.vue';
 export default {
   updated() {
     // if (this.$router.currentRoute.path == "/blindSearchProduct" ||
@@ -22,6 +24,7 @@ export default {
   name: 'App',
   components: {
     Header,
+    Loader,
   },
   data() {
     return {
@@ -33,7 +36,7 @@ history.pushState(null, null, location.href);
 
 window.onpopstate = function (event) {
   // history.go(1);
-  confirm("종료?");
+  confirm('종료?');
 };
 </script>
 
