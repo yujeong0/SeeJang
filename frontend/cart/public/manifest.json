@@ -3,17 +3,17 @@
      "short_name": "See 장!",
      "icons": [
           {
-               "src": "/image/192x192_bread_click.png",
-               "sizes": "192x192",
+               "src": "/image/logo_title.png",
+               "sizes": "488x196",
                "type": "image/png"
           },
           {
-               "src": "/image/512x512_bread_click.png",
-               "sizes": "512x512",
+               "src": "/image/logo_title.png",
+               "sizes": "488x196",
                "type": "image/png"
           }
      ],
      "start_url": "/",
      "display": "standalone",
-     "background_color" : "#feca57"
+     "background_color" : "#fae2ac"
 }
