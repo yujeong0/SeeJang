@@ -11,7 +11,10 @@
 import Header from "./components/common/Header.vue";
 export default {
      updated() {
-          if (this.$router.currentRoute.path == "/blindSearchProduct") {
+          if (this.$router.currentRoute.path == "/blindSearchProduct" ||
+              this.$router.currentRoute.path == "/modesetting" ||
+              this.$router.currentRoute.path == "/" ||
+              this.$router.currentRoute.path == "/login") {
                this.isActive = false;
           } else this.isActive = true;
           console.log(this.$router.currentRoute.path);
@@ -22,7 +25,7 @@ export default {
      },
      data() {
           return {
-               isActive: true,
+               isActive: false,
           };
      },
 };
