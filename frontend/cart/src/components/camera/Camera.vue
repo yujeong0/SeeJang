@@ -56,6 +56,7 @@ export default {
           ) {
             this.speak(this.result);
             this.$store.commit('TOGGLE_CAMERA_CANVAS');
+            this.$store.commit('SET_LOADER_FALSE');
             //장애인 위치찾기
           }
           if (this.$store.getters.getCameraMode == 1) {
@@ -66,9 +67,14 @@ export default {
             this.$router.replace('detailProduct');
           }
           console.log(response);
-          console.log('dddd');
         })
         .catch((error) => {
+          if (
+            this.$store.getters.getCameraMode == 2 ||
+            this.$store.getters.getCameraMode == 3
+          ) {
+            this.$store.commit('SET_LOADER_FALSE');
+          }
           console.log(error);
         });
     },
@@ -122,6 +128,7 @@ export default {
         setTimeout(function () {
           console.log('음성인식 시작');
           that.$store.commit('TOGGLE_CAMERA_CLICKED');
+          that.$store.commit('SET_LOADER_TRUE');
         }, 3000);
 
         setTimeout(function () {
@@ -160,11 +167,11 @@ export default {
       const constraints = (window.constraints = {
         audio: false,
         // video: true,
-         video: {
-           facingMode: {
-             exact: 'environment',
-           },
-         },
+        video: {
+          facingMode: {
+            exact: 'environment',
+          },
+        },
       });
 
       navigator.mediaDevices
