@@ -1,22 +1,29 @@
 <template>
      <v-container id="container" class="mx-auto my-auto">
-          <div style="text-align: left; margin-left: 15%">
-               <v-btn text @click="changeMode" style="padding: 0; margin-left: 3%; margin-top: -3%">
-                    모드변경
-                    <i class="fas fa-blind"></i>
-               </v-btn>
+          <div style="margin-left:40%; margin-top:20%">
+               <v-toolbar class="nav" style="height: 50px; text-align: center; width: 40%">
+                    <v-btn
+                         text
+                         @click="changeMode"
+                         class="mode"
+                         style="padding: 0; margin-left: 3%; margin-top: -3%"
+                    >
+                         모드변경
+                         <i class="fas fa-blind"></i>
+                    </v-btn>
+               </v-toolbar>
           </div>
-          <br />
-          <br />
-          <br />
-          <br />
           <br />
           <br />
           <div class="upper">
-               <h1>See 장</h1>
-               <img src="@/assets/list.png" style="width: 15%" />
+               <div style="margin: auto">
+                    <img src="@/assets/logo.png" alt="logo" style="width: 62%" />
+               </div>
           </div>
           <div>
+               <br />
+               <br />
+               <br />
                <br />
           </div>
           <div class="LinkAreaDiv">
@@ -74,8 +81,8 @@ export default {
 /* .v-application--wrap{
         min-height: 90vh;   
     } */
-.contents {
-     margin-top: 100px;
+#contents {
+     margin-top: -200px;
 }
 .upper {
      margin-top: 10%;
