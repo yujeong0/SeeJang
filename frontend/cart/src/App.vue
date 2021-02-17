@@ -37,9 +37,9 @@ window.onpopstate = function (event) {
 </script>
 
 <style>
-/* #container {
-     font-family: "Do Hyeon", sans-serif;
-} */
+#container {
+  font-family: 'Do Hyeon', sans-serif;
+}
 .contents {
   margin-top: 190px;
   height: 100%;
