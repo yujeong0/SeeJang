@@ -99,6 +99,7 @@ export default {
                if (localStorage.getItem('userId') == '' || localStorage.getItem('userId') == null) {
                     this.$router.replace('/login');
                } else {
+                    localStorage.setItem('isBlind', 2);
                     sessionStorage.setItem('isLogin', true);
                     sessionStorage.setItem('userId', localStorage.getItem('userId'));
                     sessionStorage.setItem('nickName', localStorage.getItem('nickName'));
