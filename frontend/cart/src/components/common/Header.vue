@@ -213,7 +213,7 @@ export default {
                     });
                if (this.$router.currentRoute.path == '/integratedSearch') {
                } else {
-                    this.$router.push('/integratedSearch');
+                    this.$router.replace('/integratedSearch');
                }
           },
           sel(item) {
@@ -222,19 +222,19 @@ export default {
           },
           camera() {
                if (this.$router.currentRoute.path != '/notBlindSearchProduct') {
-                    this.$router.push('/notBlindSearchProduct');
+                    this.$router.replace('/notBlindSearchProduct');
                }
           },
           shopping_list() {
                if (this.$router.currentRoute.path != '/shoppingList') {
-                    this.$router.push('/shoppingList');
+                    this.$router.replace('/shoppingList');
                }
           },
           popular_product() {
                if (this.$router.currentRoute.path == '/popularproduct') {
                     this.$store.commit('SET_CATEGORY_STATE', false);
                } else {
-                    this.$router.push('/popularproduct');
+                    this.$router.replace('/popularproduct');
                }
           },
           changeMode() {
@@ -242,7 +242,7 @@ export default {
                localStorage.setItem('isBlind', 1);
                sessionStorage.setItem('isLogin', false);
                this.$store.commit('TOGGLE_LOGIN_STATE');
-               this.$router.push('/modesetting');
+               this.$router.replace('/modesetting');
           },
           logout() {
                // kakao 로그아웃
@@ -284,11 +284,11 @@ export default {
                localStorage.removeItem('loginPlatform');
                localStorage.setItem('isBlind', 0);
                this.$store.commit('TOGGLE_LOGIN_STATE');
-               this.$router.push('/');
+               this.$router.replace('/');
           },
           likeproduct() {
                if (this.$router.currentRoute.path != '/likeproduct') {
-                    this.$router.push('/likeproduct');
+                    this.$router.replace('/likeproduct');
                }
           },
           async searchState() {
