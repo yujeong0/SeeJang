@@ -124,6 +124,8 @@ export default {
           this.reviews.push(response.data.review[i]);
           console.log(this.reviews[i].comment);
         }
+
+        this.$store.commit('SET_LOADER_FALSE');
       })
       .catch((error) => {
         console.log(error);

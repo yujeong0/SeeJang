@@ -10,6 +10,7 @@
 export default {
   methods: {
     toggle() {
+      this.$store.commit('SET_LOADER_TRUE');
       let mode = '1';
       console.log('toggle함수 들어옴');
       // console.log('item:' + item);

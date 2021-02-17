@@ -84,6 +84,7 @@ export default {
         });
     },
     async detail() {
+      this.$store.commit('SET_LOADER_TRUE');
       let name = this.popular.productName;
       await http
         .get('/product/name', {
