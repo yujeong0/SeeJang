@@ -79,6 +79,7 @@ public class ImageServiceImpl implements ImageService {
 			
 			return getImageResult(memberId);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 			return "처리오류";
 		}
@@ -86,17 +87,15 @@ public class ImageServiceImpl implements ImageService {
 	
 	String getImageResult(String memberId) throws InterruptedException {
 		ImagesResults imagesResults = new ImagesResults();
+		mapper.deleteImagesResultsByMemberId(memberId);
 		int time = 0;
 		while(true) {
 			imagesResults = mapper.selectImageResultsByMemberId(memberId);
 			System.out.println(imagesResults);
-			if(imagesResults != null) { 
-				mapper.deleteImagesResults();
-				break;
-			}
+			if(imagesResults != null) break;
 			Thread.sleep(1000);
 			System.out.println("결과 기다리는중");
-			if(time++ == 10) {
+			if(time++ == 60) {
 				return "결과 없음";
 			}
 		}
