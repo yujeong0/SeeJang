@@ -97,7 +97,7 @@ export default {
                     let str = '';
                     let length = arr.length;
 
-                    for (let i = 0; i < 15; i++) {
+                    for (let i = 0; i < 10; i++) {
                          str +=
                               Math.floor(Math.random() * (max + 1)) +
                               arr[Math.floor(Math.random() * length)];
@@ -129,7 +129,7 @@ export default {
 
                          formData.memberPassword = sessionStorage.getItem('userPw');
                          formData.memberId = sessionStorage.getItem('userId');
-                         formData.memberName = sessionStorage.getItem('userId');
+                         formData.memberName = sessionStorage.getItem('nickName');
                          await http
                               .post('/user/login/naver', formData, { withCredentials: true })
                               .then((response) => {
