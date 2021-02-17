@@ -35,47 +35,64 @@ export default {
 history.pushState(null, null, location.href);
 
 window.onpopstate = function (event) {
-  // history.go(1);
-  confirm('종료?');
+     history.go(1);
+     Swal.fire({
+          title: "끝내기!",
+          text: "SEE장을 종료하시겠습니까?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "네!",
+          cancelButtonText: "아니오!",
+     }).then((result) => {
+          if (result.isConfirmed) {
+               top.window.open("about:blank", "_self").close();
+               top.window.opener = self;
+               top.self.close();
+               top.window.opener.close();
+               this.winClose();
+          }
+     });
 };
 </script>
 
 <style>
 #container {
-  font-family: 'Do Hyeon', sans-serif;
+     font-family: "Do Hyeon", sans-serif;
 }
 .contents {
-  margin-top: 190px;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  overscroll-behavior: contain;
+     margin-top: 190px;
+     height: 100%;
+     overflow-x: hidden;
+     overflow-y: hidden;
+     overscroll-behavior: contain;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+     font-family: Avenir, Helvetica, Arial, sans-serif;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     text-align: center;
+     color: #2c3e50;
 }
 .header {
-  width: 100%;
-  height: 200px;
-  position: fixed;
-  top: 0;
-  background-color: white;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: block;
+     width: 100%;
+     height: 200px;
+     position: fixed;
+     top: 0;
+     background-color: white;
+     left: 0;
+     right: 0;
+     z-index: 100;
+     display: block;
 }
 .highlight {
-  border-bottom: 7px solid #feca57;
-  width: 30%;
-  margin: auto;
-  /* filter: alpha(opacity= 40); 투명도 조절*/
+     border-bottom: 7px solid #feca57;
+     width: 30%;
+     margin: auto;
+     /* filter: alpha(opacity= 40); 투명도 조절*/
 
-  /* 원래코드
+     /* 원래코드
       background-color: #ffca28;
      width: 50%;
      margin-left: 0.1px;
