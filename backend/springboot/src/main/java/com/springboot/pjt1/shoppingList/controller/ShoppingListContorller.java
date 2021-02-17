@@ -20,7 +20,7 @@ import com.springboot.pjt1.shoppingList.service.ShoppingListService;
 
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
+@CrossOrigin(origins = { "*" }, allowCredentials = "true")
 @RestController
 @RequestMapping("/shoppingList")
 public class ShoppingListContorller {
