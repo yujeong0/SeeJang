@@ -1,12 +1,12 @@
 <template>
      <v-container id="container" class="mx-auto my-auto">
-          <div style="margin-left:40%; margin-top:20%">
-               <v-toolbar class="nav" style="height: 50px; text-align: center; width: 40%">
+          <div style="margin-top:20%;">
+               <v-toolbar class="nav" style="height: 50px; margin:auto; text-align: center; width: 120px">
                     <v-btn
                          text
                          @click="changeMode"
                          class="mode"
-                         style="padding: 0; margin-left: 3%; margin-top: -3%"
+                         style="padding: 0; margin-left: 15%; margin-top: -3%"
                     >
                          모드변경
                          <i class="fas fa-blind"></i>
