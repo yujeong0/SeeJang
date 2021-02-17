@@ -86,6 +86,7 @@ public class ImageServiceImpl implements ImageService {
 	
 	String getImageResult(String memberId) throws InterruptedException {
 		ImagesResults imagesResults = new ImagesResults();
+		int time = 0;
 		while(true) {
 			imagesResults = mapper.selectImageResultsByMemberId(memberId);
 			System.out.println(imagesResults);
@@ -95,6 +96,9 @@ public class ImageServiceImpl implements ImageService {
 			}
 			Thread.sleep(1000);
 			System.out.println("결과 기다리는중");
+			if(time++ == 10) {
+				return "결과 없음";
+			}
 		}
 		System.out.println("-----------------"+imagesResults.getResult()+"-----------------");
 		return imagesResults.getResult();
