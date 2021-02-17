@@ -51,8 +51,4 @@ export default {
 </script>
 
 <style scoped>
-#contents {
-  margin-top: -150px;
-  z-index: -100;
-}
 </style>
