@@ -96,7 +96,6 @@ export default {
           },
           async notblindMode() {
                // // 비장애인 모드
-               localStorage.setItem('isBlind', 2);
                if (localStorage.getItem('userId') == '' || localStorage.getItem('userId') == null) {
                     this.$router.replace('/login');
                } else {
@@ -138,7 +137,7 @@ export default {
 <style scoped>
 #container {
      margin: auto;
-     margin-top: 30%;
+     margin-top: 50%;
 }
 .mode {
      font-size: 1.5rem;

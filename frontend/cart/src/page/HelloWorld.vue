@@ -1,14 +1,22 @@
 <template>
-     <v-container @click="containerClick" id="container" class="mt-10">
+     <v-container @click="containerClick" id="container" class="mt-1">
           <div>
-               <h1>See 장</h1>
+               <hr>
+               <p style="font-size:30px">본 프로젝트는</p>
+               <p style="font-size:30px"><strong style="color:#feca57">모바일</strong>에 최적화 되어있습니다</p>
+               <hr>
+          </div>
+          <br>
+          <br>
+          <div style="margin:auto">
+               <img src="@/assets/logo.png" alt="logo" style="width:62%"/>
           </div>
           <div>
-               <img src="../assets/cart.gif" style="width: 100%; height: 80%" />
+               <img src="../assets/cart.gif" style="width: 80%; height: 60%" />
           </div>
           <div>
                <h1>현명한 장보기의 시작</h1>
-               <v-btn text color="primary">화면을 눌러주세요~</v-btn>
+               <v-btn text color="#feca57"><p style="font-size:20px">화면을 눌러주세요~</p></v-btn>
           </div>
      </v-container>
 </template>
@@ -143,4 +151,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+</style>
