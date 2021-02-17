@@ -92,7 +92,7 @@ export default {
       console.log('setproductInfo부른다');
       this.$store.commit('SET_PRODUCT_INFO', { productInfo });
       console.log('setproductInfo부른뒤');
-      this.$router.push('/detailProduct');
+      this.$router.replace('/detailProduct');
     },
   },
   data() {
