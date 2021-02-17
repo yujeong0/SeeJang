@@ -1,7 +1,7 @@
 <template>
      <v-app>
           <Header v-if="this.$store.getters.getIsLogin"></Header>
-          <div :class="{ contents: isActive }">
+          <div :class="{ contents: this.$store.getters.getIsLogin }">
                <router-view />
           </div>
      </v-app>
@@ -11,12 +11,12 @@
 import Header from "./components/common/Header.vue";
 export default {
      updated() {
-          if (this.$router.currentRoute.path == "/blindSearchProduct" ||
-              this.$router.currentRoute.path == "/modesetting" ||
-              this.$router.currentRoute.path == "/" ||
-              this.$router.currentRoute.path == "/login") {
-               this.isActive = false;
-          } else this.isActive = true;
+          // if (this.$router.currentRoute.path == "/blindSearchProduct" ||
+          //     this.$router.currentRoute.path == "/modesetting" ||
+          //     this.$router.currentRoute.path == "/" ||
+          //     this.$router.currentRoute.path == "/login") {
+          //      this.isActive = false;
+          // } else this.isActive = true;
           console.log(this.$router.currentRoute.path);
      },
      name: "App",
@@ -25,7 +25,7 @@ export default {
      },
      data() {
           return {
-               isActive: false,
+               isActive: true,
           };
      },
 };

@@ -20,7 +20,7 @@ import com.springboot.pjt1.repository.dto.ProductReview;
 
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = { "http://localhost:8080" }, allowCredentials = "true")
+@CrossOrigin(origins = { "*" }, allowCredentials = "true")
 @RestController
 @RequestMapping("/product/review")
 public class ProductReviewContorller {
