@@ -13,7 +13,13 @@ export default new Vuex.Store({
                          ? false
                          : true,
           },
-          /** 로그인 **/
+            /** 로그인 **/
+          
+             /** 로더 **/
+             loader: {
+               load: false,
+          },
+             /** 로더 **/
 
           /** 카메라 **/
           camera: {
@@ -58,6 +64,14 @@ export default new Vuex.Store({
           /** 통합검색 **/
      },
      mutations: {
+            /** 로더 **/
+            SET_LOADER_TRUE(state) {
+               state.loader.load = true;
+          },
+          SET_LOADER_FALSE(state) {
+               state.loader.load = false;
+          },
+             /** 로더 **/
           //** 통합검색 Set **/
           SET_INTEGRATED_SEARCH(state, payload) {
                state.integratedSearch.splice(0); //배열 내용 초기화해주기
@@ -224,5 +238,11 @@ export default new Vuex.Store({
           },
 
           //** 통합검색 **/
+
+             //** 로더 **/
+             getLoader(state) {
+               return state.loader.load;
+          },
+               //** 로더 **/
      },
 });

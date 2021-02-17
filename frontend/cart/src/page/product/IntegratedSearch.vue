@@ -87,6 +87,7 @@ export default {
         });
     },
     async detail(idx) {
+      this.$store.commit('SET_LOADER_TRUE');
       let name = this.products[idx].productName;
       console.log('선택' + name);
       await http
@@ -97,7 +98,6 @@ export default {
           withCredentials: true,
         })
         .then((response) => {
-          console.log('으아아ㅏ아아아ㅏㄱ');
           console.log(response);
           let productInfo = {
             productName: response.data[0].productName,
@@ -105,7 +105,6 @@ export default {
             productPrice: response.data[0].productPrice,
             reviewLink: response.data[0].reviewLink,
           };
-          console.log('끝');
           this.$store.commit('SET_PRODUCT_INFO', { productInfo });
         })
         .catch((error) => {
