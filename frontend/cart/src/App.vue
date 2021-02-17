@@ -32,7 +32,8 @@ export default {
 history.pushState(null, null, location.href);
 
 window.onpopstate = function (event) {
-  history.go(1);
+  // history.go(1);
+  confirm("종료?");
 };
 </script>
 
