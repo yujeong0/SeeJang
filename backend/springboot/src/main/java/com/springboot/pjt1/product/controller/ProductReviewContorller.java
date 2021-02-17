@@ -40,7 +40,7 @@ public class ProductReviewContorller {
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 
-	@ApiOperation(value = "리뷰를 수정한다.", response = String.class)
+	@ApiOperation(value = "리뷰를 수정한다. 그리고 DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@PutMapping
 	public ResponseEntity<String> searchProductByName(ProductReview productReview) throws IOException {
 		if(service.updateProductReviewByCommentNo(productReview)) {
@@ -49,7 +49,7 @@ public class ProductReviewContorller {
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "리뷰를 삭제한다.", response = String.class)
+	@ApiOperation(value = "리뷰를 삭제한다. 그리고 DB 입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@DeleteMapping
 	public ResponseEntity<String> deleteProductReviewByCommentNo(@RequestParam int commentNo) {
 		if(service.deleteProductReviewByCommentNo(commentNo)) {
