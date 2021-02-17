@@ -84,6 +84,7 @@ export default {
         });
     },
     detail() {
+      this.$store.commit('SET_LOADER_TRUE');
       let productInfo = {
         productName: this.categoryItem.productName,
         productNo: this.categoryItem.productNo,
