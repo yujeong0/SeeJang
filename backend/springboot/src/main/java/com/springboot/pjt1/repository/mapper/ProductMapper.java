@@ -12,6 +12,8 @@ public interface ProductMapper {
 
 	Product selectProductByExactName(String name);
 	
+	Product selectProductByProductNo(int productNo);
+	
 	List<Product> selectProductByCategory(String category);
 	
 	List<Product> selectProductByNameAndCategory(Product product);
