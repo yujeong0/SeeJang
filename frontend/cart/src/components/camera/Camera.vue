@@ -64,7 +64,7 @@ export default {
             this.$store.commit('SET_PRODUCT_INFO', { productInfo });
             console.log('이거확인해야함...이거다음 created');
             console.log(productInfo);
-            this.$router.replace('detailProduct');
+            this.$router.push('detailProduct');
           }
           console.log(response);
         })

@@ -111,7 +111,7 @@ export default {
           console.log(error);
         });
       console.log('디테일로 넘긴다');
-      this.$router.replace('/detailProduct');
+      this.$router.push('/detailProduct');
     },
   },
 };

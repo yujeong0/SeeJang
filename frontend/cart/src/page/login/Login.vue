@@ -46,6 +46,10 @@
 export default {
      name: "login",
      components: {},
+     created(){
+          sessionStorage.setItem('isLogin', false);
+          this.$store.commit('TOGGLE_LOGIN_STATE');
+     },
      data() {
           return {};
      },
@@ -70,7 +74,7 @@ export default {
           },
           changeMode() {
                // 비쟁애인 - 시각장애인 모드 변경
-               this.$router.replace("/modesetting");
+               this.$router.push("/modesetting");
           },
      },
 };
