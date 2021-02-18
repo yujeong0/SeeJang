@@ -92,7 +92,7 @@ export default {
       localStorage.setItem('isBlind', 1);
       sessionStorage.setItem('isLogin', false);
       this.$store.commit('TOGGLE_LOGIN_STATE');
-      this.$router.replace('/blindSearchProduct');
+      this.$router.push('/blindSearchProduct');
     },
     async notblindMode() {
       // // 비장애인 모드
@@ -100,7 +100,7 @@ export default {
         localStorage.getItem('userId') == '' ||
         localStorage.getItem('userId') == null
       ) {
-        this.$router.replace('/login');
+        this.$router.push('/login');
       } else {
         localStorage.setItem('isBlind', 2);
         sessionStorage.setItem('isLogin', true);
@@ -132,7 +132,7 @@ export default {
           });
 
         this.$store.commit('TOGGLE_LOGIN_STATE');
-        this.$router.replace('/shoppingList');
+        this.$router.push('/shoppingList');
       }
       // this.$router.push('/login');
       // 임시 로그인 사용
