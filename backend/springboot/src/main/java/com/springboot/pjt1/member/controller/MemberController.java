@@ -121,6 +121,16 @@ public class MemberController {
             res.addCookie(refreshToken);
     }
     
+    @GetMapping("/size")
+    public Response size() {
+        Response response;
+        try {
+        	return new Response("success", "멤버사이즈를 불러오는데 성공했습니다.", authService.size());
+        	
+        } catch (Exception e) {
+        	return new Response("error", "멤버 사이즈를 불러오는데 실패했습니다.", e.getMessage());
+        }
+    }
 
     @ApiOperation(value = "로그인 인증메일을 보낸다.", response = Response.class)
     @PostMapping("/verify")

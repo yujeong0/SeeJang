@@ -31,6 +31,11 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private RedisUtil redisUtil;
+    
+    @Override
+    public long size() {
+    	return memberRepository.count();
+    }
 
     @Override
     @Transactional
