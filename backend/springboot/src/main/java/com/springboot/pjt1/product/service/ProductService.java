@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.springboot.pjt1.repository.dto.Product;
-import com.springboot.pjt1.repository.dto.ProductReview;
 
 public interface ProductService {
 
@@ -15,6 +14,8 @@ public interface ProductService {
 
 	Product selectProductByExactName(String name);
 
+	Product selectProductByProductNo(int productNo);
+	
 	List<Product> searchProductByCategory(String category);
 
 	List<Product> selectProductByNameAndCategory(Product product);
