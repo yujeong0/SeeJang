@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Header from './components/common/Header.vue';
-import Loader from './components/common/Loader.vue';
-import Swal from 'sweetalert2';
+import Header from "./components/common/Header.vue";
+import Loader from "./components/common/Loader.vue";
+import Swal from "sweetalert2";
 export default {
      updated() {
           // if (this.$router.currentRoute.path == "/blindSearchProduct" ||
@@ -22,7 +22,7 @@ export default {
           // } else this.isActive = true;
           console.log(this.$router.currentRoute.path);
      },
-     name: 'App',
+     name: "App",
      components: {
           Header,
           Loader,
@@ -34,42 +34,46 @@ export default {
      },
 };
 //history.pushState(null, null, location.href);
-// window.onpopstate = function (event) {
-//      //history.go(1);
-//      Swal.fire({
-//           title: '끝내기!',
-//           text: 'SEE장을 종료하시겠습니까?',
-//           icon: 'warning',
-//           showCancelButton: true,
-//           confirmButtonColor: '#3085d6',
-//           cancelButtonColor: '#d33',
-//           confirmButtonText: '네!',
-//           cancelButtonText: '아니오!',
-//      }).then((result) => {
-//           if (result.isConfirmed) {
-//                // parent.window.close();
-//                //----
-//                // top.window.open('about:blank', '_self', '').close();
-//                // top.window.opener = self;
-//                // top.window.opener.close();
-//                // top.self.close();
-//                //---
-//                // window.opener = 'Self';
-//                // window.open('', '_parent', '');
-//                // window.close();
-//                //--
-//                WinClose();
-//           }
-//      });
-// };
-// function WinClose() {
-//      window.open('', '_self').close();
-// }
+window.onpopstate = function (event) {
+     //history.go(1);
+     Swal.fire({
+          title: "끝내기!",
+          text: "SEE장을 종료하시겠습니까?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "네!",
+          cancelButtonText: "아니오!",
+     }).then((result) => {
+          if (result.isConfirmed) {
+               // parent.window.close();
+               //----
+               // top.window.open('about:blank', '_self', '').close();
+               // top.window.opener = self;
+               // top.window.opener.close();
+               // top.self.close();
+               //---
+               // window.opener = 'Self';
+               // window.open('', '_parent', '');
+               // window.close();
+               //--
+               // WinClose();
+               Swal.fire("안녕!", "다음에 또 봐요~", "success");
+               console.log("BYE");
+          } else {
+               history.go(1);
+          }
+     });
+};
+function WinClose() {
+     window.open("", "_self").close();
+}
 </script>
 
 <style>
 #container {
-     font-family: 'Do Hyeon', sans-serif;
+     font-family: "Do Hyeon", sans-serif;
 }
 .contents {
      margin-top: 190px;
