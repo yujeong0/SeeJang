@@ -1,57 +1,58 @@
 <template>
-  <v-app>
-    <Loader></Loader>
-    <Header v-if="this.$store.getters.getIsLogin"></Header>
-    <div :class="{ contents: this.$store.getters.getIsLogin }">
-      <router-view />
-    </div>
-  </v-app>
+     <v-app>
+          <Loader></Loader>
+          <Header v-if="this.$store.getters.getIsLogin"></Header>
+          <div :class="{ contents: this.$store.getters.getIsLogin }">
+               <router-view />
+          </div>
+     </v-app>
 </template>
 
 <script>
 import Header from './components/common/Header.vue';
 import Loader from './components/common/Loader.vue';
+import Swal from 'sweetalert2';
 export default {
-  updated() {
-    // if (this.$router.currentRoute.path == "/blindSearchProduct" ||
-    //     this.$router.currentRoute.path == "/modesetting" ||
-    //     this.$router.currentRoute.path == "/" ||
-    //     this.$router.currentRoute.path == "/login") {
-    //      this.isActive = false;
-    // } else this.isActive = true;
-    console.log(this.$router.currentRoute.path);
-  },
-  name: 'App',
-  components: {
-    Header,
-    Loader,
-  },
-  data() {
-    return {
-      isActive: true,
-    };
-  },
+     updated() {
+          // if (this.$router.currentRoute.path == "/blindSearchProduct" ||
+          //     this.$router.currentRoute.path == "/modesetting" ||
+          //     this.$router.currentRoute.path == "/" ||
+          //     this.$router.currentRoute.path == "/login") {
+          //      this.isActive = false;
+          // } else this.isActive = true;
+          console.log(this.$router.currentRoute.path);
+     },
+     name: 'App',
+     components: {
+          Header,
+          Loader,
+     },
+     data() {
+          return {
+               isActive: true,
+          };
+     },
 };
-history.pushState(null, null, location.href);
-
+// history.pushState(null, null, location.href);
 window.onpopstate = function (event) {
      history.go(1);
      Swal.fire({
-          title: "끝내기!",
-          text: "SEE장을 종료하시겠습니까?",
-          icon: "warning",
+          title: '끝내기!',
+          text: 'SEE장을 종료하시겠습니까?',
+          icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "네!",
-          cancelButtonText: "아니오!",
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '네!',
+          cancelButtonText: '아니오!',
      }).then((result) => {
           if (result.isConfirmed) {
-               top.window.open("about:blank", "_self").close();
+               top.window.open('about:blank', '_self', '').close();
                top.window.opener = self;
                top.self.close();
                top.window.opener.close();
-               this.winClose();
+               location.replace('about:blank');
+               document.window.close();
           }
      });
 };
@@ -59,7 +60,7 @@ window.onpopstate = function (event) {
 
 <style>
 #container {
-     font-family: "Do Hyeon", sans-serif;
+     font-family: 'Do Hyeon', sans-serif;
 }
 .contents {
      margin-top: 190px;
