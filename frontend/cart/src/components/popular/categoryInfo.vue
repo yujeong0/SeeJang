@@ -107,7 +107,7 @@ export default {
           console.log(error);
         });
 
-      this.$router.replace('/detailProduct');
+      this.$router.push('/detailProduct');
     },
   },
   data() {

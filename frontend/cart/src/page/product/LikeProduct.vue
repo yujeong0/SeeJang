@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import Like from '@/components/shopping/Like.vue';
-import http from '@/util/http-common.js';
+import Like from "@/components/shopping/Like.vue";
+import http from "@/util/http-common.js";
 
 export default {
      components: {
@@ -33,9 +33,16 @@ export default {
           };
      },
      created() {
-          let member_id = sessionStorage.getItem('userId');
+          // 로컬에 로그인 정보가 있는 경우만 찜목록에 접근 가능
+          if (localStorage.getItem("userId") != "" && localStorage.getItem("userId") != null) {
+               sessionStorage.setItem("isLogin", true);
+               this.$store.commit("TOGGLE_LOGIN_STATE");
+          } else {
+               this.$router.push("/login");
+          }
+          let member_id = sessionStorage.getItem("userId");
           console.log(member_id);
-          http.get('/wishList', {
+          http.get("/wishList", {
                params: {
                     memberId: member_id,
                },
@@ -51,11 +58,11 @@ export default {
      },
      methods: {
           async del() {
-               let member_id = sessionStorage.getItem('userId');
+               let member_id = sessionStorage.getItem("userId");
                console.log(member_id);
                await setTimeout(() => {
                     this.likes.splice(0);
-                    http.get('/wishList', {
+                    http.get("/wishList", {
                          params: {
                               memberId: member_id,
                          },

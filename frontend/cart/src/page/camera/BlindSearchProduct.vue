@@ -44,7 +44,7 @@ export default {
       //   //   }, 500);
       //   this.$router.push('/modesetting');
       // }
-      this.$router.replace('/modesetting');
+      this.$router.push('/modesetting');
     },
   },
 };
