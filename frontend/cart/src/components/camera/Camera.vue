@@ -128,7 +128,7 @@ export default {
         setTimeout(function () {
           console.log('음성인식 시작');
           that.$store.commit('TOGGLE_CAMERA_CLICKED');
-          that.$store.commit('SET_LOADER_TRUE');
+          // that.$store.commit('SET_LOADER_TRUE');
         }, 3000);
 
         setTimeout(function () {

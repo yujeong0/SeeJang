@@ -70,7 +70,7 @@ export default {
       // }, 5000);
     },
     three() {
-      this.$store.commit('SET_LOADER_TRUE');
+      // this.$store.commit('SET_LOADER_TRUE');
       this.toggle(3, 'item'); //mode3 보냄 글 안보내도 상관없음
     },
     toggle(mode, item) {
