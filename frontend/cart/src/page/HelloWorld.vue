@@ -38,7 +38,7 @@ export default {
     async containerClick() {
       if (this.mode == null || this.mode == 0) {
         // 처음실행 또는 로그아웃
-        this.$router.replace('/modesetting');
+        this.$router.push('/modesetting');
       } else if (this.mode == 1) {
         // 시각장애인
         // 랜덤 memberId 생성
@@ -108,14 +108,14 @@ export default {
         }
 
         sessionStorage.setItem('userId', str);
-        this.$router.replace('/blindSearchProduct');
+        this.$router.push('/blindSearchProduct');
       } else {
         // 비장애인
         if (
           localStorage.getItem('userId') == '' ||
           localStorage.getItem('userId') == null
         ) {
-          this.$router.replace('/login');
+          this.$router.push('/login');
         } else {
           sessionStorage.setItem('isLogin', true);
           sessionStorage.setItem('userId', localStorage.getItem('userId'));
@@ -145,7 +145,7 @@ export default {
             });
 
           this.$store.commit('TOGGLE_LOGIN_STATE');
-          this.$router.replace('/shoppingList');
+          this.$router.push('/shoppingList');
         }
         // 임시 로그인
         // this.$store.commit("TOGGLE_LOGIN_STATE");

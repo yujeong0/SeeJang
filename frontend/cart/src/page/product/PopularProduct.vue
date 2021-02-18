@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import Popular from '@/components/popular/Popular.vue';
-import Categorize from '@/components/popular/Categorize.vue';
-import CategoryInfo from '@/components/popular/categoryInfo.vue';
-import { mapGetters } from 'vuex';
-import http from '@/util/http-common.js';
+import Popular from "@/components/popular/Popular.vue";
+import Categorize from "@/components/popular/Categorize.vue";
+import CategoryInfo from "@/components/popular/categoryInfo.vue";
+import { mapGetters } from "vuex";
+import http from "@/util/http-common.js";
 
 export default {
      components: {
@@ -36,7 +36,14 @@ export default {
           CategoryInfo,
      },
      created() {
-          http.get('/bestproduct', {
+          // 로컬에 로그인 정보가 있는 경우만 이번주 상품에 접근 가능
+          if (localStorage.getItem("userId") != "" && localStorage.getItem("userId") != null) {
+               sessionStorage.setItem("isLogin", true);
+               this.$store.commit("TOGGLE_LOGIN_STATE");
+          } else {
+               this.$router.push("/login");
+          }
+          http.get("/bestproduct", {
                withCredentials: true,
           })
                .then((response) => {
@@ -48,9 +55,9 @@ export default {
      },
      computed: {
           ...mapGetters({
-               items: 'getCategorizeItems',
-               state: 'getCategorizeState',
-               category: 'getCategorizeItem',
+               items: "getCategorizeItems",
+               state: "getCategorizeState",
+               category: "getCategorizeItem",
           }),
      },
      data() {
