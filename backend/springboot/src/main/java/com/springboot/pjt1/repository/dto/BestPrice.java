@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "사이트 최저가 정보를 담는 dto")
 public class BestPrice {
+	@ApiModelProperty(notes = "최저가 번호")
+	private int no;
 	@ApiModelProperty(notes = "상품번호")
 	private int productNo;
 	@ApiModelProperty(notes = "최저가 사이트명")
@@ -16,6 +18,12 @@ public class BestPrice {
 	@ApiModelProperty(notes = "최저가 사이트 링크")
 	private String link;
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public int getProductNo() {
 		return productNo;
 	}
@@ -45,6 +53,11 @@ public class BestPrice {
 	}
 	public void setLink(String link) {
 		this.link = link;
+	}
+	@Override
+	public String toString() {
+		return "BestPrice [no=" + no + ", productNo=" + productNo + ", siteName=" + siteName + ", productName="
+				+ productName + ", price=" + price + ", link=" + link + "]";
 	}
 	
 }
