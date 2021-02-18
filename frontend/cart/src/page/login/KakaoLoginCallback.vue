@@ -21,14 +21,11 @@ export default {
                     },
                })
                .then((res) => {
-                    let userInfo = {};
                     let formData = {
                          memberId: '',
                          memberName: '',
                          memberPassword: '',
                     };
-                    userInfo.loginAPI = 'kakao';
-                    userInfo.userToken = res.data.access_token;
 
                     window.Kakao.Auth.setAccessToken(res.data.access_token);
                     window.Kakao.API.request({
@@ -39,7 +36,6 @@ export default {
                          success: (response) => {
                               formData.memberPassword = response.id;
                               formData.memberId = response.kakao_account.email;
-                              userInfo.memberId = response.kakao_account.email;
                               formData.memberName = response.properties.nickname;
 
                               console.log('kakaoCallback');
