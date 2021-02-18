@@ -41,6 +41,7 @@ public class BestPriceServiceImpl implements BestPriceService {
 		List<BestPrice> list = getBestPriceList(p.getProductName());
 		for(BestPrice bp : list) {
 			bp.setProductNo(productNo);
+			if(bp.getPrice().length() > 20) continue;
 			bpmapper.insertBestPrice(bp);
 		}
 	}
