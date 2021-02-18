@@ -17,6 +17,11 @@
 		from product
 		where product_name = #{name}
 	</select>
+	<select id="selectProductByProductNo" resultType="product" parameterType="int">
+		select * 
+		from product
+		where product_no = #{productNo}
+	</select>
 	<select id="selectProductByCategory" resultType="product" parameterType="string">
 		select * 
 		from product
