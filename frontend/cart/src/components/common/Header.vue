@@ -271,19 +271,24 @@ export default {
         console.log('kakao 로그아웃');
       } else if (this.platform == 'naver') {
         console.log('naver 로그아웃');
+      } else if(this.paltform == 'guest'){
+        console.log('게스트 로그아웃')
       }
 
       http
         .get('/user/logout', { withCredentials: true })
         .then((response) => {
+          console.log("로그아웃 성공")
           console.log(response);
         })
         .catch((error) => {
+          console.log("로그아웃 도중 에러")
           console.log(error);
         });
 
       sessionStorage.setItem('isLogin', false);
       sessionStorage.removeItem('userId');
+      sessionStorage.removeItem('userPw');
       sessionStorage.removeItem('nickName');
       sessionStorage.removeItem('loginPlatform');
 
