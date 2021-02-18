@@ -129,6 +129,7 @@ export default {
       })
       .catch((error) => {
         console.log(error);
+        this.$store.commit('SET_LOADER_FALSE');
       });
   },
 

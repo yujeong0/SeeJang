@@ -159,6 +159,7 @@ export default {
      * 근데 생각해보니까 이렇게 하면 2중 호출 아닌가 ?ㅁ?
      */
     $route(to, from) {
+      console.log(to.path);
       if (
         to.path == '/shoppingList' ||
         to.path == '/popularproduct' ||
@@ -220,7 +221,7 @@ export default {
         });
       if (this.$router.currentRoute.path == '/integratedSearch') {
       } else {
-        this.$router.replace('/integratedSearch');
+        this.$router.push('/integratedSearch');
       }
     },
     sel(item) {
@@ -229,19 +230,19 @@ export default {
     },
     camera() {
       if (this.$router.currentRoute.path != '/notBlindSearchProduct') {
-        this.$router.replace('/notBlindSearchProduct');
+        this.$router.push('/notBlindSearchProduct');
       }
     },
     shopping_list() {
       if (this.$router.currentRoute.path != '/shoppingList') {
-        this.$router.replace('/shoppingList');
+        this.$router.push('/shoppingList');
       }
     },
     popular_product() {
       if (this.$router.currentRoute.path == '/popularproduct') {
         this.$store.commit('SET_CATEGORY_STATE', false);
       } else {
-        this.$router.replace('/popularproduct');
+        this.$router.push('/popularproduct');
       }
     },
     changeMode() {
@@ -249,7 +250,7 @@ export default {
       localStorage.setItem('isBlind', 1);
       sessionStorage.setItem('isLogin', false);
       this.$store.commit('TOGGLE_LOGIN_STATE');
-      this.$router.replace('/modesetting');
+      this.$router.push('/modesetting');
     },
     logout() {
       // kakao 로그아웃
@@ -270,19 +271,24 @@ export default {
         console.log('kakao 로그아웃');
       } else if (this.platform == 'naver') {
         console.log('naver 로그아웃');
+      } else if(this.paltform == 'guest'){
+        console.log('게스트 로그아웃')
       }
 
       http
         .get('/user/logout', { withCredentials: true })
         .then((response) => {
+          console.log("로그아웃 성공")
           console.log(response);
         })
         .catch((error) => {
+          console.log("로그아웃 도중 에러")
           console.log(error);
         });
 
       sessionStorage.setItem('isLogin', false);
       sessionStorage.removeItem('userId');
+      sessionStorage.removeItem('userPw');
       sessionStorage.removeItem('nickName');
       sessionStorage.removeItem('loginPlatform');
 
@@ -292,11 +298,11 @@ export default {
       localStorage.removeItem('loginPlatform');
       localStorage.setItem('isBlind', 0);
       this.$store.commit('TOGGLE_LOGIN_STATE');
-      this.$router.replace('/');
+      this.$router.push('/');
     },
     likeproduct() {
       if (this.$router.currentRoute.path != '/likeproduct') {
-        this.$router.replace('/likeproduct');
+        this.$router.push('/likeproduct');
       }
     },
     async searchState() {

@@ -27,4 +27,6 @@ public interface AuthService {
     void changePassword(Member member, String password) throws NotFoundException;
 
     void requestChangePassword(Member member) throws NotFoundException;
+    
+    long size();
 }

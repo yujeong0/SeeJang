@@ -21,14 +21,11 @@ export default {
                     },
                })
                .then((res) => {
-                    let userInfo = {};
                     let formData = {
                          memberId: '',
                          memberName: '',
                          memberPassword: '',
                     };
-                    userInfo.loginAPI = 'kakao';
-                    userInfo.userToken = res.data.access_token;
 
                     window.Kakao.Auth.setAccessToken(res.data.access_token);
                     window.Kakao.API.request({
@@ -39,7 +36,6 @@ export default {
                          success: (response) => {
                               formData.memberPassword = response.id;
                               formData.memberId = response.kakao_account.email;
-                              userInfo.memberId = response.kakao_account.email;
                               formData.memberName = response.properties.nickname;
 
                               console.log('kakaoCallback');
@@ -60,7 +56,7 @@ export default {
                               http.post('/user/login/naver', formData, { withCredentials: true })
                                    .then((response) => {
                                         console.log(response);
-                                        this.$router.replace('/shoppingList');
+                                        this.$router.push('/shoppingList');
                                    })
                                    .catch((error) => {
                                         console.log(error);
@@ -69,7 +65,7 @@ export default {
                          fail: function (error) {
                               console.log(error);
                               alert('문제가 발생했습니다! 다시 로그인 해주세요!');
-                              this.$router.replace('/login');
+                              this.$router.push('/login');
                          },
                     });
                })
