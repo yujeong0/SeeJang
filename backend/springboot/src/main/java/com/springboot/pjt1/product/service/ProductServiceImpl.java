@@ -38,8 +38,20 @@ public class ProductServiceImpl implements ProductService {
 			
 			if(bpMapper.selectCountBestPrice(product.getProductNo()) > 0) {
 				map.put("bestPrice", bpMapper.selectBestPriceByProductNo(product.getProductNo()));
+				
 				bpService.deleteBestPriceByProductNo(product.getProductNo());
-				bpService.insertBestPrice(product.getProductNo());
+				
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							bpService.insertBestPrice(product.getProductNo());
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}).start();
+				System.out.println("안녕");
 			}
 			else {
 				bpService.insertBestPrice(product.getProductNo());

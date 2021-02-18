@@ -40,6 +40,7 @@ public class BestPriceServiceImpl implements BestPriceService {
 		Product p = proMapper.selectProductByProductNo(productNo);
 		List<BestPrice> list = getBestPriceList(p.getProductName());
 		for(BestPrice bp : list) {
+			bp.setProductNo(productNo);
 			bpmapper.insertBestPrice(bp);
 		}
 	}
