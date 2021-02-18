@@ -39,7 +39,6 @@ export default {
                               formData.memberName = response.properties.nickname;
 
                               console.log('kakaoCallback');
-                              console.dir(userInfo);
                               sessionStorage.setItem('isLogin', true);
                               sessionStorage.setItem('nickName', formData.memberName);
                               sessionStorage.setItem('userId', formData.memberId);
