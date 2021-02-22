@@ -23,7 +23,7 @@
 
 * 팀원 정준영([@dkwjdi](https://github.com/dkwjdi "github link"))
 
-* 팀원 지서연(@언니계정명을몰라..) <br><br>
+* 팀원 지서연([@wltjdus0208](https://github.com/wltjdus0208 "github link")) <br><br>
 
 
 ## 프로젝트 개요
