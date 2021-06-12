@@ -5,7 +5,7 @@
 + [SEE 장](https://www.youtube.com/watch?v=snr8gCf6fbk)
 
 <br>
-# SEE 장
+# See 장
 <img src="/frontend/cart/src/assets/cart.gif" width="40%" height="30%" title="see장 로고" alt="see장로고"></img>
 
 
