@@ -56,7 +56,7 @@ SSAFY 공통프로젝트 1등(2020.02)
 
 + 찜목록을 통해 페이지로 이동 가능 
   <br>
-  <img src="https://user-images.githubusercontent.com/57394523/115141194-fa8b8f00-a075-11eb-82ff-7a732d62ddd1.png"  height="500" width="300">
+  <img src="https://user-images.githubusercontent.com/57394523/115141194-fa8b8f00-a075-11eb-82ff-7a732d62ddd1.png"  height="500" width="300" style="display:inline-block">
   <img src="https://user-images.githubusercontent.com/57394523/115141223-0ecf8c00-a076-11eb-8061-3e289cf4e5bf.png"  height="500" width="300">
 
 
