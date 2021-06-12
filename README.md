@@ -12,7 +12,7 @@ SSAFY 공통프로젝트 1등(2020.02)
 2021.01~2021.02.19
 
 ### 🎞기획의도
->장을 볼 때 불편했던 경험 있으신가요?<br>사람들은 종종 오프라인에서 장을 볼 때 온라인에서 사는게 더 쌀지, 지금 사는게 더 쌀지 고민하며 핸드폰으로 쿠팡이나 네이버 앱을 켜서 상품명을 검색하고 가격을 비교해보곤 합니다.<br>혹시 이런 불편을 해소할 수 있는 장보기 앱이 시중에 나와있는지 조사해보았지만 대부분 장보기 목록을 작성하는 것이 끝이었습니다.<br><br>**그래서 저희는 오프라인에서 장을 볼 때 좀 더 편하고, 좀 더 스마트하게 장을 볼 수 있도록 도와주는 앱을 개발하기로 했습니다.**<br><br>앱 기획을 하던 중 앞이 잘 보이지 않거나 아예 보이지 않는 시각 장애인들은 어떻게 장을 볼까 궁금해서 찾아보았는데<br>그들의 장보기는 여전히 다른 사람의 도움 없이는 보기 힘든 환경이라는 것을 알게 되었습니다. <br><br>기술이 모두를 고려하지 않으면 차별의 도구가 될 수도 있지 않을까요?<br>그래서 결정했습니다.<br>비장애인 뿐만 아니라 시각 장애인의 장보기도 도와주는 앱을 만들기로.<br><br>그래서 저희 앱의 이름인 see 장은 <br><br>**장을 본다는 의미와 앞이 잘 보이지 않는 시각 장애인들도 앞을 보는 것처럼 장을 볼 수 있다는 의미가 담겨 있습니다.**
+>장을 볼 때 불편했던 경험 있으신가요?<br>사람들은 종종 오프라인에서 장을 볼 때 온라인에서 사는게 더 쌀지, 지금 사는게 더 쌀지 고민하며 핸드폰으로 쿠팡이나 네이버 앱을 켜서 상품명을 검색하고 가격을 비교해보곤 합니다.<br>혹시 이런 불편을 해소할 수 있는 장보기 앱이 시중에 나와있는지 조사해보았지만 대부분 장보기 목록을 작성하는 것이 끝이었습니다.<br><br>**그래서 저희는 오프라인에서 장을 볼 때 좀 더 편하고, 좀 더 스마트하게 장을 볼 수 있도록 도와주는 앱을 개발하기로 했습니다.**<br><br>앱 기획을 하던 중 앞이 잘 보이지 않거나 아예 보이지 않는 시각 장애인들의 장보기는 여전히 다른 사람의 도움 없이는 보기 힘든 환경이라는 것을 알게 되었습니다. <br><br>기술이 모두를 고려하지 않으면 차별의 도구가 될 수도 있지 않을까요?<br>그래서 결정했습니다.<br>비장애인 뿐만 아니라 시각 장애인의 장보기도 도와주는 앱을 만들기로.<br><br>그래서 저희 앱의 이름인 see 장은 <br><br>**장을 본다는 의미와 앞이 잘 보이지 않는 시각 장애인들도 앞을 보는 것처럼 장을 볼 수 있다는 의미가 담겨 있습니다.**
 
 
 ## 🍤주요기능
@@ -41,9 +41,11 @@ SSAFY 공통프로젝트 1등(2020.02)
 ### 상품찾기
 + 카메라로 상품 사진을 찍으면 인식해 최저가 링크 + 앱 내 리뷰를 띄어주는 기능
 <br>
-<img src="https://user-images.githubusercontent.com/57394523/115140778-f8c0cc00-a073-11eb-9c2d-e014497d033d.png"  height="500" width="300">
-<img src="https://user-images.githubusercontent.com/57394523/115141091-87821880-a075-11eb-8dec-7ab1fa9292c1.png"  height="500" width="300">
-<img src="https://user-images.githubusercontent.com/57394523/115141156-d7f97600-a075-11eb-9d42-7197e4b92a60.png"  height="500" width="300">
+<div style="display:inline-block;">
+  <img src="https://user-images.githubusercontent.com/57394523/115140778-f8c0cc00-a073-11eb-9c2d-e014497d033d.png"  height="500" width="300">
+  <img src="https://user-images.githubusercontent.com/57394523/115141091-87821880-a075-11eb-8dec-7ab1fa9292c1.png"  height="500" width="300">
+  <img src="https://user-images.githubusercontent.com/57394523/115141156-d7f97600-a075-11eb-9d42-7197e4b92a60.png"  height="500" width="300">
+</div>
 
 ### SSG몰 리뷰확인
 
@@ -56,9 +58,10 @@ SSAFY 공통프로젝트 1등(2020.02)
 
 + 찜목록을 통해 페이지로 이동 가능 
   <br>
-  <img src="https://user-images.githubusercontent.com/57394523/115141194-fa8b8f00-a075-11eb-82ff-7a732d62ddd1.png"  height="500" width="300" style="display:inline-block">
-  <img src="https://user-images.githubusercontent.com/57394523/115141223-0ecf8c00-a076-11eb-8061-3e289cf4e5bf.png"  height="500" width="300">
-
+  <div style="display:inline-block;">
+    <img src="https://user-images.githubusercontent.com/57394523/115141194-fa8b8f00-a075-11eb-82ff-7a732d62ddd1.png"  height="500" width="300">
+    <img src="https://user-images.githubusercontent.com/57394523/115141223-0ecf8c00-a076-11eb-8061-3e289cf4e5bf.png"  height="500" width="300">
+  </div>
 
 <br>
 
