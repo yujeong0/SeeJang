@@ -33,34 +33,31 @@
 
 
 ### 비장애인
-
 * 이번주 인기상품
 
 ### 쇼핑리스트
-
 + 장보기 전 쇼핑리스트를 작성하고 대략적 가격을 알 수 있는 기능
   <img src="https://user-images.githubusercontent.com/57394523/115141007-25c1ae80-a075-11eb-8f84-9071a4ad2109.png"  height="500" width="300">
 
 
 ### 상품찾기
-
 + 카메라로 상품 사진을 찍으면 인식해 최저가 링크 + 앱 내 리뷰를 띄어주는 기능
-
-
-  <img src="https://user-images.githubusercontent.com/57394523/115140778-f8c0cc00-a073-11eb-9c2d-e014497d033d.png"  height="500" width="300">
-   <img src="https://user-images.githubusercontent.com/57394523/115141091-87821880-a075-11eb-8dec-7ab1fa9292c1.png"  height="500" width="300">
-    <img src="https://user-images.githubusercontent.com/57394523/115141156-d7f97600-a075-11eb-9d42-7197e4b92a60.png"  height="500" width="300">
-
+<br>
+<img src="https://user-images.githubusercontent.com/57394523/115140778-f8c0cc00-a073-11eb-9c2d-e014497d033d.png"  height="500" width="300">
+<img src="https://user-images.githubusercontent.com/57394523/115141091-87821880-a075-11eb-8dec-7ab1fa9292c1.png"  height="500" width="300">
+<img src="https://user-images.githubusercontent.com/57394523/115141156-d7f97600-a075-11eb-9d42-7197e4b92a60.png"  height="500" width="300">
 
 ### SSG몰 리뷰확인
 
 + SSG몰의 링크를 통해서 리뷰 확인 가능
+  <br>
   <img src="https://user-images.githubusercontent.com/57394523/115141130-af717c00-a075-11eb-949c-30f35033881d.png"  height="500" width="300">
 
 
 ### 최저가 찜목록
 
 + 찜목록을 통해 페이지로 이동 가능 
+  <br>
   <img src="https://user-images.githubusercontent.com/57394523/115141194-fa8b8f00-a075-11eb-82ff-7a732d62ddd1.png"  height="500" width="300">
   <img src="https://user-images.githubusercontent.com/57394523/115141223-0ecf8c00-a076-11eb-8061-3e289cf4e5bf.png"  height="500" width="300">
 
