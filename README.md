@@ -97,5 +97,7 @@ npm build
  ```
  
 <h3>Redis 도커 실행<h3>
-<p>docker run -p 6379:6379 --name redis_boot -d redis</p>
-<p>docker exec -i -t redis_boot redis-cli</p>
+```cmd
+docker run -p 6379:6379 --name redis_boot -d redis
+docker exec -i -t redis_boot redis-cli
+ ```
