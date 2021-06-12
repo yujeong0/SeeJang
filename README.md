@@ -22,11 +22,13 @@
 ### 상품 위치 찾기
 
 + STT기술을 통해 음성인식의 결과를 백엔드로 전달하고, 백엔드에서 넘어온 결과를 TTS를 통해 휴대폰 기준 8방향을 시각장애인 사용자에게 전달
+  <br>
   <img src="https://user-images.githubusercontent.com/57394523/115141252-2dce1e00-a076-11eb-924d-ffccc0c7b641.png"  height="500" width="300">
 
 ### 상품 확인하기
 
 + 현재 사진을 찍은 상품이 어떤 상품인지 TTS를 통해 시각장애인 사용자에게 전달
+  <br>
   <img src="https://user-images.githubusercontent.com/57394523/115141325-8c939780-a076-11eb-915c-040ba6ea698e.png"  height="500" width="300">
 
 
