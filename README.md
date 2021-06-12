@@ -1,13 +1,11 @@
-# Prize
-+ SSAFY 공통프로젝트 1등(2020.02)
-
-# 시연영상
-+ [SEE 장](https://www.youtube.com/watch?v=snr8gCf6fbk)
-
-
 # See 장
 <img src="/frontend/cart/src/assets/cart.gif" width="40%" height="30%" title="see장 로고" alt="see장로고"></img>
 
+## Prize
++ SSAFY 공통프로젝트 1등(2020.02)
+
+## 시연영상
++ [SEE 장](https://www.youtube.com/watch?v=snr8gCf6fbk)
 
 ## 프로젝트 개요
 ### 🛠개발기간 
